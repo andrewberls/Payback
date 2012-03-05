@@ -1,0 +1,42 @@
+ // Landscape phones and down
+@media (max-width: 480px) {
+
+.container {
+    padding: 0;
+}
+
+#dashboard-title {    
+
+  h1 {}
+}
+
+#left-column {}
+
+#right-column {
+  margin-top: 10px;
+}
+
+.expenses-container {
+
+  .expense {    
+
+    .expense-inner {
+     
+      .expense-price {}
+
+      .expense-debtor {}
+
+      .expense-title {
+        display: none
+      }
+
+      .expense-date {}
+
+    } // expense-inner
+    
+  } // .expense
+
+} // .expenses-container
+
+
+} // @media (max-width: 480px) 

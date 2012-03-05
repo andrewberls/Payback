@@ -1,0 +1,55 @@
+.expenses-container {
+
+  .expense {
+    background-color: #0fc;    
+
+    .expense-inner {
+      font-size: 2em;
+      overflow: auto;
+      padding: 15px 20px;
+
+      .info-left,
+      .info-right {
+        float: left;        
+        overflow: auto;      
+      }
+
+      .info-left {
+        background-color: green;
+        padding: 10px 0;
+      }
+
+      .info-right {
+        background-color: purple; color: white;
+        margin-left: 10px;
+      }
+
+      .expense-price {}
+
+      .expense-debtor {        
+
+        &:before {
+          content: " - ";
+        }
+      }
+
+      .expense-title,
+      .expense-date {
+        clear: both;
+        float: left;
+      }
+
+      .expense-title {        
+        font-size: 0.6em;
+        margin-bottom: 2px;
+      }
+
+      .expense-date {
+        font-size: 0.5em;
+      }
+
+    } // expense-inner
+    
+  } // .expense
+
+} // .expenses-container
