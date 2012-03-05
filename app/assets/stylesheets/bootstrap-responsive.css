@@ -13,6 +13,8 @@
 }
 /*--------------------------------------------------------------------------------------------------*/
 @media (max-width: 975px) { /* 480 */
+  /*
+
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
   }
@@ -27,21 +29,14 @@
     display: block;
     width: 100%;
     height: 28px;
-    /* Make inputs at least the height of their button counterpart */
   
-    /* Makes inputs behave like true block-level elements */
+    -webkit-box-sizing: border-box;    
   
-    -webkit-box-sizing: border-box;
-    /* Older Webkit */
+    -moz-box-sizing: border-box;    
   
-    -moz-box-sizing: border-box;
-    /* Older FF */
+    -ms-box-sizing: border-box;    
   
-    -ms-box-sizing: border-box;
-    /* IE8 */
-  
-    box-sizing: border-box;
-    /* CSS3 spec*/
+    box-sizing: border-box;    
   
   }
   .input-prepend input[class*="span"], .input-append input[class*="span"] {
@@ -84,9 +79,10 @@
   .carousel-caption {
     position: static;
   }
+  */
 }
 /*--------------------------------------------------------------------------------------------------*/
-
+/* Core infrastructure */
 @media (max-width: 975px) { /* 768 */
   
   .container {
@@ -109,6 +105,7 @@
 
 /*--------------------------------------------------------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 980px) { /* 768 - 980 */
+  /*
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -283,11 +280,12 @@
   input.span12, textarea.span12, .uneditable-input.span12 {
     width: 714px;
   }
+  */
 }
 /*--------------------------------------------------------------------------------------------------*/
 
-@media (max-width: 980px) { /* 980 */
-
+@media (max-width: 975px) { /* 980 */
+  /*
   body {
     padding-top: 0;
   }
@@ -386,14 +384,16 @@
     overflow: hidden;
     height: 0;
   }
-
+  */
 }
 
 /*--------------------------------------------------------------------------------------------------*/
 @media (min-width: 980px) { /* 980 */
+  /*
   .nav-collapse.collapse {
     height: auto !important;
   }
+  */
 }
 /*--------------------------------------------------------------------------------------------------*/
 @media (min-width: 1200px) { /* 1200 */
