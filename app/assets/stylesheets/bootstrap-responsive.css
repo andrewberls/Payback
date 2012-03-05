@@ -12,7 +12,7 @@
   visibility: hidden;
 }
 /*--------------------------------------------------------------------------------------------------*/
-@media (max-width: 975px) { /* 480 */
+@media (max-width: 975px) and (max-device-width: 480px) { /* 480 */
   /*
 
   .nav-collapse {
@@ -83,7 +83,7 @@
 }
 /*--------------------------------------------------------------------------------------------------*/
 /* Core infrastructure */
-@media (max-width: 975px) { /* 768 */
+@media (max-width: 975px) and (max-device-width: 480px) { /* 768 */
   
   .container {
     width: auto;    
