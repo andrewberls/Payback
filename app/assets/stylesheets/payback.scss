@@ -6,6 +6,7 @@
 }
 .container {
   background-color: red;
+  outline: 1px solid black;
 }
 */
 // END TEMPORARY DEV STYLES
@@ -29,4 +30,5 @@ body {
 }
 
 @import "expenses";
+@import "footer";
 @import "mobile";
