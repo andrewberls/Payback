@@ -18,27 +18,51 @@
 
 .expenses-container {
 
-  .expense {    
+  .expense {
+
+    position: relative;
 
     .expense-inner {
+
+      padding: 5px 0;
+
+      input[type=checkbox] {
+        margin-top: -5px;
+      }
+
+      .info-left {
+        margin-right: 10px;        
+      }
+
+      .info-right {
+        clear: both;  
+        margin: 0;
+      }
      
-      .expense-price {}
+      .expense-price {
+        font-size: 1.3em;
+      }
 
       .expense-debtor {
+        font-size: 1.3em;
+        line-height: 1em;
+
         //&:before { content: "" }
       }
 
       .expense-title {
-        display: none
+        display: none;
       }
 
-      .expense-date {}
+      .expense-date {
+          
+        font-size: 0.6em;             
+      }
 
     } // expense-inner
 
-    .reassign {      
-      clear: both;
-      float: left;      
+    .reassign > .btn {
+      padding: 5px;
     }
     
   } // .expense

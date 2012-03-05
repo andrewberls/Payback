@@ -1,5 +1,5 @@
 // TEMPORARY DEV STYLES
-
+/*
 .expense {
   background-color: #0fc !important;  
 }
@@ -9,7 +9,7 @@
 .info-right {
   background-color: pink;
 }
-
+*/
 // END TEMPORARY DEV STYLES
 
 
@@ -23,8 +23,8 @@
 
     &:last-child { border: none; }
 
-
     .expense-inner {
+
       font-size: 2em;      
       padding: 15px 20px;
 
@@ -46,9 +46,7 @@
 
       .expense-debtor {        
 
-        &:before {
-          content: " - ";
-        }
+        &:before { content: " - "; }
       }
 
       .expense-title,
@@ -58,8 +56,7 @@
       }
 
       .expense-title {        
-        font-size: 0.7em;
-        //margin-bottom: 2px;
+        font-size: 0.7em;        
         margin-bottom: 5px;
       }
 
@@ -68,6 +65,7 @@
       }
 
       .reassign {
+
         float: right;   
         margin-top: 10px;
 
@@ -88,7 +86,8 @@
 
           input { margin: 0 4px 4px 0; }
 
-          .reassign-expense {            
+          .reassign-expense {
+            color: white;        
             float: right;
             margin: 4px;
             padding: 5px;

@@ -8,7 +8,7 @@
     </div><!-- .row-fluid -->
 
     <div class="row-fluid">
-        <div class="btn-group new-expense">
+        <div class="btn-group" id="new-expense">
             <a href="#" class="btn btn-primary">
                 <i class="icon-plus icon-white"></i>
                 Add New Expense
@@ -31,17 +31,18 @@
 
                         <div class="span12 expense">
                             <div class="expense-inner">
+                                <form action="">
+                                    <div class="info-left">
+                                        <input type="checkbox" />
+                                        <span class="expense-price">$60.00</span>
+                                        <span class="expense-debtor">Matt</span>
+                                    </div><!-- .info-left -->
 
-                                <div class="info-left">
-                                    <span class="expense-price">$60.00</span>
-                                    <span class="expense-debtor">Matt</span>
-                                </div><!-- .info-left -->
-
-                                <div class="info-right">
-                                    <span class="expense-title">Beer, hard liquor</span>
-                                    <span class="expense-date">7 Feb 2012</span>
-                                </div><!-- .info-right -->
-
+                                    <div class="info-right">
+                                        <span class="expense-title">Beer, hard liquor</span>
+                                        <span class="expense-date">7 Feb 2012</span>
+                                    </div><!-- .info-right -->
+                                </form>
                                 <div class="clearfix"></div>
                             </div><!-- .expense-inner -->
                         </div><!-- .expense -->
@@ -50,21 +51,22 @@
 
                         <div class="span12 expense">
                             <div class="expense-inner">
+                                <form action="">
+                                    <div class="info-left">
+                                        <input type="checkbox" />
+                                        <span class="expense-price">$120.00</span>
+                                        <span class="expense-debtor">Luc</span>
+                                    </div><!-- .info-left -->
 
-                                <div class="info-left">
-                                    <span class="expense-price">$120.00</span>
-                                    <span class="expense-debtor">Luc</span>
-                                </div><!-- .info-left -->
-
-                                <div class="info-right">
-                                    <span class="expense-title">Sexual Favors</span>
-                                    <span class="expense-date">15 Mar 2012</span>
-                                </div><!-- .info-right -->
-
+                                    <div class="info-right">
+                                        <span class="expense-title">Sexual Favors</span>
+                                        <span class="expense-date">15 Mar 2012</span>
+                                    </div><!-- .info-right -->
+                                </form>
                                 <!--_________________________-->
 
                                 <div class="btn-group reassign">
-                                    <a href="" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                                         Reassign
                                         <span class="caret"></span>
                                     </a>
@@ -80,7 +82,7 @@
                                             </li>
                                         </form>
                                         <div class="btn-wrapper">
-                                            <a href="#" class="btn reassign-expense">Reassign</a>
+                                            <a href="#" class="btn btn-primary reassign-expense">Reassign</a>
                                         </div><!-- .btn-wrapper -->
 
                                     </ul><!-- .dropdown-menu -->
@@ -96,6 +98,12 @@
 
                     </div><!-- .row-fluid -->
                 </div><!-- .expenses-container -->
+                                   
+                <a href="" class="btn btn-primary" id="mark-completed">
+                    <i class="icon-ok icon-white"></i>
+                    Mark Completed
+                </a>                                
+
             </div><!-- .row-fluid -->
         </div><!-- .span6 -->
 
@@ -109,18 +117,16 @@
                     <div class="row-fluid">
 
                         <div class="span12 expense">
-                            <div class="expense-inner">
+                            <div class="expense-inner">                                
+                                    <div class="info-left">                                        
+                                        <span class="expense-price">$10.00</span>
+                                        <span class="expense-debtor">Alex</span>
+                                    </div><!-- .info-left -->
 
-                                <div class="info-left">
-                                    <span class="expense-price">$10.00</span>
-                                    <span class="expense-debtor">Alex</span>
-                                </div><!-- .info-left -->
-
-                                <div class="info-right">
-                                    <span class="expense-title">CoffeeMate</span>
-                                    <span class="expense-date">2 Dec 2011</span>
-                                </div><!-- .info-right -->
-
+                                    <div class="info-right">
+                                        <span class="expense-title">CoffeeMate</span>
+                                        <span class="expense-date">2 Dec 2011</span>
+                                    </div><!-- .info-right -->                                
                                 <div class="clearfix"></div>
                             </div><!-- .expense-inner -->
                         </div><!-- .expense -->

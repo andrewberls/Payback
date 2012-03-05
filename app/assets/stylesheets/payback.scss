@@ -1,5 +1,5 @@
 // TEMPORARY DEV STYLES
-
+/*
 #left-column,
 #right-column {
   background-color: orange;
@@ -7,7 +7,7 @@
 .container {
   background-color: red;
 }
-
+*/
 // END TEMPORARY DEV STYLES
 
 body {
@@ -20,8 +20,12 @@ body {
   h1 { font-size: 3em; }
 }
 
-.new-expense {
+#new-expense {
   margin-bottom: 15px;
+}
+
+#mark-completed {
+  margin-top: 15px;
 }
 
 @import "expenses";
