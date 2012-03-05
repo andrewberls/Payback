@@ -29,11 +29,5 @@ group :development, :test do
   #gem 'eventmachine', '1.0.0.beta.4.1'
 end
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
