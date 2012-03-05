@@ -1,5 +1,5 @@
  // Landscape phones and down
- @media only screen and (max-device-width: 480px) {
+@media (max-width: 480px) {
 
 .container {
     padding: 0;
@@ -12,7 +12,7 @@
 
 #left-column {}
 
-#right-column {
+#right-column {  
   margin-top: 10px;
 }
 
@@ -24,7 +24,9 @@
      
       .expense-price {}
 
-      .expense-debtor {}
+      .expense-debtor {
+        //&:before { content: "" }
+      }
 
       .expense-title {
         display: none
@@ -33,6 +35,11 @@
       .expense-date {}
 
     } // expense-inner
+
+    .reassign {      
+      clear: both;
+      float: left;      
+    }
     
   } // .expense
 

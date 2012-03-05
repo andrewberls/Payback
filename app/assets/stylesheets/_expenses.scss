@@ -1,11 +1,31 @@
-.expenses-container {
+// TEMPORARY DEV STYLES
+
+.expense {
+  background-color: #0fc !important;  
+}
+.info-left {
+  background-color: green;
+}
+.info-right {
+  background-color: pink;
+}
+
+// END TEMPORARY DEV STYLES
+
+
+.expenses-container {  
 
   .expense {
-    background-color: #0fc;    
+     
+    background-color: #F8F8F8;
+    border-bottom: 1px solid #D9D9D9;    
+    margin: 0;
+
+    &:last-child { border: none; }
+
 
     .expense-inner {
-      font-size: 2em;
-      overflow: auto;
+      font-size: 2em;      
       padding: 15px 20px;
 
       .info-left,
@@ -14,14 +34,12 @@
         overflow: auto;      
       }
 
-      .info-left {
-        background-color: green;
+      .info-left {        
         padding: 10px 0;
       }
 
-      .info-right {
-        background-color: purple; color: white;
-        margin-left: 10px;
+      .info-right {        
+        margin-left: 15px;
       }
 
       .expense-price {}
@@ -40,13 +58,46 @@
       }
 
       .expense-title {        
-        font-size: 0.6em;
-        margin-bottom: 2px;
+        font-size: 0.7em;
+        //margin-bottom: 2px;
+        margin-bottom: 5px;
       }
 
       .expense-date {
         font-size: 0.5em;
       }
+
+      .reassign {
+        float: right;   
+        margin-top: 10px;
+
+        .dropdown-menu {
+
+          form {
+            margin: 0;
+          }
+
+          li {            
+            border-bottom: 1px solid #D9D9D9;
+            cursor: pointer;
+            font-size: 0.5em;
+            padding: 3px 5px;          
+          }
+
+          a { padding-left: 5px; }
+
+          input { margin: 0 4px 4px 0; }
+
+          .reassign-expense {            
+            float: right;
+            margin: 4px;
+            padding: 5px;
+            width: 40%;
+          }
+
+        } // dropdown-menu
+
+      } // reassign
 
     } // expense-inner
     

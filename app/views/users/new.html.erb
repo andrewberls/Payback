@@ -1,11 +1,20 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 
-<div class="container" style="background-color: red;">
+<div class="container">
 
     <div class="row-fluid" id="dashboard-title">
         <h1>Dashboard</h1>
-    </div>
+    </div><!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="btn-group new-expense">
+            <a href="#" class="btn btn-primary">
+                <i class="icon-plus icon-white"></i>
+                Add New Expense
+            </a>
+        </div>
+    </div><!-- .row-fluid -->
 
     <div class="row-fluid">
 
@@ -17,6 +26,8 @@
             <div class="row-fluid">
                 <div class="span12 expenses-container">            
                     <div class="row-fluid">
+
+                        <!--_________________________________________________________-->
 
                         <div class="span12 expense">
                             <div class="expense-inner">
@@ -31,8 +42,57 @@
                                     <span class="expense-date">7 Feb 2012</span>
                                 </div><!-- .info-right -->
 
+                                <div class="clearfix"></div>
                             </div><!-- .expense-inner -->
                         </div><!-- .expense -->
+
+                        <!--_________________________________________________________-->
+
+                        <div class="span12 expense">
+                            <div class="expense-inner">
+
+                                <div class="info-left">
+                                    <span class="expense-price">$120.00</span>
+                                    <span class="expense-debtor">Luc</span>
+                                </div><!-- .info-left -->
+
+                                <div class="info-right">
+                                    <span class="expense-title">Sexual Favors</span>
+                                    <span class="expense-date">15 Mar 2012</span>
+                                </div><!-- .info-right -->
+
+                                <!--_________________________-->
+
+                                <div class="btn-group reassign">
+                                    <a href="" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Reassign
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <form action="">
+                                            <li>
+                                                 <input type="radio" />
+                                                 Jared
+                                            </li>
+                                            <li>
+                                                 <input type="radio" />
+                                                 Christian
+                                            </li>
+                                        </form>
+                                        <div class="btn-wrapper">
+                                            <a href="#" class="btn reassign-expense">Reassign</a>
+                                        </div><!-- .btn-wrapper -->
+
+                                    </ul><!-- .dropdown-menu -->
+                                </div><!-- .reassign -->
+
+                                <!--_________________________-->
+
+                                <div class="clearfix"></div>
+                            </div><!-- .expense-inner -->
+                        </div><!-- .expense -->
+
+                        <!--_________________________________________________________-->
 
                     </div><!-- .row-fluid -->
                 </div><!-- .expenses-container -->
@@ -61,6 +121,7 @@
                                     <span class="expense-date">2 Dec 2011</span>
                                 </div><!-- .info-right -->
 
+                                <div class="clearfix"></div>
                             </div><!-- .expense-inner -->
                         </div><!-- .expense -->
 

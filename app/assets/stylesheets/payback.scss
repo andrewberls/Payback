@@ -1,12 +1,27 @@
+// TEMPORARY DEV STYLES
+
 #left-column,
 #right-column {
   background-color: orange;
+}
+.container {
+  background-color: red;
+}
+
+// END TEMPORARY DEV STYLES
+
+body {
+  background-color: #E0E0E0;
 }
 
 #dashboard-title {  
   margin-bottom: 15px;
 
   h1 { font-size: 3em; }
+}
+
+.new-expense {
+  margin-bottom: 15px;
 }
 
 @import "expenses";
