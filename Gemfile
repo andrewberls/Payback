@@ -14,7 +14,7 @@ gem 'jquery-rails'
 
 gem 'thin'
 
-gem "eventmachine", "1.0.0.beta.4.1" # EventMachine 0.12.10 doesn't work under Ruby 1.92 on Windows
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +27,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'watchr'
+  gem "eventmachine", "1.0.0.beta.4.1" # EventMachine 0.12.10 doesn't work under Ruby 1.92 on Windows
 end
 
 # Use unicorn as the web server
