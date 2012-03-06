@@ -1,15 +1,9 @@
 // TEMPORARY DEV STYLES
-/*
-.expense {
-  background-color: #0fc !important;  
-}
-.info-left {
-  background-color: green;
-}
-.info-right {
-  background-color: pink;
-}
-*/
+
+// .expense { background-color: #0fc !important; }
+// .info-left { background-color: green; }
+// .info-right { background-color: pink; }
+
 // END TEMPORARY DEV STYLES
 
 
@@ -18,7 +12,7 @@
   .expense {
      
     background-color: #F8F8F8;
-    border-bottom: 1px solid #D9D9D9;    
+    border-bottom: 1px solid #D9D9D9;   
     margin: 0;
 
     &:last-child { border: none; }

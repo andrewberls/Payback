@@ -1,10 +1,32 @@
  // Landscape phones and down
 @media (max-width: 975px) { // 480
 
+
+//-- GENERIC
+//------------------------------------
 .container {
   margin-top: 15px;
   padding: 0 5px;
 }
+
+.footer {
+  margin-top: 50px;
+}
+
+
+//-- LOGIN
+//------------------------------------
+
+.login-container{}
+
+.login-form {
+  input {    
+    width: 98%;
+  }
+}
+
+//-- DASHBOARD/EXPENSES
+//------------------------------------
 
 #dashboard-title {    
 
@@ -14,7 +36,7 @@
 #left-column {}
 
 #right-column {  
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .expenses-container {
@@ -72,9 +94,6 @@
 
 } // .expenses-container
 
-.footer {
-  margin-top: 50px;
-}
 
 
 } // @media (max-width: 480px) 

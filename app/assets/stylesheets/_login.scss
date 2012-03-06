@@ -1,0 +1,22 @@
+#login-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.login-container {  
+  padding-bottom: 0;
+  position: relative;
+}
+
+.login-form {
+  margin-bottom: 0;
+
+  input {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 317px;
+  }
+  button[type=submit] {
+    float: right;
+  }
+}
