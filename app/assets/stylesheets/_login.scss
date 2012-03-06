@@ -17,9 +17,10 @@
 
 .login-form {
   margin-bottom: 0;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 
-  input {
+  input[type=text],
+  input[type=password] {
     padding-top: 7px;
     padding-bottom: 7px;
     width: 320px; // 317
@@ -29,6 +30,10 @@
     float: right;
     margin: -23px 0 0;
 
+  }
+  label.checkbox {    
+    display: inline-block;
+    margin: 0;
   }
   button[type=submit] {
     float: right;
