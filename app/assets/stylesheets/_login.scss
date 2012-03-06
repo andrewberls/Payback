@@ -3,6 +3,13 @@
   margin-bottom: 10px;
 }
 
+.signup {
+  display: block;
+  float: right;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
 .login-container {  
   padding-bottom: 0;
   position: relative;
@@ -15,7 +22,13 @@
   input {
     padding-top: 7px;
     padding-bottom: 7px;
-    width: 317px;
+    width: 320px; // 317
+  }
+  .forgot-password {
+    cursor: pointer;
+    float: right;
+    margin: -23px 0 0;
+
   }
   button[type=submit] {
     float: right;
