@@ -20,7 +20,8 @@
 .login-container{}
 
 .login-form {
-  input {    
+  input[type=text],
+  input[type=password] {    
     width: 98%;
   }
 }
