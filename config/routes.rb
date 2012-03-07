@@ -1,9 +1,10 @@
 Payback::Application.routes.draw do
   
-  resources :users
+  resources :groups
+  resources :users  
 
-  match "login" => "users#edit"
+  match "login" => "users#edit" # TEMPORARY  
 
-  root :to => 'users#new'
+  root :to => "users#new" # TEMPORARY
 
 end
