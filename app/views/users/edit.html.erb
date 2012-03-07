@@ -1,41 +1,30 @@
 <!-- <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p> -->
 
-<div class="container">
+<div class="row">
+    <div class="span4 offset4 login-container">
+        <form action="" class="well login-form">
 
-    <div class="row">
-        <div class="span4 offset4 login-container">
-            <form action="" class="well login-form">
+            <h1 id="login-title">Payback</h1>            
 
-                <h1 id="login-title">Payback</h1>            
+            <label>Email</label>
+            <input type="text" class="span3">
 
-                <label>Email</label>
-                <input type="text" class="span3">
+            <label>Password</label>
+            <a class="forgot-password">Forgot password?</a>
+            <input type="password" class="span3">
 
-                <label>Password</label>
-                <a class="forgot-password">Forgot password?</a>
-                <input type="password" class="span3">
-
-                <label class="checkbox">
-                    <input type="checkbox"> Remember Me
-                </label>
+            <label class="checkbox">
+                <input type="checkbox">Remember Me
+            </label>
 
 
-                <button type="submit" class="btn btn-primary">Log In</button>
+            <button type="submit" class="btn btn-primary">Log In</button>
 
-                <div class="clearfix"></div>
-            </form>
+            <div class="clearfix"></div>
+        </form>
 
-            <a href="#" class="signup">Don't have an account? Click here to get started for free &raquo;</a>
+        <a href="#" class="signup">Don't have an account? Click here to get started for free &raquo;</a>
 
-        </div>
     </div>
-
-    <div class="row-fluid footer">
-        <p>
-            Payback is <a href="https://github.com/andrewberls/Payback">open-source</a>, brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
-        </p>
-    </div><!-- .footer -->
-
-
-</div><!-- .container -->
+</div>

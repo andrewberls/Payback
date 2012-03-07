@@ -1,18 +1,29 @@
-/*
-//For modern browsers
-.clearfix:before,
-.clearfix:after {
-    content:"";
-    display:table;
+@mixin border-radius($rad: 5px) {
+  -moz-border-radius: $rad;
+  -webkit-border-radius: $rad;
+  border-radius: $rad;
 }
-.clearfix:after {
-    clear:both;
-}
-// For IE 6/7 (trigger hasLayout)
-.clearfix {
-    background-color: black;  
-    zoom:1;
-}
-*/
 
-.clearfix { clear: both; }
+@mixin horizontal-gradient($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image:    -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+  background-image:     -ms-linear-gradient(left, $startColor, $endColor); // IE10
+  background-image:        -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+  background-image:      -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+  background-image:         linear-gradient(left, $startColor, $endColor); // Standard
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$startColor}, endColorstr='#{$endColor}'); // IE9 and down
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}')";
+}
+
+@mixin vertical-gradient($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image:    -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+  background-image:     -ms-linear-gradient(top, $startColor, $endColor); // IE10
+  background-image:        -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+  
+  background-image:      -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+  background-image:         linear-gradient(top, $startColor, $endColor); // Standard
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$startColor}, endColorstr='#{$endColor}'); // IE9 and down
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}')";
+}

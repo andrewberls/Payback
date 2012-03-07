@@ -11,6 +11,9 @@
 
 // END TEMPORARY DEV STYLES
 
+
+//-- GENERIC
+//------------------------------------
 body {
   background-color: #E0E0E0;
 }
@@ -19,6 +22,9 @@ body {
   margin-top: 25px;
 }
 
+
+//-- DASHBOARD
+//------------------------------------
 #dashboard-title {  
   margin-bottom: 15px;
 
@@ -32,6 +38,46 @@ body {
 #mark-completed {
   margin-top: 15px;
 }
+
+//-- FIRST LOGIN
+//------------------------------------
+// .hero-unit {
+// 	margin: 0 auto;
+// 	padding: 30px;
+// 	width: 75%;
+// }
+
+.welcome-container {
+
+	margin: 0 auto;
+	padding: 30px;
+	text-align: center;
+	width: 50%;
+
+	h1 {
+		font-size: 3.5em;		
+		margin-bottom: 20px;
+	}
+
+	p {
+		font-size: 1.3em;
+		margin-bottom: 30px;
+	}
+
+	$spacer: 45px;
+
+	#group-join {
+		float: left;
+		margin-left: $spacer;
+	}
+
+	#group-new {
+		float: right;
+		margin-right: $spacer;
+	}
+}
+
+
 
 @import "login";
 @import "expenses";

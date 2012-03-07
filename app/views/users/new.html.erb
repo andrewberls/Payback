@@ -1,148 +1,137 @@
 <!-- <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p> -->
 
-<div class="container">
+<div class="row-fluid" id="dashboard-title">
+    <h1>Dashboard</h1>
+</div><!-- .row-fluid -->
 
-    <div class="row-fluid" id="dashboard-title">
-        <h1>Dashboard</h1>
-    </div><!-- .row-fluid -->
+<div class="row-fluid">
+    <div class="btn-group" id="new-expense">
+        <a href="#" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i>
+            Add New Expense
+        </a>
+    </div>
+</div><!-- .row-fluid -->
 
-    <div class="row-fluid">
-        <div class="btn-group" id="new-expense">
-            <a href="#" class="btn btn-primary">
-                <i class="icon-plus icon-white"></i>
-                Add New Expense
-            </a>
-        </div>
-    </div><!-- .row-fluid -->
+<div class="row-fluid">
 
-    <div class="row-fluid">
+    <%#----------- OWED TO YOU -----------%>
+    <div class="span6" id="left-column">
 
-        <%#----------- OWED TO YOU -----------%>
-        <div class="span6" id="left-column">
+        <h2>Owed to You</h2>
 
-            <h2>Owed to You</h2>
+        <div class="row-fluid">
+            <div class="span12 expenses-container">            
+                <div class="row-fluid">
 
-            <div class="row-fluid">
-                <div class="span12 expenses-container">            
-                    <div class="row-fluid">
+                    <!--_________________________________________________________-->
 
-                        <!--_________________________________________________________-->
+                    <div class="span12 expense">
+                        <div class="expense-inner">
+                            <form action="">
+                                <div class="info-left">
+                                    <input type="checkbox" />
+                                    <span class="expense-price">$60.00</span>
+                                    <span class="expense-debtor">Matt</span>
+                                </div><!-- .info-left -->
 
-                        <div class="span12 expense">
-                            <div class="expense-inner">
-                                <form action="">
-                                    <div class="info-left">
-                                        <input type="checkbox" />
-                                        <span class="expense-price">$60.00</span>
-                                        <span class="expense-debtor">Matt</span>
-                                    </div><!-- .info-left -->
+                                <div class="info-right">
+                                    <span class="expense-title">Beer, hard liquor</span>
+                                    <span class="expense-date">7 Feb 2012</span>
+                                </div><!-- .info-right -->
+                            </form>
+                            <div class="clearfix"></div>
+                        </div><!-- .expense-inner -->
+                    </div><!-- .expense -->
 
-                                    <div class="info-right">
-                                        <span class="expense-title">Beer, hard liquor</span>
-                                        <span class="expense-date">7 Feb 2012</span>
-                                    </div><!-- .info-right -->
-                                </form>
-                                <div class="clearfix"></div>
-                            </div><!-- .expense-inner -->
-                        </div><!-- .expense -->
+                    <!--_________________________________________________________-->
 
-                        <!--_________________________________________________________-->
+                    <div class="span12 expense">
+                        <div class="expense-inner">
+                            <form action="">
+                                <div class="info-left">
+                                    <input type="checkbox" />
+                                    <span class="expense-price">$120.00</span>
+                                    <span class="expense-debtor">Luc</span>
+                                </div><!-- .info-left -->
 
-                        <div class="span12 expense">
-                            <div class="expense-inner">
-                                <form action="">
-                                    <div class="info-left">
-                                        <input type="checkbox" />
-                                        <span class="expense-price">$120.00</span>
-                                        <span class="expense-debtor">Luc</span>
-                                    </div><!-- .info-left -->
+                                <div class="info-right">
+                                    <span class="expense-title">Sexual Favors</span>
+                                    <span class="expense-date">15 Mar 2012</span>
+                                </div><!-- .info-right -->
+                            </form>
+                            <!--_________________________-->
 
-                                    <div class="info-right">
-                                        <span class="expense-title">Sexual Favors</span>
-                                        <span class="expense-date">15 Mar 2012</span>
-                                    </div><!-- .info-right -->
-                                </form>
-                                <!--_________________________-->
+                            <div class="btn-group reassign">
+                                <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                                    Reassign
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <form action="">
+                                        <li>
+                                             <input type="radio" />
+                                             Jared
+                                        </li>
+                                        <li>
+                                             <input type="radio" />
+                                             Christian
+                                        </li>
+                                    </form>
+                                    <div class="btn-wrapper">
+                                        <a href="#" class="btn btn-primary reassign-expense">Reassign</a>
+                                    </div><!-- .btn-wrapper -->
 
-                                <div class="btn-group reassign">
-                                    <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-                                        Reassign
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <form action="">
-                                            <li>
-                                                 <input type="radio" />
-                                                 Jared
-                                            </li>
-                                            <li>
-                                                 <input type="radio" />
-                                                 Christian
-                                            </li>
-                                        </form>
-                                        <div class="btn-wrapper">
-                                            <a href="#" class="btn btn-primary reassign-expense">Reassign</a>
-                                        </div><!-- .btn-wrapper -->
+                                </ul><!-- .dropdown-menu -->
+                            </div><!-- .reassign -->
 
-                                    </ul><!-- .dropdown-menu -->
-                                </div><!-- .reassign -->
+                            <!--_________________________-->
 
-                                <!--_________________________-->
+                            <div class="clearfix"></div>
+                        </div><!-- .expense-inner -->
+                    </div><!-- .expense -->
 
-                                <div class="clearfix"></div>
-                            </div><!-- .expense-inner -->
-                        </div><!-- .expense -->
+                    <!--_________________________________________________________-->
 
-                        <!--_________________________________________________________-->
+                </div><!-- .row-fluid -->
+            </div><!-- .expenses-container -->
+                               
+            <a href="" class="btn btn-primary" id="mark-completed">
+                <i class="icon-ok icon-white"></i>
+                Mark Completed
+            </a>                                
 
-                    </div><!-- .row-fluid -->
-                </div><!-- .expenses-container -->
-                                   
-                <a href="" class="btn btn-primary" id="mark-completed">
-                    <i class="icon-ok icon-white"></i>
-                    Mark Completed
-                </a>                                
-
-            </div><!-- .row-fluid -->
-        </div><!-- .span6 -->
+        </div><!-- .row-fluid -->
+    </div><!-- .span6 -->
 
 
-        <%#----------- YOU OWE -----------%>
-        <div class="span6" id="right-column">            
-            <h2>You Owe</h2>
+    <%#----------- YOU OWE -----------%>
+    <div class="span6" id="right-column">            
+        <h2>You Owe</h2>
 
-            <div class="row-fluid">
-                <div class="span12 expenses-container">
-                    <div class="row-fluid">
+        <div class="row-fluid">
+            <div class="span12 expenses-container">
+                <div class="row-fluid">
 
-                        <div class="span12 expense">
-                            <div class="expense-inner">                                
-                                    <div class="info-left">                                        
-                                        <span class="expense-price">$10.00</span>
-                                        <span class="expense-debtor">Alex</span>
-                                    </div><!-- .info-left -->
+                    <div class="span12 expense">
+                        <div class="expense-inner">                                
+                                <div class="info-left">                                        
+                                    <span class="expense-price">$10.00</span>
+                                    <span class="expense-debtor">Alex</span>
+                                </div><!-- .info-left -->
 
-                                    <div class="info-right">
-                                        <span class="expense-title">CoffeeMate</span>
-                                        <span class="expense-date">2 Dec 2011</span>
-                                    </div><!-- .info-right -->                                
-                                <div class="clearfix"></div>
-                            </div><!-- .expense-inner -->
-                        </div><!-- .expense -->
+                                <div class="info-right">
+                                    <span class="expense-title">CoffeeMate</span>
+                                    <span class="expense-date">2 Dec 2011</span>
+                                </div><!-- .info-right -->                                
+                            <div class="clearfix"></div>
+                        </div><!-- .expense-inner -->
+                    </div><!-- .expense -->
 
-                    </div><!-- .row-fluid -->
-                </div><!-- .expenses-container -->
-            </div><!-- .row-fluid -->
-        </div><!-- .span6 -->
+                </div><!-- .row-fluid -->
+            </div><!-- .expenses-container -->
+        </div><!-- .row-fluid -->
+    </div><!-- .span6 -->
 
-    </div><!-- .row-fluid -->
-
-    <div class="row-fluid footer">
-        <p>
-            Payback is <a href="https://github.com/andrewberls/Payback">open-source</a>, brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
-        </p>
-    </div><!-- .footer -->
-
-
-</div><!-- .container -->
+</div><!-- .row-fluid -->
