@@ -11,19 +11,19 @@
 }
 
 .login-container {  
-  padding-bottom: 0;
-  position: relative;
+  padding-bottom: 0;  
 }
 
 .login-form {
   margin-bottom: 0;
   padding-bottom: 10px;
 
+  .field {}
+
   input[type=text],
   input[type=password] {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    width: 320px; // 317
+    padding: 7px 0;    
+    width: 100%; // 320px
   }
   .forgot-password {
     cursor: pointer;
