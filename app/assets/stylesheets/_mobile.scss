@@ -1,5 +1,48 @@
+//---------------------------------------------------------------------
+
+// MAX 1200
+
+//---------------------------------------------------------------------
+@media (max-width: 1200px) {
+
+.welcome-container {
+  #group-join,
+  #group-new {
+    //border: 3px solid green;
+    float: none;
+    margin: 0 auto;
+  }
+}
+
+}
+
+
+
+//---------------------------------------------------------------------
+
+// MAX 768
+
+//---------------------------------------------------------------------
+@media (max-width: 768px) {
+
+.welcome-container {  
+
+  #group-join {
+    margin-bottom: 20px;
+  }
+}
+
+}
+
+
+
+//---------------------------------------------------------------------
+
+// MAX 480
+
+//---------------------------------------------------------------------
  // Landscape phones and down
-@media (max-width: 975px) { // 480
+@media (max-width: 480px) { // 480 | 975 (Hack)
 
 
 //-- GENERIC
@@ -17,6 +60,7 @@
     float: none;
     margin: 0 auto;
   }
+
 }
 
 
@@ -41,6 +85,7 @@
 
   #group-join,
   #group-new {
+    //border: 3px solid yellow;
     float: none;
     margin: 0 auto;
   }
@@ -49,7 +94,7 @@
     margin-bottom: 20px;
   }
 
-}
+} // welcome-container
 
 
 
@@ -124,4 +169,57 @@
 
 
 
-} // @media (max-width: 480px) 
+} // @media (max-width: 480px)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------
+
+// 480 - 768
+
+//---------------------------------------------------------------------
+@media (min-width: 480px) and (max-width: 768px) {
+//.btn-huge { border: 3px solid red !important; }
+} // @media (min-width: 480px) and (max-width: 768px)
+
+
+
+//---------------------------------------------------------------------
+
+// 768 - 980
+
+//---------------------------------------------------------------------
+@media (min-width: 768px) and (max-width: 980px) {
+//.btn-huge { border: 3px solid green !important; }
+} // @media (min-width: 768px) and (max-width: 980px)
+
+
+
+//---------------------------------------------------------------------
+
+// 980 - 1200
+
+//---------------------------------------------------------------------
+@media (min-width: 980px) and (max-width: 1200px) {
+//.btn-huge { border: 3px solid yellow !important; }
+} // @media (min-width: 980px) and (max-width: 1200px)
+
+
+
