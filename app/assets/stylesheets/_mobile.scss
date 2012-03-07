@@ -4,20 +4,26 @@
 
 //-- GENERIC
 //------------------------------------
-.container {
+
+.container {  
   margin-top: 15px;
   padding: 0 5px;
 }
 
 .footer {
   margin-top: 50px;
+
+  .actions {
+    float: none;
+    margin: 0 auto;
+  }
 }
 
 
 //-- LOGIN
 //------------------------------------
 
-.login-container{}
+.login-container {}
 
 .login-form {
   input[type=text],
@@ -25,6 +31,27 @@
     width: 98%;
   }
 }
+
+
+//-- FIRST LOGIN
+//------------------------------------
+
+.welcome-container {
+  width: 80%;
+
+  #group-join,
+  #group-new {
+    float: none;
+    margin: 0 auto;
+  }
+
+  #group-join {
+    margin-bottom: 20px;
+  }
+
+}
+
+
 
 //-- DASHBOARD/EXPENSES
 //------------------------------------

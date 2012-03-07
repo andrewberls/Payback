@@ -7,11 +7,25 @@
     padding-top: 10px;
     text-align: center;
 
+    p { display: inline-block; }
+
     a {
-        color: lighten(#0089CC, 10);
+        color: lighten(#0088CC, 10);
 
         &:hover {
-            color:#0089CC;
+            color:#0088CC;
+        }
+    }
+
+    .actions {
+        float: right;
+
+        a {
+            color: lighten(#404040, 15);
+
+            &:hover {
+                color: #0088CC;
+            }
         }
     }
 }
