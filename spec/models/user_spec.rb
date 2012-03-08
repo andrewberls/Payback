@@ -12,7 +12,7 @@ describe User do
   it { should respond_to(:name) }
   it { should respond_to(:email) }
 
-  it { should be_valid } # be_foo => foo?
+  # be_foo => foo?
 
   describe "when name is not present" do
   	before { @user.name = "" }
