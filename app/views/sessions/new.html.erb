@@ -4,15 +4,17 @@
         <%= form_tag(sessions_path, class: "well login-form") do %>
             <h1 id="login-title">Payback</h1>
 
+            <%# TODO: Fix flashes %>
+            <%= content_tag(:div, flash[:alert], class: "alert alert-error") if flash[:alert]%>            
+
             <div class="field">
                 <%= label_tag :email %>
                 <%= text_field_tag :email, params[:email] %>            
             </div>
                 
             <div class="field">
-                <%= label_tag :password %>
-                <%= link_to "Forgot password?", "#", class: "forgot-password" %>                  
-                <%= link_to "Forgot password?", "#", class: "forgot-password" %>
+                <%= label_tag :password %>                            
+                <%# link_to "Forgot password?", "#", class: "forgot-password" %>
                 <%= text_field_tag :password%> 
             </div>
 
@@ -26,7 +28,7 @@
             <div class="clearfix"></div>
         <% end %>
 
-        <%= link_to "Don't have an account? Click here to get started for free &raquo;", "#", class: "signup" %>        
+        <%= link_to "Don't have an account? Click here to get started for free &raquo;", signup_path, class: "signup" %>        
 
     </div><!-- .login-container -->
 </div>
