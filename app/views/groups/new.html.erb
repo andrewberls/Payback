@@ -1,22 +1,13 @@
-<!--<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p> -->
-
 <div class="row">
-	<div class="well welcome-container">
-	<!-- <div class="hero-unit welcome-container"> -->		
+	<div class="well welcome-container">	
 
 		<h1>Welcome to Payback!</h1>
 		<p>It looks like you don't belong to any groups yet. To get started, you can either join an existing group or create a new one!</p>
 
-		<a class="btn btn-huge btn-primary" id="group-join">
-			Join existing group
-		</a>
+		<%= link_to "Join existing group", "#", class: "btn btn-huge btn-primary", id: "group-join" %>
 
-		<a class="btn btn-huge btn-primary" id="group-new">
-			Create a new group
-		</a>
+		<%= link_to "Create a new group", "#", class: "btn btn-huge btn-primary", id: "group-new" %>	
 
 		<div class="clearfix"></div>
-	</div>
-</div><!-- .row-fluid -->
-
+	</div><!-- .welcome-container -->
+</div>

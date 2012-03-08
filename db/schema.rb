@@ -11,5 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304092731) do
+ActiveRecord::Schema.define(:version => 20120308083220) do
+
+  create_table "expenses", :force => true do |t|
+    t.integer  "amount"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "gid"
+    t.string   "title"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "auth_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

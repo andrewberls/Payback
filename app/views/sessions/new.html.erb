@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="span4 offset4 login-container">
+
+        <%= form_tag(sessions_path, class: "well login-form") do %>
+            <h1 id="login-title">Payback</h1>
+
+            <div class="field">
+                <%= label_tag :email %>
+                <%= text_field_tag :email, params[:email] %>            
+            </div>
+                
+            <div class="field">
+                <%= label_tag :password %>
+                <%= link_to "Forgot password?", "#", class: "forgot-password" %>                  
+                <%= link_to "Forgot password?", "#", class: "forgot-password" %>
+                <%= text_field_tag :password%> 
+            </div>
+
+            <label class="checkbox">
+                <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+                Remember Me
+            </label>
+
+            <%= submit_tag "Log in", class: "btn btn-primary" %>
+
+            <div class="clearfix"></div>
+        <% end %>
+
+        <%= link_to "Don't have an account? Click here to get started for free &raquo;", "#", class: "signup" %>        
+
+    </div><!-- .login-container -->
+</div>
