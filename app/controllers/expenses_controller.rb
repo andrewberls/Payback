@@ -6,10 +6,11 @@ class ExpensesController < ApplicationController
   def create
   end
 
-  def list
+  def destroy
   end
 
-  def destroy
+  def index
+    # Main dashboard
   end
     
 end
