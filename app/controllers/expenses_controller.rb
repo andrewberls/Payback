@@ -6,6 +6,9 @@ class ExpensesController < ApplicationController
   def create
   end
 
+  def list
+  end
+
   def destroy
   end
     
