@@ -8,7 +8,7 @@ gem 'heroku'
 
 gem 'therubyracer', :platforms => :ruby
 
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'jquery-rails'
 
