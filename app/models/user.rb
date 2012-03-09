@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 	validates_presence_of :password, :on => :create
   validates_length_of :password, :minimum => 5
 
+  "hello"
+
   #before_create { generate_token(:auth_token) }
 
   def generate_token(column)
