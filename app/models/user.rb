@@ -4,14 +4,23 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+<<<<<<< HEAD
   validates :name, presence: true, 
                    length: {maximum: 50}
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: {with: valid_email_regex}
+=======
+  validates :name, presence: true
 
-	#validates_presence_of :password, :on => :create
-  #validates_length_of :password, :in => 6..12  
+  valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, 
+                    format: {with: valid_email_regex},
+                    uniqueness: { case_sensitive: false }
+>>>>>>> master
+
+	validates_presence_of :password, :on => :create
+  validates_length_of :password, :minimum => 5
 
   #before_create { generate_token(:auth_token) }
 
