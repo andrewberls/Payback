@@ -4,11 +4,13 @@
 
 <div class="row-fluid">
     <div class="btn-group" id="new-expense">
-        <a href="#" class="btn btn-primary">
+
+        <%= link_to new_expense_path, class: "btn btn-primary" do %>
             <i class="icon-plus icon-white"></i>
             Add New Expense
-        </a>
-    </div>
+        <% end %>
+
+    </div><!-- #new-expense -->
 </div><!-- .row-fluid -->
 
 <div class="row-fluid">
@@ -95,10 +97,10 @@
                 </div><!-- .row-fluid -->
             </div><!-- .expenses-container -->
                                
-            <a href="" class="btn btn-primary" id="mark-completed">
+            <a href="#" class="btn btn-primary" id="mark-completed">
                 <i class="icon-ok icon-white"></i>
                 Mark Completed
-            </a>                                
+            </a>
 
         </div><!-- .row-fluid -->
     </div><!-- .span6 -->
