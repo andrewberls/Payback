@@ -1,2 +1,37 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+    <div class="span4 offset4 signup-container">
+
+       <%= form_for(@user, html: {class: "well signup-form"}) do |f| %>
+            <h1 id="signup-title">Sign Up</h1>
+
+            <%# TODO: Fix flashes %>
+            <%= content_tag(:div, flash[:alert], class: "alert alert-error") if flash[:alert]%>            
+
+            <div class="field">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name %>            
+            </div>
+
+            <div class="field">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name %>            
+            </div>
+
+            <div class="field">
+                <%= f.label :email %>
+                <%= f.text_field :email %>            
+            </div>
+                
+            <div class="field">
+                <%= f.label :password %>                            
+                <%# link_to "Forgot password?", "#", class: "forgot-password" %>
+                <%= f.password_field :password%> 
+            </div>
+
+            <%= submit_tag "Sign Up", class: "btn btn-primary" %>
+
+            <div class="clearfix"></div>
+        <% end %><!-- .signup-form -->
+
+    </div><!-- .signup-container -->
+</div>
