@@ -4,6 +4,11 @@
     </p>
 
     <div class="actions">
-        <a href="#">Log Out</a>
+    	<% if signed_in? %>
+    		<p>Signed in as <%= current_user.first_name %></p>
+    	<% end %>
+    	<%#link_to "Log Out", edit_user_path %>
+    	&nbsp; | &nbsp;
+        <%= link_to "Log Out", logout_path %>
     </div>
 </div><!-- .footer -->
