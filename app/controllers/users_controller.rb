@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to welcome_path
+    else
+      render 'new'
+    end
   end
 
   def show

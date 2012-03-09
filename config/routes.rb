@@ -3,7 +3,7 @@ Payback::Application.routes.draw do
   resources :groups
   resources :users
   resources :expenses
-  resources :sessions, :only => :create
+  resources :sessions, :only => [:new, :create, :destroy]
 
   match "welcome" => "static#welcome", as: "welcome"
 

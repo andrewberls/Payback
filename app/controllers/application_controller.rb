@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   force_ssl
 
-  def check_auth
-    redirect_to login_path unless @current_user
+  def check_auth    
+    redirect_to login_path unless current_user
   end
 
   private

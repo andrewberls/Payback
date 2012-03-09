@@ -17,12 +17,12 @@ class User < ActiveRecord::Base
 
 	validates :password, length: { minimum: 5 }
 
-  #before_create { generate_token(:auth_token) }
+  before_save :generate_auth_token
 
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
+  private
+
+  def generate_auth_token
+      self.auth_token = SecureRandom.urlsafe_base64
   end
 
 end

@@ -11,17 +11,17 @@ class SessionsController < ApplicationController
         cookies.permanent[:auth_token] = user.auth_token
       else
         cookies[:auth_token] = user.auth_token
-      end
-      redirect_to _URL_
+      end      
+      redirect_to expenses_path
     else
-      flash.now.alert = "Invalid email or password"
+      flash.now[:error] = "Invalid email or password"
       render "new"
     end
   end
 
   def destroy
     cookies.delete(:auth_token)
-    redirect_to root_url, :notice => "Logged out!"
+    redirect_to login_path
   end
 
 

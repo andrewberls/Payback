@@ -1,5 +1,7 @@
 class ExpensesController < ApplicationController
 
+  before_filter :check_auth, :accept => [:index, :new]
+
   def new
   end
 

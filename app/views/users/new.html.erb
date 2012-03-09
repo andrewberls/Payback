@@ -3,9 +3,8 @@
 
        <%= form_for(@user, html: {class: "well signup-form"}) do |f| %>
             <h1 id="signup-title">Sign Up</h1>
-
-            <%# TODO: Fix flashes %>
-            <%= content_tag(:div, flash[:alert], class: "alert alert-error") if flash[:alert]%>            
+            
+            <%= render "shared/signup_error_messages" %>      
 
             <div class="field">
                 <%= f.label :first_name %>

@@ -5,7 +5,7 @@
             <h1 id="login-title">Payback</h1>
 
             <%# TODO: Fix flashes %>
-            <%= content_tag(:div, flash[:alert], class: "alert alert-error") if flash[:alert]%>            
+            <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
 
             <div class="field">
                 <%= label_tag :email %>
@@ -15,7 +15,7 @@
             <div class="field">
                 <%= label_tag :password %>                            
                 <%# link_to "Forgot password?", "#", class: "forgot-password" %>
-                <%= text_field_tag :password%> 
+                <%= password_field_tag :password%> 
             </div>
 
             <label class="checkbox">

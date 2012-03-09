@@ -106,4 +106,9 @@ describe User do
     it { should be_invalid }
   end
 
+  describe "auth token" do
+    before { @user.save }
+    its(:auth_token) { should_not be_blank }
+  end
+
 end

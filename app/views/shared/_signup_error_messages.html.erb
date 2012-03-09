@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+	<div class="alert alert-error">
+		<p>There were problems with the following fields:</p>
+	    <ul>
+		    <% @user.errors.full_messages.each do |msg| %>
+		    	<% unless msg["digest"] # Hack for "digest can't be blank" %>
+		      	<li><%= msg %></li>
+		      <% end %>
+		    <% end %>
+	    </ul>
+	</div>	
+<% end %> 
