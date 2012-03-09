@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
 
   has_secure_password
 
-  validates :name, presence: true, 
+  validates :first_name, presence: true, 
+                   length: {maximum: 50}
+
+  validates :last_name, presence: true, 
                    length: {maximum: 50}
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
