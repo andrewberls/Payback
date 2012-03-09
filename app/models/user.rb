@@ -12,10 +12,7 @@ class User < ActiveRecord::Base
                     format: {with: valid_email_regex},
                     uniqueness: { case_sensitive: false }
 
-	validates_presence_of :password, :on => :create
-  validates_length_of :password, :minimum => 5
-
-  "hello"
+	validates :password, length: { minimum: 5 }
 
   #before_create { generate_token(:auth_token) }
 
