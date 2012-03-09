@@ -15,10 +15,14 @@ describe User do
   subject { @user }
 
   it { should respond_to(:name) }
+<<<<<<< HEAD
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+=======
+  it { should respond_to(:email) } 
+>>>>>>> 26560597681de98e8d7021a9cd40eb0690e098db
 
   describe "when name is not present" do
   	before { @user.name = "" }
@@ -35,8 +39,13 @@ describe User do
   	it { should_not be_valid }
   end
 
+<<<<<<< HEAD
   describe "when email format is invalid" do    
     invalid_addresses =  %w[ user@foo,com user_at_foo.org example.user@foo. ]
+=======
+  describe "when email format is invalid" do
+    invalid_addresses =  %w[user@foo,com user_at_foo.org example.user@foo.]
+>>>>>>> 26560597681de98e8d7021a9cd40eb0690e098db
     invalid_addresses.each do |invalid_address|
       before { @user.email = invalid_address }
       it { should_not be_valid }
@@ -44,13 +53,18 @@ describe User do
   end
 
   describe "when email format is valid" do
+<<<<<<< HEAD
     valid_addresses = %w[ user@foo.com A_USER@f.b.org frst.lst@foo.jp a+b@baz.cn ]
+=======
+    valid_addresses = %w[user@foo.com A_USER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+>>>>>>> 26560597681de98e8d7021a9cd40eb0690e098db
     valid_addresses.each do |valid_address|
       before { @user.email = valid_address }
       it { should be_valid }
     end
   end
 
+<<<<<<< HEAD
   describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
@@ -71,4 +85,6 @@ describe User do
     it { should_not be_valid }
   end
 
+=======
+>>>>>>> 26560597681de98e8d7021a9cd40eb0690e098db
 end
