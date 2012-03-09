@@ -5,7 +5,7 @@
 
     <div class="actions">
     	<% if signed_in? %>
-    		<p>Signed in as <%= current_user.first_name %></p>
+    		<p>Signed in as <%= current_user.full_name %></p>
     		<%#link_to "Log Out", edit_user_path %>
 	    	&nbsp; | &nbsp;
 	        <%= link_to "Log Out", logout_path %>

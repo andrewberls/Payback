@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 
   before_save :generate_auth_token
 
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+
   private
 
   def generate_auth_token
