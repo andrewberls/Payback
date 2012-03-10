@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy    
     cookies.delete(:auth_token)
     redirect_to login_path
   end

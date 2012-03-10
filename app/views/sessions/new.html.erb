@@ -3,8 +3,7 @@
 
         <%= form_tag(sessions_path, class: "well login-form") do %>
             <h1 id="login-title">Payback</h1>
-
-            <%# TODO: Fix flashes %>
+            
             <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
 
             <div class="field">
@@ -18,9 +17,8 @@
                 <%= password_field_tag :password%> 
             </div>
 
-            <label class="checkbox">
-                <%# TODO: Get Remember Me to work%>
-                <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+            <label class="checkbox">                
+                <%= check_box_tag :remember_me, 1 %>
                 Remember Me
             </label>
 
