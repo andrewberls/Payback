@@ -1,3 +1,8 @@
+//-- TEMPORARY
+//------------------------------------
+//.container {outline: 1px solid black;}
+
+
 //-- GENERIC
 //------------------------------------
 body {
@@ -8,19 +13,18 @@ body {
   margin-top: 25px;
 }
 
-.actions {
-  float: right;
-}
 
-
-//-- DASHBOARD
+//-- TITLES
 //------------------------------------
-#dashboard-title {  
-  margin-bottom: 15px;
-
-  h1 { font-size: 3em; }
+.main-title {
+	// Used for Signup and Dashboard
+	font-size: 3em;
+	margin-bottom: 15px;
 }
 
+
+//-- DASHBOARD BUTTONS
+//------------------------------------
 #new-expense {
   margin-bottom: 15px;
 }
@@ -30,7 +34,7 @@ body {
 }
 
 
-//-- FIRST LOGIN
+//-- POST-SIGNUP WELCOME
 //------------------------------------
 
 .welcome-container {

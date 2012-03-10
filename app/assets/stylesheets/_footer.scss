@@ -11,10 +11,7 @@
 
     a {
         color: lighten(#0088CC, 10);
-
-        &:hover {
-            color:#0088CC;
-        }
+        &:hover { color:#0088CC; }
     }
 
     .actions {
@@ -22,10 +19,7 @@
             
         a {
             color: lighten(#404040, 15);
-
-            &:hover {
-                color: #0088CC;
-            }
+            &:hover { color: #0088CC; }
         }
     }
 }
