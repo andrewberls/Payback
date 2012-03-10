@@ -1,35 +1,37 @@
+//-- GENERIC
+//------------------------------------
+
+input[type=text],
+input[type=password] {
+  padding: 7px 0;    
+  width: 100%;
+}
+[type=submit] {
+  float: right;
+}
+
+
 //-- SIGNUP
 //------------------------------------
-/* .signup-form {
-  .field {
-    background-color: red;
-  }
-  input[type=text],
-  input[type=password] {
-    padding: 7px 0;    
-    width: 100%;
-  }
-  [type=submit] {
-    float: right;
-  }
-} */
+
 .signup-form {
   #signup-title {
     font-size: 2.5em;
     margin-bottom: 10px;
   }
-  input[type=text],
+  /* input[type=text],
   input[type=password] {
     padding: 7px 0;    
     width: 100%;
   }
   [type=submit] {
     float: right;
-  }
+  } */
 }
 
 //-- LOGIN
 //------------------------------------
+
 #login-title {
   font-size: 2.5em;
   margin-bottom: 10px;
@@ -52,11 +54,11 @@
 
   .field {}
 
-  input[type=text],
+  /* input[type=text],
   input[type=password] {
     padding: 7px 0;    
     width: 100%; // 320px
-  }
+  } */
   .forgot-password {
     cursor: pointer;
     float: right;
@@ -67,7 +69,7 @@
     display: inline-block;
     margin: 5px 0 0;
   }
-  [type=submit] {
+  /* [type=submit] {
     float: right;
-  }
+  } */
 }
