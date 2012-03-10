@@ -9,7 +9,7 @@
 
             <div class="field">
                 <%= label_tag :email %>
-                <%= text_field_tag :email, params[:email] %>            
+                <%= text_field_tag :email %>      
             </div>
                 
             <div class="field">
@@ -19,6 +19,7 @@
             </div>
 
             <label class="checkbox">
+                <%# TODO: Get Remember Me to work%>
                 <%= check_box_tag :remember_me, 1, params[:remember_me] %>
                 Remember Me
             </label>
