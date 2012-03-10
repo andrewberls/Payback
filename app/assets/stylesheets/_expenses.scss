@@ -1,18 +1,11 @@
-// TEMPORARY DEV STYLES
-
-// .expense { background-color: #0fc !important; }
-// .info-left { background-color: green; }
-// .info-right { background-color: pink; }
-
-// END TEMPORARY DEV STYLES
-
-
 .expenses-container {  
 
   .expense {
      
+    $expense_border: #d9d9d9;
+
     background-color: #F8F8F8;
-    border-bottom: 1px solid #D9D9D9;   
+    border-bottom: 1px solid $expense_border;   
     margin: 0;
 
     &:last-child { border: none; }
@@ -58,7 +51,7 @@
         font-size: 0.5em;
       }
 
-      .reassign {
+      /* .reassign {
 
         float: right;   
         margin-top: 10px;
@@ -70,7 +63,7 @@
           }
 
           li {            
-            border-bottom: 1px solid #D9D9D9;
+            border-bottom: 1px solid $expense_border;
             cursor: pointer;
             font-size: 0.5em;
             padding: 3px 5px;          
@@ -90,7 +83,7 @@
 
         } // dropdown-menu
 
-      } // reassign
+      } */ // reassign
 
     } // expense-inner
     

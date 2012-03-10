@@ -1,8 +1,10 @@
 .footer {
-    -webkit-box-shadow: inset 0 10px 10px -7px #ccc;
-    -moz-box-shadow: inset 0 10px 10px -7px #ccc;    
-    box-shadow: inset 0 10px 10px -7px #ccc;    
-    color: lighten(#404040, 30);
+    $shadowColor: #ccc;
+    
+    -webkit-box-shadow: inset 0 10px 10px -7px $shadowColor;
+    -moz-box-shadow: inset 0 10px 10px -7px $shadowColor;    
+    box-shadow: inset 0 10px 10px -7px $shadowColor;    
+    color: lighten($darkGray, 30);
     margin-top: 100px;
     padding-top: 10px;
     text-align: center;
@@ -10,16 +12,16 @@
     p { display: inline-block; }
 
     a {
-        color: lighten(#0088CC, 10);
-        &:hover { color:#0088CC; }
+        color: lighten($linkColor, 10);
+        &:hover { color:$linkColor; }
     }
 
     .actions {
         float: right;
             
         a {
-            color: lighten(#404040, 15);
-            &:hover { color: #0088CC; }
+            color: lighten($darkGray, 15);
+            &:hover { color: $linkColor; }
         }
-    }
-}
+    } // .actions
+} // .footer
