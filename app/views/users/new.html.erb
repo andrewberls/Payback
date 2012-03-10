@@ -1,5 +1,16 @@
+<div class="row-fluid">
+    <h1 class="main-title">Payback</h1>
+</div>
+
 <div class="row">
-    <div class="span4 offset4 signup-container">
+
+    <%# TODO: Put visual here, like dashboard screenshots %>
+    <div class="span7" style="background-color: green; min-height: 375px">
+        Slideshow here - ResponsiveSlides.js?
+    </div>
+
+    <!-- <div class="span4 offset4 signup-container"> -->
+    <div class="span5 signup-container">
 
        <%= form_for(@user, html: {class: "well signup-form"}) do |f| %>
             <h1 id="signup-title">Sign Up</h1>
@@ -26,6 +37,8 @@
                 <%# link_to "Forgot password?", "#", class: "forgot-password" %>
                 <%= f.password_field :password%> 
             </div>
+
+            <%# TODO: PW Confirmation? Too many fields - fold Full Name? %>
 
             <%= submit_tag "Sign Up", class: "btn btn-primary" %>
 
