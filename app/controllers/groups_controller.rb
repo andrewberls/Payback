@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
 	before_filter :check_auth, :accept => [:new, :edit, :join]
 
 	def new
+		@group = Group.new
 	end
 
 	def create
