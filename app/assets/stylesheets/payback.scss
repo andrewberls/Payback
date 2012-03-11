@@ -23,6 +23,25 @@ body {
 }
 
 
+//-- FRONT WELCOME
+//------------------------------------
+.front-welcome {
+	h2 {
+		margin-bottom: 10px;
+	}
+	ul {
+		//margin-top: 10px;
+
+		li {
+			//outline: 1px solid red;
+			font-size: 1.5em;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+
+
 //-- DASHBOARD BUTTONS
 //------------------------------------
 #new-expense {
@@ -36,7 +55,6 @@ body {
 
 //-- POST-SIGNUP WELCOME
 //------------------------------------
-
 .welcome-container {
 
 	margin: 0 auto;
