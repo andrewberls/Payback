@@ -17,59 +17,55 @@ body {
 //-- TITLES
 //------------------------------------
 .main-title {
-	// Used for Signup and Dashboard
-	font-size: 3em;
-	margin-bottom: 15px;
+  // Used for Signup and Dashboard
+  font-size: 3em;
+  margin-bottom: 15px;
 }
 
 
 //-- SIGNUP WELCOME
 //------------------------------------
 .front-welcome {
-	position: relative;
+  position: relative;
 
-	h2 {
-		margin-bottom: 10px;
-	}
+  h2 {
+    margin-bottom: 10px;
+  }
 
-	.easy-way {
-		font-size: 1.8em;
-		font-weight: bold;
-	}
+  .easy-way {
+    font-size: 1.8em;
+    font-weight: bold;
+  }
 
-	// Word scroll module
-	#word-scroll {
-		//outline: 1px solid green;
-		display: inline-block;
-		margin-left: 5px;
-		height: 25px;
-		overflow: hidden;
-		position: absolute;
-		width: 140px;
-		vertical-align: top;
+  // Word scroll module
+  #word-scroll {
+    display: inline-block;
+    margin-left: 5px;
+    height: 25px;
+    overflow: hidden;
+    position: absolute;
+    width: 140px;
+    vertical-align: top;
 
-		#word-scroll-inner {
-			//outline: 1px solid orange;
-			//height: 20px;	
-			position: absolute;
-			top: 0; left: 0;
-		}
+    #word-scroll-inner {
+      position: absolute;
+      top: 0; left: 0;
+    }
 
-		.word {
-			//outline: 1px solid orange;
-			display: block;
-			margin-bottom: 5px;
-			height: 25px;
-		}
-	}
-	
-	ul {
-		li {			
-			font-size: 1.5em;
-			margin-bottom: 10px;
-		}
-	}
-}
+    .word {
+      display: block;
+      margin-bottom: 5px;
+      height: 25px;
+    }
+  }
+  
+  ul {
+    li {      
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  }
+} // .front-welcome
 
 
 //-- DASHBOARD BUTTONS
@@ -86,32 +82,32 @@ body {
 //-- POST-SIGNUP WELCOME
 //------------------------------------
 .welcome-container {
-	margin: 0 auto;
-	padding: 30px;
-	text-align: center;
-	width: 50%;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+  width: 50%;
 
-	h1 {
-		font-size: 3.5em;		
-		margin-bottom: 20px;
-	}
+  h1 {
+    font-size: 3.5em;   
+    margin-bottom: 20px;
+  }
 
-	p {
-		font-size: 1.3em;
-		margin-bottom: 30px;
-	}
+  p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+  }
 
-	$spacer: 45px;
+  $spacer: 45px;
 
-	#group-join {
-		float: left;
-		margin-left: $spacer;
-	}
+  #group-join {
+    float: left;
+    margin-left: $spacer;
+  }
 
-	#group-new {
-		float: right;
-		margin-right: $spacer;
-	}
+  #group-new {
+    float: right;
+    margin-right: $spacer;
+  }
 } // .welcome-container
 
 
