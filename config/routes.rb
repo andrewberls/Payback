@@ -12,7 +12,7 @@ Payback::Application.routes.draw do
   match "login"  => "sessions#new", as: "login"
   match "logout" => "sessions#destroy", as: "logout"  
 
-  match "/" => "sessions#new"
-  #root :to => "sessions#new"
+  #match "/" => "sessions#new"
+  root :to => "sessions#new"
 
 end
