@@ -1,13 +1,36 @@
-<div class="row-fluid">
+<!-- <div class="row-fluid">
 	<h1>Group#new</h1>
 	<p>Find me in app/views/groups/new.html.erb</p>
-</div>
+</div> -->
 
 <div class="row-fluid">
-	<div class="span4" style="outline: 1px solid red">
+
+	<%# TODO: Put this into a partial %>
+	<div class="span7" style="outline: 1px solid red; min-height: 300px;">
 		faq stuff
 	</div>
-	<div class="span8" style="outline: 1px solid green">
-		form
+
+	<div class="span5">
+		<%= form_for(@group, html: {class: "well new-group-form"}) do |f| %>
+            <h1 class="form-title">Create New Group</h1>
+            
+            <%= render "shared/group_error_messages" %>      
+
+            <div class="field">
+            	<%= f.label :title %>
+            	<%= f.text_field :title %>
+            </div>
+
+            <div class="field">
+                  <%= f.label :password %>
+                  <%= f.password_field :password %>
+            </div>
+
+            <%# TODO: PW Confirmation? %>
+
+            <%= submit_tag "Create Group", class: "btn btn-primary" %>
+
+            <div class="clearfix"></div>
+        <% end %><!-- .new-group-form -->
 	</div>
 </div>
