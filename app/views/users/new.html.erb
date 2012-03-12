@@ -34,30 +34,30 @@
             
             <%= render "shared/signup_error_messages" %>      
 
-            <div class="field">
+            <div class="field control-group">
                 <%= f.label :first_name %>
                 <%= f.text_field :first_name %>            
             </div>
 
-            <div class="field">
+            <div class="field control-group">
                 <%= f.label :last_name %>
                 <%= f.text_field :last_name %>            
             </div>
 
-            <div class="field">
+            <div class="field control-group">
                 <%= f.label :email %>
                 <%= f.text_field :email %>            
             </div>
                 
-            <div class="field">
+            <div class="field control-group">
                 <%= f.label :password %>                            
                 <%# link_to "Forgot password?", "#", class: "forgot-password" %>
-                <%= f.password_field :password%> 
+                <%= f.password_field :password %>
             </div>
 
             <%# TODO: PW Confirmation? Too many fields - fold Full Name? %>
 
-            <%= submit_tag "Sign Up", class: "btn btn-primary" %>
+            <%= submit_tag "Sign Up", class: "btn btn-primary", id: "submit-signup" %>
 
             <div class="clearfix"></div>
         <% end %><!-- .signup-form -->
