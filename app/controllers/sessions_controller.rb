@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to expenses_path
     else
       flash.now[:error] = "Invalid email or password"
-      render "new"
+      render :new
     end
   end
 

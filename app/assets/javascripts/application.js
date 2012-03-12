@@ -5,3 +5,4 @@
 
 //= require payback
 //= require word_slide
+//= require validation
