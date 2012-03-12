@@ -23,23 +23,53 @@ body {
 }
 
 
-//-- FRONT WELCOME
+//-- SIGNUP WELCOME
 //------------------------------------
 .front-welcome {
+	position: relative;
+
 	h2 {
 		margin-bottom: 10px;
 	}
-	ul {
-		//margin-top: 10px;
 
-		li {
-			//outline: 1px solid red;
+	.easy-way {
+		font-size: 1.8em;
+		font-weight: bold;
+	}
+
+	// Word scroll module
+	#word-scroll {
+		//outline: 1px solid green;
+		display: inline-block;
+		margin-left: 5px;
+		height: 25px;
+		overflow: hidden;
+		position: absolute;
+		width: 140px;
+		vertical-align: top;
+
+		#word-scroll-inner {
+			//outline: 1px solid orange;
+			//height: 20px;	
+			position: absolute;
+			top: 0; left: 0;
+		}
+
+		.word {
+			//outline: 1px solid orange;
+			display: block;
+			margin-bottom: 5px;
+			height: 25px;
+		}
+	}
+	
+	ul {
+		li {			
 			font-size: 1.5em;
 			margin-bottom: 10px;
 		}
 	}
 }
-
 
 
 //-- DASHBOARD BUTTONS
@@ -56,7 +86,6 @@ body {
 //-- POST-SIGNUP WELCOME
 //------------------------------------
 .welcome-container {
-
 	margin: 0 auto;
 	padding: 30px;
 	text-align: center;
@@ -83,7 +112,7 @@ body {
 		float: right;
 		margin-right: $spacer;
 	}
-}
+} // .welcome-container
 
 
 

@@ -1,5 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.easing.1.3
 
-//= require users
+//= require payback
+//= require word_slide

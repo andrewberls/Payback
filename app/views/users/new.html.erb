@@ -1,19 +1,36 @@
 <div class="row-fluid">
-    <h1 class="main-title">Payback</h1>
+    <h1 class="main-title">Welcome to Payback.</h1>
 </div>
 
 <div class="row">
 
     <%# TODO: Put visual here, like dashboard screenshots %>
-    <div class="span7" style="background-color: green; min-height: 375px">
-        Slideshow here - ResponsiveSlides.js?
+    <div class="span7 front-welcome" style="min-height: 375px">        
+        <p class="easy-way">
+            The easiest way to track expenses for your
+            <span id="word-scroll">
+                <span id="word-scroll-inner">
+                    <span class="word">household</span>
+                    <span class="word">group</span>
+                    <span class="word">friends</span>
+                    <span class="word">family</span>
+                </span>
+            </span>       
+        </p>
+        <h2>Payback is:</h2>
+        <ul>
+            <li>Simple</li>
+            <li>Easy</li>
+            <li>Built to look great on your phone</li>
+            <li>Free :-)</li>
+        </ul>
     </div>
 
     <!-- <div class="span4 offset4 signup-container"> -->
     <div class="span5 signup-container">
 
        <%= form_for(@user, html: {class: "well signup-form"}) do |f| %>
-            <h1 id="signup-title">Sign Up</h1>
+            <h1 class="form-title">Sign Up</h1>
             
             <%= render "shared/signup_error_messages" %>      
 
