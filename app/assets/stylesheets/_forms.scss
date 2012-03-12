@@ -1,6 +1,5 @@
 //-- GENERIC
 //------------------------------------
-
 input[type=text],
 input[type=password] {
   padding: 7px 0;    
@@ -8,27 +7,20 @@ input[type=password] {
 }
 [type=submit] {
   float: right;
+  margin-top: 5px;
+}
+.form-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
 }
 
 
 //-- SIGNUP
 //------------------------------------
 
-.signup-form {
-  #signup-title {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-  }
-}
 
 //-- LOGIN
 //------------------------------------
-
-#login-title {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
 .signup {
   display: block;
   float: right;
@@ -48,8 +40,8 @@ input[type=password] {
     cursor: pointer;
     float: right;
     margin: -23px 0 0;
-
   }
+  
   label.checkbox {    
     display: inline-block;
     margin: 5px 0 0;
