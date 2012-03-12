@@ -2,7 +2,7 @@
     <div class="span4 offset4 login-container">
 
         <%= form_tag(sessions_path, class: "well login-form") do %>
-            <h1 id="login-title">Payback</h1>
+            <h1 class="form-title">Payback</h1>
             
             <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
 
