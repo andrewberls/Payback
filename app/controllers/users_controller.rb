@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     
   def new
+    redirect_to expenses_path if current_user
     @user = User.new
   end
 
