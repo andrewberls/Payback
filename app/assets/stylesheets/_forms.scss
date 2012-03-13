@@ -26,6 +26,10 @@ input[type=password] {
   float: right;
   font-size: 0.9em;
   margin-top: 10px;
+
+  &:after {
+    content: " \00BB"; // raquo
+  }
 }
 
 .login-form {

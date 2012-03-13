@@ -7,15 +7,13 @@
 
 .welcome-container {
   #group-join,
-  #group-new {
-    //border: 3px solid green;
+  #group-new {    
     float: none;
     margin: 0 auto;
   }
 }
 
-}
-
+} // @media (max-width: 1200px)
 
 
 //---------------------------------------------------------------------
@@ -25,15 +23,13 @@
 //---------------------------------------------------------------------
 @media (max-width: 768px) {
 
-.welcome-container {  
-
+.welcome-container {
   #group-join {
     margin-bottom: 20px;
   }
 }
 
-}
-
+} //@media (max-width: 768px)
 
 
 //---------------------------------------------------------------------
@@ -47,7 +43,6 @@
 
 //-- GENERIC
 //------------------------------------
-
 .container {  
   margin-top: 15px;
   padding: 0 5px;
@@ -66,20 +61,11 @@
 
 //-- LOGIN
 //------------------------------------
-
-.login-container {}
-
-// .login-form {
-//   input[type=text],
-//   input[type=password] {    
-//     width: 98%;
-//   }
-// }
+.signup:after { content: "" }
 
 
 //-- FIRST LOGIN
 //------------------------------------
-
 .welcome-container {
   width: 80%;
 
@@ -100,12 +86,6 @@
 
 //-- DASHBOARD/EXPENSES
 //------------------------------------
-
-#dashboard-title {    
-
-  h1 {}
-}
-
 #left-column {}
 
 #right-column {  
@@ -168,58 +148,4 @@
 } // .expenses-container
 
 
-
 } // @media (max-width: 480px)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------------
-
-// 480 - 768
-
-//---------------------------------------------------------------------
-@media (min-width: 480px) and (max-width: 768px) {
-//.btn-huge { border: 3px solid red !important; }
-} // @media (min-width: 480px) and (max-width: 768px)
-
-
-
-//---------------------------------------------------------------------
-
-// 768 - 980
-
-//---------------------------------------------------------------------
-@media (min-width: 768px) and (max-width: 980px) {
-//.btn-huge { border: 3px solid green !important; }
-} // @media (min-width: 768px) and (max-width: 980px)
-
-
-
-//---------------------------------------------------------------------
-
-// 980 - 1200
-
-//---------------------------------------------------------------------
-@media (min-width: 980px) and (max-width: 1200px) {
-//.btn-huge { border: 3px solid yellow !important; }
-} // @media (min-width: 980px) and (max-width: 1200px)
-
-
-
