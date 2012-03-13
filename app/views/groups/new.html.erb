@@ -12,25 +12,25 @@
 
 	<div class="span5">
 		<%= form_for(@group, html: {class: "well new-group-form"}) do |f| %>
-            <h1 class="form-title">Create New Group</h1>
+                  <h1 class="form-title">Create New Group</h1>
             
-            <%= render "shared/group_error_messages" %>      
+                  <%= render "shared/group_error_messages" %>      
 
-            <div class="field">
-            	<%= f.label :title %>
-            	<%= f.text_field :title %>
-            </div>
+                  <div class="field control-group">
+                  	<%= f.label :title %>
+                  	<%= f.text_field :title %>
+                  </div>
 
-            <div class="field">
-                  <%= f.label :password %>
-                  <%= f.password_field :password %>
-            </div>
+                  <div class="field control-group">
+                        <%= f.label :password %>
+                        <%= f.password_field :password %>
+                  </div>
 
-            <%# TODO: PW Confirmation? %>
+                  <%# TODO: PW Confirmation? %>
 
-            <%= submit_tag "Create Group", class: "btn btn-primary", id: "submit-group" %>
+                  <%= submit_tag "Create Group", class: "btn btn-primary", id: "submit-group" %>
 
-            <div class="clearfix"></div>
-        <% end %><!-- .new-group-form -->
+                  <div class="clearfix"></div>
+            <% end %><!-- .new-group-form -->
 	</div>
 </div>

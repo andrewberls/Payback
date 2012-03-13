@@ -2,18 +2,26 @@
 # UTILITIES
 #------------------------------
 insertAfter = (referenceNode, newNode) ->
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 
 
 #------------------------------
-# SIGNUP
+# Signup
+# Expense creation
+# Group creation
 #------------------------------
 $ ->
-  $('#submit-signup').click ->
-    # Add red border around blank fields
+  # Add red border around blank fields
+
+  buttons = "
+    #submit-signup,
+    #submit-expense,
+    #submit-group
+  "
+  $(buttons).click ->    
     errors = false
-    $form = $(this).parent()
-    $fields = $form.find('input')
+    $form = $(this).parent()    
+    $fields = $form.find('input')    
     $fields.each ->
       $parent = $(this).parent()
       if $(this).val() == ""
@@ -25,11 +33,15 @@ $ ->
 
 
 #------------------------------
-# LOGIN
+# Login
 #------------------------------
 $ ->
-  $('#submit-login').click ->
-    # Dynamically create and insert an alet error box if blank fields present
+  # Create and insert an alet error box if blank fields present
+
+  buttons = "
+    #submit-login
+  "
+  $(buttons).click ->
     $form = $(this).parent()
     $email = $("#email")
     $password = $("#password")
