@@ -22,14 +22,10 @@ input[type=password] {
 //-- LOGIN
 //------------------------------------
 .signup {
-  display: block;
+  // "Don't have an account? ..."
   float: right;
   font-size: 0.9em;
   margin-top: 10px;
-}
-
-.login-container {  
-  padding-bottom: 0;  
 }
 
 .login-form {
