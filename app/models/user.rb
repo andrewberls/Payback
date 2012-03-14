@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  #------------------------------
+  # Validations
+  #------------------------------
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
 
   has_secure_password
@@ -17,6 +20,14 @@ class User < ActiveRecord::Base
 
 	validates :password, length: { minimum: 5 }
 
+
+  #------------------------------
+  # Associations
+  #------------------------------
+  has_many :debts,   :class_name => "Expense", :foreign_key => :debtor_id
+  has_many :credits, :class_name => "Expense", :foreign_key => :creditor_id
+
+
   before_save :generate_auth_token
 
   def full_name
@@ -26,7 +37,7 @@ class User < ActiveRecord::Base
   private
 
   def generate_auth_token
-      self.auth_token = SecureRandom.urlsafe_base64
+    self.auth_token = SecureRandom.urlsafe_base64
   end
 
 end

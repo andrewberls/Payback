@@ -1,10 +1,19 @@
 class Group < ActiveRecord::Base
 
+  #------------------------------
+  # Validations
+  #------------------------------
   attr_accessible :password, :password_confirmation
 
   has_secure_password
 
   validates_presence_of :password, :on => :create
+
+
+  #------------------------------
+  # Associations
+  #------------------------------
+
 
   before_create :generate_gid
 
