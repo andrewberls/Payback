@@ -3,11 +3,17 @@ class Group < ActiveRecord::Base
   #------------------------------
   # Validations
   #------------------------------
-  attr_accessible :password, :password_confirmation
+  attr_accessible :title, :password, :password_confirmation
 
   has_secure_password
 
-  validates_presence_of :password, :on => :create
+  validates :title, 
+    presence: true,
+    length: {maximum: 50}
+
+  validates :password,
+    presence: true,
+    length: { minimum: 5 }
 
 
   #------------------------------
@@ -23,7 +29,8 @@ class Group < ActiveRecord::Base
     # A unique external identifier
     # This is used for the 'Join by ID' feature
     # Note that the (external) GID is distinct from the (internal) ID
-    self.gid = Digest::MD5.hexdigest(self.id.to_s)[0..4]    
+    digest_string = self.id.to_s << Time.now.to_i.to_s # Combine auto id + timestamp for uniqueness
+    self.gid = Digest::MD5.hexdigest(digest_string)[0..5]
   end
 
 end
