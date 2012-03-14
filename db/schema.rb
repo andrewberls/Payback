@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313213408) do
+ActiveRecord::Schema.define(:version => 20120314051911) do
 
   create_table "expenses", :force => true do |t|
     t.integer  "amount"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20120313213408) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "groups_users", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
