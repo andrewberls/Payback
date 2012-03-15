@@ -3,12 +3,12 @@
         Payback is <a href="https://github.com/andrewberls/Payback">open-source</a>, brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
     </p>
 
-    <div class="actions">
-    	<% if signed_in? %>
-    		<p>Signed in as <%= current_user.full_name %></p>
-    		<%#link_to "Log Out", edit_user_path %>
+	<% if signed_in? %>
+        <div class="actions">
+    		<p>Signed in as <%= current_user.full_name %></p>    		
 	    	&nbsp; | &nbsp;
 	        <%= link_to "Log Out", logout_path %>
-    	<% end %>    	
-    </div>
+        </div><!-- .actions -->
+	<% end %>    	
+    
 </div><!-- .footer -->
