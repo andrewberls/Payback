@@ -7,6 +7,14 @@ class GroupsController < ApplicationController
 	end
 
 	def create
+		@group = Group.new(params[:group])
+		@group.initialize_owner(current_user)
+		if @group.save
+			redirect_to expenses_path
+		else
+			flash.now[:error] = "Could not create your group - please check your fields and try again."
+			render :new
+		end
 	end
 
 	def edit
@@ -19,6 +27,18 @@ class GroupsController < ApplicationController
 	end
 
 	def join
+		# View	
+	end
+
+	def add
+		# Processing
+		@group = Group.find_by_gid(params[:gid])
+			if !@group
+				flash.now[:error] = "Invalid ID/Password combination."
+				render :join
+			else
+				# Group found - check password
+			end
 	end
 
 end

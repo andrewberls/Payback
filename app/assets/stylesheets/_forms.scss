@@ -5,12 +5,29 @@ input[type=password] {
   padding: 7px 0;    
   width: 100%;
 }
+
 [type=submit] {
   float: right;
   margin-top: 5px;
 }
+
 .form-title {
   font-size: 2.5em;
+  margin-bottom: 10px;
+}s
+
+label {
+  margin-right: 8px;
+  float: left;
+}
+
+.help-text {
+  // Inline help text next to the label
+  color: #999;
+  float: left;
+}
+
+.help-block {  
   margin-bottom: 10px;
 }
 

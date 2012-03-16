@@ -16,7 +16,8 @@ $ ->
   buttons = "
     #submit-signup,
     #submit-expense,
-    #submit-group
+    #submit-group,
+    #submit-join
   "
   $(buttons).click ->    
     errors = false
