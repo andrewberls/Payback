@@ -1,13 +1,13 @@
-<!-- <div class="row-fluid">
-	<h1>Group#new</h1>
-	<p>Find me in app/views/groups/new.html.erb</p>
-</div> -->
+<div class="row">
 
-<div class="row-fluid">
-
-	<%# TODO: Put this into a partial %>
-	<div class="span7" style="outline: 1px solid red; min-height: 300px;">
-		faq stuff
+	<div class="span5 offset1 group-faq well">
+        <h2>The Basics</h2>
+        <ul>
+            <li>Groups are used to track expenses with a set of people.</li>
+            <li>When you create a group, your group will be assigned a unique ID number. Other people will need this along with the password you chose in order to join your group.</li>
+            <li>Only you and members of your group will be allowed to see group expenses.</li>
+            <li>You can create and belong to as many groups as you like!</li>
+        </ul>
 	</div>
 
 	<div class="span5">
@@ -18,15 +18,20 @@
 
             <div class="field control-group">
             	<%= f.label :title %>
+                <span class="help-text">Describe your group!</span>
             	<%= f.text_field :title %>
             </div>
 
             <div class="field control-group">
                 <%= f.label :password %>
+                <span class="help-text">People will need this to join your group.</span>
                 <%= f.password_field :password %>
             </div>
 
-            <%# TODO: PW Confirmation? %>
+            <div class="field control-group">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %>
+            </div>
 
             <%= submit_tag "Create Group", class: "btn btn-primary", id: "submit-group" %>
 
