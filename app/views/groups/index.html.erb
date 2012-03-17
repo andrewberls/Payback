@@ -6,12 +6,11 @@
 		<div class="groups-container">
 			<% @groups.each do |group| %>
 				<div class="group">
-					<span class="group-gid">ID: <%= group.gid %></span>
+					<span class="group-gid">ID: <%= group.gid %></span>					
 					<span class="group-title"><%= group.title %></span>
-					
+					<span class="group-users-count"><%= pluralize(group.users.count, 'member') %></span>
 
 					<div class="btn-container">
-						<span class="group-users-count"><%= pluralize(group.users.count, 'member') %></span>
 						<%#  if current_user == group.owner %>
 							<%= link_to "Delete", {action: 'destroy', id: 0 }, { #group.id
 								:method => :delete, 
