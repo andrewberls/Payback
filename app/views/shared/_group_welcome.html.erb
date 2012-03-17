@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="span4 offset4 well group-welcome">
+
+    	<div class="alert alert-success">Your group has been successfully created! </div>
+
+    	<p>Your group ID is:</p>
+    	<h1><%= @group.gid %></h1>
+    	<p>Give this, along with the password you chose, to members of your group to start tracking expenses!</p>
+
+    	<%= link_to "Go to Dashboard", expenses_path, class: "btn btn-primary btn-large pull-right" %>
+
+    </div>
+</div>

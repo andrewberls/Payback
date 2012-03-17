@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314051911) do
+ActiveRecord::Schema.define(:version => 20120317074346) do
 
   create_table "expenses", :force => true do |t|
     t.integer  "amount"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20120314051911) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "groups", ["gid"], :name => "index_groups_on_gid", :unique => true
 
   create_table "groups_users", :id => false, :force => true do |t|
     t.integer "group_id"

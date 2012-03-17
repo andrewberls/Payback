@@ -1,0 +1,92 @@
+//-- NEW GROUP FAQ
+//------------------------------------
+.group-faq {
+
+  h2 {
+    margin-bottom: 5px;
+  }
+
+  ul {
+
+    li {
+      font-size: 1.2em;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+  }
+
+} // group-faq
+
+
+//-- GROUP POST-CREATE WELCOME
+//------------------------------------
+.group-welcome {
+  text-align: center;
+  
+  p {
+    font-size: 1.2em;
+    line-height: 1.4;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+//-- GROUP INDEX
+//------------------------------------
+.groups-container { 
+  $border-color: #d9d9d9;
+
+  border: 1px solid $border-color;
+  border-bottom: none;
+  margin: 10px 0 15px;  
+
+  .group {
+    $padding: 5px;
+        
+    background-color: #F8F8F8;
+    border-bottom: 1px solid $border-color;   
+    line-height: 60px;
+    padding: $padding;
+    position: relative;
+
+    .group-gid,
+    .group-title,
+    .group-user-count {
+      //float: left;
+    }
+
+    .group-gid {
+      display: inline-block;
+      font-size: 1.7em;
+      border: 1px solid $border-color;
+      line-height: 1;
+      margin-right: 5px;
+      padding: 3px;
+    }
+
+    .group-title {      
+      font-size: 1.4em;
+      margin-right: 5px;
+    }
+
+    .group-users-count {
+      color: #999;
+      display: inline-block;
+      float: left;
+      line-height: 2;
+      margin-right: 10px;    
+    }
+
+    .btn-container {      
+      //outline: 1px solid orange;
+      display: inline-block;
+      overflow: auto;
+      position: absolute;
+      bottom: $padding; right: $padding;
+    } // .btn-container
+
+  } // .group
+
+} // .groups-container

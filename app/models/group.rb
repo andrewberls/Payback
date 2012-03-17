@@ -23,8 +23,12 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_one :owner, :class_name => "User"
 
+  # Expenses
+  has_many :debts, :through => :users
+  has_many :credits, :through => :users
 
-  before_create [:generate_gid, :initialize_owner]
+
+  before_create :generate_gid
 
   def generate_gid
     # A unique external identifier
@@ -41,6 +45,10 @@ class Group < ActiveRecord::Base
 
   def set_owner(user)
     self.owner = user
+  end
+
+  def expenses
+    self.debts + self.credits
   end
 
 end
