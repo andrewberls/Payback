@@ -6,21 +6,14 @@ insertAfter = (referenceNode, newNode) ->
 
 
 #------------------------------
-# Signup
-# Expense creation
+# User creation
 # Group creation
+# Group join
 #------------------------------
 $ ->
   # Add red border around blank fields
 
-  buttons = "
-    #submit-signup,
-    #submit-expense,
-    #submit-group,
-    #submit-edit-group,
-    #submit-join
-  "
-  $(buttons).click ->    
+  $('#submit-validate').click ->    
     errors = false
     $form = $(this).parent()    
     $fields = $form.find('input')    
@@ -57,3 +50,9 @@ $ ->
         insertAfter($title, alertBox)
         $('.alert').hide().slideDown('fast')
       return false
+
+
+#------------------------------
+# Add Expense
+#------------------------------
+# probably separate file
