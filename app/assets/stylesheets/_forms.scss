@@ -21,6 +21,19 @@ label {
   float: left;
 }
 
+.input-prepend {
+  float: left;
+  width: 100%;
+
+  input {
+    padding: 7px 5px;
+    width:  85%;
+  }
+  .add-on {
+    padding: 7px;    
+  }
+}
+
 .help-text {
   // Inline help text next to the label
   color: #999;
@@ -60,3 +73,31 @@ label {
     margin: 5px 0 0;
   }
 } // .login-form
+
+
+//-- ADD EXPENSE
+//------------------------------------
+.users-container {  
+  overflow: auto;
+  margin-bottom: 10px;
+
+  h5 {
+    margin-bottom: 5px;
+  }
+
+  .user-column {    
+    float: left;
+    width: 50%;
+  }
+
+} // .users-container
+
+.checkbox-inline {  
+  float: left;
+  clear: both;
+
+  input {
+    float: left;
+    margin-right: 5px;
+  }
+}

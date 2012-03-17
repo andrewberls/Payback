@@ -2,30 +2,43 @@
 <p>Find me in app/views/expenses/new.html.erb</p> -->
 
 <div class="row">
-    <div class="span4 offset4">
+  <div class="span4 offset4">
 
-        <%= form_tag(@expense, class: "well new-expense-form") do %>
-            <h1 class="form-title">Add New Expense</h1>
-            
-            <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
+    <%= form_for(@expense, html: {class: "well new-expense-form"}) do |f| %>
+      <h1 class="form-title">Add New Expense</h1>
+      
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
 
-            <!--
-                  Select users
-                        Group (default)
-                        Select...
-                  Amount
-                  Title
+      <%= render 'shared/select_users' %>      
 
-                  Split/Payback
-            -->           
+      <div class="field control-group">
+        <%= f.label :amount %>
+        <span class="help-text">Decimal optional</span>
+        <div class="input-prepend">
+          <span class="add-on">$</span>
+          <%= f.text_field :amount %>
+        </div>
+      </div>
 
-            <div class="field">     
-            </div>
+      <div class="field control-group">
+        <%= f.label :title %>
+        <span class="help-text">Describe the expense: ex "Groceries"</span>
+        <%= f.text_field :title %>
+      </div>
 
-            <%= submit_tag "Add Expense", class: "btn btn-primary", id: "submit-expense" %>
+      <%= submit_tag "Payback", class: "btn btn-large btn-danger pull-right", id: "expenese-payback" %>
+      <%= submit_tag "Split Evenly", class: "btn btn-large btn-primary btn-spacer pull-right", 
+        id: "expenese-split" %>
 
-            <div class="clearfix"></div>
-        <% end %><!-- .new-expense-form -->       
+      <div class="expense-faqs-prompt">
+        <i class="icon-question-sign"></i>
+        <a href="#" id="show-expense-faqs">What are these?</a>
+      </div>
 
-    </div><!-- .login-container -->
+      <div class="clearfix"></div>
+    <% end %><!-- .new-expense-form -->
+
+    <%= render 'shared/expense_faqs' %>
+
+  </div>
 </div>
