@@ -12,7 +12,8 @@ class GroupsController < ApplicationController
 		if @group.save
 			redirect_to expenses_path
 		else
-			flash.now[:error] = "Could not create your group - please check your fields and try again."
+			flash[:error] = "Something went wrong - please check your fields and try again."
+			#redirect_to new_group_path
 			render :new
 		end
 	end
@@ -33,9 +34,9 @@ class GroupsController < ApplicationController
 	def add
 		# Processing
 		@group = Group.find_by_gid(params[:gid])
-			if !@group
-				flash.now[:error] = "Invalid ID/Password combination."
-				render :join
+			if !@group				
+				flash[:error] = "Invalid ID/Password combination."
+				redirect_to join_group_path
 			else
 				# Group found - check password
 			end
