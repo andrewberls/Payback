@@ -3,6 +3,8 @@
 
 		<h1>Your Groups</h1>
 
+		<%= render "shared/group_success_messages" %>
+
 		<div class="groups-container">
 			<% @groups.each do |group| %>
 				<div class="group">
@@ -12,7 +14,7 @@
 
 					<div class="btn-container">
 						<%#  if current_user == group.owner %>
-							<%= link_to "Delete", {action: 'destroy', id: 0 }, { #group.id
+							<%= link_to "Delete", {action: 'destroy', id: group.gid }, { #group.id
 								:method => :delete, 
 								confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
 								class: "btn btn-danger pull-right",
