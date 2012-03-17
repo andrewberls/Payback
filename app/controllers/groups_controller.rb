@@ -42,16 +42,31 @@ class GroupsController < ApplicationController
   #------------------------------
 	def edit
 		@group = Group.find_by_gid(params[:id])
+		#redirect_to group_path unless current_user == @group.owner
 	end
 
 	def update
+		#raise params.inspect
+		@group = Group.find_by_gid(params[:id])
+   
+    if @group.update_attributes(params[:group])
+    	flash[:success] = "Group successfully updated."
+      redirect_to groups_path      
+    else
+    	flash[:error] = "Something went wrong - please check your fields and try again."
+      render :edit
+    end
 	end
 
 
 	#------------------------------
   # DELETE
   #------------------------------
-	def destroy
+	def destroy		
+		# Destroy group and expenses, but preserve users
+    #Group.find_by_gid(params[:gid]).destroy
+    flash[:success] = "Group successfully deleted"
+    redirect_to groups_path
 	end
 
 

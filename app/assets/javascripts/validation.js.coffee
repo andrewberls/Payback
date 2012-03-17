@@ -17,6 +17,7 @@ $ ->
     #submit-signup,
     #submit-expense,
     #submit-group,
+    #submit-edit-group,
     #submit-join
   "
   $(buttons).click ->    

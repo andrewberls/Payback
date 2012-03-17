@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="span4 offset4 well">
+
+  		<%= form_for(@group, url: {action: 'update', id: @group.gid}, html: {class: "edit-group-form"}) do |f| %>
+
+  			<h1 class="form-title">Edit Group</h1>
+
+  			<%= render "shared/group_error_messages" %>      
+
+            <div class="field control-group">
+            	<%= f.label :title %>
+                <!-- <span class="help-text">Describe your group!</span> -->
+            	<%= f.text_field :title %>
+            </div>
+
+            <div class="field control-group">
+                <%= f.label :password, "New Password" %>
+                <!-- <span class="help-text">People will need this to join your group.</span> -->
+                <%= f.password_field :password %>
+            </div>
+
+            <div class="field control-group">
+                <%= f.label :password_confirmation, "Confirm New Password" %>
+                <%= f.password_field :password_confirmation %>
+            </div>
+
+            <%= link_to "Cancel", groups_path, class: "btn pull-left" %>
+            <%= submit_tag "Update Group", class: "btn btn-primary", id: "submit-edit-group" %>
+
+  		<% end %>
+
+    </div>
+</div>
