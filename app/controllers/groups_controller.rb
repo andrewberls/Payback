@@ -15,7 +15,8 @@ class GroupsController < ApplicationController
 		if @group.save
 			redirect_to group_path(@group.gid)
 		else
-			flash.now[:error] = "Could not create your group - please check your fields and try again."
+			flash[:error] = "Something went wrong - please check your fields and try again."
+			#redirect_to new_group_path
 			render :new
 		end
 	end
