@@ -16,11 +16,13 @@ $ ->
     $container.slideUp(speed)
     $(this).addClass('disabled')
     $select.removeClass('disabled')
+    return false
   
   $select.click ->
     $container.slideDown(speed)
     $(this).addClass('disabled')
     $group.removeClass('disabled')
+    return false
 
   # Split/Payback FAQ slide
   #-------------------
@@ -31,6 +33,8 @@ $ ->
         $('#expense-faqs').slideDown(speed)
       else
         $('#expense-faqs').slideUp(speed)
+    return false
 
   $('#hide-expense-faqs').click ->  
     $('#expense-faqs').slideUp(350)
+    return false
