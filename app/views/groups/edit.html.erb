@@ -8,14 +8,12 @@
   			<%= render "shared/group_error_messages" %>      
 
             <div class="field control-group">
-            	<%= f.label :title %>
-                <!-- <span class="help-text">Describe your group!</span> -->
+            	<%= f.label :title %>                
             	<%= f.text_field :title %>
             </div>
 
             <div class="field control-group">
-                <%= f.label :password, "New Password" %>
-                <!-- <span class="help-text">People will need this to join your group.</span> -->
+                <%= f.label :password, "New Password" %>               
                 <%= f.password_field :password %>
             </div>
 
@@ -25,7 +23,7 @@
             </div>
 
             <%= link_to "Cancel", groups_path, class: "btn pull-left" %>
-            <%= submit_tag "Update Group", class: "btn btn-primary", id: "submit-validate" %>
+            <%= submit_tag "Update Group", class: "btn btn-primary" %>
 
   		<% end %>
 
