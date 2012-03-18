@@ -29,6 +29,20 @@
   }
 }
 
+.footer {
+  margin-top: 50px;
+
+  .tagline {
+    margin-bottom: 5px;
+  }
+
+  .actions {    
+    position: relative;
+    bottom: auto; right: auto;
+  }
+
+} // .footer
+
 } //@media (max-width: 768px)
 
 
@@ -48,19 +62,7 @@
   padding: 0 5px;
 }
 
-.footer {
-  margin-top: 50px;
 
-  .tagline {
-    margin-bottom: 5px;
-  }
-
-  .actions {    
-    position: relative;
-    bottom: auto; right: auto;
-  }
-
-}
 
 
 //-- LOGIN
