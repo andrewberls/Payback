@@ -33,10 +33,7 @@ $ ->
 $ ->
   # Create and insert an alet error box if blank fields present
 
-  buttons = "
-    #submit-login
-  "
-  $(buttons).click ->
+  $('#submit-login').click ->
     $form = $(this).parent()
     $email = $("#email")
     $password = $("#password")
@@ -50,9 +47,3 @@ $ ->
         insertAfter($title, alertBox)
         $('.alert').hide().slideDown('fast')
       return false
-
-
-#------------------------------
-# Add Expense
-#------------------------------
-# probably separate file
