@@ -86,61 +86,41 @@
 
 //-- DASHBOARD/EXPENSES
 //------------------------------------
-#left-column {}
-
-#right-column {  
-  margin-top: 25px;
+.right-column h2 {  
+  margin-top: 15px;
 }
 
 .expenses-container {
 
   .expense {
+    padding: 5px;
 
-    padding: 5px 5px 0;
-    //position: relative;
-
-    .expense-inner {
-
-      padding: 5px 0;
-
-      input[type=checkbox] {
-        margin-top: -5px;
+      .expense-price,
+      .expense-debtor,
+      .expense-creditor {
+        margin: 20px 0;
       }
 
-      .info-left {
-        margin-right: 10px;        
-      }
+    .expense-price {
+      font-size: 1em;
+      margin-right: 5px; // 10 without hypen
+    }
 
-      .info-right {
-        clear: both;  
-        //margin: 0;
-        margin-left: 20px;
-      }
-     
-      .expense-price {
-        font-size: 1.3em;
-      }
+    .info-stack {      
+      float: right;
+      margin: 0;
+      margin-bottom: 10px;      
+    }
 
-      .expense-debtor {
-        font-size: 1.3em;
-        line-height: 1em;
-
-        //&:before { content: "" }
-      }
-
-      .expense-title {
-        display: none;
-      }
-
-      .expense-date {
-          
-        font-size: 0.6em;             
-      }
-
-    } // expense-inner
-
-    .reassign > .btn {
-      padding: 5px;
+    .expense-title {
+      display: none;
+    }
+   
+    .btn-container {      
+      clear: right;   
+      float: right;
+      position: relative;
+      bottom: auto; right: auto;
     }
     
   } // .expense
