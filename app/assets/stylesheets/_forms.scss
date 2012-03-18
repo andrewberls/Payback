@@ -77,7 +77,13 @@ label {
 
 //-- ADD EXPENSE
 //------------------------------------
-.users-container {  
+.users-prompt {
+  overflow: auto;  
+  margin-bottom: 10px;
+}
+
+#users-container {
+  display: none;
   overflow: auto;
   margin-bottom: 10px;
 

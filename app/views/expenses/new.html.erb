@@ -2,12 +2,12 @@
 <p>Find me in app/views/expenses/new.html.erb</p> -->
 
 <div class="row">
-  <div class="span4 offset4">
+  <div class="span4 offset4">    
 
     <%= form_for(@expense, html: {class: "well new-expense-form"}) do |f| %>
       <h1 class="form-title">Add New Expense</h1>
       
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
       <%= render 'shared/select_users' %>      
 
