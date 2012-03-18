@@ -63,14 +63,12 @@
 }
 
 
-
-
 //-- LOGIN
 //------------------------------------
 .signup:after { content: "" }
 
 
-//-- FIRST LOGIN
+//-- POST-SIGNUP WELCOME
 //------------------------------------
 .welcome-container {
   width: 80%;
@@ -90,7 +88,7 @@
 
 
 
-//-- DASHBOARD/EXPENSES
+//-- EXPENSES DASHBOARD
 //------------------------------------
 #new-expense a {
   $padding: 10px;
@@ -136,6 +134,40 @@
   } // .expense
 
 } // .expenses-container
+
+
+//-- ADD EXPENSE
+//------------------------------------
+#users-container {
+  h5 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+}
+
+.checkbox-inline {
+  //outline: 1px solid red;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+
+  input {
+    margin-right: 10px;
+  }
+}
+
+.input-prepend input {    
+  width:  84%;
+}
+
+.expense-faqs-prompt {  
+  float: right;
+}
+
+#expense-faqs {
+  #hide-expense-faqs {
+    margin-top: -5px;
+  }
+}
 
 
 } // @media (max-width: 480px)

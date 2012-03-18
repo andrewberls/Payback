@@ -1,8 +1,29 @@
-//-- NEW EXPENSE FORM
+//-- ADD EXPENSE
 //------------------------------------
 .new-expense-form {
   margin-bottom: 0;
 }
+
+.users-prompt {
+  overflow: auto;  
+  margin-bottom: 10px;
+}
+
+#users-container {
+  display: none;
+  overflow: auto;
+  margin-bottom: 10px;
+
+  h5 {
+    margin-bottom: 5px;
+  }
+
+  .user-column {    
+    float: left;
+    width: 50%;
+  }
+
+} // .users-container
 
 .expense-faqs-prompt {  
   float: left;

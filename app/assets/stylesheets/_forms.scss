@@ -21,6 +21,16 @@ label {
   float: left;
 }
 
+.checkbox-inline {  
+  float: left;
+  clear: both;
+
+  input {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
 .input-prepend {
   float: left;
   width: 100%;
@@ -73,37 +83,3 @@ label {
     margin: 5px 0 0;
   }
 } // .login-form
-
-
-//-- ADD EXPENSE
-//------------------------------------
-.users-prompt {
-  overflow: auto;  
-  margin-bottom: 10px;
-}
-
-#users-container {
-  display: none;
-  overflow: auto;
-  margin-bottom: 10px;
-
-  h5 {
-    margin-bottom: 5px;
-  }
-
-  .user-column {    
-    float: left;
-    width: 50%;
-  }
-
-} // .users-container
-
-.checkbox-inline {  
-  float: left;
-  clear: both;
-
-  input {
-    float: left;
-    margin-right: 5px;
-  }
-}
