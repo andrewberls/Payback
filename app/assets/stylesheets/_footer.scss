@@ -1,27 +1,32 @@
-.footer {
-    $shadowColor: #ccc;
-    
-    -webkit-box-shadow: inset 0 10px 10px -7px $shadowColor;
-    -moz-box-shadow: inset 0 10px 10px -7px $shadowColor;    
-    box-shadow: inset 0 10px 10px -7px $shadowColor;    
-    color: lighten($darkGray, 30);
-    margin-top: 100px;
-    padding-top: 10px;
-    text-align: center;
+.footer {  
+  $shadowColor: #ccc;
+  
+  -webkit-box-shadow: inset 0 10px 10px -7px $shadowColor;
+  -moz-box-shadow: inset 0 10px 10px -7px $shadowColor;    
+  box-shadow: inset 0 10px 10px -7px $shadowColor;    
+  color: lighten($darkGray, 30);
+  margin-top: 100px;
+  padding-top: 10px;
+  position: relative;
+  text-align: center;  
 
-    p { display: inline-block; }
+  p { 
+    display: inline-block;
+    margin: 0;
+  }  
 
+  a {
+    color: lighten($linkColor, 10);
+    &:hover { color:$linkColor; }
+  }
+
+  .actions {    
+    position: absolute;
+    bottom: 0; right: 0;
+        
     a {
-        color: lighten($linkColor, 10);
-        &:hover { color:$linkColor; }
+      color: lighten($darkGray, 15);
+      &:hover { color: $linkColor; }
     }
-
-    .actions {
-        float: right;
-            
-        a {
-            color: lighten($darkGray, 15);
-            &:hover { color: $linkColor; }
-        }
-    } // .actions
+  } // .actions
 } // .footer
