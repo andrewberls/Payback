@@ -25,13 +25,14 @@
 //-- EXPENSES DASHBOARD
 //------------------------------------
 .expenses-container {  
+  $border-color: #d9d9d9;
+
+  border: 1px solid $border-color;
+  border-bottom: none;
 
   .expense {
-     
-    $expense_border: #d9d9d9;
-
     background-color: #F8F8F8;
-    border-bottom: 1px solid $expense_border;   
+    border-bottom: 1px solid $border-color; 
     margin: 0;
 
     &:last-child { border: none; }
@@ -47,19 +48,19 @@
         overflow: auto;      
       }
 
-      .info-left {        
+      /* .info-left {        
         padding: 10px 0;
       }
 
       .info-right {        
         margin-left: 15px;
-      }
+      } */
 
       .expense-price {}
 
       .expense-debtor {        
 
-        &:before { content: " - "; }
+        //&:before { content: " - "; }
       }
 
       .expense-title,

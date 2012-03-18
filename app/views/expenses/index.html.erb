@@ -27,19 +27,25 @@
                     <!--_________________________________________________________-->
 
                     <div class="span12 expense">
-                        <div class="expense-inner">
-                            <form action="">
-                                <div class="info-left">
-                                    <input type="checkbox" />
+                        <div class="expense-inner">                            
+                                                                   
                                     <span class="expense-price">$60.00</span>
                                     <span class="expense-debtor">Matt</span>
-                                </div><!-- .info-left -->
+                               
 
-                                <div class="info-right">
+                                
                                     <span class="expense-title">Beer, hard liquor</span>
                                     <span class="expense-date">7 Feb 2012</span>
-                                </div><!-- .info-right -->
-                            </form>
+                              
+
+                                <div class="btn-container">
+                                    <%= link_to "Delete", {action: 'destroy', id: 0 }, {
+                                        :method => :delete, 
+                                        confirm: "Are you sure you want to delete this expense?", 
+                                        class: "btn btn-danger pull-right",
+                                    } %>
+                                </div>
+                        
                             <div class="clearfix"></div>
                         </div><!-- .expense-inner -->
                     </div><!-- .expense -->
