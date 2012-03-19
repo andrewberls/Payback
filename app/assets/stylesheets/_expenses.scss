@@ -45,8 +45,20 @@
 
 //-- EXPENSES DASHBOARD
 //------------------------------------
-#new-expense {
+#dashboard-buttons {
   margin-bottom: 15px;
+
+  a {
+    margin-right: 10px;
+    padding: 10px;
+  }
+}
+
+.expense-blank {
+  p {
+    //outline: 1px solid red;    
+    margin: 5px 0;
+  }
 }
 
 .expenses-container {  
