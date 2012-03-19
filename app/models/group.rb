@@ -42,8 +42,7 @@ class Group < ActiveRecord::Base
   def initialize_owner(user)
     self.owner = user
     self.users << user
-    user.groups << self
-    user.owned << self
+    user.owned << self # user.groups automatically covered
   end
 
   def add_user(user)
