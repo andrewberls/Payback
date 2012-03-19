@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   #------------------------------
   # Groups
   has_and_belongs_to_many :groups
+  has_many :owned, :class_name => "Group", :foreign_key => "owner_id"
 
   # Expenses
   has_many :debts,   :class_name => "Expense", :foreign_key => :debtor_id

@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   # Validations
   #------------------------------
   attr_accessible :title, :password, :password_confirmation
+  #attr_accessor :owner
 
   has_secure_password
 
@@ -21,7 +22,7 @@ class Group < ActiveRecord::Base
   #------------------------------
   # Users
   has_and_belongs_to_many :users
-  has_one :owner, :class_name => "User"
+  belongs_to :owner, :class_name => "User"
 
   # Expenses
   has_many :debts, :through => :users
@@ -39,12 +40,15 @@ class Group < ActiveRecord::Base
   end
 
   def initialize_owner(user)
-    set_owner user
+    self.owner = user
     self.users << user
+    user.groups << self
+    user.owned << self
   end
 
-  def set_owner(user)
-    self.owner = user
+  def add_user(user)
+    self.users << user
+    user.groups << self
   end
 
   def expenses
