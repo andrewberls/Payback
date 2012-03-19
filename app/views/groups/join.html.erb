@@ -1,29 +1,26 @@
-<!-- <h1>Group#join</h1>
-<p>Find me in app/views/groups/join.html.erb</p> -->
-
 <div class="row">
-    <div class="span4 offset4">
+  <div class="span4 offset4">
 
-        <%= form_tag(add_group_path, class: "well join-group-form") do %>
-            <h1 class="form-title">Join A Group</h1>
-            <div class="help-block">This information should have been given to you by the group creator.</div>
-            
-            <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
+    <%= form_tag(add_group_path, class: "well join-group-form") do %>
+      <h1 class="form-title">Join A Group</h1>
+      <div class="help-block">This information should have been given to you by the group creator.</div>
+      
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
 
-            <div class="field control-group">
-                <%= label_tag :gid, "Group ID" %>
-                <%= text_field_tag :gid %>      
-            </div>
-            
-            <div class="field control-group">
-                <%= label_tag :password %>
-                <%= password_field_tag :password%> 
-            </div>
+      <div class="field control-group">
+        <%= label_tag :gid, "Group ID" %>
+        <%= text_field_tag :gid %>      
+      </div>
+      
+      <div class="field control-group">
+        <%= label_tag :password %>
+        <%= password_field_tag :password%> 
+      </div>
 
-            <%= submit_tag "Join Group", class: "btn btn-primary", id: "submit-validate" %>
+      <%= submit_tag "Join Group", class: "btn btn-primary", id: "submit-validate" %>
 
-            <div class="clearfix"></div>
-        <% end %><!-- .join-group-form -->      
+      <div class="clearfix"></div>
+    <% end %><!-- .join-group-form -->      
 
-    </div>
+  </div>
 </div>

@@ -1,31 +1,31 @@
 <div class="row">
-    <div class="span4 offset4 well">
+  <div class="span4 offset4 well">
 
-  		<%= form_for(@group, url: {action: 'update', id: @group.gid}, html: {class: "edit-group-form"}) do |f| %>
+    <%= form_for(@group, url: {action: 'update', id: @group.gid}, html: {class: "edit-group-form"}) do |f| %>
 
-  			<h1 class="form-title">Edit Group</h1>
+      <h1 class="form-title">Edit Group</h1>
 
-  			<%= render "shared/group_error_messages" %>      
+      <%= render "shared/group_error_messages" %>      
 
-            <div class="field control-group">
-            	<%= f.label :title %>                
-            	<%= f.text_field :title %>
-            </div>
+      <div class="field control-group">
+        <%= f.label :title %>                
+        <%= f.text_field :title %>
+      </div>
 
-            <div class="field control-group">
-                <%= f.label :password, "New Password" %>               
-                <%= f.password_field :password %>
-            </div>
+      <div class="field control-group">
+        <%= f.label :password, "New Password" %>               
+        <%= f.password_field :password %>
+      </div>
 
-            <div class="field control-group">
-                <%= f.label :password_confirmation, "Confirm New Password" %>
-                <%= f.password_field :password_confirmation %>
-            </div>
+      <div class="field control-group">
+        <%= f.label :password_confirmation, "Confirm New Password" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
 
-            <%= link_to "Cancel", groups_path, class: "btn pull-left" %>
-            <%= submit_tag "Update Group", class: "btn btn-primary" %>
+      <%= link_to "Cancel", groups_path, class: "btn pull-left" %>
+      <%= submit_tag "Update Group", class: "btn btn-primary" %>
 
-  		<% end %>
+    <% end %><!-- .edit-group-form -->
 
-    </div>
+  </div>
 </div>

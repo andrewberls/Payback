@@ -1,33 +1,33 @@
 <div class="row">
-    <div class="span4 offset4">
+  <div class="span4 offset4">
 
-        <%= form_tag(sessions_path, class: "well login-form") do %>
-            <h1 class="form-title">Payback</h1>
-            
-            <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
+    <%= form_tag(sessions_path, class: "well login-form") do %>
+      <h1 class="form-title">Payback</h1>
+      
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
 
-            <div class="field">
-                <%= label_tag :email %>
-                <%= text_field_tag :email %>      
-            </div>
-                
-            <div class="field">
-                <%= label_tag :password %>                            
-                <%# link_to "Forgot password?", "#", class: "forgot-password" %>
-                <%= password_field_tag :password%> 
-            </div>
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email %>      
+      </div>
+          
+      <div class="field">
+        <%= label_tag :password %>                            
+        <%# link_to "Forgot password?", "#", class: "forgot-password" %>
+        <%= password_field_tag :password%> 
+      </div>
 
-            <label class="checkbox">                
-                <%= check_box_tag :remember_me, 1 %>
-                Remember Me
-            </label>
+      <label class="checkbox">                
+        <%= check_box_tag :remember_me, 1 %>
+        Remember Me
+      </label>
 
-            <%= submit_tag "Log in", class: "btn btn-primary", id: "submit-login" %>
+      <%= submit_tag "Log in", class: "btn btn-primary", id: "submit-login" %>
 
-            <div class="clearfix"></div>
-        <% end %><!-- .login-form -->
+      <div class="clearfix"></div>
+    <% end %><!-- .login-form -->
 
-        <%= link_to raw("Don't have an account? Click here to get started for free"), signup_path, class: "signup" %>        
+    <%= link_to raw("Don't have an account? Click here to get started for free"), signup_path, class: "signup" %>        
 
-    </div>
+  </div>
 </div>

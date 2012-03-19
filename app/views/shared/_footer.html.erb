@@ -1,14 +1,14 @@
 <div class="row-fluid footer">
-    <p class="tagline">
-        Payback is <a href="https://github.com/andrewberls/Payback">open-source</a>, brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
-    </p>
+  <p class="tagline">
+    Payback is <a href="https://github.com/andrewberls/Payback">open-source</a>, brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
+  </p>
 
-	<% if signed_in? %>
-        <div class="actions">
-    		<p>Signed in as <%= current_user.full_name %></p>    		
-	    	&nbsp; | &nbsp;
-	        <%= link_to "Log Out", logout_path %>
-        </div><!-- .actions -->
-	<% end %>    	
+  <% if signed_in? %>
+    <div class="actions">
+    <p>Signed in as <%= current_user.full_name %></p>       
+    &nbsp; | &nbsp;
+      <%= link_to "Log Out", logout_path %>
+    </div><!-- .actions -->
+  <% end %>     
     
 </div><!-- .footer -->

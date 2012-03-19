@@ -1,38 +1,37 @@
 <div class="row">
-	<div class="span8 offset2">
+  <div class="span8 offset2">
 
-		<h1>Your Groups</h1>
+    <h1>Your Groups</h1>
 
-		<%= render "shared/group_success_messages" %>
+    <%= render "shared/group_success_messages" %>
 
-		<div class="groups-container">
-			<% @groups.each do |group| %>
-				<div class="group">
-					<span class="group-gid">ID: <%= group.gid %></span>					
-					<span class="group-title"><%= group.title %></span>
-					<!-- <span class="group-users-count">< pluralize(group.users.count, 'member') ></span> -->
-					<%# if group.owner == current_user %>
-					<span class="group-owner">You own this group.</span>
-					<%# end %>
+    <div class="groups-container">
+      <% @groups.each do |group| %>
+        <div class="group">
+          <span class="group-gid">ID: <%= group.gid %></span>         
+          <span class="group-title"><%= group.title %></span>
+          <!-- <span class="group-users-count">< pluralize(group.users.count, 'member') ></span> -->
+          <%# if group.owner == current_user %>
+          <span class="group-owner">You own this group.</span>
+          <%# end %>
 
-					<div class="btn-container">
-						<%#  if current_user == group.owner %>
-							<%= link_to "Delete", {action: 'destroy', id: group.gid }, { #group.id
-								:method => :delete, 
-								confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
-								class: "btn btn-danger pull-right",
-							} %>
-						<% #end %>
+          <div class="btn-container">
+            <%#  if current_user == group.owner %>
+              <%= link_to "Delete", {action: 'destroy', id: group.gid }, { #group.id
+                :method => :delete, 
+                confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
+                class: "btn btn-danger pull-right",
+              } %>
+            <%# end %>
 
-						<%= link_to "Edit", edit_group_path(group.gid), class: "btn btn-spacer pull-right" %>
-					</div><!-- .btn-container -->
-				</div><!-- .group -->
-			<% end %>
-		</div><!-- .groups-container -->
+            <%= link_to "Edit", edit_group_path(group.gid), class: "btn btn-spacer pull-right" %>
+          </div><!-- .btn-container -->
+        </div><!-- .group -->
+      <% end %>
+    </div><!-- .groups-container -->
 
+    <%= link_to "Create a new group", new_group_path, class: "btn btn-large btn-primary pull-right" %>
+    <%= link_to "Join another group", join_group_path, class: "btn btn-spacer btn-large btn-primary pull-right" %>
 
-		<%= link_to "Create a new group", new_group_path, class: "btn btn-large btn-primary pull-right" %>
-		<%= link_to "Join another group", join_group_path, class: "btn btn-spacer btn-large btn-primary pull-right" %>
-
-	</div>
+  </div>
 </div>
