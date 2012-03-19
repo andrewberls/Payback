@@ -10,7 +10,10 @@
 				<div class="group">
 					<span class="group-gid">ID: <%= group.gid %></span>					
 					<span class="group-title"><%= group.title %></span>
-					<span class="group-users-count"><%= pluralize(group.users.count, 'member') %></span>
+					<!-- <span class="group-users-count">< pluralize(group.users.count, 'member') ></span> -->
+					<%# if group.owner == current_user %>
+					<span class="group-owner">You own this group.</span>
+					<%# end %>
 
 					<div class="btn-container">
 						<%#  if current_user == group.owner %>
