@@ -11,9 +11,9 @@ class Group < ActiveRecord::Base
     presence: true,
     length: {maximum: 50}
 
-  validates :password,
-    presence: true,
-    length: { minimum: 5 }
+  #validates :password,
+  #  presence: true,
+  #  length: { minimum: 5 }
 
 
   #------------------------------
