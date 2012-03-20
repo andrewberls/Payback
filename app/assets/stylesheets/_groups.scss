@@ -59,11 +59,18 @@
       padding: 3px;
     }
 
-    .group-title {      
+    .group-title,
+    .group-title-spacer {      
       float: left;
       font-size: 1.4em;
       margin-top: 10px;
       margin-right: 5px;
+    }
+
+    .group-title-spacer {
+      // Fill out space for groups that are not owned
+      margin-top: 20px;
+      margin-bottom: 25px;
     }
 
     .group-users-count,

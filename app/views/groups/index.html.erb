@@ -8,26 +8,43 @@
     <div class="groups-container">
       <% @groups.each do |group| %>
         <div class="group">
-          <span class="group-gid">ID: <%= group.gid %></span>         
-          <span class="group-title"><%= group.title %></span>
-          <!-- <span class="group-users-count">< pluralize(group.users.count, 'member') ></span> -->
+          <span class="group-gid">ID: <%= group.gid %></span>
+
+          <% if current_user == group.owner %>
+            <span class="group-title"><%= group.title %></span>
+          <% else %>
+            <%# Some extra space for groups that are not owned, otherwise taken up by owner info%>
+            <span class="group-title-spacer"><%= group.title %></span>
+          <% end %>        
+                    
           <% if group.owner == current_user %>
-          <span class="group-owner">You own this group.</span>
+            <span class="group-owner">You own this group.</span>
           <% end %>
 
           <div class="btn-container">
-            <%#  if current_user == group.owner %>
-              <%= link_to "Delete", {action: 'destroy', id: group.gid }, { #group.id
+            <%#
+              Group Action Buttons
+                - Edit/Delete if group is owned,
+                - else Leave Group
+            %>
+            <%  if current_user == group.owner %>
+              <%= link_to "Delete", {action: 'destroy', id: group.gid }, {
                 :method => :delete, 
                 confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
                 class: "btn btn-danger pull-right",
               } %>
-            <%# end %>
-
-            <%= link_to "Edit", edit_group_path(group.gid), class: "btn btn-spacer pull-right" %>
+              <%= link_to "Edit", edit_group_path(group.gid), class: "btn btn-spacer pull-right" %>
+            <% else %>
+              <%= link_to "Leave Group", {action: 'destroy', id: group.gid }, {                
+                confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be reset.", 
+                class: "btn btn-danger pull-right",
+              } %>              
+            <% end %>
           </div><!-- .btn-container -->
+          
         </div><!-- .group -->
       <% end %>
+
     </div><!-- .groups-container -->
 
     <%= link_to "Create a new group", new_group_path, class: "btn btn-large btn-primary pull-right" %>
