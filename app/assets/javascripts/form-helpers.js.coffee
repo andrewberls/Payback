@@ -38,3 +38,16 @@ $ ->
   $('#hide-expense-faqs').click ->  
     $('#expense-faqs').slideUp(350)
     return false
+
+  # Submit button handling
+  #-------------------
+  $hsplit = $('#expense_hsplit')     # Hidden field
+  $hpayback = $('#expense_hpayback') # Hidden field
+
+  $('#expense-split').click ->
+    $hsplit.val('1')
+    $hpayback.val('0')
+
+  $('#expense-payback').click ->
+    $hsplit.val('0')
+    $hpayback.val('1')

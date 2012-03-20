@@ -45,11 +45,6 @@ class Group < ActiveRecord::Base
     user.owned << self # user.groups automatically covered
   end
 
-  def add_user(user)
-    self.users << user
-    user.groups << self
-  end
-
   def expenses
     self.debts + self.credits
   end

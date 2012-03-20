@@ -6,6 +6,15 @@
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
+      <%# TODO: SELECT GROUP      
+
+        f.select(:permissions, options_for_select([
+          ['Administrator', 0], 
+          ['Developer', 1],
+          ['Author', 2]
+        ],2)) # Preselected val
+      %>
+
       <%= render 'shared/select_users' %>      
 
       <div class="field control-group">
@@ -23,9 +32,13 @@
         <%= f.text_field :title %>
       </div>
 
-      <%= submit_tag "Payback", class: "btn btn-large btn-danger pull-right", id: "expenese-payback" %>
+      <%# JS hooks for the expense action type (Split or Payback) %>
+      <%= f.hidden_field :hsplit, value: "-1" %>
+      <%= f.hidden_field :hpayback, value: "-1" %>
+
+      <%= submit_tag "Payback", class: "btn btn-large btn-danger pull-right", id: "expense-payback" %>
       <%= submit_tag "Split Evenly", class: "btn btn-large btn-primary btn-spacer pull-right", 
-        id: "expenese-split" %>
+        id: "expense-split" %>
 
       <div class="expense-faqs-prompt">
         <i class="icon-question-sign"></i>
@@ -34,6 +47,8 @@
 
       <div class="clearfix"></div>
     <% end %><!-- .new-expense-form -->
+
+    <!-- <input type="hidden" id="test" value="-1" /> -->
 
     <%= render 'shared/expense_faqs' %>
 
