@@ -10,16 +10,13 @@
         <div class="group">
           <span class="group-gid">ID: <%= group.gid %></span>
 
+          <span class="group-title"><%= group.title %></span>
+
           <% if current_user == group.owner %>
-            <span class="group-title"><%= group.title %></span>
-          <% else %>
-            <%# Some extra space for groups that are not owned, otherwise taken up by owner info%>
-            <span class="group-title-spacer"><%= group.title %></span>
-          <% end %>        
-                    
-          <% if group.owner == current_user %>
             <span class="group-owner">You own this group.</span>
-          <% end %>
+          <% else %>            
+            <span class="group-owner">Owned by <%= group.owner.full_name %></span>
+          <% end %> 
 
           <div class="btn-container">
             <%#
