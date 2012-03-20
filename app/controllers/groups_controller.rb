@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
   #------------------------------
   def index
     @groups = current_user.groups
+    #redirect_to welcome_path if @groups.blank?
   end
 
   def show
@@ -64,9 +65,14 @@ class GroupsController < ApplicationController
   #------------------------------
   def destroy   
     # Destroy group and expenses, but preserve users
-    #Group.find_by_gid(params[:gid]).destroy
-    flash[:success] = "Group successfully deleted"
-    redirect_to groups_path
+    group = Group.find_by_gid(params[:id])
+    group.expenses.each { |expense| expense.destroy } 
+    if group.destroy
+      flash[:success] = "Group successfully deleted"
+      redirect_to groups_path
+    else
+      render :index
+    end
   end
 
 
