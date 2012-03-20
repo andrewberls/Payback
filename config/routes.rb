@@ -12,8 +12,9 @@ Payback::Application.routes.draw do
 
 
   # Group init
-  match "join" => "groups#join", as: "join_group" # View
-  match "add"  => "groups#add", as: "add_group" # Processing
+  match "join"  => "groups#join", as: "join_group" # View
+  match "add"   => "groups#add", as: "add_group" # Processing
+  match "leave" => "groups#leave", as: "leave_group"
 
 
   # User processing

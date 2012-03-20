@@ -35,7 +35,8 @@
               } %>
               <%= link_to "Edit", edit_group_path(group.gid), class: "btn btn-spacer pull-right" %>
             <% else %>
-              <%= link_to "Leave Group", {action: 'destroy', id: group.gid }, {                
+              <%# link_to "Leave Group", {action: 'leave', id: group.gid }, {
+                :method => :delete,        
                 confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be reset.", 
                 class: "btn btn-danger pull-right",
               } %>              

@@ -77,7 +77,7 @@ class GroupsController < ApplicationController
 
 
   #------------------------------
-  # JOIN
+  # JOIN/LEAVE
   #------------------------------
   def join
     # View  
@@ -93,13 +93,16 @@ class GroupsController < ApplicationController
         render :join
       else
         group.users << current_user
-        flash.now[:error] = "success! ignore the error"
-        render :join
+        flash[:success] = "You are now a member of #{group.title}!"
+        redirect_to groups_path
       end
     else
       flash.now[:error] = "Invalid ID/Password combination."
       render :join
     end
+  end
+
+  def leave
   end
 
 end
