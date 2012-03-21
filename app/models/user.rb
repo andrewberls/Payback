@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
 
 	validates :password, :presence => { :on => :create }  
 
+
   #------------------------------
   # Associations
   #------------------------------
