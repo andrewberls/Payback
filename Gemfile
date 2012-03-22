@@ -26,8 +26,9 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'watchr'
-  gem 'factory_girl_rails', '1.4.0'
-  #gem 'eventmachine', '1.0.0.beta.4.1'
+  gem 'capybara', '1.1.2'
+  #gem 'factory_girl_rails', '1.4.0'
+  gem 'eventmachine', '1.0.0.beta.4.1'
 end
 
 # To use debugger
