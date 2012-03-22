@@ -3,7 +3,6 @@
 //= require bootstrap
 //= require jquery.easing.1.3
 
-//= require payback
 //= require word_slide
 //= require validation
 //= require form-helpers
