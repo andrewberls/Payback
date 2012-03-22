@@ -1,3 +1,5 @@
+<% provide(:title, 'Dashboard') %>
+
 <div class="row-fluid">
   <h1 class="main-title">Dashboard</h1>
 </div>
@@ -27,14 +29,14 @@
           <div class="expense expense-blank">
               <p>Nobody owes you money! Click <%= link_to "here", new_expense_path %> to add a new expense.</p>
           </div>
-      <% else %>
+      <% else %>        
         <% @credits.each do |expense| %>
           <div class="expense">
             <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
             <span class="expense-debtor"><%= expense.debtor.first_name %></span>
 
             <div class="info-stack">
-              <span class="expense-title"><%= expense.title %> TEMP: <%= expense.group.title %></span>
+              <span class="expense-title"><%= expense.title %></span>
               <span class="expense-date"><%= render_date expense.created_at %></span>
             </div><!-- .info-stack -->
             <div class="btn-container">            
