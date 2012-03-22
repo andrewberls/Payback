@@ -64,16 +64,12 @@ class GroupsController < ApplicationController
   # DELETE
   #------------------------------
   def destroy   
-    # Destroy group and expenses, but preserve users
-    @group = Group.find_by_gid(params[:id])
-    @group.expenses.each { |expense| expense.destroy } 
-    if @group.destroy
-      flash[:success] = "Group successfully deleted"
-      redirect_to groups_path
-    else
-      flash.now[:error] = "Something went wrong - please try again."
-      render :index
-    end
+    # Need to destroy group and expenses, but preserve users
+    group = Group.find_by_gid(params[:id])
+    group.expenses.each { |expense| expense.destroy } 
+    group.destroy
+    flash[:success] = "Group successfully deleted"
+    redirect_to groups_path
   end
 
 
