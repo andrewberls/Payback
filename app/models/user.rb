@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
     format: {with: valid_email_regex},
     uniqueness: { case_sensitive: false }
 
-	validates :password, :presence => { :on => :create }  
-
+  validates :password, presence: { on: :create }, 
+                       length: { minimum: 5 }, :if => :password_digest_changed?
 
   #------------------------------
   # Associations

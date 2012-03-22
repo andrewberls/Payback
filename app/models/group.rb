@@ -12,7 +12,8 @@ class Group < ActiveRecord::Base
     presence: true,
     length: {maximum: 50}
 
-  validates :password, :presence => { :on => :create }  
+  validates :password, presence: { on: :create }, 
+                       length: { minimum: 5 }, :if => :password_digest_changed?
 
 
   #------------------------------
