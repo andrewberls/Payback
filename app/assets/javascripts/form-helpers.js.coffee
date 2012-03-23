@@ -41,13 +41,6 @@ $ ->
 
   # Submit button handling
   #-------------------
-  $hsplit = $('#expense_hsplit')     # Hidden field
-  $hpayback = $('#expense_hpayback') # Hidden field
-
+  $type = $('#expense_type')
   $('#expense-split').click ->
-    $hsplit.val('1')
-    $hpayback.val('0')
-
-  $('#expense-payback').click ->
-    $hsplit.val('0')
-    $hpayback.val('1')
+    $type.val('split')
