@@ -42,7 +42,7 @@ label {
   .add-on {
     padding: 7px;    
   }
-}
+} // .input-prepend
 
 .help-text {
   // Inline help text next to the label
@@ -52,6 +52,11 @@ label {
 
 .help-block {  
   margin-bottom: 10px;
+}
+
+.back-btn {
+  // Left-floated back button
+  margin-top: 10px;
 }
 
 
