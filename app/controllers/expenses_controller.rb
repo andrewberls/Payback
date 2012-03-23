@@ -6,6 +6,7 @@ class ExpensesController < ApplicationController
   # CREATE
   #------------------------------
   def new
+    @groups = current_user.groups
     @expense = Expense.new
   end
 
@@ -24,6 +25,8 @@ class ExpensesController < ApplicationController
                       else
                         @expense.amount / selected_users.count # Payback - selected excluding current                      
                       end
+
+      cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
 
       @expense.group    = group
       @expense.creditor = current_user
