@@ -34,9 +34,8 @@
         <%= f.text_field :title %>
       </div>
 
-      <%# JS hooks for the expense action type (Split or Payback) %>
-      <%= f.hidden_field :hsplit, value: "-1" %>
-      <%= f.hidden_field :hpayback, value: "-1" %>
+      <%# JS hook for the expense action type (Split or Payback) %>
+      <%= f.hidden_field :type, value: "payback" %>
 
       <%= submit_tag "Payback", class: "btn btn-large btn-danger pull-right", id: "expense-payback" %>
       <%= submit_tag "Split Evenly", class: "btn btn-large btn-primary btn-spacer pull-right", 
@@ -50,9 +49,9 @@
       <div class="clearfix"></div>
     <% end %><!-- .new-expense-form -->
 
-    <!-- <input type="hidden" id="test" value="-1" /> -->
-
     <%= render 'shared/expense_faqs' %>
+
+    <%= link_to raw("&laquo; Back to Expenses "), expenses_path, class: "btn back-btn" %>
 
   </div>
 </div>

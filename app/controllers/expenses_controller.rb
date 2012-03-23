@@ -11,11 +11,11 @@ class ExpensesController < ApplicationController
 
   def create
 
-    @expense = Expense.new(params[:expense].except(:hsplit, :hpayback))
+    @expense = Expense.new(params[:expense].except(:type))
 
     if @expense.valid?
 
-      action = params[:expense][:hpayback] == '1' ? :payback : :split
+      action = params[:expense][:type] == 'payback' ? :payback : :split
       group = current_user.groups.first           # TODO: SHOULD BE ABLE TO SELECT GROUP
       selected_users = group.users-[current_user] # TODO: SHOULD BE ABLE TO SELECT USERS
 
@@ -36,7 +36,6 @@ class ExpensesController < ApplicationController
 
     else      
       flash.now[:error] = "Error -  check your fields and try again"
-      #return redirect_to new_expense_path
       return render :new
     end 
         
