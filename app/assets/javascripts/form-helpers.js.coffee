@@ -14,14 +14,14 @@ $ ->
 
   $group.click ->
     $container.slideUp(speed)
-    $(this).addClass('disabled')
-    $select.removeClass('disabled')
+    $(this).addClass('disabled')#.removeClass('btn-info')
+    $select.removeClass('disabled')#.addClass('btn-info')
     return false
   
   $select.click ->
     $container.slideDown(speed)
-    $(this).addClass('disabled')
-    $group.removeClass('disabled')
+    $(this).addClass('disabled')#.removeClass('btn-info')
+    $group.removeClass('disabled')#.addClass('btn-info')
     return false
 
   # Split/Payback FAQ slide
