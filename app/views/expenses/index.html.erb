@@ -24,6 +24,8 @@
 
     <h2>Owed to You</h2>
 
+      <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
+
       <div class="expenses-container">
       <% if @credits.blank? %>
           <div class="expense expense-blank">
