@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323195317) do
+ActiveRecord::Schema.define(:version => 20120325002151) do
 
   create_table "expenses", :force => true do |t|
     t.string   "title"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20120323195317) do
     t.integer  "creditor_id"
     t.integer  "debtor_id"
     t.integer  "group_id"
-    t.decimal  "amount"
+    t.decimal  "amount",      :precision => 10, :scale => 2
   end
 
   create_table "groups", :force => true do |t|
