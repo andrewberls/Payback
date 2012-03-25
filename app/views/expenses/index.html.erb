@@ -22,65 +22,90 @@
   <%#----------- OWED TO YOU -----------%>
   <div class="span6 left-column">
 
-    <h2>Owed to You</h2>
+    <% @groups.each do |group| %>
+
+      <h2>Owed to You <%= "- #{group.title}" unless current_user.groups.count == 1 %></h2>
 
       <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
 
       <div class="expenses-container">
-      <% if @credits.blank? %>
-          <div class="expense expense-blank">
-              <p>Nobody owes you money! Click <%= link_to "here", new_expense_path %> to add a new expense.</p>
-          </div>
-      <% else %>        
-        <% @credits.each do |expense| %>
-          <div class="expense">
-            <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
-            <span class="expense-debtor"><%= expense.debtor.first_name %></span>
+        <% if @credits.blank? %>
 
-            <div class="info-stack">
-              <span class="expense-title"><%= expense.title %></span>
-              <span class="expense-date"><%= render_date expense.created_at %></span>
-            </div><!-- .info-stack -->
-            <div class="btn-container">            
-              <%= link_to "Delete", {action: 'destroy', id: expense.id}, {
-                :method => :delete, 
-                confirm: "Are you sure you want to delete this expense?", 
-                class: "btn btn-danger pull-right",
-                id: "delete-expense"
-              } %>
+            <div class="expense expense-blank">
+                <p>Nobody owes you money! Click <%= link_to "here", new_expense_path %> to add a new expense.</p>
             </div>
-          </div><!-- .expense -->
+
+        <% else %>    
+
+          <% @credits.each do |expense| %>
+            <div class="expense">
+
+              <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
+              <span class="expense-debtor"><%= expense.debtor.first_name %></span>
+
+              <div class="info-stack">
+                <%# Title + Date vertically stacked  %>
+                <span class="expense-title">
+                  <%# TODO: link to expense#show with expanded view  %>
+                  <%= expense.title %>
+                </span>
+                <span class="expense-date"><%= render_date expense.created_at %></span>
+              </div><!-- .info-stack -->
+
+              <div class="btn-container">            
+                <%= link_to "Delete", {action: 'destroy', id: expense.id}, {
+                  :method => :delete, 
+                  confirm: "Are you sure you want to delete this expense?", 
+                  class: "btn btn-danger pull-right",
+                  id: "delete-expense"
+                } %>
+              </div><!-- .btn-container -->
+
+            </div><!-- .expense -->
+          <% end %>
+
         <% end %>
-      <% end %>
       </div><!-- .expenses-container -->
-      
+
+    <% end %><%# @groups.each  %>
+
   </div><!-- .left-column -->
+
 
   <%#----------- YOU OWE -----------%>
   <div class="span6 right-column">
 
-    <h2>You Owe</h2>
+    <% @groups.each do |group| %>
+
+      <h2>You Owe <%= "- #{group.title}" unless current_user.groups.count == 1 %></h2>
 
       <div class="expenses-container">
         <% if @debts.blank? %>
+
           <div class="expense expense-blank">
             <p>You don't owe anybody money! :-)</p>
           </div>
+
         <% else %>
+
           <% @debts.each do |expense| %>
             <div class="expense">
               <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
               <span class="expense-creditor"><%= expense.creditor.first_name %></span> 
               
               <div class="info-stack">
+                <%# Title + Date vertically stacked  %>
                 <span class="expense-title"><%= expense.title %></span>
                 <span class="expense-date"><%= render_date expense.created_at %></span>
               </div><!-- .info-stack -->
             </div><!-- .expense -->
           <% end %>
+
         <% end %>
       </div><!-- .expenses-container -->
-      
+
+    <% end %><%# @groups.each %>
+
   </div><!-- .right-column -->
 
 </div><!-- .row-fluid -->

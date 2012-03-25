@@ -31,13 +31,7 @@ class ExpensesController < ApplicationController
       @expense.group    = group
       @expense.creditor = current_user
       @expense.amount   = cost_per_user
-
-      selected_users.each do |user|
-        # TODO: Check if existing expense to this creditor already and combine?
-        expense = @expense.dup
-        expense.debtor = user
-        current_user.credits << expense
-      end
+      @expense.assign_to_users(selected_users)
 
     else      
       flash.now[:error] = "Error -  check your fields and try again"
@@ -45,7 +39,6 @@ class ExpensesController < ApplicationController
     end 
         
     return redirect_to expenses_path
-
   end
 
 
@@ -54,8 +47,9 @@ class ExpensesController < ApplicationController
   #------------------------------
   def index
     # Main dashboard
-    @credits = current_user.credits.order("id DESC")
-    @debts = current_user.debts.order("id DESC")
+    @groups = current_user.groups
+    @credits = current_user.credits.where(active: true).order("id DESC")
+    @debts = current_user.debts.where(active: true).order("id DESC")
   end
 
 
@@ -63,7 +57,7 @@ class ExpensesController < ApplicationController
   # DELETE
   #------------------------------
   def destroy
-    Expense.find_by_id(params[:id]).destroy
+    Expense.find_by_id(params[:id]).update_attributes(active: false)
     flash[:success] = "Expense successfully removed."
     redirect_to expenses_path    
   end
