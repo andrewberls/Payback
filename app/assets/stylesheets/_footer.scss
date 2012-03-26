@@ -13,11 +13,6 @@
   p { 
     display: inline-block;
     margin: 0;
-  }  
-
-  a {
-    color: lighten($linkColor, 10);
-    &:hover { color:$linkColor; }
   }
 
   .actions {    
