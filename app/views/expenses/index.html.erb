@@ -19,7 +19,9 @@
 
 <div class="row-fluid">
 
-  <%#----------- OWED TO YOU -----------%>
+  <%#---------------------------------
+      OWED TO YOU
+  ------------------------------------%>
   <div class="span6 left-column">
 
     <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
@@ -39,12 +41,14 @@
   </div><!-- .left-column -->
 
 
-  <%#----------- YOU OWE -----------%>
+  <%#---------------------------------
+      YOU OWE
+  ------------------------------------%>
   <div class="span6 right-column">
 
     <h2>You Owe</h2>
 
-    <% if current_user.debts.blank? %>
+    <% if current_user.active_debts.blank? %>
       <div class="expenses-container">
         <div class="expense expense-blank">
             <p>You don't owe anybody money! :-)</p>
