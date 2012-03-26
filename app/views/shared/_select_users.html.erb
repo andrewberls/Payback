@@ -1,3 +1,14 @@
+<%# TODO: SELECT GROUP      
+
+  f.select(:permissions, options_for_select([
+    ['Administrator', 0], 
+    ['Developer', 1],
+    ['Author', 2]
+  ],2)) # Preselected val
+
+%>
+
+
 <div class="users-prompt">
   <a href="#" class="btn btn-large disabled pull-left" id="users-group">Group Expense</a>
   <a href="#" class="btn btn-large pull-right" id="users-select">Select Users &raquo;</a><!-- .btn-info -->
@@ -6,6 +17,15 @@
 <div id="users-container">
   <h5>Select Members</h5>
   <div class="user-column">
+
+    <%# group = @groups.first %>
+    <%# users = group.users - [current_user] %>
+    <%# users.each do |user| %>
+      <!-- <label class="checkbox-inline"> -->
+        <%# check_box_tag user.id, user.first_name %>
+        <%# user.first_name %>
+      <!-- </label> -->
+    <%# end %>
 
     <label class="checkbox-inline">
       <input type="checkbox" value="Alex">

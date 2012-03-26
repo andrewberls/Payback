@@ -1,0 +1,38 @@
+<%# @groups.each do |group| %>
+
+  <div class="group-container">
+
+    <div class="expenses-container">  
+
+      <% @credits.each do |expense| %>
+        <div class="expense">
+
+          <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
+          <span class="expense-debtor"><%= expense.debtor.first_name %></span>
+
+          <div class="info-stack">
+            <%# Title + Date vertically stacked  %>
+            <span class="expense-title">
+              <%# TODO: link to expense#show with expanded view  %>
+              <%= expense.title %>
+            </span>
+            <span class="expense-date"><%= render_date expense.created_at %></span>
+          </div><!-- .info-stack -->
+
+          <div class="btn-container">            
+            <%= link_to "Delete", {action: 'destroy', id: expense.id}, {
+              :method => :delete, 
+              confirm: "Are you sure you want to delete this expense?", 
+              class: "btn btn-danger pull-right",
+              id: "delete-expense"
+            } %>
+          </div><!-- .btn-container -->
+
+        </div><!-- .expense -->
+      <% end %><%# @credits.each %>
+
+    </div><!-- .expenses-container -->
+
+  </div><!-- .group-container -->
+
+<%# end %><%# @groups.each  %>

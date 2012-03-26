@@ -48,8 +48,8 @@ class ExpensesController < ApplicationController
   def index
     # Main dashboard
     @groups = current_user.groups
-    @credits = current_user.credits.where(active: true).order("id DESC")
-    @debts = current_user.debts.where(active: true).order("id DESC")
+    @credits = current_user.active_credits.order("id DESC")
+    @debts = current_user.active_debts.order("id DESC")
   end
 
 

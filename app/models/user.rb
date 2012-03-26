@@ -44,6 +44,14 @@ class User < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
+  def active_credits
+    self.credits.where(active: true)
+  end
+
+  def active_debts
+    self.debts.where(active: true)
+  end
+
   private
 
   def generate_auth_token

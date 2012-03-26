@@ -55,18 +55,18 @@
   }
 }
 
+.group-container {
+  margin-bottom: 20px;
+}
+
 .expense-blank {
-  p {
-    //outline: 1px solid red;    
+  p { 
     margin: 5px 0;
   }
 }
 
 .expenses-container {
   $border-color: #d9d9d9;
-
-  border: 1px solid $border-color;
-  border-bottom: none;  
 
   .expense {
     $padding: 5px;
