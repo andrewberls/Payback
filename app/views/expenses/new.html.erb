@@ -8,15 +8,6 @@
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
-      <%# TODO: SELECT GROUP      
-
-        f.select(:permissions, options_for_select([
-          ['Administrator', 0], 
-          ['Developer', 1],
-          ['Author', 2]
-        ],2)) # Preselected val
-      %>
-
       <%= render 'shared/select_users' %>      
 
       <div class="field control-group">
