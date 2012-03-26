@@ -1,22 +1,26 @@
 <% @groups.each do |group| %>
 
-  <h3>something here</h3>
+  <% unless group.expenses.blank? %>
 
-  <div class="expenses-container">
+    <%# content_tag :h3, group.title %>
 
-    <% @debts.each do |expense| %>
-      <div class="expense">
-        <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
-        <span class="expense-creditor"><%= expense.creditor.first_name %></span> 
-        
-        <div class="info-stack">
-          <%# Title + Date vertically stacked  %>
-          <span class="expense-title"><%= expense.title %></span>
-          <span class="expense-date"><%= render_date expense.created_at %></span>
-        </div><!-- .info-stack -->
-      </div><!-- .expense -->
-    <% end %>
+    <div class="expenses-container">
+      <% @debts = Expense.where(group_id: group.id, active: true) %>
+      <% @debts.each do |expense| %>
+        <div class="expense">
+          <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
+          <span class="expense-creditor"><%= expense.creditor.first_name %></span> 
+          
+          <div class="info-stack">
+            <%# Title + Date vertically stacked  %>
+            <span class="expense-title"><%= expense.title %></span>
+            <span class="expense-date"><%= render_date expense.created_at %></span>
+          </div><!-- .info-stack -->
+        </div><!-- .expense -->
+      <% end %>
 
-  </div><!-- .expenses-container -->
+    </div><!-- .expenses-container -->
+
+  <% end %>
 
 <% end %><%# @groups.each %>
