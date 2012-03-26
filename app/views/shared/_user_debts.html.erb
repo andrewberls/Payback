@@ -5,7 +5,8 @@
     <%# content_tag :h3, group.title %>
 
     <div class="expenses-container">
-      <% @debts = Expense.where(group_id: group.id, active: true) %>
+
+      <% @debts = Expense.where(group_id: group.id, active: true, debtor_id: current_user.id) %>
       <% @debts.each do |expense| %>
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
