@@ -13,8 +13,8 @@ class GroupsController < ApplicationController
     @group = Group.new(params[:group])
     @group.initialize_owner(current_user)
     if @group.save
-      #redirect_to group_path(@group.gid)
-      redirect_to groups_path
+      redirect_to group_path(@group.gid)
+      #redirect_to groups_path
     else
       flash[:error] = "Something went wrong - please check your fields and try again."
       #redirect_to new_group_path
@@ -33,6 +33,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_gid(params[:id])
+
     if !@group
       redirect_to groups_path
     end

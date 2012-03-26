@@ -1,5 +1,7 @@
 <% if @group.expenses.blank? %>
   <%= render 'shared/group_welcome' %>
 <% else %>
-  <p>Group#show here</p>
+
+  <p>Group: <%=  @group.id %></p>
+
 <% end %>

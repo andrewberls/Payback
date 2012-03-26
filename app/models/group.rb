@@ -21,11 +21,11 @@ class Group < ActiveRecord::Base
   #------------------------------
   # Users
   has_and_belongs_to_many :users
-  belongs_to :owner, :class_name => "User"
+  belongs_to :owner, class_name: "User"
 
   # Expenses
-  has_many :debts, :through => :users
-  has_many :credits, :through => :users
+  has_many :debts, class_name: "Expense"
+  has_many :credits, class_name: "Expense"
 
 
   before_create :generate_gid
