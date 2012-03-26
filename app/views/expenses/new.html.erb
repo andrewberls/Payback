@@ -8,7 +8,7 @@
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
-      <%= render 'shared/select_users' %>      
+      <%= render 'select_users' %>      
 
       <div class="field control-group">
         <%= f.label :amount %>
@@ -40,7 +40,7 @@
       <div class="clearfix"></div>
     <% end %><!-- .new-expense-form -->
 
-    <%= render 'shared/expense_faqs' %>
+    <%= render 'expense_faqs' %>
 
     <%= link_to raw("&laquo; Back to Expenses "), expenses_path, class: "btn back-btn" %>
 
