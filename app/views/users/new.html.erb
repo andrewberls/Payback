@@ -7,7 +7,7 @@
 <div class="row">
 
   <%# TODO: Put visual here, like dashboard screenshots %>
-  <div class="span7 front-welcome" style="min-height: 375px">        
+  <div class="span7 front-welcome">        
     <p class="easy-way">
       The easiest way to track expenses for your
       <span id="word-scroll">
@@ -20,13 +20,41 @@
       </span><!-- #word-scroll -->     
     </p>
     <h2>Payback is:</h2>
-    <ul>
+
+    <!-- <ul>
       <li>Simple</li>
       <li>Easy</li>
       <li>Built to look great on your phone</li>
       <li>Free :-)</li>
-    </ul>
-  </div>
+    </ul> -->
+
+    <ul class="thumbnails">
+      <div class="item-container">
+        <li class="span4">
+          <h3>Simple.</h3>
+          <p>So simple.</p>
+        </li>
+        <li class="span2"><img src="http://placehold.it/160x120" alt=""></li>
+      </div>
+
+      <div class="item-container">
+        <li class="span2"><img src="http://placehold.it/160x120" alt=""></li>
+        <li class="span4">
+          <h3>Easy.</h3>
+          <p>Your grandmother could do it.</p>
+        </li>
+      </div>
+
+      <div class="item-container">
+        <li class="span4">
+          <h3>Built to look great on your phone.</h3>
+          <p>For when you're on the go.</p>
+        </li>
+       <li class="span2"><img src="http://placehold.it/160x120" alt=""></li>
+      </div>
+    </ul><!-- .thumbnails -->
+
+  </div><!-- .front-welcome -->
   
   <div class="span5 signup-container">
 
@@ -58,7 +86,7 @@
 
       <%# TODO: PW Confirmation? Too many fields - fold Full Name? %>
 
-      <%= submit_tag "Sign Up", class: "btn btn-primary", id: "submit-validate" %>
+      <%= submit_tag "Sign Up", class: "btn btn-primary btn-large", id: "submit-validate" %>
 
       <div class="clearfix"></div>
     <% end %><!-- .signup-form -->
