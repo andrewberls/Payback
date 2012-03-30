@@ -33,10 +33,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_gid(params[:id])
-
-    if !@group
-      redirect_to groups_path
-    end
+    redirect_to groups_path unless !@group.blank?
   end
 
 
@@ -45,7 +42,7 @@ class GroupsController < ApplicationController
   #------------------------------
   def edit
     @group = Group.find_by_gid(params[:id])
-    #redirect_to group_path unless current_user == @group.owner
+    redirect_to groups_path unless current_user == @group.owner
   end
 
   def update
