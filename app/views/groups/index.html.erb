@@ -12,7 +12,7 @@
         <div class="group">
           <span class="group-gid">ID: <%= group.gid %></span>
 
-          <span class="group-title"><%= link_to group.title, group_path(group) %></span>
+          <span class="group-title"><%= link_to group.title, group_path(group.gid) %></span>
 
           <% if current_user == group.owner %>
             <span class="group-owner">You own this group.</span>
