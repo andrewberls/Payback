@@ -1,6 +1,6 @@
  <% provide(:title, "Group: #{@group.title}") %>
 
- <% if @group.expenses.blank? %>
+ <% if @group.expenses.blank? && current_user == @group.owner %>
   <%= render 'group_welcome' %>
 <% else %>
 
@@ -18,7 +18,7 @@
         <% if current_user == @group.owner %>
           <span class="group-owner">You own this group.</span>
         <% else %>            
-          <span class="group-owner">Owned by <%= group.owner.full_name %></span>
+          <span class="group-owner">Owned by <%= @group.owner.full_name %></span>
         <% end %> 
 
         <div class="btn-container">
