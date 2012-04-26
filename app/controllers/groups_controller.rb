@@ -33,7 +33,21 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_gid(params[:id])
-    redirect_to groups_path unless !@group.blank?
+    if @group.blank? or !@group.users.include? current_user
+      redirect_to groups_path and return
+      # TODO: log unauthorized access attempt
+    end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json do
+        render :json => {
+          group: @group.as_json(except: [:password_digest, :id]), 
+          users: @group.users.as_json(except: [:password_digest, :auth_token, :updated_at])
+        } 
+      end
+    end
+
   end
 
 
