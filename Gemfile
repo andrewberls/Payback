@@ -4,6 +4,8 @@ gem 'rails', '3.1.1'
 
 gem 'pg'
 
+gem 'sqlite3'
+
 gem 'heroku'
 
 gem 'therubyracer', :platforms => :ruby
