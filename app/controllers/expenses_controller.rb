@@ -28,6 +28,8 @@ class ExpensesController < ApplicationController
 
       cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
 
+      # TODO: user.microposts.build(content: "Lorem ipsum")
+      
       @expense.group    = group
       @expense.creditor = current_user
       @expense.amount   = cost_per_user
