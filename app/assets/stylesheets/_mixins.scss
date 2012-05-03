@@ -4,6 +4,30 @@
   border-radius: $rad;
 }
 
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@mixin ease-out($time: 0.5s) {
+  -webkit-transition: all $time ease-out;
+     -moz-transition: all $time ease-out;
+       -o-transition: all $time ease-out;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
 @mixin horizontal-gradient($startColor: #555, $endColor: #333) {
   background-color: $endColor;
   background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
