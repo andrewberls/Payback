@@ -14,10 +14,8 @@ class GroupsController < ApplicationController
     @group.initialize_owner(current_user)
     if @group.save
       redirect_to group_path(@group.gid)
-      #redirect_to groups_path
     else
-      flash[:error] = "Something went wrong - please check your fields and try again."
-      #redirect_to new_group_path
+      flash.now[:error] = "Something went wrong - please check your fields and try again."
       render :new
     end
   end
@@ -28,14 +26,19 @@ class GroupsController < ApplicationController
   #------------------------------
   def index
     @groups = current_user.groups
+    # TODO: this is only for convenience. Leave it in
     #redirect_to welcome_path if @groups.blank?
   end
 
   def show
     @group = Group.find_by_gid(params[:id])
+
+    # TODO: format access control here
+    #   html -> redirect
+    #   json -> return empty body
+
     if @group.blank? or !@group.users.include? current_user
       redirect_to groups_path and return
-      # TODO: log unauthorized access attempt
     end
 
     respond_to do |format|
@@ -67,7 +70,7 @@ class GroupsController < ApplicationController
       flash[:success] = "Group successfully updated."
       redirect_to groups_path      
     else
-      flash[:error] = "Something went wrong - please check your fields and try again."
+      flash.now[:error] = "Something went wrong - please check your fields and try again."
       render :edit
     end
   end
@@ -113,6 +116,7 @@ class GroupsController < ApplicationController
   end
 
   def leave
+    # TODO: implement leave
   end
 
 end

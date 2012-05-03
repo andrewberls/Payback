@@ -7,7 +7,6 @@
   }
 
   ul {
-
     li {
       font-size: 1.2em;
       line-height: 1.4;
@@ -30,8 +29,13 @@
 
   h1 {
     margin-bottom: 10px;
+
+    & + p {
+      margin-bottom: 15px;
+    }
   }
 }
+
 
 //-- GROUP DASHBOARD
 //------------------------------------
@@ -56,7 +60,7 @@
       font-size: 1.7em;
       border: 1px solid $border-color;
       margin-bottom: 5px;
-      padding: 4px; // 3px
+      padding: 4px;
     }
 
     .group-title,
@@ -66,7 +70,9 @@
       margin-top: 10px;
       margin-right: 5px;
 
-      a { color: $defaultText; }
+      a {
+        color: $defaultText;
+      }
     }
 
     .group-title-spacer {
