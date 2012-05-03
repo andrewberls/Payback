@@ -4,6 +4,12 @@
 insertAfter = (referenceNode, newNode) ->
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 
+validate = (fields) ->
+  errors = false
+  for field in fields
+    errors = true if !field.val()
+  errors
+
 
 #------------------------------
 # User creation
@@ -19,7 +25,7 @@ $ ->
     $fields = $form.find('input')    
     $fields.each ->
       $parent = $(this).parent()
-      if $(this).val() == ""
+      if !$(this).val()
         $parent.addClass("error")
         errors = true
       else
@@ -37,13 +43,14 @@ $ ->
     $form = $(this).parent()
     $email = $("#email")
     $password = $("#password")
-    if $email.val() == "" or $password.val() == ""
-      if $form.find('.alert').size() == 0 # Only if an alert doesn't already exist
-        alertBox = document.createElement("div")
-        alertBox.setAttribute('class', 'alert alert-error');
-        errTxt = document.createTextNode("Invalid email or password")
-        alertBox.appendChild(errTxt)
-        $title = $form.find('.form-title')[0]
-        insertAfter($title, alertBox)
-        $('.alert').hide().slideDown('fast')
+    errors = validate([$email, $password])
+    
+    if errors && $form.find('.alert').size() == 0 # Only if an alert doesn't already exist
+      alertBox = document.createElement("div")
+      alertBox.setAttribute('class', 'alert alert-error');
+      errTxt = document.createTextNode("Invalid email or password")
+      alertBox.appendChild(errTxt)
+      $title = $form.find('.form-title')[0]
+      insertAfter($title, alertBox)
+      $('.alert').hide().slideDown('fast')
       return false
