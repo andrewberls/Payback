@@ -14,10 +14,18 @@ admin_user = User.create(
   password_confirmation: "admin"
 )
 
-aux_user = User.create(
+aux_user_1 = User.create(
   first_name: "Joe",
   last_name: "Schmoe",
   email: "joe@gmail.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
+aux_user_2 = User.create(
+  first_name: "Jane",
+  last_name: "Doe",
+  email: "jane@gmail.com",
   password: "password",
   password_confirmation: "password"
 )
@@ -29,4 +37,5 @@ seed_group = Group.create(
 )
 
 seed_group.initialize_owner admin_user
-seed_group.users << aux_user
+seed_group.users << aux_user_1
+seed_group.users << aux_user_2

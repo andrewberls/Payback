@@ -7,7 +7,7 @@ loadUsers = (gid) ->
       for user in json.users
         result += "
           <label class='checkbox-inline'>
-            <input type='checkbox' value='#{user.id}'>
+            <input type='checkbox' name='users[#{user.id}]' value='#{user.id}'>
             #{user.first_name}
           </label>
         "

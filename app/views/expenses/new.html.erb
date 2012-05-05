@@ -1,5 +1,7 @@
 <% provide(:title, 'Add Expense') %>
 
+<%= javascript_include_tag 'select-users' %>
+
 <div class="row">
   <div class="span4 offset4">    
 
@@ -9,9 +11,9 @@
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
       <%=
-        select "group", "gid", @groups.collect { |g| [g.title, g.gid] },
+        select("group", "gid", @groups.collect { |g| [g.title, g.gid] },
           { :include_blank => false },
-          { id: "group-select" }
+          { id: "group-select" })
       %>
 
       <%= render 'select_users' %>     

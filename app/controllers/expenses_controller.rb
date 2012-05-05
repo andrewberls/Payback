@@ -12,13 +12,23 @@ class ExpensesController < ApplicationController
 
   def create
 
+    # This entire method needs to be revamped. I feel like a lot of this could be put into helper methods
+
     @expense = Expense.new(params[:expense].except(:type))
 
     if @expense.valid?
 
       action = params[:expense][:type] == 'payback' ? :payback : :split
-      group = current_user.groups.first           # TODO: SHOULD BE ABLE TO SELECT GROUP
-      selected_users = group.users-[current_user] # TODO: SHOULD BE ABLE TO SELECT USERS
+
+      group = Group.find_by_gid(params[:group][:gid])
+
+      selected_users = []
+
+      if params[:users]
+       params[:users].each { |id, _| selected_users << User.find_by_id(id) }
+      else
+        selected_users = group.users
+      end
 
       cost_per_user = if action == :split      
                         @expense.amount / (selected_users+[current_user]).count # Split - selected including current                     
@@ -35,7 +45,8 @@ class ExpensesController < ApplicationController
       @expense.amount   = cost_per_user
       @expense.assign_to_users(selected_users)
 
-    else      
+    else
+      @groups = current_user.groups
       flash.now[:error] = "Error -  check your fields and try again"
       return render :new
     end 
