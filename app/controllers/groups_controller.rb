@@ -44,10 +44,18 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json do
-        render :json => {
-          group: @group.as_json(except: [:password_digest, :id]), 
-          users: @group.users.as_json(except: [:password_digest, :auth_token, :updated_at])
-        } 
+
+          users = if params[:others]
+                    @group.users - [current_user]
+                  else
+                    @group.users
+                  end
+
+          render :json => {
+            group: @group.as_json(except: [:password_digest, :id]),
+            users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
+          }
+
       end
     end
 

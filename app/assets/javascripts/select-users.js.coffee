@@ -1,7 +1,7 @@
 loadUsers = (gid) ->
   console.log "loadUsers called with gid: #{gid}"
   $.ajax {
-    url: "/groups/#{gid}.json",
+    url: "/groups/#{gid}.json?others=true",
     success: (json) ->
       result = ""
       for user in json.users
