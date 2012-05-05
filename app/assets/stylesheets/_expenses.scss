@@ -4,14 +4,19 @@
   margin-bottom: 0;
 }
 
+#group-select {
+  margin-top: 5px;
+  width: 100%;
+}
+
 .users-prompt {
   overflow: auto;
   margin: 10px 0;
 }
 
 #users-container {
+  @include clearfix;
   display: none;
-  overflow: auto;
   margin-bottom: 10px;
 
   h5 {
@@ -94,7 +99,6 @@
       }
 
       .expense-price {
-        //outline: 1px solid red;        
         font-size: 1.2em;
         margin: $top-margin 0;
         margin-right: 10px;
@@ -102,7 +106,6 @@
 
       .expense-debtor,
       .expense-creditor {
-        //outline: 1px solid green;
         margin: $top-margin 0;
         margin-right: 10px;      
         &:before { content: " - "; }
@@ -115,13 +118,11 @@
       }
 
       .expense-title {
-        //outline: 1px solid blue;       
         font-size: 0.7em;        
         margin-bottom: 5px;
       }
 
       .expense-date {
-        //outline: 1px solid orange;
         clear: left;    
         font-size: 0.5em;
       }
