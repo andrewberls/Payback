@@ -26,7 +26,7 @@
 
     <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
 
-    <h2>Owed to You</h2>
+    <h2 class="container-header">Owed to You</h2>
 
     <% if current_user.active_credits.blank? %>
       <div class="expenses-container">
@@ -46,7 +46,7 @@
   ------------------------------------%>
   <div class="span6 right-column">
 
-    <h2>You Owe</h2>
+    <h2 class="container-header">You Owe</h2>
 
     <% if current_user.active_debts.blank? %>
       <div class="expenses-container">
