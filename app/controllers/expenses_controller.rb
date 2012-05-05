@@ -27,7 +27,7 @@ class ExpensesController < ApplicationController
       if params[:users]
        params[:users].each { |id, _| selected_users << User.find_by_id(id) }
       else
-        selected_users = group.users
+        selected_users = group.users - [current_user]
       end
 
       cost_per_user = if action == :split      
