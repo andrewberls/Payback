@@ -32,7 +32,7 @@
 
     .userbox {
       // Generic block container for checkbox/label
-      
+
       label,
       input {
         float: none;
@@ -138,6 +138,7 @@
         //outline: 1px solid red;
         margin: $top-margin/2 0;    
         overflow: auto;
+        padding-left: 5px;
       }
 
       .expense-title {
