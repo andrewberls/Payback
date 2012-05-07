@@ -103,6 +103,7 @@ body {
 //-- POST-SIGNUP WELCOME
 //------------------------------------
 .welcome-container {
+  @include clearfix;
   margin: 0 auto;
   padding: 30px;
   text-align: center;
