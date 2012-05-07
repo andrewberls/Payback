@@ -5,16 +5,19 @@
 }
 
 #group-select {
+  // Group dropdown
   margin-top: 5px;
   width: 100%;
 }
 
 .users-prompt {
-  overflow: auto;
+  // Button container
+  @include clearfix;
   margin: 10px 0;
 }
 
 #users-container {
+  // Contains the individual columns
   @include clearfix;
   display: none;
   margin-bottom: 10px;
@@ -26,6 +29,23 @@
   .user-column {    
     float: left;
     width: 50%;
+
+    .userbox {
+      // Generic block container for checkbox/label
+      
+      label,
+      input {
+        float: none;
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      input {
+        margin-right: 5px;
+      }
+
+    } // .userbox
   }
 
 } // .users-container
@@ -107,8 +127,11 @@
       .expense-debtor,
       .expense-creditor {
         margin: $top-margin 0;
-        margin-right: 10px;      
-        &:before { content: " - "; }
+        margin-right: 10px;
+
+        &:before {
+          content: " - ";
+        }
       }
 
       .info-stack {

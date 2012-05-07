@@ -1,19 +1,22 @@
 loadUsers = (gid) ->
+
+  $.el.registerTag 'userbox', (one, two) ->
+    this.appendChild(one)
+    this.appendChild(two)
+
   console.log "loadUsers called with gid: #{gid}"
   $.ajax {
     url: "/groups/#{gid}.json?others=true",
     success: (json) ->
-      result = ""
+      $column = $(".user-column")
+      $column.html("")
       for user in json.users
-        result += "
-          <label class='checkbox-inline'>
-            <input type='checkbox' name='users[#{user.id}]' value='#{user.id}'>
-            #{user.first_name}
-          </label>
-        "
-      $(".user-column").html(result)
-    error: ->
-      # handle error
+        input = $.el.input {
+          "type" : "checkbox",
+          "name" : "users[#{user.id}]"
+        }
+        label = $.el.label({}, "#{user.first_name}")
+        $column.append $.el.userbox(input, label)
   }
 
 $ ->

@@ -8,7 +8,6 @@ input[type=password] {
 
 [type=submit] {
   float: right;
-  //margin-top: 5px;
 }
 
 .form-title {
@@ -21,26 +20,16 @@ label {
   float: left;
 }
 
-.checkbox-inline {  
-  float: left;
-  clear: both;
-
-  input {
-    float: left;
-    margin-right: 5px;
-  }
-}
-
 .input-prepend {
   float: left;
   width: 100%;
 
   input {
     padding: 7px 5px;
-    width:  87%;
+    width:  87%; // TODO: Border box can probably fix this
   }
   .add-on {
-    padding: 7px;    
+    padding: 7px;
   }
 } // .input-prepend
 

@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
       selected_users = []
 
       if params[:users]
-       params[:users].each { |id, _| selected_users << User.find_by_id(id) }
+       params[:users].keys.each { |id| selected_users << User.find_by_id(id) }
       else
         selected_users = group.users - [current_user]
       end
