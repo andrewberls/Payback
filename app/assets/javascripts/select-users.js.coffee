@@ -1,10 +1,4 @@
 loadUsers = (gid) ->
-
-  $.el.registerTag 'userbox', (one, two) ->
-    this.appendChild(one)
-    this.appendChild(two)
-
-  console.log "loadUsers called with gid: #{gid}"
   $.ajax {
     url: "/groups/#{gid}.json?others=true",
     success: (json) ->
@@ -27,6 +21,12 @@ $ ->
   $group     = $('#users-group')
   $select    = $('#users-select')
 
+  $.el.registerTag 'userbox', (one, two) ->
+    # Register a laconic element for user rendering
+    this.appendChild(one)
+    this.appendChild(two)
+
+  # TODO: I don't like the repetition for init and subsequent changes. Can this be combined?
   gid = $groups.find("option:selected").val()
   loadUsers(gid)
 
@@ -34,6 +34,7 @@ $ ->
     gid = $(this).find("option:selected").val()
     loadUsers(gid)
 
+  # Slide select up/down and change button display
   $group.click ->
     $container.slideUp(speed)
     $(this).addClass('disabled')
