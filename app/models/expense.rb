@@ -22,15 +22,16 @@ class Expense < ActiveRecord::Base
   belongs_to :creditor, :class_name => "User"
   belongs_to :debtor,   :class_name => "User"
 
-  def assign_to_users(users)
+  def assign_to(*users)
     # Split and assign an expense amongst a set of selected users
 
-    users.each do |user|
+    users.flatten.each do |user|
       # TODO: Check if existing expense to this creditor already and combine?
       expense = self.dup # Create a new expense instance to assign to each user
       expense.debtor = user
       user.debts << expense
     end
+
   end
 
 end

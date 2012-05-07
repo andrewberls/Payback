@@ -25,15 +25,19 @@ class ExpensesController < ApplicationController
       selected_users = []
 
       if params[:users]
-       params[:users].keys.each { |id| selected_users << User.find_by_id(id) }
+        # Have any users been checked?
+        params[:users].keys.each { |id| selected_users << User.find_by_id(id) }
       else
+        # Otherwise just use the group
         selected_users = group.users - [current_user]
       end
 
-      cost_per_user = if action == :split      
-                        @expense.amount / (selected_users+[current_user]).count # Split - selected including current                     
+      cost_per_user = if action == :split
+                        # Split - selected including current
+                        @expense.amount / (selected_users+[current_user]).count
                       else
-                        @expense.amount / selected_users.count # Payback - selected excluding current                      
+                        # Payback - selected excluding current
+                        @expense.amount / selected_users.count
                       end
 
       cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
@@ -43,7 +47,7 @@ class ExpensesController < ApplicationController
       @expense.group    = group
       @expense.creditor = current_user
       @expense.amount   = cost_per_user
-      @expense.assign_to_users(selected_users)
+      @expense.assign_to selected_users
 
     else
       @groups = current_user.groups
