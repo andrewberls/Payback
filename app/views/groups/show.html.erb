@@ -1,6 +1,6 @@
- <% provide(:title, "Group: #{@group.title}") %>
+<% provide(:title, "Group: #{@group.title}") %>
 
- <% if @group.expenses.blank? && current_user == @group.owner %>
+<% if @group.expenses.blank? && current_user == @group.owner %>
   <%= render 'group_welcome' %>
 <% else %>
 
