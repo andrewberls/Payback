@@ -1,9 +1,11 @@
-<%# @groups.each do |group| %>
+<% @groups.each do |group| %>
 
   <div class="group-container">
+    <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
 
     <div class="expenses-container">  
 
+      <% @credits = group.credits.select { |exp| exp.active && exp.creditor_id == current_user.id } %>
       <% @credits.each do |expense| %>
         <div class="expense">
 
@@ -35,4 +37,4 @@
 
   </div><!-- .group-container -->
 
-<%# end %><%# @groups.each  %>
+<% end %><%# @groups.each  %>

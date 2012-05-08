@@ -2,11 +2,13 @@
 
   <% unless group.expenses.blank? %>
 
-    <%# content_tag :h3, group.title %>
+  <div class="group-container">
+    <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
 
     <div class="expenses-container">
 
-      <% @debts = Expense.where(group_id: group.id, active: true, debtor_id: current_user.id) %>
+      <%# @debts = Expense.where(group_id: group.id, active: true, debtor_id: current_user.id) %>
+      <% @debts = group.debts.select { |exp| exp.active && exp.debtor_id == current_user.id } %>
       <% @debts.each do |expense| %>
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
@@ -21,6 +23,8 @@
       <% end %>
 
     </div><!-- .expenses-container -->
+
+  </div><!-- .group-container -->
 
   <% end %>
 

@@ -65,8 +65,9 @@ class ExpensesController < ApplicationController
   def index
     # Main dashboard
     @groups = current_user.groups
-    @credits = current_user.active_credits.order("id DESC")
-    @debts = current_user.active_debts.order("id DESC")
+  end
+
+  def condensed
   end
 
 
