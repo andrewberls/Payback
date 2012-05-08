@@ -1,7 +1,20 @@
+@mixin clearfix {
+  // http://nicolasgallagher.com/micro-clearfix-hack/
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
 @mixin border-radius($rad: 5px) {
-  -moz-border-radius: $rad;
   -webkit-border-radius: $rad;
-  border-radius: $rad;
+     -moz-border-radius: $rad;
+          border-radius: $rad;
 }
 
 @mixin border-box {
@@ -16,17 +29,12 @@
        -o-transition: all $time ease-out;
 }
 
-@mixin clearfix {
-  // http://nicolasgallagher.com/micro-clearfix-hack/
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: "";
-  }
-  &:after {
-    clear: both;
-  }
+@mixin box-shadow($horizOffset: 0px, $vertOffset: 0px, $blurDist: 0px, $spreadDist: 0px, $color: #000) {
+  -webkit-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
+     -moz-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
+          box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
+              filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');       
 }
 
 @mixin horizontal-gradient($startColor: #555, $endColor: #333) {
