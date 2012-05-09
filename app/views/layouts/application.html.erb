@@ -9,6 +9,10 @@
 </head>
 <body>
 
+  <% if signed_in? %>
+    <%= render 'shared/header' %>
+  <% end %>
+
   <div class="container"> 
 
     <%= yield %>
