@@ -1,9 +1,5 @@
 .footer {  
-  $shadowColor: #ccc;
-  
-  -webkit-box-shadow: inset 0 10px 10px -7px $shadowColor;
-  -moz-box-shadow: inset 0 10px 10px -7px $shadowColor;    
-  box-shadow: inset 0 10px 10px -7px $shadowColor;    
+  @include inset-box-shadow(0, 10px, 10px, -7px, #ccc); 
   color: lighten($darkGray, 30);
   margin-top: 100px;
   padding-top: 10px;

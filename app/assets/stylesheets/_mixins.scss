@@ -33,8 +33,16 @@
   -webkit-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
      -moz-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
           box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
-          -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
-              filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');       
+          // -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
+          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');       
+}
+
+@mixin inset-box-shadow($horizOffset: 0px, $vertOffset: 0px, $blurDist: 0px, $spreadDist: 0px, $color: #000) {
+  -webkit-box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
+     -moz-box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
+          box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
+          // -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
+          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');    
 }
 
 @mixin horizontal-gradient($startColor: #555, $endColor: #333) {
