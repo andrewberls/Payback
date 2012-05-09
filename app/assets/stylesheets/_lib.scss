@@ -1,21 +1,3 @@
-// For modern browsers
-// .clearfix:before,
-// .clearfix:after {
-//     content:"";
-//     display:table;
-// }
-// .clearfix:after {
-//     clear:both;
-// }
-// For IE 6/7 (trigger hasLayout)
-// .clearfix {
-//     background-color: black;  
-//     zoom:1;
-// }
-
-.clearfix { clear: both; }
-
-
 //-- BUTTONS
 //------------------------------------
 .btn-huge {
@@ -33,4 +15,3 @@
 .alert {
 	margin-bottom: 10px;
 }
-
