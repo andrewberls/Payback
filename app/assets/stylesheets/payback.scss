@@ -23,7 +23,7 @@ body {
 .main-title {
   // Used for Signup and Dashboard
   font-size: 3em;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 
@@ -130,9 +130,11 @@ body {
     float: right;
     margin-right: $spacer;
   }
+
 } // .welcome-container
 
 
+@import "header";
 @import "forms";
 @import "expenses";
 @import "groups";
