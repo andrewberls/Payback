@@ -1,6 +1,8 @@
 <% provide(:title, 'Add Expense') %>
 
-<%= javascript_include_tag 'select-users' %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "select-users" %>
+<% end %>
 
 <div class="row">
   <div class="span4 offset4">    
