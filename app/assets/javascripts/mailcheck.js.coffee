@@ -24,6 +24,3 @@ $email.on 'blur', ->
         $mail_suggestion.append "#{domain}?"
         $('.mail-suggestion').html($mail_suggestion.html())
   }
-
-handler = (text) ->
-  console.log text
