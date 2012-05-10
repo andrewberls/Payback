@@ -6,7 +6,7 @@ $email.on 'blur', ->
       domain = $.el.span({'class' : 'domain'}, "#{suggestion.domain}").outerHTML
 
       $mail_suggestion = $($.el.span({'class' : 'mail-suggestion', 'style' : 'display: none'}, 
-                                   "Yikes! Did you mean #{suggestion.address}@"))
+                                      "Yikes! Did you mean #{suggestion.address}@"))
 
       if $form.find('.mail-suggestion').size() == 0
         #  First error - create/insert a suggestion element
@@ -17,8 +17,8 @@ $email.on 'blur', ->
           $email.val(suggestion.full)
           $(this).fadeOut(150, -> $(this).remove())
 
-        $email.after($mail_suggestion)       # Insert the node
-        $mail_suggestion.fadeIn(350)         # Fade in the node
+        $email.after($mail_suggestion) # Insert the node
+        $mail_suggestion.fadeIn(350)   # Fade in the node
       else
         # Subsequent errors - change the existing HTML
         $mail_suggestion.append "#{domain}?"
