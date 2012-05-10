@@ -1,5 +1,9 @@
 <% provide(:title, 'Sign Up') %>
 
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "mailcheck" %>
+<% end %>
+
 <div class="row-fluid">
     <h1 class="main-title">Welcome to Payback.</h1>
 </div>
