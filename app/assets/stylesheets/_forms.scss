@@ -52,6 +52,7 @@ label {
   .domain {
     color: $linkColor;
     font-weight: bold;
+    text-decoration: underline;
 
     &:hover {
       cursor: pointer;
