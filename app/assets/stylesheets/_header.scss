@@ -1,6 +1,4 @@
 header {
-  // @mixin box-shadow($horizOffset: 0px, $vertOffset: 0px, $blurDist: 0px, $spreadDist: 0px, $color: #000) {
-  //@include box-shadow(0px, 10px, 3px, -8px, lighten($darkGray, 35)); // ccc
   @include clearfix;
   background-color: $lightGray;
   border-bottom: 1px solid lighten($darkGray, 40);
@@ -26,7 +24,6 @@ header {
       @include border-box;
 
       a {
-        
         float: left;
         font-size: 1.1em;
         line-height: 30px;
