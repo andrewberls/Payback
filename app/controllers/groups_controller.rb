@@ -33,17 +33,16 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by_gid(params[:id])
 
-    # TODO: format access control here
-    #   html -> redirect
-    #   json -> return empty body
-
-    if @group.blank? or !@group.users.include? current_user
-      redirect_to groups_path and return
-    end
+    # TODO: DEAL WITH BLANK GROUP
 
     respond_to do |format|
+      # TODO: HOW TO RESPOND TO UNAUTHORIZED HTML?
       format.html # show.html.erb
       format.json do
+
+        unless (current_user && @group.users.include?(current_user))
+          render json: {} and return
+        end
 
           users = if params[:others]
                     @group.users - [current_user]
@@ -51,7 +50,7 @@ class GroupsController < ApplicationController
                     @group.users
                   end
 
-          render :json => {
+          render json: {
             group: @group.as_json(except: [:password_digest, :id]),
             users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
           }
