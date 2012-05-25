@@ -1,5 +1,7 @@
 class Expense < ActiveRecord::Base
 
+  # TODO: fat model, skinny controller. Get on it.
+
   #------------------------------
   # Validations
   #------------------------------
@@ -23,6 +25,7 @@ class Expense < ActiveRecord::Base
   belongs_to :debtor,   :class_name => "User"
 
   def assign_to(*users)
+    # TODO: use snippets/array_wrap
     # Split and assign an expense amongst a set of selected users
 
     users.flatten.each do |user|

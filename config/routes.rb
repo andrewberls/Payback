@@ -27,7 +27,8 @@ Payback::Application.routes.draw do
 
   root :to => "sessions#new"
 
-  # ROUTE ALL PAGE NOT FOUND TO 404.html  
+  # ROUTE ALL PAGE NOT FOUND TO 404.html
+  # TODO: Make a controller action
   #match "*a" => redirect("/404.html")
 
 end
