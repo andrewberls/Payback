@@ -2,7 +2,6 @@ header {
   @include clearfix;
   background-color: $lightGray;
   border-bottom: 1px solid lighten($darkGray, 40);
-  height: 50px;
 
   .container {
     margin-top: 0;
@@ -11,34 +10,26 @@ header {
   h1 {
     color: lighten($darkGray, 5);
     float: left;
+    line-height: 40px;
     margin-right: 25px;
-    line-height: 50px;
   }
 
-  ul {
+  nav ul {
     list-style: none;
     margin: 0;
     
+    a {
+      display: inline-block;
+      float: left;
+      font-size: 1.1em;
+      padding: 12px 15px;
 
-    li {
-      @include border-box;
-
-      a {
-        float: left;
-        font-size: 1.1em;
-        line-height: 30px;
-        height: 100%;
-        padding: 10px 15px;
-
-        &:hover {
-          background-color: lighten($darkGray, 15);
-          //border-bottom: 1px solid lighten($linkColor, 10);
-          color: white;
-          text-decoration: none;
-        }
-
+      &:hover {
+        background-color: lighten($darkGray, 15);
+        color: white;
+        text-decoration: none;
       }
-    } // li
+    }
   }
 
-} // header
+}
