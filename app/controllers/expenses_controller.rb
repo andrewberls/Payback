@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
 
-  before_filter :check_auth, :accept => [:index, :new]
+  before_filter :check_auth
 
   #------------------------------
   # CREATE
@@ -26,7 +26,7 @@ class ExpensesController < ApplicationController
 
       if params[:users]
         # Have any users been checked?
-        params[:users].keys.each { |id| selected_users << User.find_by_id(id) }
+        params[:users].keys.each { |id| selected_users << User.find(id) }
       else
         # Otherwise just use the group
         selected_users = group.users - [current_user]
@@ -41,21 +41,20 @@ class ExpensesController < ApplicationController
                       end
 
       cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
-
-      # TODO: user.microposts.build(content: "Lorem ipsum")
       
       @expense.group    = group
       @expense.creditor = current_user
       @expense.amount   = cost_per_user
+
       @expense.assign_to selected_users
 
+      return redirect_to expenses_path
     else
       @groups = current_user.groups
       flash.now[:error] = "Error -  check your fields and try again"
       return render :new
-    end 
-        
-    return redirect_to expenses_path
+    end
+    
   end
 
 
@@ -67,8 +66,8 @@ class ExpensesController < ApplicationController
     @groups = current_user.groups
   end
 
-  def condensed
-  end
+  #def condensed
+  #end
 
 
   #------------------------------
