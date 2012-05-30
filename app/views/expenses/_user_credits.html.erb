@@ -1,7 +1,7 @@
 <% @groups.each do |group| %>
 
   <div class="group-container">
-    <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
+    <%= content_tag(:h3, group.title) unless group.expenses.blank? %>
 
     <div class="expenses-container">  
 
