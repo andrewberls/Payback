@@ -60,12 +60,11 @@ body {
     }
   }
   
-  ul {
-    li {      
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
+  ul li {      
+    font-size: 1.5em;
+    margin-bottom: 10px;
   }
+  
 
   // Thumbnail list
   //-------------------
@@ -86,9 +85,8 @@ body {
 
   } // .thumbnails
 
-  .item-container {    
-    overflow: auto;
-    clear: both;
+  .item-container {
+    @include clearfix;
     margin-bottom: 10px;
   }
 
