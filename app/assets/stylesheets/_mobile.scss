@@ -83,21 +83,32 @@
 //-- HEADER
 //------------------------------------
 header {
-  h1, a {
-    float: none !important;
-    text-align: center;
-    margin: 0;
+  h1 {
+    display: none;
+
+    // For centered display
+    // margin: 0 0 5px;
+    // float: none;
+    // text-align: center;
   }
 
-  nav ul {
-    a {
-      border-bottom: 1px solid lighten($darkGray, 40);
-      display: block;
-      padding: 8px 0;
-    }
+  nav {
+    padding-top: 4px;
+    text-align: center;
 
-    &li:last-child > a {
-      border: none;
+    ul {
+      display: inline-block;
+      text-align: center;
+
+      li {
+        float: left;
+        margin: 0 5px;
+      }
+
+      a {
+        @include border-radius(3px);
+        padding: 8px;
+      }
     }
   }
 }
