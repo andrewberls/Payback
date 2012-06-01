@@ -3,18 +3,22 @@
 .new-expense-form {
   margin-bottom: 5px;
   padding: 20px;
+
+  label:first-of-type {
+    margin-top: 5px;
+  }
 }
 
 #group-select {
   // Group dropdown
-  margin-top: 5px;
+  margin-top: 10px;
   width: 100%;
 }
 
 .users-prompt {
   // Button container
   @include clearfix;
-  margin: 15px 0;
+  margin: 15px 0 10px;
 
   .btn:last-of-type {
     float: right;

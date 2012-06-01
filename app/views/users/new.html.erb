@@ -4,14 +4,14 @@
   <%= javascript_include_tag "mailcheck" %>
 <% end %>
 
-<div class="row-fluid">
+<div class="row">
     <h1 class="main-title">Welcome to Payback.</h1>
 </div>
 
 <div class="row">
 
   <%# TODO: Put visual here, like dashboard screenshots %>
-  <div class="span7 front-welcome">        
+  <div class="span-8 front-welcome">        
     <p class="easy-way">
       The easiest way to track expenses for your
       <span id="word-scroll">
@@ -34,7 +34,7 @@
 
     <ul class="thumbnails">
       <div class="item-container">
-        <li class="span4">
+        <li class="span-4">
           <h3>Simple.</h3>
           <p>So simple.</p>
         </li>
@@ -42,8 +42,8 @@
       </div>
 
       <div class="item-container">
-        <li class="span2"><img src="http://placehold.it/160x120" alt=""></li>
-        <li class="span4">
+        <li class="span-2"><img src="http://placehold.it/160x120" alt=""></li>
+        <li class="span-4">
           <h3>Easy.</h3>
           <p>Your grandmother could do it.</p>
         </li>
@@ -54,13 +54,13 @@
           <h3>Built to look great on your phone.</h3>
           <p>For when you're on the go.</p>
         </li>
-       <li class="span2"><img src="http://placehold.it/160x120" alt=""></li>
+       <li class="span-2"><img src="http://placehold.it/160x120" alt=""></li>
       </div>
     </ul><!-- .thumbnails -->
 
   </div><!-- .front-welcome -->
   
-  <div class="span5 signup-container">
+  <div class="span-7 offset-1 signup-container">
 
    <%= form_for(@user, html: {class: "well signup-form"}) do |f| %>
       <h1 class="form-title">Sign Up</h1>

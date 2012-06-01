@@ -2,6 +2,7 @@
 //------------------------------------
 //= require lib/cheeky.min
 //= require components/buttons
+
 @import "lib/variables";
 @import "lib/mixins";
 @import "components/alerts";
@@ -10,7 +11,7 @@
 @import "expenses";
 @import "groups";
 @import "footer";
-// @import "responsive";
+@import "responsive";
 
 
 //-- GENERIC
@@ -36,7 +37,7 @@ body {
 // Headers
 .main-title {
   font-size: 3em;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 h1 {

@@ -12,7 +12,7 @@
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
-      <label for="select_group">Select a group:</label>
+      <p>Select a group:</p>
 
       <%=
         select("group", "gid", @groups.collect { |g| [g.title, g.gid] },
