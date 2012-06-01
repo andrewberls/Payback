@@ -8,19 +8,42 @@
 
 
 
-@media (max-width: 1100px) {
+@media (max-width: 1100px) {} // @media (max-width: 1200px)
 
 
-} // @media (max-width: 1200px)
+@media (max-width: 480px), (min-width: 630px) and (max-width: 1100px) {
+
+//-- POST-SIGNUP WELCOME
+//------------------------------------
+.welcome-container {
+
+  #group-join,
+  #group-new {
+    float: none;
+    margin: 0 auto;
+  }
+
+  #group-join {
+    margin-bottom: 20px;
+  }
+}
+
+}
 
 
 
 @media (max-width: 790px) {
 
 .welcome-container {
-  #group-join {
-    margin-bottom: 20px;
-  }
+  // #group-join {
+  //   margin-bottom: 20px;
+  // }
+
+  // #group-join,
+  // #group-new {
+  //   float: none;
+  //   margin: 0;
+  // }
 }
 
 .footer {
@@ -36,7 +59,7 @@
   }
 }
 
-} //@media (max-width: 768px)
+} //@media (max-width: 790px)
 
 
 
@@ -83,24 +106,6 @@ header {
     }
   }
 }
-
-
-//-- POST-SIGNUP WELCOME
-//------------------------------------
-.welcome-container {
-  width: 80%;
-
-  #group-join,
-  #group-new {
-    float: none;
-    margin: 0 auto;
-  }
-
-  #group-join {
-    margin-bottom: 20px;
-  }
-}
-
 
 
 //-- EXPENSES DASHBOARD
