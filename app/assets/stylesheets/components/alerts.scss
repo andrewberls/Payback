@@ -1,0 +1,21 @@
+.alert {
+  @include border-box;
+  @include border-radius(5px);
+  border: 1px solid white;
+  font-size: 0.9em;
+  margin: 5px 0 10px;
+  padding: 10px 5px;
+
+  &.alert-success {
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847;
+  }
+
+  &.alert-error {
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+  }
+
+}

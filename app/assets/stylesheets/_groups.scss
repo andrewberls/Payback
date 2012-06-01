@@ -20,19 +20,24 @@
 //-- GROUP POST-CREATE WELCOME
 //------------------------------------
 .group-welcome {
+  // Landing page after group creation
+  @extend .whitebox;
   text-align: center;
-  
-  p {
-    font-size: 1.2em;
-    line-height: 1.4;
-  }
 
   h1 {
-    margin-bottom: 10px;
+    margin: 5px 0;
+  }
 
-    & + p {
-      margin-bottom: 15px;
-    }
+  h1 + p {
+    margin-bottom: 20px;
+  }
+
+  .btn:first-of-type {
+    float: left;
+  }
+
+  .btn:last-of-type {
+    float: right;
   }
 }
 
@@ -40,72 +45,59 @@
 //-- GROUP DASHBOARD
 //------------------------------------
 .container-header {
-  margin-bottom: 5px;
+  //margin-bottom: 5px;
 }
 
-.groups-container { 
-  $border-color: #d9d9d9;
+.groups-container {
+  @extend .whitebox;
+  margin-bottom: 15px;
+  padding: 0;
+}
 
-  // border: 1px solid $border-color;
-  border-bottom: none;
-  margin: 10px 0 15px;  
+.groups-container + .right a:last-child {
+  margin-left: 10px;
+}
 
-  .group {
-    $padding: 10px;
-        
-    background-color: #F8F8F8;
-    border-bottom: 1px solid $border-color;    
-    overflow: auto;
-    padding: $padding;
-    position: relative;
+.group {
+  @include clearfix;
+  border-bottom: 1px dashed $med-gray;
+  padding: 10px;
 
-    .group-gid {      
-      float: right;
-      font-size: 1.7em;
-      border: 1px solid $border-color;
-      margin-bottom: 5px;
-      padding: 4px;
+  &:last-of-type {
+    border: none;
+  }
+
+  .group-gid,
+  .group-title, 
+  .group-owner {
+    float: left;
+  }
+
+  .group-gid {
+    float: right;
+    font-size: 1.2em;
+    margin: -30px 0 0;
+  }
+
+  .group-title {
+    color: $gray-text;
+    font-size: 1.5em;
+
+    &:hover {
+      color: $blue;
+      text-decoration: none;
     }
+  }
 
-    .group-title,
-    .group-title-spacer {      
-      float: left;
-      font-size: 1.4em;
-      margin-top: 10px;
-      margin-right: 5px;
-
-      a {
-        color: $defaultText;
-      }
-    }
-
-    .group-title-spacer {
-      // Fill out space for groups that are not owned
-      margin-top: 20px;
-      margin-bottom: 25px;
-    }
-
-    .group-users-count,
-    .group-owner {
-      clear: both;
-      color: #999;      
-      float: left;
-      line-height: 2;
-      margin-bottom: 5px;
-      margin-right: 10px;    
-    }
-
-    .btn-container {      
-      display: inline-block;
-      overflow: auto;
-      position: absolute;
-      bottom: $padding; right: $padding;
-    }
-
-  } // .group
-
-} // .groups-container
+  .group-owner {
+    clear: both;
+    color: darken($med-gray, 15);
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+}
 
 .group-back {
-  margin-bottom: 10px;
+  // 'Back to Groups' in Group#show
+  margin-bottom: 15px;
 }

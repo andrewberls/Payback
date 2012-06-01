@@ -1,9 +1,9 @@
 <% provide(:title, 'Log In') %>
 
 <div class="row">
-  <div class="span4 offset4">
+  <div class="span-6 offset-5">
 
-    <%= form_tag(sessions_path, class: "well login-form") do %>
+    <%= form_tag(sessions_path, class: "login-form") do %>
       <h1 class="form-title">Payback</h1>
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
@@ -24,7 +24,7 @@
         Remember Me
       </label>
 
-      <%= submit_tag "Log in", class: "btn btn-primary", id: "submit-login" %>
+      <%= submit_tag "Log in", class: "btn btn-blue", id: "submit-login" %>
       
     <% end %><!-- .login-form -->
 

@@ -1,9 +1,9 @@
 <% provide(:title, 'Join Group') %>
 
 <div class="row">
-  <div class="span4 offset4">
+  <div class="span-6 offset-5">
 
-    <%= form_tag(add_group_path, class: "well join-group-form") do %>
+    <%= form_tag(add_group_path, class: "join-group-form") do %>
       <h1 class="form-title">Join A Group</h1>
       <div class="help-block">This information should have been given to you by the group creator.</div>
       
@@ -19,7 +19,7 @@
         <%= password_field_tag :password%> 
       </div>
 
-      <%= submit_tag "Join Group", class: "btn btn-primary", id: "submit-validate" %>
+      <%= submit_tag "Join Group", class: "btn btn-blue", id: "submit-validate" %>
       
     <% end %><!-- .join-group-form -->      
 

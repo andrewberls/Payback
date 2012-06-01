@@ -5,9 +5,9 @@
 <% end %>
 
 <div class="row">
-  <div class="span4 offset4">    
+  <div class="span-6 offset-5">    
 
-    <%= form_for(@expense, html: {class: "well new-expense-form"}) do |f| %>
+    <%= form_for(@expense, html: {class: "new-expense-form"}) do |f| %>
       <h1 class="form-title">Add New Expense</h1>
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
@@ -22,26 +22,20 @@
 
       <%= render 'select_users' %>     
 
-      <div class="field control-group">
-        <%= f.label :amount %>
-        <span class="help-text">Decimal optional</span>
-        <div class="input-prepend">
-          <span class="add-on">$</span>
-          <%= f.text_field :amount %>
-        </div>
-      </div>
+      <%= f.label :amount %>
+      <span class="help-text">Decimal optional</span>
+      <%= f.text_field :amount %>
 
-      <div class="field control-group">
-        <%= f.label :title %>
-        <span class="help-text">Describe the expense: ex "Groceries"</span>
-        <%= f.text_field :title %>
-      </div>
+
+      <%= f.label :title %>
+      <span class="help-text">Describe the expense: ex "Groceries"</span>
+      <%= f.text_field :title %>
 
       <%# JS hook for the expense action type (Split or Payback) %>
       <%= f.hidden_field :type, value: "payback" %>
 
-      <%= submit_tag "Payback", class: "btn btn-large btn-danger pull-right", id: "expense-payback" %>
-      <%= submit_tag "Split Evenly", class: "btn btn-large btn-primary btn-spacer pull-right", 
+      <%= submit_tag "Payback", class: "btn btn-red btn-large", id: "expense-payback" %>
+      <%= submit_tag "Split Evenly", class: "btn btn-blue btn-large", 
         id: "expense-split" %>
 
       <div class="expense-faqs-prompt">

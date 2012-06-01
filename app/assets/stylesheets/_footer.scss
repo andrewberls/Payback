@@ -1,6 +1,7 @@
 .footer {  
-  @include inset-box-shadow(0, 10px, 10px, -7px, #ccc); 
-  color: lighten($darkGray, 30);
+  @include inset-box-shadow(0, 10px, 10px, -7px, #ccc);
+  //background-color: red;
+  color: lighten($dark-gray, 30);
   margin-top: 100px;
   padding-top: 15px;
   position: relative;
@@ -16,8 +17,8 @@
     bottom: 0; right: 0;
         
     a {
-      color: lighten($darkGray, 15);
-      &:hover { color: $linkColor; }
+      color: lighten($dark-gray, 15);
+      &:hover { color: $blue; }
     }
 
   } // .actions

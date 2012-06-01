@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span4 offset4 well group-welcome">
+  <div class="span-6 offset-5 group-welcome">
 
     <div class="alert alert-success">Your group has been successfully created! </div>
 
@@ -7,8 +7,8 @@
     <h1><%= @group.gid %></h1>
     <p>Give this, along with the password you chose, to members of your group to start tracking expenses!</p>
 
-    <%= link_to "Groups Overview", groups_path, class: "btn btn-primary btn-large pull-left" %>
-    <%= link_to "Expenses Dashboard", expenses_path, class: "btn btn-primary btn-large pull-right" %>
+    <%= link_to "Groups Overview", groups_path, class: "btn btn-blue btn-large" %>
+    <%= link_to "Expenses Dashboard", expenses_path, class: "btn btn-blue btn-large" %>
 
   </div><!-- .group-welcome -->
 </div>

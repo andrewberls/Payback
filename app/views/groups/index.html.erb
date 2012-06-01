@@ -1,7 +1,7 @@
 <% provide(:title, 'Groups Overview') %>
 
 <div class="row">
-  <div class="span8 offset2">
+  <div class="span-10 offset-3">
 
     <h1>Your Groups</h1>
 
@@ -10,45 +10,51 @@
     <div class="groups-container">
       <% @groups.each do |group| %>
         <div class="group">
-          <span class="group-gid">ID: <%= group.gid %></span>
-
-          <span class="group-title"><%= link_to group.title, group_path(group.gid) %></span>
+          <%= link_to group.title, group_path(group.gid), class: "group-title" %>
 
           <% if current_user == group.owner %>
             <span class="group-owner">You own this group.</span>
           <% else %>            
             <span class="group-owner">Owned by <%= group.owner.full_name %></span>
-          <% end %> 
+          <% end %>
 
-          <div class="btn-container">
+          <span class="group-gid">ID: <%= group.gid %></span>
+
+          <div class="right">
             <%#
               Group Action Buttons
                 - Edit/Delete if group is owned,
                 - else Leave Group
             %>
+          
             <%  if current_user == group.owner %>
+
+              <%= link_to "Edit", edit_group_path(group.gid), class: "btn" %>
               <%= link_to "Delete", {action: 'destroy', id: group.gid }, {
                 :method => :delete, 
                 confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
-                class: "btn btn-danger pull-right",
+                class: "btn btn-red",
               } %>
-              <%= link_to "Edit", edit_group_path(group.gid), class: "btn btn-spacer pull-right" %>
+
             <% else %>
-              <%# link_to "Leave Group", {action: 'leave', id: group.gid }, {
+
+              <%= link_to "Leave Group - TODO", {action: 'leave', id: group.gid }, {
                 :method => :delete,        
                 confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be reset.", 
-                class: "btn btn-danger pull-right",
-              } %>              
+                class: "btn",
+              } %>
+
             <% end %>
-          </div><!-- .btn-container -->
-          
+          </div>
+
         </div><!-- .group -->
       <% end %>
+    </div>
 
-    </div><!-- .groups-container -->
-
-    <%= link_to "Create a new group", new_group_path, class: "btn btn-large btn-primary pull-right" %>
-    <%= link_to "Join another group", join_group_path, class: "btn btn-spacer btn-large btn-primary pull-right" %>
+    <div class="right">
+      <%= link_to "Create a new group", new_group_path, class: "btn btn-blue btn-large" %>
+      <%= link_to "Join another group", join_group_path, class: "btn btn-blue btn-large" %>
+    </div>
 
   </div>
 </div>

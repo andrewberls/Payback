@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width">
   <title>Payback | <%= yield(:title) %></title>
-  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "payback" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,9 +16,15 @@
 
     <%= yield %>
 
-    <%= render "shared/footer" %>
+    <div class="row">
+      <div class="span-16">
+        <%= render "shared/footer" %>
+      </div>
+    </div>
     
   </div><!-- .container -->
+
+
 
 
   <%= javascript_include_tag "application" %>

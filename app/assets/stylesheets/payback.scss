@@ -1,3 +1,18 @@
+//-- LIB/IMPORTS
+//------------------------------------
+//= require lib/cheeky.min
+//= require components/buttons
+@import "lib/variables";
+@import "lib/mixins";
+@import "components/alerts";
+@import "header";
+@import "forms";
+@import "expenses";
+@import "groups";
+@import "footer";
+// @import "responsive";
+
+
 //-- GENERIC
 //------------------------------------
 html {
@@ -5,24 +20,50 @@ html {
 }
 
 body {
-  background-color: #E0E0E0;
+  background-color: #f9f9f9;
+  color: $gray-text;
+  font-family: 'Helvetica Neue';
+  font-size: 13px;
 }
 
 .container {
-  margin-top: 25px;
-}
-
-.well {
-  @include clearfix;
+  margin: 25px auto 0;
 }
 
 
-//-- TITLES
+//-- TYPOGRAPHY
 //------------------------------------
+// Headers
 .main-title {
-  // Used for Signup and Dashboard
   font-size: 3em;
   margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+// Links
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 
@@ -131,9 +172,8 @@ body {
 } // .welcome-container
 
 
-@import "header";
-@import "forms";
-@import "expenses";
-@import "groups";
-@import "footer";
-@import "mobile";
+
+//-- LIB CLASSES
+//------------------------------------
+.left { float: left; }
+.right { float: right; }

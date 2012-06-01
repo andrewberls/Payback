@@ -1,28 +1,30 @@
 <% provide(:title, 'Dashboard') %>
 
-<div class="row-fluid">
-  <h1 class="main-title">Dashboard</h1>
+<div class="row">
+  <div class="span-16">
+    <h1 class="main-title">Dashboard</h1>
+  </div>
 </div>
 
-<div class="row-fluid">
+<div class="row">
   <div id="dashboard-buttons">
-    <%= link_to new_expense_path, class: "btn btn-primary" do %>
+    <%= link_to new_expense_path, class: "btn btn-blue" do %>
       <i class="icon-plus icon-white"></i>
       Add New Expense
     <% end %>
     <%= link_to groups_path, class: "btn" do %>
       <i class="icon-user"></i>
-      Groups Dashboard
+      Your Groups
     <% end %>
   </div><!-- #dashboard-buttons -->
 </div>
 
-<div class="row-fluid">
+<div class="row">
 
   <%#---------------------------------
       OWED TO YOU
   ------------------------------------%>
-  <div class="span6 left-column">
+  <div class="span-8 left-column">
 
     <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
 
@@ -44,7 +46,7 @@
   <%#---------------------------------
       YOU OWE
   ------------------------------------%>
-  <div class="span6 right-column">
+  <div class="span-8 right-column">
 
     <h2 class="container-header">You Owe</h2>
 
@@ -60,4 +62,4 @@
 
   </div><!-- .right-column -->
 
-</div><!-- .row-fluid -->
+</div><!-- .row -->

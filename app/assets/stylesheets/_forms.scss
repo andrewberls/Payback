@@ -2,47 +2,50 @@
 //------------------------------------
 form {
   @include clearfix;
+  @extend .whitebox;
+  
+  .help-block {
+    color: darken($med-gray, 15);
+    margin: -5px 0 10px;
+  }
 
   .form-title {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 2em;
+    margin-bottom: 15px;
   }
 
   label {
-    margin-right: 8px;
-    float: left;
+    display: inline-block;
+    margin-bottom: 5px;
   }
 
-  input[type=text],
-  input[type=password] {
-    padding: 7px 0;    
+  input:not([type="submit"]) {
+    @include border-box;
+    border: 1px solid $med-gray;
+    margin-bottom: 15px;
+    padding: 7px;
     width: 100%;
+
+    &:focus {
+      outline: none;
+    }
   }
 
-  [type=submit] {
+  input[type="submit"] {
     float: right;
   }
 
-  .input-prepend {
-    float: left;
-    width: 100%;
-
-    input {
-      padding: 7px 5px;
-      width:  87%; // TODO: Border box can probably fix this
-    }
-
-    .add-on {
-      padding: 7px;
-    }
+  input[type="checkbox"] {
+    margin: -2px 5px 0 0;
+    width: auto;
   }
-
 }
 
 .help-text {
   // Inline help text next to the label
   color: #999;
-  float: left;
+  display: inline-block;
+  margin-left: 5px;
 }
 
 .help-block {  
@@ -56,7 +59,7 @@ form {
   margin: -10px 0 5px;
 
   .domain {
-    color: $linkColor;
+    color: $blue;
     font-weight: bold;
     text-decoration: underline;
 
@@ -93,4 +96,4 @@ form {
     display: inline-block;
     margin: 5px 0 0;
   }
-} // .login-form
+}

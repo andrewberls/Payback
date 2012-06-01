@@ -14,7 +14,11 @@
 .users-prompt {
   // Button container
   @include clearfix;
-  margin: 10px 0;
+  margin: 15px 0;
+
+  .btn:last-of-type {
+    float: right;
+  }
 }
 
 #users-container {
@@ -51,6 +55,10 @@
 
 } // .users-container
 
+#expense-payback {
+  margin-left: 10px;
+}
+
 .expense-back {
   // Left-floated back button
   margin-top: 10px;
@@ -58,22 +66,26 @@
 
 .expense-faqs-prompt {  
   float: left;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 #expense-faqs {
+  @include clearfix;
   display: none;
   margin-bottom: 0;
-  overflow: auto;
+  padding: 10px;
 
-  h3 {
+  h3, p {
     margin-bottom: 5px;
   }
 
   #hide-expense-faqs {
-    margin-top: -15px;
+    // Button
+    float: right;
+    margin-top: 5px;
   }
 }
+
 
 //-- EXPENSES DASHBOARD
 //------------------------------------
@@ -90,75 +102,74 @@
   margin-bottom: 20px;
 }
 
+.expenses-container {
+  @extend .whitebox;
+  padding: 0;
+}
+
+.expense {
+  @include clearfix;
+  border-bottom: 1px dashed $med-gray;
+  font-size: 2em;
+  padding: 5px;
+  position: relative;
+
+  &:last-of-type {
+    border: none;
+  }
+
+  .expense-price,
+  .expense-debtor,
+  .expense-creditor,
+  .expense-title,
+  .expense-date {
+    float: left;
+  }
+
+  .expense-price {
+    font-size: 1.2em;
+    margin: 20px 0;
+    margin-right: 10px;
+  }
+
+  .expense-debtor,
+  .expense-creditor {
+    margin: 20px 0;
+    margin-right: 10px;
+
+    &:before {
+      content: " - ";
+    }
+  }
+
+  .info-stack {
+    display: inline-block;
+    margin: 10px 0 0;   
+    padding-left: 5px;
+  }
+
+  .expense-title {
+    font-size: 0.7em;        
+    margin-bottom: 5px;
+  }
+
+  .expense-date {
+    clear: left;    
+    font-size: 0.5em;
+  }
+
+  .expense-actions {
+    // Button container
+    position: absolute;
+    bottom: 5px; right: 5px;
+  }
+
+} // .expense
+
 .expense-blank {
-  p { 
+  font-size: 1em;
+
+  p {
     margin: 5px 0;
   }
 }
-
-.expenses-container {
-  $border-color: #d9d9d9;
-
-  .expense {
-    $padding: 5px;
-    $top-margin: 20px;
-
-    background-color: #F8F8F8;
-    border-bottom: 1px solid $border-color;
-    font-size: 2em;
-    margin: 0;
-    overflow: auto;
-    padding: $padding;
-    position: relative;
-
-      .expense-price,
-      .expense-debtor,
-      .expense-creditor,
-      .expense-title,
-      .expense-date {
-        float: left;
-      }
-
-      .expense-price {
-        font-size: 1.2em;
-        margin: $top-margin 0;
-        margin-right: 10px;
-      }
-
-      .expense-debtor,
-      .expense-creditor {
-        margin: $top-margin 0;
-        margin-right: 10px;
-
-        &:before {
-          content: " - ";
-        }
-      }
-
-      .info-stack {
-        //outline: 1px solid red;
-        margin: $top-margin/2 0;    
-        overflow: auto;
-        padding-left: 5px;
-      }
-
-      .expense-title {
-        font-size: 0.7em;        
-        margin-bottom: 5px;
-      }
-
-      .expense-date {
-        clear: left;    
-        font-size: 0.5em;
-      }
-
-      .btn-container {      
-        display: inline-block;
-        overflow: auto;
-        position: absolute;
-        bottom: 2*$padding; right: 2*$padding;
-      }
- 
-  } // .expense
-
-} // .expenses-container

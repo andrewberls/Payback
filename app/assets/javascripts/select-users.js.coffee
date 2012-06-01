@@ -20,6 +20,7 @@ $ ->
   $container = $('#users-container')
   $group     = $('#users-group')
   $select    = $('#users-select')
+  disabledClass = 'btn-disabled2';
 
   $.el.registerTag 'userbox', (one, two) ->
     # Register a laconic element for user rendering
@@ -37,12 +38,12 @@ $ ->
   # Slide select up/down and change button display
   $group.click ->
     $container.slideUp(speed)
-    $(this).addClass('disabled')
-    $select.removeClass('disabled')
+    $(this).addClass(disabledClass)
+    $select.removeClass(disabledClass)
     return false
 
   $select.click ->
     $container.slideDown(speed)
-    $(this).addClass('disabled')
-    $group.removeClass('disabled')
+    $(this).addClass(disabledClass)
+    $group.removeClass(disabledClass)
     return false
