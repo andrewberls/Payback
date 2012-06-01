@@ -1,0 +1,41 @@
+//-- SIGNUP PAGE
+//------------------------------------
+.signup-main {
+  position: relative;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  ul li {
+    font-size: 1.1em;
+    outline: 1px solid red;
+  }
+
+  // Thumbnail list
+  //-------------------
+  .thumbnails {
+    margin-top: 10px;
+
+    h3 {
+      font-size: 1em;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+
+    img {
+      @include border-radius(4px);
+      border: 1px solid $med-gray;
+      padding: 2px;
+    }
+
+  } // .thumbnails
+
+  .item-container {
+    @include clearfix;
+    margin-bottom: 10px;
+  }
+
+} // .signup-main
+
+@import "word_scroll";

@@ -1,0 +1,32 @@
+//-- POST-SIGNUP WELCOME
+//------------------------------------
+.welcome-container {
+  @include clearfix;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+  width: 50%;
+
+  h1 {
+    font-size: 3.5em;   
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+  }
+
+  $spacer: 45px;
+
+  #group-join {
+    float: left;
+    margin-left: $spacer;
+  }
+
+  #group-new {
+    float: right;
+    margin-right: $spacer;
+  }
+
+} // .welcome-container

@@ -9,56 +9,6 @@
   }
 }
 
-#group-select {
-  // Group dropdown
-  margin-top: 10px;
-  width: 100%;
-}
-
-.users-prompt {
-  // Button container
-  @include clearfix;
-  margin: 15px 0 10px;
-
-  .btn:last-of-type {
-    float: right;
-  }
-}
-
-#users-container {
-  // Contains the individual columns
-  @include clearfix;
-  display: none;
-  margin-bottom: 10px;
-
-  h5 {
-    margin-bottom: 5px;
-  }
-
-  .user-column {    
-    float: left;
-    width: 50%;
-
-    .userbox {
-      // Generic block container for checkbox/label
-
-      label,
-      input {
-        float: none;
-        margin: 0;
-        display: inline-block;
-        vertical-align: middle;
-      }
-
-      input {
-        margin-right: 5px;
-      }
-
-    } // .userbox
-  }
-
-} // .users-container
-
 #expense-payback {
   margin-left: 10px;
 }
@@ -89,3 +39,5 @@
     margin-top: 5px;
   }
 }
+
+@import "select_users";

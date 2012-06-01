@@ -1,0 +1,33 @@
+<%= form_for(@user, html: {class: "signup-form"}) do |f| %>
+  <h1 class="form-title">Sign Up</h1>
+  
+  <%= render "signup_error_messages" %>      
+
+  <div class="field control-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>            
+  </div>
+
+  <div class="field control-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>            
+  </div>
+
+  <div class="field control-group">
+  <%= f.label :email %>
+      <%= f.text_field :email %>            
+  </div>
+
+  <div id="hint"></div>
+      
+  <div class="field control-group">
+    <%= f.label :password %>                            
+    <%# link_to "Forgot password?", "#", class: "forgot-password" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%# TODO: PW Confirmation? Too many fields - fold Full Name? %>
+
+  <%= submit_tag "Sign Up", class: "btn btn-blue btn-large", id: "submit-validate" %>
+
+<% end %><!-- .signup-form -->

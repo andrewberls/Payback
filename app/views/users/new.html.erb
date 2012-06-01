@@ -10,91 +10,20 @@
 
 <div class="row">
 
-  <%# TODO: Put visual here, like dashboard screenshots %>
-  <div class="span-8 front-welcome">        
-    <p class="easy-way">
-      The easiest way to track expenses for your
-      <span id="word-scroll">
-        <span id="word-scroll-inner">
-          <span class="word">household</span>
-          <span class="word">group</span>
-          <span class="word">friends</span>
-          <span class="word">family</span>
-        </span>
-      </span><!-- #word-scroll -->     
-    </p>
-    <h2>Payback is:</h2>
+  <div class="span-8 signup-main">
 
-    <!-- <ul>
-      <li>Simple</li>
-      <li>Easy</li>
-      <li>Built to look great on your phone</li>
-      <li>Free :-)</li>
-    </ul> -->
+    <%= render 'word_scroll' %>
 
-    <ul class="thumbnails">
-      <div class="item-container">
-        <li class="span-4">
-          <h3>Simple.</h3>
-          <p>So simple.</p>
-        </li>
-        <li class="span2"><img src="http://placehold.it/160x120" alt=""></li>
-      </div>
+    <%= render 'thumbnails' %>
 
-      <div class="item-container">
-        <li class="span-2"><img src="http://placehold.it/160x120" alt=""></li>
-        <li class="span-4">
-          <h3>Easy.</h3>
-          <p>Your grandmother could do it.</p>
-        </li>
-      </div>
-
-      <div class="item-container">
-        <li class="span4">
-          <h3>Built to look great on your phone.</h3>
-          <p>For when you're on the go.</p>
-        </li>
-       <li class="span-2"><img src="http://placehold.it/160x120" alt=""></li>
-      </div>
-    </ul><!-- .thumbnails -->
-
-  </div><!-- .front-welcome -->
+  </div>
   
-  <div class="span-7 offset-1 signup-container">
+  <div class="span-7 offset-1">
 
-   <%= form_for(@user, html: {class: "well signup-form"}) do |f| %>
-      <h1 class="form-title">Sign Up</h1>
-      
-      <%= render "signup_error_messages" %>      
+    <%= render 'signup_form' %>
 
-      <div class="field control-group">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>            
-      </div>
+    <p><%= link_to "Already have an account? Log in!", login_path, class: "form-suggestion" %></p>
+    
+  </div>
 
-      <div class="field control-group">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>            
-      </div>
-
-      <div class="field control-group">
-      <%= f.label :email %>
-          <%= f.text_field :email %>            
-      </div>
-
-      <div id="hint"></div>
-          
-      <div class="field control-group">
-        <%= f.label :password %>                            
-        <%# link_to "Forgot password?", "#", class: "forgot-password" %>
-        <%= f.password_field :password %>
-      </div>
-
-      <%# TODO: PW Confirmation? Too many fields - fold Full Name? %>
-
-      <%= submit_tag "Sign Up", class: "btn btn-primary btn-large", id: "submit-validate" %>
-
-    <% end %><!-- .signup-form -->
-
-  </div><!-- .signup-container -->
 </div>
