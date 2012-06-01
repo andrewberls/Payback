@@ -182,3 +182,21 @@ a {
 //------------------------------------
 .left { float: left; }
 .right { float: right; }
+
+.btn-shadow {
+  // Darken the shadow to make a button more pronounced
+  // on a light background
+
+  $light-shadow: 0.4;
+  $dark-shadow: 0.5;
+
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, $light-shadow);
+     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, $light-shadow);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, $light-shadow);
+
+  &:hover {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, $dark-shadow);
+     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, $dark-shadow);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, $dark-shadow);
+  }
+}
