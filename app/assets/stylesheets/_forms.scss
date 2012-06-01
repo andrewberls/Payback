@@ -1,39 +1,43 @@
 //-- GENERIC
 //------------------------------------
-input[type=text],
-input[type=password] {
-  padding: 7px 0;    
-  width: 100%;
-}
+form {
+  @include clearfix;
 
-[type=submit] {
-  float: right;
-}
-
-.form-title {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-label {
-  margin-right: 8px;
-  float: left;
-}
-
-.input-prepend {
-  float: left;
-  width: 100%;
-
-  input {
-    padding: 7px 5px;
-    width:  87%; // TODO: Border box can probably fix this
+  .form-title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
   }
 
-  .add-on {
-    padding: 7px;
+  label {
+    margin-right: 8px;
+    float: left;
   }
 
-} // .input-prepend
+  input[type=text],
+  input[type=password] {
+    padding: 7px 0;    
+    width: 100%;
+  }
+
+  [type=submit] {
+    float: right;
+  }
+
+  .input-prepend {
+    float: left;
+    width: 100%;
+
+    input {
+      padding: 7px 5px;
+      width:  87%; // TODO: Border box can probably fix this
+    }
+
+    .add-on {
+      padding: 7px;
+    }
+  }
+
+}
 
 .help-text {
   // Inline help text next to the label
