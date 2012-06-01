@@ -46,10 +46,20 @@ $ ->
     errors = validate([$email, $password])
     
     if errors && $form.find('.alert').size() == 0 # Only if an alert doesn't already exist
-      alertBox = document.createElement("div")
-      alertBox.setAttribute('class', 'alert alert-error');
-      errTxt = document.createTextNode("Invalid email or password")
-      alertBox.appendChild(errTxt)
+      alertBox = $.el.div({'class':'alert alert-error'}, "Invalid email or password")
+      $title = $form.find('.form-title')[0]
+      insertAfter($title, alertBox)
+      $('.alert').hide().slideDown('fast')
+      return false
+
+  $('#expense-payback, #expense-split').click ->
+    $form = $(this).parent()
+    $amount = $("#expense_amount")
+    $title = $("#expense_title")
+    errors = validate([$amount, $title])
+    
+    if errors && $form.find('.alert').size() == 0 # Only if an alert doesn't already exist
+      alertBox = $.el.div({'class':'alert alert-error'}, "Please check your fields and try again")
       $title = $form.find('.form-title')[0]
       insertAfter($title, alertBox)
       $('.alert').hide().slideDown('fast')
