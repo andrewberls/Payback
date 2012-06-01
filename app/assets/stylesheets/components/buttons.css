@@ -638,9 +638,6 @@ input[type="submit"] {
   padding: 0;
   border: 0;
 }
-.btn-large {
-  padding: 12px 15px;
-}
 /* ..................................................................... Red */
 .btn.btn-red {
   color: white;
