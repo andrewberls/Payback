@@ -4,49 +4,50 @@
   <%= render 'group_welcome' %>
 <% else %>
 
-  <% # TODO: I don't like this display %>
-
   <div class="row">
-    <div class="span8 offset2">
-    <div class="groups-container">
+    <div class="span-8 offset-4">
+      <%= link_to raw("&laquo; Back to Groups"), groups_path, class: "btn btn-shadow btn-large group-back" %>
 
-      <%= link_to raw("&laquo; Back to Groups"), groups_path, class: "btn btn-large group-back" %>
+      <div class="groups-container">
+        <div class="group">
+          
+          <span class="group-title"><%= "#{@group.title} - #{pluralize(@group.users.count, 'members')}" %></span>
 
-      <div class="group">
-        <span class="group-gid">ID: <%= @group.gid %></span>
-
-        <span class="group-title"><%= "#{@group.title} - #{pluralize(@group.users.count, 'members')}" %></span>
-
-        <% if current_user == @group.owner %>
-          <span class="group-owner">You own this group.</span>
-        <% else %>            
-          <span class="group-owner">Owned by <%= @group.owner.full_name %></span>
-        <% end %> 
-
-        <div class="btn-container">
-          <%#
-            Group Action Buttons
-              - Edit/Delete if group is owned,
-              - else Leave Group
-          %>
-          <%  if current_user == @group.owner %>
-            <%= link_to "Delete", {action: 'destroy', id: @group.gid }, {
-              :method => :delete, 
-              confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
-              class: "btn btn-danger pull-right",
-            } %>
-            <%= link_to "Edit", edit_group_path(@group.gid), class: "btn btn-spacer pull-right" %>
-          <% else %>
-            <%# link_to "Leave Group", {action: 'leave', id: group.gid }, {
-              :method => :delete,        
-              confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be reset.", 
-              class: "btn btn-danger pull-right",
-            } %>              
+          <% if current_user == @group.owner %>
+            <span class="group-owner">You own this group.</span>
+          <% else %>            
+            <span class="group-owner">Owned by <%= @group.owner.full_name %></span>
           <% end %>
-        </div><!-- .btn-container -->
-        
-      </div><!-- .group -->
-    </div><!-- ..group-container -->
+
+          <span class="group-gid">ID: <%= @group.gid %></span>
+
+          <div class="right">
+            <%#
+              Group Action Buttons
+                - Edit/Delete if group is owned,
+                - else Leave Group
+            %>
+            <%  if current_user == @group.owner %>
+
+              <%= link_to "Edit", edit_group_path(@group.gid), class: "btn" %>
+
+              <%= link_to "Delete", {action: 'destroy', id: @group.gid }, {
+                :method => :delete, 
+                confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
+                class: "btn btn-red",
+              } %>
+              
+            <% else %>
+              <%# link_to "Leave Group", {action: 'leave', id: group.gid }, {
+                :method => :delete,        
+                confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be reset.", 
+                class: "btn btn-danger pull-right",
+              } %>              
+            <% end %>
+          </div>
+          
+        </div><!-- .group -->
+      </div><!-- ..group-container -->
 
     </div>
   </div>
