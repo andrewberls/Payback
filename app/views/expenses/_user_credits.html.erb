@@ -24,10 +24,10 @@
           </div><!-- .info-stack -->
 
           <div class="expense-actions">            
-            <%= link_to "Delete", {action: 'destroy', id: expense.id}, {
+            <%= link_to raw("<i class='icon-ok icon-white'></i>"), {action: 'destroy', id: expense.id}, {
               :method => :delete, 
-              confirm: "Are you sure you want to delete this expense?", 
-              class: "btn btn-red",
+              confirm: "Are you sure you want to mark this expense completed?", 
+              class: "btn no-text btn-green",
               id: "delete-expense"
             } %>
           </div>
