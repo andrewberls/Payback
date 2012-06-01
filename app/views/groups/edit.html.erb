@@ -1,7 +1,7 @@
 <% provide(:title, "Edit Group: #{@group.title}") %>
 
 <div class="row">
-  <div class="span4 offset4 well">
+  <div class="span-6 offset-5">
 
     <%= form_for(@group, url: {action: 'update', id: @group.gid}, html: {class: "edit-group-form"}) do |f| %>
 
@@ -9,23 +9,17 @@
 
       <%= render "group_error_messages" %>      
 
-      <div class="field control-group">
-        <%= f.label :title %>                
-        <%= f.text_field :title %>
-      </div>
+      <%= f.label :title %>                
+      <%= f.text_field :title %>
 
-      <div class="field control-group">
-        <%= f.label :password, "New Password" %>               
-        <%= f.password_field :password %>
-      </div>
+      <%= f.label :password, "New Password" %>               
+      <%= f.password_field :password %>
 
-      <div class="field control-group">
-        <%= f.label :password_confirmation, "Confirm New Password" %>
-        <%= f.password_field :password_confirmation %>
-      </div>
+      <%= f.label :password_confirmation, "Confirm New Password" %>
+      <%= f.password_field :password_confirmation %>
 
-      <%= link_to "Cancel", groups_path, class: "btn pull-left" %>
-      <%= submit_tag "Update Group", class: "btn btn-primary" %>
+      <%= link_to "Cancel", groups_path, class: "btn" %>
+      <%= submit_tag "Update Group", class: "btn btn-blue" %>
 
     <% end %><!-- .edit-group-form -->
 
