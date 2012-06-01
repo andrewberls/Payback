@@ -2,7 +2,7 @@
 
 <div class="row">
 
-  <div class="span5 offset1 well group-faq">
+  <div class="span-7 offset-1 group-faq">
     <h2>The Basics</h2>
     <ul>
       <li>Groups are used to track expenses with a set of people.</li>
@@ -12,8 +12,8 @@
     </ul>
   </div><!-- .group-faq -->
 
-  <div class="span5">
-    <%= form_for(@group, html: {class: "well new-group-form"}) do |f| %>
+  <div class="span-7">
+    <%= form_for(@group, html: {class: "new-group-form"}) do |f| %>
       <h1 class="form-title">Create New Group</h1>
 
       <%= render "group_error_messages" %>      
@@ -35,7 +35,7 @@
         <%= f.password_field :password_confirmation %>
       </div>
 
-      <%= submit_tag "Create Group", class: "btn btn-primary", id: "submit-validate" %>
+      <%= submit_tag "Create Group", class: "btn btn-blue", id: "submit-validate" %>
       
     <% end %><!-- .new-group-form -->
   </div>
