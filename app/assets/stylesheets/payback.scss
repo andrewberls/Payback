@@ -12,6 +12,10 @@ body {
   margin-top: 25px;
 }
 
+.well {
+  @include clearfix;
+}
+
 
 //-- TITLES
 //------------------------------------
