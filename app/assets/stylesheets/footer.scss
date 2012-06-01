@@ -1,13 +1,12 @@
 .footer {  
-  @include inset-box-shadow(0, 10px, 10px, -7px, #ccc);
-  //background-color: red;
+  @include inset-box-shadow(0, 10px, 5px, -8px, #ccc);
   color: lighten($dark-gray, 30);
   margin-top: 100px;
   padding-top: 15px;
   position: relative;
   text-align: center;  
 
-  p { 
+  p {
     display: inline-block;
     margin: 0;
   }
@@ -20,7 +19,6 @@
       color: lighten($dark-gray, 15);
       &:hover { color: $blue; }
     }
+  }
 
-  } // .actions
-
-} // .footer
+}
