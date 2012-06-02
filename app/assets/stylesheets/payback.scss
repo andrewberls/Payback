@@ -1,19 +1,18 @@
 //-- LIB/IMPORTS
 //------------------------------------
 //= require lib/cheeky.min
-//= require components/buttons
 
 @import "lib/variables";
 @import "lib/mixins";
 @import "nav/header";
 @import "nav/footer";
+@import "components/buttons";
 @import "components/alerts";
 @import "components/forms";
 @import "expenses/expenses";
 @import "groups/groups";
 @import "signup/main";
 @import "signup/welcome";
-
 @import "responsive";
 
 
@@ -26,7 +25,7 @@ html {
 body {
   background-color: #f9f9f9;
   color: $gray-text;
-  font-family: 'Helvetica Neue';
+  font-family: $baseFontFamily;
   font-size: 13px;
 }
 
@@ -34,9 +33,7 @@ body {
   margin: 25px auto 0;
 }
 
-.noise {
-  background: url('/images/noise.png');
-}
+
 
 
 //-- TYPOGRAPHY
@@ -77,5 +74,6 @@ a {
 
 //-- LIB CLASSES
 //------------------------------------
-.left { float: left; }
-.right { float: right; }
+.left { float: left }
+.right { float: right }
+.noise { background: url('/images/noise.png') }
