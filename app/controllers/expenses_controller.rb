@@ -8,6 +8,8 @@ class ExpensesController < ApplicationController
   def new
     @groups = current_user.groups
     @expense = Expense.new
+
+    return redirect_to welcome_path if @groups.blank?
   end
 
   def create

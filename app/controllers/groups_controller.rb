@@ -26,8 +26,8 @@ class GroupsController < ApplicationController
   #------------------------------
   def index
     @groups = current_user.groups
-    # TODO: this is only for convenience. Leave it in
-    #redirect_to welcome_path if @groups.blank?
+    
+    return redirect_to welcome_path if @groups.blank?
   end
 
   def show
