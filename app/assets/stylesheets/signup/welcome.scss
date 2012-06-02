@@ -1,7 +1,6 @@
 //-- POST-SIGNUP WELCOME
 //------------------------------------
 .welcome-container {
-  @include clearfix;
   @extend .whitebox;
   text-align: center;
 
@@ -14,13 +13,4 @@
     font-size: 1.3em;
     margin-bottom: 30px;
   }
-
-  #group-join {
-    //float: left;
-  }
-
-  #group-new {
-    //float: right;
-  }
-
 }

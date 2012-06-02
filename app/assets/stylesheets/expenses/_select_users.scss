@@ -1,5 +1,5 @@
 #group-select {
-  // Group dropdown
+  // Group select menu
   margin-top: 10px;
   width: 100%;
 }
@@ -24,26 +24,25 @@
     margin-bottom: 5px;
   }
 
-  .user-column {    
+  .user-column {
     float: left;
     width: 50%;
+  }
 
-    .userbox {
-      // Generic block container for checkbox/label
+  .userbox {
+    // Generic container for checkboxes/labels
 
-      label,
-      input {
-        float: none;
-        margin: 0;
-        display: inline-block;
-        vertical-align: middle;
-      }
+    label,
+    input {
+      float: none;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
 
-      input {
-        margin-right: 5px;
-      }
-
-    } // .userbox
+    input {
+      margin-right: 5px;
+    }
   }
 
 } // .users-container

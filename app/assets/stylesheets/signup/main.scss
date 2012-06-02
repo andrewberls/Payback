@@ -28,14 +28,13 @@
       border: 1px solid $med-gray;
       padding: 2px;
     }
-
-  } // .thumbnails
+  }
 
   .item-container {
     @include clearfix;
     margin-bottom: 10px;
   }
 
-} // .signup-main
+}
 
 @import "word_scroll";

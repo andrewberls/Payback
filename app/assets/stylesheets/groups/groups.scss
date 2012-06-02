@@ -1,35 +1,32 @@
 //-- NEW GROUP FAQ
 //------------------------------------
 .group-faq {
-
   h2 {
     margin-bottom: 5px;
   }
 
-  ul {
-    li {
-      font-size: 1.2em;
-      line-height: 1.4;
-      margin-bottom: 10px;
-    }
+  ul li {
+    font-size: 1.2em;
+    line-height: 1.4;
+    margin-bottom: 10px;
   }
-
-} // group-faq
+}
 
 
 //-- GROUP POST-CREATE WELCOME
 //------------------------------------
 .group-welcome {
   // Landing page after group creation
+  
   @extend .whitebox;
   text-align: center;
 
   h1 {
     margin: 5px 0;
-  }
 
-  h1 + p {
-    margin-bottom: 20px;
+    & + p {
+      margin-bottom: 20px;
+    }
   }
 
   .btn:first-of-type {
@@ -44,10 +41,6 @@
 
 //-- GROUP DASHBOARD
 //------------------------------------
-.container-header {
-  //margin-bottom: 5px;
-}
-
 .groups-container {
   @extend .whitebox;
   margin-bottom: 15px;
