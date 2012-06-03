@@ -41,21 +41,4 @@
 }
 
 
-@media (min-width: 1100px) {
-  .users-prompt .btn {
-    // Form is a bit wide here, make the buttons more visible
-    padding: 12px 20px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  #users-container h5 {
-    // Better readability + touch space
-    font-size: 1.1em;
-    margin-bottom: 15px;
-  }
-}
-
-
 @import "select_users";
