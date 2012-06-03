@@ -1,4 +1,17 @@
+// TODO: Put these in their respective files and look up nested @media
+
+
+@media (min-width: 1100px) {
+  .users-prompt .btn {
+    // Form is a bit wide here, make the buttons more visible
+    padding: 12px 20px;
+  }
+}
+
+
+
 @media (max-width: 480px), (min-width: 630px) and (max-width: 1100px) {
+// TODO: What the fuck are you doing here
 
 //-- POST-SIGNUP WELCOME
 //------------------------------------
@@ -141,5 +154,11 @@ header {
   //float: right;
   //margin-top: 15px;
 }
+
+
+//-- GROUP DASHBOARD
+//------------------------------------
+
+
 
 } // @media (max-width: 480px)
