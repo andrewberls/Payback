@@ -22,7 +22,8 @@ html {
 }
 
 body {
-  background-color: #f9f9f9;
+  @extend .noise;
+  background-color: $light-gray;
   color: $gray-text;
   font-family: $baseFontFamily;
   font-size: 13px;
