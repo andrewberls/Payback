@@ -47,10 +47,6 @@
   padding: 0;
 }
 
-.groups-container + .right a:last-child {
-  margin-left: 10px;
-}
-
 .group {
   @include clearfix;
   border-bottom: 1px dashed $med-gray;
