@@ -73,12 +73,15 @@
   }
 
   .group-title {
-    color: $gray-text;
     font-size: 1.5em;
 
-    &:hover {
-      color: $blue;
-      text-decoration: none;
+    a {
+      color: $gray-text;
+
+      &:hover {
+        color: $blue;
+        text-decoration: none;
+      }
     }
   }
 

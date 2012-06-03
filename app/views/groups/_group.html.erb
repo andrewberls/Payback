@@ -1,5 +1,5 @@
 <div class="group">
-  <%= link_to group.title, group_path(group.gid), class: "group-title" %>
+  <span class="group-title"><%= link_to group.title, group_path(group.gid) %></span>
 
   <% if current_user == group.owner %>
     <span class="group-owner">You own this group.</span>
