@@ -13,4 +13,18 @@
     font-size: 1.3em;
     margin-bottom: 30px;
   }
+
+  @media (max-width: 480px), (min-width: 630px) and (max-width: 1100px) {
+    // TODO: What the fuck are you doing here
+
+    #group-join,
+    #group-new {
+      float: none;
+      margin: 0 auto;
+    }
+
+    #group-join {
+      margin-bottom: 20px;
+    }
+  }
 }

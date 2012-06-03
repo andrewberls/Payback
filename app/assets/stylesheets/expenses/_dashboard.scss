@@ -37,7 +37,6 @@
   }
 
   .expense-price {
-    //font-size: 1.2em;
     margin: 20px 0;
     margin-right: 10px;
   }
@@ -81,5 +80,30 @@
 
   p {
     margin: 5px 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .expense {
+    .expense-price {
+      font-size: 1em;
+    }
+
+    .info-stack {
+      float: right;      
+      margin: 5px 0 10px;     
+    }
+
+    .expense-title {
+      display: none;
+    }
+   
+    .expense-actions {      
+      //clear: right;   
+      //float: right;
+      //position: relative;
+      //bottom: auto; right: auto;
+    }
   }
 }

@@ -21,4 +21,17 @@
     }
   }
 
+  @media (max-width: 790px) {
+    margin: 50px 0 25px;
+
+    .tagline {
+      margin-bottom: 5px;
+    }
+
+    .actions {
+      position: relative;
+      bottom: auto; right: auto;
+    }
+  }
+
 }

@@ -37,4 +37,29 @@ header {
     }
   }
 
+  @media (max-width: 480px) {
+    h1 {
+      display: none;
+    }
+
+    nav {
+      padding-top: 4px;
+      text-align: center;
+
+      ul {
+        display: inline-block;
+        text-align: center;
+
+        li {
+          float: left;
+          margin: 0 5px;
+        }
+
+        a {
+          padding: 8px;
+        }
+      }
+    }
+  }
+
 }
