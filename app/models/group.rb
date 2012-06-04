@@ -48,8 +48,25 @@ class Group < ActiveRecord::Base
     self.users << user
   end
 
+  def remove_user(user)
+    expenses = user.credits + user.debts
+    expenses.each { |e| e.destroy }
+    self.users.delete user
+  end
+
   def expenses
+    # TODO: Get has_many to work
+
     self.debts + self.credits
+    #self.users.all.collect { |user| user.debts + user.credits }.flatten
+  end
+
+  def credits_from(user)
+    self.credits.where(creditor_id: user)
+  end
+
+  def debts_from(user)
+    self.debts.where(debtor_id: user)
   end
 
 end

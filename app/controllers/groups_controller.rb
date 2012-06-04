@@ -124,7 +124,10 @@ class GroupsController < ApplicationController
   end
 
   def leave
-    # TODO: implement leave
+    @group = Group.find_by_gid(params[:gid])
+    @group.remove_user(current_user)
+    flash[:success] = "You have successfully left #{@group.title}."
+    return redirect_to groups_path
   end
 
 end

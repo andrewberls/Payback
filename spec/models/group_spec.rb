@@ -78,5 +78,36 @@ describe Group do
       @user.groups.count.should == 1
     end
   end
+
+  context "remove user" do
+    before do
+      @user = FactoryGirl.create(:user)
+      @group.add_user(@user)
+
+      # TODO: This is horrible, fix it
+      @expense = FactoryGirl.create(:expense)
+      @expense.debtor = FactoryGirl.create(:user)
+      @expense.creditor = @user
+      @user.credits << @expense
+      @expense.group = @group
+    end
+
+    it "removes the user from the group" do
+      num_users = @group.users.count
+      @group.remove_user(@user)
+      @group.users.count.should == num_users - 1
+    end
+
+    it "removes itself from the users groups" do
+      @group.remove_user(@user)
+      @user.groups.should_not include @group
+    end
+
+    it "removes the users expenses" do
+      @group.expenses.should_not be_blank
+      @group.remove_user(@user)
+      @group.expenses.should be_blank
+    end
+  end
   
 end
