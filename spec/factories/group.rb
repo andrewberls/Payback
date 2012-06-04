@@ -6,7 +6,7 @@ FactoryGirl.define do
 
     factory :group_with_owner do
       after(:build) do |group|
-        group.owner = FactoryGirl.build(:user)
+        group.initialize_owner FactoryGirl.build(:user)
       end
     end
     
