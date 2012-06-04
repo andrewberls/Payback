@@ -21,15 +21,17 @@ $ ->
 
   $('#submit-validate').click ->    
     errors = false
-    $form = $(this).parent()    
-    $fields = $form.find('input')    
+    $form = $(@).parent()    
+    $fields = $form.find('input')
+
     $fields.each ->
-      $parent = $(this).parent()
-      if !$(this).val()
-        $parent.addClass("error")
+      if !$(@).val()
+        console.log("Prevented due to invalid field")
+        $(@).addClass('field-error')
         errors = true
       else
-        $parent.removeClass("error")
+        $(@).removeClass('field-error')
+
     return false if errors
 
 
@@ -38,6 +40,8 @@ $ ->
 #------------------------------
 $ ->
   # Create and insert an alet error box if blank fields present
+
+  # TODO: REDUCE BLATANT REPETITION HERE
 
   $('#submit-login').click ->
     $form = $(this).parent()
