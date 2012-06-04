@@ -1,6 +1,4 @@
-<% @groups.each do |group| %>
-
-  <% next if group.credits_from(current_user).blank? %>
+<% @groups.reject { |g| g.credits_from(current_user).blank? }.each do |group| %>
 
   <div class="group-container">
     <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
@@ -10,7 +8,6 @@
       <% @credits = group.credits.select { |exp| exp.active && exp.creditor == current_user } %>
       <% @credits.each do |expense| %>
         <div class="expense">
-
           <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
           <span class="expense-debtor"><%= expense.debtor.first_name %></span>
 

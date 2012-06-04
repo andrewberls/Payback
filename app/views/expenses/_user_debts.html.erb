@@ -1,13 +1,10 @@
-<% @groups.each do |group| %>
-
-  <% unless group.debts_from(current_user).blank? %>
+<% @groups.reject { |g| g.debts_from(current_user).blank? }.each do |group| %>
 
   <div class="group-container">
     <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
 
     <div class="expenses-container">
 
-      <%# @debts = Expense.where(group_id: group.id, active: true, debtor_id: current_user.id) %>
       <% @debts = group.debts.select { |exp| exp.active && exp.debtor == current_user } %>
       <% @debts.each do |expense| %>
         <div class="expense">
@@ -23,9 +20,6 @@
       <% end %>
 
     </div><!-- .expenses-container -->
-
   </div><!-- .group-container -->
-
-  <% end %>
 
 <% end %><%# @groups.each %>
