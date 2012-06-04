@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  before_filter :check_auth, :accept => [:new, :edit, :join]
+  before_filter :check_auth
 
   #------------------------------
   # CREATE
