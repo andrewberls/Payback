@@ -4,7 +4,7 @@ gem 'rails', '3.1.1'
 
 gem 'pg'
 
-gem 'sqlite3'
+
 
 gem 'heroku'
 
@@ -26,12 +26,16 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'watchr'
-  gem 'capybara', '1.1.2'
-  #gem 'factory_girl_rails', '1.4.0'
-  #gem 'eventmachine', '1.0.0.beta.4.1'
+  gem 'factory_girl_rails'
 end
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+group :test do
+  # Pretty printed test output
+  gem 'turn', :require => false
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
