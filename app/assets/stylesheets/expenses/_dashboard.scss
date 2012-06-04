@@ -3,7 +3,7 @@
 #dashboard-buttons {
   margin-bottom: 15px;
 
-  a {
+  .btn {
     margin-right: 10px;
   }
 }
@@ -85,6 +85,24 @@
 
 
 @media (max-width: 480px) {
+  #dashboard-buttons {
+    margin-top: -5px;
+
+    .btn {
+      margin: 0;
+      padding: 15px 18px;
+
+      &:first-of-type {
+        margin-left: 15px;
+      }
+
+      &:last-of-type {
+        float: right;
+        margin-right: 15px;
+      }
+    }
+  }
+
   .expense {
     .expense-price {
       font-size: 1em;
@@ -97,13 +115,6 @@
 
     .expense-title {
       display: none;
-    }
-   
-    .expense-actions {      
-      //clear: right;   
-      //float: right;
-      //position: relative;
-      //bottom: auto; right: auto;
     }
   }
 }
