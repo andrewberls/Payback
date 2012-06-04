@@ -1,19 +1,16 @@
 //-- EXPENSES DASHBOARD
 //------------------------------------
 #dashboard-buttons {
-  margin-bottom: 15px;
+  margin-bottom: 15px; // TODO: 20 bottom or make main title 15
 
   .btn {
     margin-right: 10px;
   }
 }
 
-.group-container {
-  margin-bottom: 20px;
-}
-
 .expenses-container {
   @extend .whitebox;
+  margin-bottom: 20px;
   padding: 0;
 }
 
