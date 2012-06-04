@@ -6,19 +6,15 @@ Payback::Application.routes.draw do
   resources :expenses
   resources :sessions, :only => [:new, :create, :destroy]
 
-
-  # Static pages
-  match "welcome" => "static#welcome", as: "welcome"
-
-
-  # Group init
+  # Group actions
   match "join"  => "groups#join", as: "join_group" # View
   match "add"   => "groups#add", as: "add_group" # Processing
   match "leave" => "groups#leave", as: "leave_group"
 
 
-  # User processing
+  # User actions
   match "signup" => "users#new", as: "signup"
+  match "welcome" => "users#welcome", as: "welcome"
 
 
   # Session management

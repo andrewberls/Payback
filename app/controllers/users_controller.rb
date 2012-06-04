@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  before_filter :check_auth, except: [:new, :create]
     
   def new
     redirect_to expenses_path if current_user
@@ -33,6 +35,10 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to login_path
+  end
+
+  def welcome
+    # First time login - belong to no groups
   end
 
 end
