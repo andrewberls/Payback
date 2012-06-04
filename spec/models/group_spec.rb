@@ -3,66 +3,80 @@ require 'spec_helper'
 describe Group do
   
   before do
-    @group = Group.new(
-      title: "Example Title",
-      password: "12345",
-      password_confirmation: "12345"
-    )
-    @user = User.new(
-      first_name: "John",
-      last_name: "Smith",
-      email: "user@example.com",
-      password: "12345",
-      password_confirmation: "12345"
-    )
+    @group = FactoryGirl.create(:group)
   end
 
-  subject { @group }
+  it "should have a valid factory" do
+    @group.should be_valid
+  end
   
-  it { should respond_to(:title) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-
-  describe "when title is not present" do
-    before { @group.title = "" }
-    it { should_not be_valid }
+  it "should not be valid without a title" do
+    @group.title = ""
+    @group.should_not be_valid
   end
 
-  describe "when title is too long" do
-    before { @group.title= "a" * 51 }
-    it { should_not be_valid }
+  it "should not be valid if the title is too long" do
+    @group.title= "a" * 51
+    @group.should_not be_valid
   end
 
-  describe "when password is not present" do
-    before { @group.password = @group.password_confirmation = " " }
-    it { should_not be_valid }
+  it "should not be valid if the password is not present" do
+    group = FactoryGirl.build(:group, password: "")
+    group.should_not be_valid
   end
 
-  describe "when password doesn't match confirmation" do
-    before { @group.password_confirmation = "mismatch" }
-    it { should_not be_valid }
+  it "should not be valid when when password doesn't match confirmation" do
+    @group.password_confirmation = "mismatch"
+    @group.should_not be_valid
   end
 
-  describe "with a password that's too short" do
-    before { @group.password = @group.password_confirmation = "a" * 4 }
-    it { should be_invalid }
+  it "should not be valid with a password that's too short" do
+    @group.password = @group.password_confirmation = "a" * 4
+    @group.should_not be_valid
   end
 
-  describe "gid present before save" do
-    before do
-      @group.generate_gid
-      @group.save
+  context "gid" do
+    it "should have a gid present before save" do
+      @group[:gid].should_not be_blank
     end
-    its(:gid) { should_not be_blank }
-  end
 
-  describe "initialize_owner" do
-    before do
-      current_user = @user
-      @group.initialize_owner(current_user)
+    it "should have a gid of length 6" do
+      @group[:gid].length.should == 6
     end
-    #its(:owner) { should_equal @user }
   end
 
+  context "initialize owner" do
+    before do
+      @user = FactoryGirl.create(:user)
+      @group.initialize_owner(@user)
+    end
+
+    it "should assign ownership correctly" do
+      @group.owner.should == @user
+      @user.owned.should include @group
+    end
+
+    it "should assign user membership correctly" do
+      @user.owned.should include @group
+      @user.groups.should include @group
+      @user.groups.count.should == 1
+    end
+  end
+
+  context "add user" do
+    before do
+      @user = FactoryGirl.create(:user, first_name: "Bob")
+      @group.add_user(@user)
+    end
+
+    it "should add the user to the group" do
+      @group.users.should include @user
+    end
+
+    it "should add itself to the users list of groups" do
+      @user.groups.should include @group
+      @user.groups.count.should == 1
+    end
+  end
+  
 end
