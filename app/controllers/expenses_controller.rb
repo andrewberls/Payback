@@ -14,11 +14,14 @@ class ExpensesController < ApplicationController
 
   def create
 
-    # This entire method needs to be revamped. I feel like a lot of this could be put into helper methods
+    # This controller action is bad and you should feel bad.
 
     @expense = Expense.new(params[:expense].except(:type))
 
     if @expense.valid?
+
+      # TODO: No way to log expense type after its created. Should type somehow be made
+      # into a field on the expense?
 
       action = params[:expense][:type] == 'payback' ? :payback : :split
 
@@ -53,7 +56,7 @@ class ExpensesController < ApplicationController
       return redirect_to expenses_path
     else
       @groups = current_user.groups
-      flash.now[:error] = "Error -  check your fields and try again"
+      flash.now[:error] = "Error -  check your fields and try again!"
       return render :new
     end
     
@@ -77,7 +80,8 @@ class ExpensesController < ApplicationController
   #------------------------------
   def destroy
     Expense.find_by_id(params[:id]).update_attributes(active: false)
-    flash[:success] = "Expense successfully removed."
+    # TODO: Do we want a flash here?
+    flash[:success] = "Expense successfully completed!"
     redirect_to expenses_path    
   end
     
