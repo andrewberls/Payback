@@ -40,10 +40,7 @@ class GroupsController < ApplicationController
       format.html # show.html.erb
       format.json do
 
-        unless (current_user && @group.users.include?(current_user))
-          render json: {} and return
-        end
-
+        if current_user && @group.users.include?(current_user)
           users = if params[:others]
                     @group.users - [current_user]
                   else
@@ -54,10 +51,13 @@ class GroupsController < ApplicationController
             group: @group.as_json(except: [:password_digest, :id]),
             users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
           }
+        else
+          # TODO: HTTP status code
+          return render json: {}
+        end
 
       end
     end
-
   end
 
 
@@ -92,7 +92,7 @@ class GroupsController < ApplicationController
     group.expenses.each { |expense| expense.destroy } 
     group.destroy
     flash[:success] = "Group successfully deleted"
-    redirect_to groups_path
+    return redirect_to groups_path
   end
 
 
@@ -110,15 +110,16 @@ class GroupsController < ApplicationController
     if group && group.authenticate(params[:password])
       if group.users.include? current_user
         flash.now[:error] = "You already belong to that group!"
-        render :join
+        return render :join
       else
-        group.users << current_user
+        #group.users << current_user
+        group.add_user(current_user)
         flash[:success] = "You are now a member of #{group.title}!"
-        redirect_to groups_path
+        return redirect_to groups_path
       end
     else
       flash.now[:error] = "Invalid ID/Password combination."
-      render :join
+      return render :join
     end
   end
 
