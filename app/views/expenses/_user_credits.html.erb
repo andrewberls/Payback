@@ -1,13 +1,13 @@
 <% @groups.each do |group| %>
 
-  <% next if group.expenses.blank? %>
+  <% next if group.credits_from(current_user).blank? %>
 
   <div class="group-container">
     <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
 
     <div class="expenses-container">  
 
-      <% @credits = group.credits.select { |exp| exp.active && exp.creditor_id == current_user.id } %>
+      <% @credits = group.credits.select { |exp| exp.active && exp.creditor == current_user } %>
       <% @credits.each do |expense| %>
         <div class="expense">
 

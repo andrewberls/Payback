@@ -1,6 +1,6 @@
 <% @groups.each do |group| %>
 
-  <% unless group.expenses.blank? %>
+  <% unless group.debts_from(current_user).blank? %>
 
   <div class="group-container">
     <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
