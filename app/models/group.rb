@@ -49,7 +49,7 @@ class Group < ActiveRecord::Base
   end
 
   def remove_user(user)
-    expenses = user.credits + user.debts
+    expenses = (user.credits + user.debts).select { |e| e.group == self }
     expenses.each { |e| e.destroy }
     self.users.delete user
   end
