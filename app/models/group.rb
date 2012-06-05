@@ -55,10 +55,7 @@ class Group < ActiveRecord::Base
   end
 
   def expenses
-    # TODO: Get has_many to work
-
     self.debts + self.credits
-    #self.users.all.collect { |user| user.debts + user.credits }.flatten
   end
 
   def credits_from(user)

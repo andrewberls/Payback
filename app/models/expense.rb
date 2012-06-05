@@ -30,8 +30,7 @@ class Expense < ActiveRecord::Base
     users.flatten.each do |user|
       # TODO: Check if existing expense to this creditor already and combine?
       expense = self.dup # Create a new expense instance to assign to each user
-      expense.debtor = user
-      user.debts << expense
+      user.add_debt(expense)
     end
 
   end

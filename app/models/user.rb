@@ -52,6 +52,11 @@ class User < ActiveRecord::Base
     self.debts.where(active: true)
   end
 
+  def add_debt(expense)
+    expense.debtor = self
+    self.debts << expense
+  end
+
   private
 
   def generate_auth_token
