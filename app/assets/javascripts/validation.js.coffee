@@ -26,7 +26,6 @@ $ ->
 
     $fields.each ->
       if !$(@).val()
-        console.log("Prevented due to invalid field")
         $(@).addClass('field-error')
         errors = true
       else
@@ -37,11 +36,10 @@ $ ->
 
 #------------------------------
 # Login
+# Add Expense
 #------------------------------
 $ ->
   # Create and insert an alet error box if blank fields present
-
-  # TODO: REDUCE BLATANT REPETITION HERE
 
   $('#submit-login').click ->
     $form = $(this).parent()
