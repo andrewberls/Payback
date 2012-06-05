@@ -29,7 +29,8 @@ header {
       margin-right: 5px;
       padding: 8px 10px;
 
-      &:hover {
+      &:hover,
+      &.current {
         background-color: lighten($dark-gray, 15);
         color: white;
         text-decoration: none;
