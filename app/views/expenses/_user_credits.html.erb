@@ -7,6 +7,7 @@
 
       <% @credits = group.credits.select { |exp| exp.active && exp.creditor == current_user }.reverse %>
       <% @credits.each do |expense| %>
+
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
           <span class="expense-debtor"><%= expense.debtor.first_name %></span>
@@ -25,12 +26,11 @@
               id: "delete-expense"
             } %>
           </div>
-
         </div><!-- .expense -->
+
       <% end %><%# @credits.each %>
 
     </div><!-- .expenses-container -->
-
   </div><!-- .group-container -->
 
 <% end %><%# @groups.each  %>
