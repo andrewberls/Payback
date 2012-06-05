@@ -71,7 +71,7 @@ class GroupsController < ApplicationController
 
   def update
     #raise params.inspect
-    @group = Group.find_by_gid(params[:id])
+    @group = Group.find_by_gid(params[:gid])
    
     if @group.update_attributes(params[:group])
       flash[:success] = "Group successfully updated."
