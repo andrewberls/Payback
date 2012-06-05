@@ -88,6 +88,7 @@ class GroupsController < ApplicationController
   #------------------------------
   def destroy   
     # Need to destroy group and expenses, but preserve users
+    # TODO: move this to an action on the group model and test it
     group = Group.find_by_gid(params[:id])
     group.expenses.each { |expense| expense.destroy } 
     group.destroy
@@ -112,7 +113,6 @@ class GroupsController < ApplicationController
         flash.now[:error] = "You already belong to that group!"
         return render :join
       else
-        #group.users << current_user
         group.add_user(current_user)
         flash[:success] = "You are now a member of #{group.title}!"
         return redirect_to groups_path
