@@ -25,7 +25,7 @@ class Expense < ActiveRecord::Base
   belongs_to :debtor,   :class_name => "User"
 
   def assign_to(*users)
-    # Split and assign an expense amongst a set of selected users
+    # Split and assign a debt amongst a set of selected users
 
     users.flatten.each do |user|
       # TODO: Check if existing expense to this creditor already and combine?
