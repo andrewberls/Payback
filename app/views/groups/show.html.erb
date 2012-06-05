@@ -11,7 +11,9 @@
       <div class="groups-container">
         <div class="group">
           
-          <span class="group-title"><%= "#{@group.title} - #{pluralize(@group.users.count, 'members')}" %></span>
+          <span class="group-title"><%= "#{@group.title}" %></span>
+
+          <span class="group-members"><%= pluralize(@group.users.count, 'members') %></span>
 
           <% if current_user == @group.owner %>
             <span class="group-owner">You own this group.</span>

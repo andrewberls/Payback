@@ -1,6 +1,8 @@
 <div class="group">
   <span class="group-title"><%= link_to group.title, group_path(group.gid) %></span>
 
+  <span class="group-members"><%= pluralize(group.users.count, 'members') %></span>
+
   <% if current_user == group.owner %>
     <span class="group-owner">You own this group.</span>
   <% else %>            
