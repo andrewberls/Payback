@@ -86,10 +86,9 @@ describe Group do
 
       # TODO: This is horrible, fix it
       @expense = FactoryGirl.create(:expense)
-      @expense.debtor = FactoryGirl.create(:user)
       @expense.creditor = @user
-      @user.credits << @expense
       @expense.group = @group
+      @expense.assign_to FactoryGirl.create(:user)
     end
 
     it "removes the user from the group" do

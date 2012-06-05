@@ -33,16 +33,30 @@ describe Expense do
     @expense.should respond_to(:creditor)
   end
 
-  context "it splits correctly" do
+  it "registers debts correctly" do
+    @user = FactoryGirl.create(:user)
+    @user.add_debt(@expense)
+    @user.debts.should include @expense
+    @expense.debtor.should == @user
+  end
+
+  context "it assigns correctly" do
     before do
-      @group = FactoryGirl.create(:group_with_owner)
-      @owner = @group.owner
-      @user = FactoryGirl.create(:user)
-      @group.add_user(@user)
+      @creditor = FactoryGirl.create(:user)
+      @expense.creditor = @creditor
     end
 
-    it "has an owner" do
-      @owner.should be_valid
+    it "assigns to a single user correctly" do
+      @user = FactoryGirl.create(:user)
+      @expense = FactoryGirl.create(:expense)
+      @expense.assign_to @user
+      # TODO: can't check if expense is in user.debts because it's getting cloned
+      #@user.debts.should include @expense
+      @expense.debtor.should == @user
+    end
+
+    it "assigns to a list of users correctly" do
+      pending "write test"
     end
   end
 
