@@ -12,11 +12,6 @@
   <span class="group-gid">ID: <%= group.gid %></span>
 
   <div class="right">
-    <%#
-      Group Action Buttons
-        - Edit/Delete if group is owned,
-        - else Leave Group
-    %>
 
     <%= link_to "Leave Group", {action: 'leave', gid: group.gid }, {      
         confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be reset.", 
