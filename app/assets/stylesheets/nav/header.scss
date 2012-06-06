@@ -4,39 +4,31 @@ header {
   border-bottom: 1px solid darken($med-gray, 10);
   padding: 5px;
 
-  .container {
-    margin-top: 0;
-  }
-
   h1 {
-    color: lighten($dark-gray, 5);
     float: left;
+    font-family: Lobster, $baseFontFamily;
     font-weight: bold;
     margin: 0;
-    margin-right: 25px;
+    margin-right: 25px; 
   }
 
-  nav ul {
-    list-style: none;
-    margin: 0;
-    
-    a {
-      @include border-radius(3px);
-      color: $gray-text;
-      display: inline-block;
-      float: left;
-      font-weight: bold;
-      margin-right: 5px;
-      padding: 8px 10px;
+  nav a {
+    @include border-radius(3px);
+    color: $gray-text;
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    margin-right: 5px;
+    padding: 8px 10px;
 
-      &:hover,
-      &.current {
-        background-color: lighten($dark-gray, 15);
-        color: white;
-        text-decoration: none;
-      }
+    &:hover,
+    &.current {
+      background-color: lighten($dark-gray, 15);
+      color: white;
+      text-decoration: none;
     }
   }
+  
 
   @media (max-width: 480px) {
     h1 {

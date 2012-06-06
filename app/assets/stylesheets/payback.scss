@@ -29,11 +29,10 @@ body {
   font-size: 13px;
 }
 
-.container {
-  margin: 25px auto 0;
+body > .container {
+  margin: 10px auto 0;
 
   @media (max-width: 630px) {
-    margin-top: 15px;
     padding: 0 5px;
   }
 }
