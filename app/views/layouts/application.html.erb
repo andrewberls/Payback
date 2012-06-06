@@ -9,7 +9,9 @@
 </head>
 <body>
 
-  <% if signed_in? %>
+  <% # TODO: SEPARATE LAYOUT OR NO? %>
+  
+  <% if signed_in? #&& params[:controller] != "static" %>
     <%= render 'shared/header' %>
   <% end %>
 
@@ -24,8 +26,6 @@
     </div>
     
   </div><!-- .container -->
-
-
 
 
   <%= javascript_include_tag "application" %>
