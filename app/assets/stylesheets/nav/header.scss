@@ -9,7 +9,12 @@ header {
     font-family: Lobster, $baseFontFamily;
     font-weight: bold;
     margin: 0;
-    margin-right: 25px; 
+    margin-right: 25px;
+
+    a {
+      color: inherit;
+      &:hover { text-decoration: none; }
+    }
   }
 
   nav a {
