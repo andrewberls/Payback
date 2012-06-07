@@ -48,7 +48,7 @@ class GroupsController < ApplicationController
                   end
 
           render json: {
-            group: @group.as_json(except: [:password_digest, :id]),
+            group: @group,
             users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
           }
         else
