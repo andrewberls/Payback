@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   validates :password, presence: { on: :create }, 
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
+  before_save :generate_auth_token
+
   #------------------------------
   # Associations
   #------------------------------
@@ -35,10 +37,6 @@ class User < ActiveRecord::Base
   has_many :debts,   :class_name => "Expense", :foreign_key => :debtor_id
   has_many :credits, :class_name => "Expense", :foreign_key => :creditor_id
 
-
-  before_save :generate_auth_token
-
-  
 
   def full_name
     self.first_name + " " + self.last_name
