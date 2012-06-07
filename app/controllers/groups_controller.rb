@@ -26,8 +26,11 @@ class GroupsController < ApplicationController
   #------------------------------
   def index
     @groups = current_user.groups
-    
-    return redirect_to welcome_path if @groups.blank?
+
+    respond_to do |format|
+      format.html { return redirect_to welcome_path if @groups.blank? }
+      format.json { render json: @groups }
+    end
   end
 
   def show

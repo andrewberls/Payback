@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   #force_ssl
 
   def check_auth    
-    redirect_to login_path unless current_user
+    respond_to do |format|
+      format.html { redirect_to login_path unless current_user }
+      format.json { render json: {} unless current_user }
+    end
   end
 
   private
