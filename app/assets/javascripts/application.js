@@ -4,7 +4,6 @@
 
 //-- VENDOR PLUGINS
 //------------------------------------
-//= require bootstrap
 //= require jquery.easing.1.3
 //= require laconic
 //= require jquery.mailcheck.min
