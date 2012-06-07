@@ -24,7 +24,7 @@
       
       <%= link_to "Delete", {action: 'destroy', id: group.gid }, {
         :method => :delete, 
-        confirm: "Are you sure you want to delete this group? This action cannot be undone.", 
+        confirm: "Are you sure? This removes all users and expenses and cannot be undone.", 
         class: "btn btn-red",
       } %>
       
