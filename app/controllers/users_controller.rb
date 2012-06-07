@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :check_auth, except: [:new, :create]
     
   def new
-    redirect_to expenses_path if current_user
+    return redirect_to expenses_path if current_user
     @user = User.new
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to login_path
+    return redirect_to login_path
   end
 
   def welcome

@@ -13,10 +13,10 @@ class GroupsController < ApplicationController
     @group = Group.new(params[:group])
     @group.initialize_owner(current_user)
     if @group.save
-      redirect_to group_path(@group.gid)
+      return redirect_to group_path(@group.gid)
     else
       flash.now[:error] = "Something went wrong - please check your fields and try again."
-      render :new
+      return render :new
     end
   end
 
@@ -69,7 +69,7 @@ class GroupsController < ApplicationController
   #------------------------------
   def edit
     @group = Group.find_by_gid(params[:id])
-    redirect_to groups_path unless current_user == @group.owner
+    return redirect_to groups_path unless current_user == @group.owner
   end
 
   def update
@@ -78,10 +78,10 @@ class GroupsController < ApplicationController
    
     if @group.update_attributes(params[:group])
       flash[:success] = "Group successfully updated."
-      redirect_to groups_path      
+      return redirect_to groups_path      
     else
       flash.now[:error] = "Something went wrong - please check your fields and try again."
-      render :edit
+      return render :edit
     end
   end
 

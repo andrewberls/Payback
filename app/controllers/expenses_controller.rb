@@ -82,7 +82,7 @@ class ExpensesController < ApplicationController
     Expense.find_by_id(params[:id]).update_attributes(active: false)
     # TODO: Do we want a flash here?
     flash[:success] = "Expense successfully completed!"
-    redirect_to expenses_path    
+    return redirect_to expenses_path    
   end
     
 end
