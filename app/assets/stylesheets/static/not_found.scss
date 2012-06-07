@@ -7,6 +7,8 @@
   }
 
   p {
+    color: lighten($gray-text, 20);
+
     font-size: 1.5em;
     line-height: 1.5;
     margin-bottom: 10px;
