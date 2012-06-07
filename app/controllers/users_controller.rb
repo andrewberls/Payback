@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    
     if @user.save
       cookies[:auth_token] = @user.auth_token
       return redirect_to welcome_path
