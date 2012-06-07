@@ -1,4 +1,4 @@
-.footer {  
+footer {  
   @include inset-box-shadow(0, 10px, 5px, -8px, #ccc);
   color: lighten($dark-gray, 30);
   margin-top: 100px;

@@ -8,23 +8,31 @@
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
-  <% # TODO: SEPARATE LAYOUT OR NO? %>
   
-  <% if signed_in? #&& params[:controller] != "static" %>
+  <% if signed_in? %>
     <%= render 'shared/header' %>
+  <% elsif params[:controller] == "static" %>
+
+    <header>
+      <div class="container">
+        <h1><%= link_to "Payback", expenses_path %></h1>
+        <nav>
+          <ul>
+            <li><%= link_to "Log In", login_path %></li>
+            <li><%= link_to "Sign Up", signup_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
   <% end %>
 
   <div class="container"> 
 
     <%= yield %>
 
-    <div class="row">
-      <div class="span-16">
-        <%= render "shared/footer" %>
-      </div>
-    </div>
-    
+    <%= render "shared/footer" %>
+
   </div><!-- .container -->
 
 

@@ -11,8 +11,9 @@
 @import "components/forms";
 @import "expenses/expenses";
 @import "groups/groups";
-@import "signup/main";
-@import "signup/welcome";
+
+//@import "static/main";
+@import "static/not_found";
 
 
 //-- GENERIC
@@ -30,7 +31,7 @@ body {
 }
 
 body > .container {
-  margin: 10px auto 0;
+  margin: 25px auto 0; // 10px auto 0
 
   @media (max-width: 630px) {
     padding: 0 5px;

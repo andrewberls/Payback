@@ -1,15 +1,18 @@
-<div class="row-fluid footer">
-  <p class="tagline">
-    <% # OSS? %>
-    Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
-  </p>
+<div class="row">
+  <div class="span-16">
 
-  <% if signed_in? %>
-    <div class="actions">
-      <p>Signed in as <%= current_user.full_name %></p>
-      &nbsp;|&nbsp;
-      <%= link_to "Log Out", logout_path %>
-    </div><!-- .actions -->
-  <% end %>     
-    
-</div><!-- .footer -->
+    <footer>
+      <p class="tagline">Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.</p>
+
+      <% if signed_in? %>
+        <div class="actions">
+          <p>Signed in as <%= current_user.full_name %></p>
+          &nbsp;|&nbsp;
+          <%= link_to "Log Out", logout_path %>
+        </div><!-- .actions -->
+      <% end %>     
+        
+    </footer><!-- .footer -->
+
+  </div>
+</div>

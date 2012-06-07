@@ -27,10 +27,11 @@ Payback::Application.routes.draw do
   match "not_found" => "static#not_found", as: "not_found"
 
 
-  root :to => "sessions#new"
+  root :to => "static#start"
 
 
   # ROUTE ALL PAGE NOT FOUND TO 404 action
   match "*a" => "static#not_found"
+  #match "*a" => redirect("/")
 
 end
