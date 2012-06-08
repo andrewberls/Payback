@@ -8,16 +8,11 @@
       
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
 
-      <div class="field">
-        <%= label_tag :email %>
-        <%= text_field_tag :email %>      
-      </div>
-          
-      <div class="field">
-        <%= label_tag :password %>                            
-        <%# link_to "Forgot password?", "#", class: "forgot-password" %>
-        <%= password_field_tag :password%> 
-      </div>
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>      
+        
+      <%= label_tag :password %>
+      <%= password_field_tag :password%>
 
       <label class="checkbox">                
         <%= check_box_tag :remember_me, 1 %>
