@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    
     if @user.save
       cookies[:auth_token] = @user.auth_token
       return redirect_to welcome_path
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
 
   def welcome
     # First time login - belong to no groups
+    return redirect_to groups_path unless current_user.groups.blank?
   end
 
 end

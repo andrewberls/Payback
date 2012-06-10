@@ -4,26 +4,28 @@
   <%= javascript_include_tag "mailcheck" %>
 <% end %>
 
-<div class="row">
-    <h1 class="main-title">Welcome to Payback.</h1>
-</div>
+<!-- <div class="row">
+    <div class="span-16">
+      <h1 class="main-title">Welcome to Payback.</h1>
+    </div>
+</div> -->
 
 <div class="row">
 
-  <div class="span-8">
+  <!--<div class="span-8">
 
-    <%= render 'word_scroll' %>
+    <%# render 'word_scroll' %>
 
-    <%= render 'thumbnails' %>
+    <%# render 'thumbnails' %>
 
-  </div>
+  </div>-->
   
-  <div class="span-7 offset-1">
+  <div class="span-6 offset-5"><!-- 7 1 -->
 
     <%= render 'signup_form' %>
 
     <p><%= link_to "Already have an account? Log in!", login_path, class: "form-suggestion" %></p>
     
   </div>
-
+  
 </div>

@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
 
   def create
 
-    # This controller action is bad and you should feel bad.
+    # TODO: This controller action is bad and you should feel bad.
 
     @expense = Expense.new(params[:expense].except(:type))
 
@@ -80,7 +80,7 @@ class ExpensesController < ApplicationController
   #------------------------------
   def destroy
     Expense.find_by_id(params[:id]).update_attributes(active: false)
-    # TODO: Do we want a flash here?
+    # TODO: AJAX slide remove instead of flash
     flash[:success] = "Expense successfully completed!"
     return redirect_to expenses_path    
   end

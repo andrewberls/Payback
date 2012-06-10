@@ -7,24 +7,31 @@ Payback::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
 
   # Group actions
-  match "join"  => "groups#join", as: "join_group" # View
-  match "add"   => "groups#add", as: "add_group" # Processing
+  match "join"  => "groups#join",  as: "join_group" # View
+  match "add"   => "groups#add",   as: "add_group"  # Processing
   match "leave" => "groups#leave", as: "leave_group"
 
 
   # User actions
-  match "signup" => "users#new", as: "signup"
+  match "signup" => "users#new",      as: "signup"
   match "welcome" => "users#welcome", as: "welcome"
 
 
   # Session management
-  match "login"  => "sessions#new", as: "login"
-  match "logout" => "sessions#destroy", as: "logout"  
+  match "login"  => "sessions#new",     as: "login"
+  match "logout" => "sessions#destroy", as: "logout"
 
-  root :to => "sessions#new"
 
-  # ROUTE ALL PAGE NOT FOUND TO 404.html
-  # TODO: Make a controller action
-  #match "*a" => redirect("/404.html")
+  # Static pages
+  match "start"     => "static#start", as: "start"
+  match "not_found" => "static#not_found", as: "not_found"
+
+
+  root :to => "static#start"
+
+
+  # ROUTE ALL PAGE NOT FOUND TO 404 action
+  match "*a" => "static#not_found"
+  #match "*a" => redirect("/")
 
 end

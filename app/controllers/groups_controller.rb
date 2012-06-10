@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params[:group])
     @group.initialize_owner(current_user)
+
     if @group.save
       return redirect_to group_path(@group.gid)
     else
@@ -26,8 +27,11 @@ class GroupsController < ApplicationController
   #------------------------------
   def index
     @groups = current_user.groups
-    
-    return redirect_to welcome_path if @groups.blank?
+
+    respond_to do |format|
+      format.html { return redirect_to welcome_path if @groups.blank? }
+      format.json { render json: @groups }
+    end
   end
 
   def show
@@ -89,6 +93,7 @@ class GroupsController < ApplicationController
   def destroy   
     # Need to destroy group and expenses, but preserve users
     # TODO: move this to an action on the group model and test it
+    
     group = Group.find_by_gid(params[:id])
     group.expenses.each { |expense| expense.destroy } 
     group.destroy

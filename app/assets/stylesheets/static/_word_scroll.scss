@@ -1,14 +1,16 @@
 // Word scroll module
 //-------------------
 .easy-way {
-  font-size: 1.8em;
-  font-weight: bold;
+  //font-size: 1.8em;
+  //font-weight: bold;
   margin-bottom: 15px;
 
   #word-scroll {
+    //outline: 1px solid red;
+
     display: inline-block;
     margin-left: 5px;
-    height: 30px;
+    height: 32px;
     overflow: hidden;
     position: absolute;
     width: 140px;

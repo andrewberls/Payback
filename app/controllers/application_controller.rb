@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   #force_ssl
 
   def check_auth    
-    redirect_to login_path unless current_user
+    respond_to do |format|
+      format.html { redirect_to login_path unless current_user }
+      format.json { render json: {} unless current_user }
+    end
   end
 
   private
@@ -13,5 +16,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
   helper_method :current_user
+
+  def signed_in?
+    !current_user.nil?
+  end
+  helper_method :signed_in?
 
 end

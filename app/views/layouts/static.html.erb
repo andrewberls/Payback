@@ -11,19 +11,14 @@
   
   <% if signed_in? %>
     <%= render 'shared/header' %>
-  <% elsif params[:controller] == "static" %>
+  <% else %>
     <%= render 'shared/static_header' %>
   <% end %>
 
-  <div class="container"> 
 
-    <%= yield %>
+  <%= yield %>
 
-    <%= render "shared/footer" %>
-
-  </div><!-- .container -->
-
-
+    
   <%= javascript_include_tag "application" %>
   <%= yield :javascript_includes %>
 

@@ -11,8 +11,10 @@
 @import "components/forms";
 @import "expenses/expenses";
 @import "groups/groups";
-@import "signup/main";
-@import "signup/welcome";
+
+@import "static/main";
+@import "static/welcome";
+@import "static/not_found";
 
 
 //-- GENERIC
@@ -22,8 +24,8 @@ html {
 }
 
 body {
-  @extend .noise;
   background-color: $light-gray;
+  @extend .noise;
   color: $gray-text;
   font-family: $baseFontFamily;
   font-size: 13px;
@@ -31,10 +33,10 @@ body {
 
 body > .container {
   margin: 10px auto 0;
+}
 
-  @media (max-width: 630px) {
-    padding: 0 5px;
-  }
+@media (max-width: 630px) {
+  body .container { padding: 0 5px; }
 }
 
 
