@@ -1,4 +1,62 @@
-<% provide(:title, 'LANDING PAGE TITLE') %>
+<% provide(:title, 'The easiest way to track spending and borrowing with your group') %>
 
-<h1>Static#start</h1>
-<p>Find me in app/views/static/start.html.erb</p>
+<section class="landing-main">
+  <div class="container">
+    <div class="row">
+      
+      <div class="span-6"><!-- 7 -->
+        <h1>Welcome to Payback.</h1>
+        <%= render 'word_scroll' %>
+
+        <%= link_to raw("Get started for free &raquo;"), signup_path, class: "btn btn-green btn-cta" %>
+      </div>
+
+      <div class="span-10"><!-- 9 -->
+        <img src="http://placehold.it/680x450" alt=""><!-- 610x405 -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="landing-reasons">
+  <div class="container">
+    <div class="row">
+
+      <!-- <h1 style="text-align: center; margin-bottom: 25px;">A few reasons we think you'll love Payback:</h1> -->
+      
+      <div class="span-5">
+        <h2 class="quote">I swear you owed me $10...</h2>
+        <!-- <p>Remember when you covered your friend at the movies? Or was it that restaurant? Payback never forgets who owes you money and how much.</p> -->
+      </div>
+
+      <div class="span-6">
+        <h2 style="color:red;">No more arguments</h2>
+        <p>Payback</p>
+      </div>
+
+      <div class="span-5">
+        <h2>Built for your phone</h2>
+        <p>Payback is built to look great on your phone for when you're on the go. No downloads required!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="reasons-temp">
+  <div class="container">
+    <div class="row">
+      <div class="span-8 offset-4">
+        
+        <p>test</p>
+
+      </div>
+    </div>
+  </div>
+</section>
