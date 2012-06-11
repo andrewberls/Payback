@@ -79,7 +79,16 @@ section {
 
   h2 {
     color: lighten($dark-gray, 15);
-    margin-bottom: 10px;
+  }
+
+  .blueborder {
+    border-bottom: 2px solid $blue;
+    margin: 0 30px 10px;
+
+    @media (max-width: 790px) {
+      border: none;
+      margin: 0;
+    }
   }
 
   .quote:before,
