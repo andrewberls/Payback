@@ -2,27 +2,19 @@
 //------------------------------------
 @import "word_scroll";
 
-//section .container { outline: 1px dashed orange; }
-// .landing-main { outline: 1px dashed blue; }
-// .landing-reasons { outline: 1px dashed red; }
-
 
 .btn-cta {
-  padding: 18px 25px;
   font-size: 1.3em;
   font-weight: normal;
   margin-bottom: 20px;
+  padding: 18px 25px;
 
   @media (max-width: 630px) {
-    padding-left: 40px; padding-right: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
-section {
-  padding: 50px 0;
-
-
-}
 
 
 .landing-main {
@@ -56,7 +48,6 @@ section {
     text-align: center; 
 
     h1, p { text-align: left; } // Hack to center the cta btn
-
   }
 }
 
@@ -72,9 +63,7 @@ section {
     color: lighten($gray-text, 15);
     margin-bottom: 50px;
 
-    @media(max-width: 630px) {
-      margin-bottom: 25px;
-    }
+    @media(max-width: 630px) { margin-bottom: 25px; }
   }
 
   h2 {
@@ -91,34 +80,20 @@ section {
     }
   }
 
-  .quote:before,
-  .quote:after {
-    content: "\"";
-    color: darken($med-gray, 10);
-    font-weight: normal;
-  }
-
   p {
     color: lighten($gray-text, 15);
     font-size: 1.2em;
     line-height: 1.5em;
 
-    @media (max-width: 630px) { 
-      margin-bottom: 10px; 
-    }
+    @media (max-width: 630px) { margin-bottom: 10px; }
   }
 
-
-  @media (max-width: 630px) {
-    padding: 25px 0;
-  }
+  @media (max-width: 630px) { padding: 25px 0; }
 
 }
 
 
 
-
-
-.reasons-temp {
+.landing-temp {
   @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
 }
