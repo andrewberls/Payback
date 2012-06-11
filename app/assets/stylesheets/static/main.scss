@@ -66,10 +66,20 @@ section {
   @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
   background-color: white;
   padding: 75px 0;
+  text-align: center;
+
+  .reasons-header {
+    color: lighten($gray-text, 15);
+    margin-bottom: 50px;
+
+    @media(max-width: 630px) {
+      margin-bottom: 25px;
+    }
+  }
 
   h2 {
     color: lighten($dark-gray, 15);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .quote:before,
