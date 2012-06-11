@@ -75,6 +75,14 @@ a {
   }
 }
 
+// Lib
+.quote:before,
+.quote:after {
+  content: "\"";
+  color: darken($med-gray, 10);
+  font-weight: normal;
+}
+
 
 //-- LIB CLASSES
 //------------------------------------
