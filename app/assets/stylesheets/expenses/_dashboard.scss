@@ -16,12 +16,12 @@
 
 .expense {
   @include clearfix;
-  border-bottom: 1px dashed $med-gray;
+  border-top: 1px dashed $med-gray;
   font-size: 2em;
   padding: 5px;
   position: relative;
 
-  &:last-of-type {
+  &:first-of-type {
     border: none;
   }
 
@@ -77,6 +77,21 @@
 
   p {
     margin: 5px 0;
+  }
+}
+
+.expense-stale {
+  float: right;
+  font-size: 0.5em;
+  margin-right: 5px;
+  padding: 2px 5px;
+
+  [class^="icon"] {
+    margin: 0;
+  }
+
+  @media (min-width: 630px) and (max-width: 790px) {
+    display: none;
   }
 }
 

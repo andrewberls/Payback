@@ -13,10 +13,9 @@
           <span class="expense-creditor"><%= expense.creditor.first_name %></span> 
           
           <div class="info-stack">
-            <%# Title + Date vertically stacked  %>
             <span class="expense-title"><%= expense.title %></span>
             <span class="expense-date"><%= render_date expense.created_at %></span>
-          </div><!-- .info-stack -->
+          </div>
         </div><!-- .expense -->
 
       <% end %>

@@ -23,3 +23,15 @@
 .field-error {
   border: 1px solid red !important;
 }
+
+.badge {
+  @include border-radius(3px);
+  display: inline-block;
+  font-size: 0.9em;
+  padding: 2px 5px;
+
+  &.badge-red {
+    background-color: #D03130;
+    color: white;
+  }
+}

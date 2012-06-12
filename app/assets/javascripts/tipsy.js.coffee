@@ -1,0 +1,2 @@
+$ ->
+  $('.expense-stale').tipsy()
