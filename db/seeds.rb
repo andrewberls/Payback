@@ -7,32 +7,28 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 admin_user = User.create(
-  first_name: "Dan",
-  last_name: "User",
+  full_name: "Dan User",
   email: "admin@admin.com",
   password: "admin",
   password_confirmation: "admin"
 )
 
 aux_user_1 = User.create(
-  first_name: "Jeff",
-  last_name: "Schmoe",
+  full_name: "Jeff Schmoe",
   email: "jeff@gmail.com",
   password: "password",
   password_confirmation: "password"
 )
 
 aux_user_1b = User.create(
-  first_name: "David",
-  last_name: "Dawg",
+  full_name: "David Dawg",
   email: "david@gmail.com",
   password: "password",
   password_confirmation: "password"
 )
 
 aux_user_2 = User.create(
-  first_name: "Nicole",
-  last_name: "Doe",
+  full_name: "Nicole Doe",
   email: "nicole@gmail.com",
   password: "password",
   password_confirmation: "password"

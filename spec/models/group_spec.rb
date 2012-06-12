@@ -65,7 +65,7 @@ describe Group do
 
   context "add user" do
     before do
-      @user = FactoryGirl.create(:user, first_name: "Bob")
+      @user = FactoryGirl.create(:user, full_name: "Bob Smith")
       @group.add_user(@user)
     end
 
