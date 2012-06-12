@@ -41,6 +41,8 @@
 
   img {
     max-width: 100%;
+
+    @media (max-width: 630px) { display: none; }
   }
 
   @media (max-width: 630px) {
