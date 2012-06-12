@@ -3,15 +3,11 @@ class User < ActiveRecord::Base
   #------------------------------
   # Validations
   #------------------------------
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
+  attr_accessible :full_name, :email, :password, :password_confirmation
 
   has_secure_password
 
-  validates :first_name, 
-    presence: true, 
-    length: {maximum: 50}
-
-  validates :last_name, 
+  validates :full_name, 
     presence: true, 
     length: {maximum: 50}
 
@@ -38,8 +34,12 @@ class User < ActiveRecord::Base
   has_many :credits, :class_name => "Expense", :foreign_key => :creditor_id
 
 
-  def full_name
-    self.first_name + " " + self.last_name
+  def first_name
+    self.full_name.split(" ").first
+  end
+
+  def last_name
+    self.full_name.split(" ").last
   end
 
   def active_credits

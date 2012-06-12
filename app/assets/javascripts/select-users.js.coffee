@@ -9,7 +9,8 @@ loadUsers = (gid) ->
           "type" : "checkbox",
           "name" : "users[#{user.id}]"
         }
-        label = $.el.label({}, "#{user.first_name}")
+        first_name = user.full_name.split(" ")[0]
+        label = $.el.label({}, "#{first_name}")
         $column.append $.el.userbox(input, label)
   }
 

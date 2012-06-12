@@ -4,8 +4,7 @@ describe User do
 
 	before do
 		@user = User.new(
-      first_name: "John",
-      last_name: "Smith",
+      full_name: "John Smith",
       email: "user@example.com",
       password: "12345",
       password_confirmation: "12345"
@@ -14,6 +13,7 @@ describe User do
 
   subject { @user }
   
+  it { should respond_to(:full_name) }
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
@@ -22,24 +22,14 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
 
-  describe "when first name is not present" do
-  	before { @user.first_name = "" }
+  describe "when full name is not present" do
+  	before { @user.full_name = "" }
   	it { should_not be_valid }
   end
 
-  describe "when last name is not present" do
-    before { @user.last_name = "" }
-    it { should_not be_valid }
-  end
-
-  describe "when first name is too long" do
-  	before { @user.first_name = "a" * 51 }
+  describe "when full name is too long" do
+  	before { @user.full_name = "a" * 51 }
   	it { should_not be_valid }
-  end
-
-  describe "when last name is too long" do
-    before { @user.last_name = "a" * 51 }
-    it { should_not be_valid }
   end
 
   describe "when email is not present" do
