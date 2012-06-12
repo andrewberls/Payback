@@ -7,12 +7,12 @@
       <% if signed_in? %>
         <div class="actions">
           <p>Signed in as <%= current_user.full_name %></p>
-          &nbsp;|&nbsp;
+          <span class="divider">|</span>
           <%= link_to "Log Out", logout_path %>
         </div><!-- .actions -->
       <% end %>     
         
-    </footer><!-- .footer -->
+    </footer><!-- footer -->
 
   </div>
 </div>
