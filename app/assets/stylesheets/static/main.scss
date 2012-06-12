@@ -40,6 +40,7 @@
   }
 
   img {
+    border: 1px solid $med-gray;
     max-width: 100%;
 
     @media (max-width: 630px) { display: none; }
