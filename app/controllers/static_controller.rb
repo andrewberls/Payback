@@ -3,7 +3,7 @@ class StaticController < ApplicationController
   layout :choose_layout
 
   def start
-    #redirect_to expenses_path if signed_in?
+    redirect_to expenses_path if signed_in?
   end
 
   def not_found
