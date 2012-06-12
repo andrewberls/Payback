@@ -24,7 +24,7 @@
   
   <% if signed_in? %>
     <%= render 'shared/header' %>
-  <% elsif params[:controller] == "static" %>
+  <% else #if params[:controller] == "static" %>
     <%= render 'shared/static_header' %>
   <% end %>
 

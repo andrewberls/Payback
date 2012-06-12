@@ -1,10 +1,19 @@
 <header>
   <div class="container">
-    <h1><%= link_to "Payback", expenses_path %></h1>
+    <h1><%= link_to "Payback", root_url %></h1>
     <nav>
       <ul>
-        <li><%= link_to "Log In", login_path %></li>
-        <li><%= link_to "Sign Up", signup_path %></li>
+        <% if action_request == "sessions#new" %>
+          <li><%= link_to "Log In", login_path, class: "current" %></li>
+        <% else %>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+
+        <% if action_request == "users#new" %>
+          <li><%= link_to "Sign Up", signup_path, class: "current" %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
