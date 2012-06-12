@@ -12,19 +12,12 @@
   <span class="group-gid">ID: <%= group.gid %></span>
 
   <div class="right">
-
-    <%= link_to "Leave Group", {action: 'leave', gid: group.gid }, {      
-        confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.", 
-        class: "btn",
-      } %>
-  
     <%  if current_user == group.owner %>
 
       <%= link_to "Edit", edit_group_path(group.gid), class: "btn" %>
-      
-      <%= link_to "Delete", {action: 'destroy', id: group.gid }, {
-        :method => :delete, 
-        confirm: "Are you sure? This removes all users and expenses and cannot be undone.", 
+
+      <%= link_to "Leave Group", {action: 'leave', gid: group.gid }, {      
+        confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.", 
         class: "btn btn-red",
       } %>
       
