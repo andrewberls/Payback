@@ -26,6 +26,9 @@ Payback::Application.routes.draw do
   match "start"     => "static#start", as: "start"
   match "not_found" => "static#not_found", as: "not_found"
 
+  get 'contact'  => 'static#contact', as: 'contact'
+  post 'contact' => 'static#mail', as: 'contact'
+
 
   root :to => "static#start"
 

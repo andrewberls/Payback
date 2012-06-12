@@ -8,6 +8,8 @@
         <div class="actions">
           <p>Signed in as <%= current_user.full_name %></p>
           <span class="divider">|</span>
+          <%= link_to "Contact", contact_path %>
+          <span class="divider">|</span>
           <%= link_to "Log Out", logout_path %>
         </div><!-- .actions -->
       <% end %>     

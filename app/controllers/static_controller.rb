@@ -2,8 +2,27 @@ class StaticController < ApplicationController
 
   layout :choose_layout
 
+  before_filter :check_auth, only: [:contact, :mail]
+
   def start
     redirect_to expenses_path if signed_in?
+  end
+
+  def contact
+    @message = Message.new
+  end
+
+  def mail
+    @message = Message.new(params[:message])
+    
+    if @message.valid?      
+      Notifier.new_message(@message).deliver
+      flash[:success] = "Thanks! We'll get back to you as soon as possible." 
+      return redirect_to contact_path
+    else
+      flash[:error] = "Please check your fields and try again!"
+      return redirect_to contact_path
+    end
   end
 
   def not_found

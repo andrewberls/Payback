@@ -20,7 +20,8 @@ form {
     margin-bottom: 5px;
   }
 
-  input:not([type="submit"]) {
+  input:not([type="submit"]),
+  textarea {
     @include border-box;
     border: 1px solid $med-gray;
     margin-bottom: 15px;
@@ -30,6 +31,12 @@ form {
     &:focus {
       outline: none;
     }
+  }
+
+  textarea {
+    height: 150px;
+    overflow: auto; // Remove scrollbar in IE
+
   }
 
   input[type="submit"] {
