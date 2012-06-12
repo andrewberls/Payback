@@ -1,9 +1,10 @@
 //-- LIB/IMPORTS
 //------------------------------------
-@import "lib/cheeky.min";
+//= require lib/cheeky.min
+//= require tipsy
+
 @import "lib/variables";
 @import "lib/mixins";
-@import "tipsy";
 @import "nav/header";
 @import "nav/footer";
 @import "components/buttons";
