@@ -37,14 +37,13 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by_gid(params[:id])
 
-    # TODO: DEAL WITH BLANK GROUP
-
     respond_to do |format|
-      # TODO: HOW TO RESPOND TO UNAUTHORIZED HTML?
-      format.html # show.html.erb
+      authorized = @group.present? && @group.users.include?(current_user)
+
+      format.html { return redirect_to root_url unless authorized }
       format.json do
 
-        if current_user && @group.users.include?(current_user)
+        if authorized
           users = if params[:others]
                     @group.users - [current_user]
                   else
