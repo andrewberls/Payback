@@ -16,6 +16,21 @@
 }
 
 
+.landing-reasons,
+.landing-how,
+.landing-footer {
+  @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
+}
+
+
+.section-title {
+  color: lighten($gray-text, 20);
+  margin-bottom: 50px;
+  text-align: center;
+
+  @media(max-width: 630px) { margin-bottom: 25px; }
+}
+
 
 .landing-main {
   padding: 100px 0 0;
@@ -57,17 +72,11 @@
 
 
 .landing-reasons {
-  @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
   background-color: white;
   padding: 75px 0;
   text-align: center;
 
-  .reasons-header {
-    color: lighten($gray-text, 20);
-    margin-bottom: 50px;
 
-    @media(max-width: 630px) { margin-bottom: 25px; }
-  }
 
   h2 {
     color: lighten($dark-gray, 15);
@@ -97,6 +106,32 @@
 
 
 
-.landing-temp {
-  @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
+.landing-how {
+  padding: 75px 0;
+
+  h2 {
+    color: lighten($dark-gray, 15);
+  }
+
+  p {}
+
+  .row + .row {
+    margin-top: 25px;
+  }
+}
+
+
+
+.landing-footer {
+  color: lighten($gray-text, 15);
+  padding: 50px 0;
+  text-align: center;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: lighten($gray-text, 25);
+  }
 }
