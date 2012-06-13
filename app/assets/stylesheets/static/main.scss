@@ -2,12 +2,52 @@
 //------------------------------------
 @import "word_scroll";
 
+.landing-main,
+.landing-how {
+  img {
+    border: 1px solid $med-gray;
+    max-width: 100%;
+
+    @media (max-width: 630px) { display: none; }
+  }
+}
+
 
 .landing-reasons,
-.landing-how,
-.landing-footer {
+.landing-how {
   @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
+  padding: 75px 0;
+
+  h2 {
+    color: lighten($dark-gray, 15);
+  }
+
+  p {
+    color: lighten($gray-text, 15);
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
 }
+
+
+
+.round-number {
+  // TODO: MOVE TO GENERIC FILE
+  $height: 25px;
+
+  @include border-radius($height);
+  background-color: $gray-text;
+  color: white;
+  display: inline-block;
+  float: left;
+  font-size: 1.2em;
+  line-height: $height;
+  margin-right: 10px;
+  text-align: center;
+  width: $height; height: $height;
+}
+
+
 
 
 .section-title {
@@ -34,20 +74,12 @@
     color: lighten($gray-text, 10);
     font-size: 1.7em;
     line-height: 1.5;
+    margin-bottom: 50px;
 
-    &:last-of-type {
-      margin-bottom: 50px;
-
-      @media (max-width: 630px) { margin-bottom: 15px; }
-    }
+    @media (max-width: 630px) { margin-bottom: 15px; }
   }
 
-  img {
-    border: 1px solid $med-gray;
-    max-width: 100%;
-
-    @media (max-width: 630px) { display: none; }
-  }
+  // img
 
   @media (max-width: 630px) {
     padding-top: 20px;
@@ -61,14 +93,7 @@
 
 .landing-reasons {
   background-color: white;
-  padding: 75px 0;
   text-align: center;
-
-
-
-  h2 {
-    color: lighten($dark-gray, 15);
-  }
 
   .blueborder {
     border-bottom: 2px solid $blue;
@@ -80,37 +105,45 @@
     }
   }
 
-  p {
-    color: lighten($gray-text, 15);
-    font-size: 1.2em;
-    line-height: 1.5em;
+  @media (max-width: 630px) {
+    padding: 25px 0;
 
-    @media (max-width: 630px) { margin-bottom: 10px; }
+    p {
+      margin-bottom: 10px;
+    }
   }
-
-  @media (max-width: 630px) { padding: 25px 0; }
-
 }
 
 
 
 .landing-how {
-  padding: 75px 0;
 
-  h2 {
-    color: lighten($dark-gray, 15);
+  h1 {
+    color: lighten($gray-text, 20);
+    margin-bottom: 25px;
+    text-align: left;
   }
 
-  p {}
+  p {
+    line-height: 1.5;
+  }
 
   .row + .row {
     margin-top: 25px;
+  }
+
+  .btn-cta {
+    margin-top: 25px;
+
+    @media (max-width: 630px) { margin: 10px 0; }
   }
 }
 
 
 
 .landing-footer {
+  background-color: #262626;
+  border-top: 10px solid $gray-text;
   color: lighten($gray-text, 15);
   padding: 50px 0;
   text-align: center;
@@ -124,6 +157,7 @@
 
     &:hover {
       color: $blue;
+      text-decoration: none;
     }
   }
 }
