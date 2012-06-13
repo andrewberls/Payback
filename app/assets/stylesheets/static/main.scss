@@ -129,11 +129,18 @@
   }
 
   .row + .row {
-    margin-top: 25px;
+    margin-top: 35px;
+
+    @media (max-width: 630px) { margin-top: 25px; }
   }
 
   .closing-cta {
+    margin-top: -10px;
     text-align: center;
+
+    @media (max-width: 630px) {
+      p { margin-bottom: 10px; }
+    }
   }
 
   .btn-cta {
