@@ -133,5 +133,9 @@
 
   a {
     color: lighten($gray-text, 25);
+
+    &:hover {
+      color: $blue;
+    }
   }
 }
