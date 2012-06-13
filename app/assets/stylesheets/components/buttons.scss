@@ -898,7 +898,7 @@ input[type="submit"] {
 
 /* -------------------------------------------------------- CUSTOMIZATIONS BY ANDREW BERLS */
 .btn {
-  /* Darken the buttons a bit */
+  // Darken the buttons a bit
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -913,9 +913,22 @@ input[type="submit"] {
   padding: 15px 25px;
 }
 
+.btn-cta {
+  // A large call to action
+  font-size: 1.3em;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding: 18px 25px;
+
+  @media (max-width: 630px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
 .btn-shadow {
-  /* Darken the shadow to make a button more pronounced
-    on a light background */
+  // Darken the shadow to make a button more pronounced
+  // on a light background
 
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
      -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);

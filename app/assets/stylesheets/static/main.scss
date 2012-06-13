@@ -3,19 +3,6 @@
 @import "word_scroll";
 
 
-.btn-cta {
-  font-size: 1.3em;
-  font-weight: normal;
-  margin-bottom: 20px;
-  padding: 18px 25px;
-
-  @media (max-width: 630px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-
-
 .landing-reasons,
 .landing-how,
 .landing-footer {
@@ -24,6 +11,7 @@
 
 
 .section-title {
+  // Light main section header
   color: lighten($gray-text, 20);
   margin-bottom: 50px;
   text-align: center;
