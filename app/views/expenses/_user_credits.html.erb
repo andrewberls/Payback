@@ -34,4 +34,8 @@
     </div><!-- .expenses-container -->
   </div><!-- .group-container -->
 
+  <% if @credits.count > 1 %>
+    <p class="expense-total">You are owed <%= number_to_currency(@credits.inject(0) { |total, exp| total + exp.amount }, :precision => 2) %>.</p>
+  <% end %>
+
 <% end %><%# @groups.each  %>
