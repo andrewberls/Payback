@@ -80,13 +80,12 @@ form {
 //-- LOGIN
 //------------------------------------
 .form-suggestion {
-  // "Don't have an account? ..."
+  // "Already have an account?..."
+  color: lighten($gray-text, 15);
   float: right;
+  font-size: 1.2em;
+  font-weight: bold;
   margin-top: 10px;
-
-  &:after {
-    content: " \00BB"; // raquo
-  }
 }
 
 .login-form {
