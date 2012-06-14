@@ -21,7 +21,7 @@ $ ->
   $container = $('#users-container')
   $group     = $('#users-group')
   $select    = $('#users-select')
-  disabledClass = 'btn-disabled2';
+  disabledClass = 'btn-disabled2'
 
   $.el.registerTag 'userbox', (one, two) ->
     # Register a laconic element for user rendering

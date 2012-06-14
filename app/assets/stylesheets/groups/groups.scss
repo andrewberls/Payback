@@ -63,7 +63,8 @@
 
   .group-gid,
   .group-title,
-  .group-members, 
+  .group-member-count,
+  .group-member-names,
   .group-owner {
     float: left;
   }
@@ -71,7 +72,6 @@
   .group-gid {
     float: right;
     font-size: 1.4em;
-    margin: -50px 0 0;
   }
 
   .group-title {
@@ -88,11 +88,21 @@
     }
   }
 
-  .group-members {
+  .group-member-count {
     clear: both;
     margin-top: 5px;
   }
 
+  .group-member-names {
+    clear: both;
+    display: none;
+
+    .group-member {
+      display: block;
+      margin: 2px 0 0 5px;
+    }
+  }
+  
   .group-owner {
     clear: both;
     color: darken($med-gray, 15);

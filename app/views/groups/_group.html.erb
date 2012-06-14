@@ -1,7 +1,17 @@
 <div class="group">
-  <span class="group-title"><%= link_to group.title, group_path(group.gid) %></span>
+  <span class="group-title"><%= group.title %></span>
 
-  <span class="group-members"><%= pluralize(group.users.count, 'member') %></span>
+  <span class="group-gid">ID: <%= group.gid %></span>
+
+  <span class="group-member-count"><%= link_to pluralize(group.users.count, 'member'), "#" %></span>
+
+  <div class="group-member-names">
+    <%# TODO: GENERALIZE GROUP.GET USERS AS JSON INSTEAD OF LISTING SERVER SIDE  %>
+
+    <% group.users.each do |user| %>
+      <span class="group-member"><%= user.full_name %></span>
+    <% end %>
+  </div>
 
   <% if current_user == group.owner %>
     <span class="group-owner">You own this group.</span>
@@ -9,7 +19,6 @@
     <span class="group-owner">Owned by <%= group.owner.full_name %></span>
   <% end %>
 
-  <span class="group-gid">ID: <%= group.gid %></span>
 
   <div class="right">
     <%  if current_user == group.owner %>

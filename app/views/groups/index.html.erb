@@ -1,5 +1,9 @@
 <% provide(:title, 'Groups Overview') %>
 
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "groups" %>
+<% end %>
+
 <div class="row">
   <div class="span-10 offset-3">
 
