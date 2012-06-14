@@ -7,6 +7,7 @@
 @import "lib/mixins";
 @import "nav/header";
 @import "nav/footer";
+@import "components/typography";
 @import "components/buttons";
 @import "components/alerts";
 @import "components/forms";
@@ -15,7 +16,6 @@
 
 @import "static/main";
 @import "static/welcome";
-@import "static/contact";
 @import "static/not_found";
 
 
@@ -42,47 +42,12 @@ body > .container {
 }
 
 
-//-- TYPOGRAPHY
+//-- LIB CLASSES
 //------------------------------------
-// Headers
-.main-title {
-  font-size: 3em;
-  margin-bottom: 15px;
-}
+.left { float: left }
+.right { float: right }
+.noise { background: url('/images/noise.png') }
 
-.dashboard-title {
-  // TODO: this is a hack
-  margin-top: -10px;
-}
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 1.6em;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-h3 {
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-// Links
-a {
-  color: $blue;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-// Lib
 .quote:before,
 .quote:after {
   content: "\"";
@@ -94,10 +59,3 @@ a {
   display: inline-block;
   margin: 0 5px;
 }
-
-
-//-- LIB CLASSES
-//------------------------------------
-.left { float: left }
-.right { float: right }
-.noise { background: url('/images/noise.png') }

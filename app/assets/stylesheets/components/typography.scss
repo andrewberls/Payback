@@ -1,0 +1,53 @@
+// Headers
+.main-title {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+.dashboard-title {
+  // TODO: this is a hack
+  margin-top: -10px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-pretext {
+  // A block of centered text for informationals
+  margin-bottom: 20px;
+  text-align: center;
+
+  h1 {
+    font-size: 2.1em;
+  }
+
+  p {
+    color: lighten($gray-text, 10);
+    font-size: 1.3em;
+    line-height: 1.5;
+  }
+}
+
+// Links
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
