@@ -7,7 +7,7 @@ form {
   
   .help-block {
     color: $light-text;
-    margin: -5px 0 10px;
+    margin: -5px 0 15px;
   }
 
   .form-title {
@@ -36,7 +36,6 @@ form {
   textarea {
     height: 150px;
     overflow: auto; // Remove scrollbar in IE
-
   }
 
   input[type="submit"] {
