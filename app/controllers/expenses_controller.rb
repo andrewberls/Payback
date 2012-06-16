@@ -2,14 +2,13 @@ class ExpensesController < ApplicationController
 
   before_filter :check_auth
 
+  before_filter :redirect_empty, only: [:new, :index]
+
   #------------------------------
   # CREATE
   #------------------------------
   def new
-    @groups = current_user.groups
     @expense = Expense.new
-
-    return redirect_to welcome_path if @groups.blank?
   end
 
   def create
@@ -68,7 +67,6 @@ class ExpensesController < ApplicationController
   #------------------------------
   def index
     # Main dashboard
-    @groups = current_user.groups
   end
 
   #def condensed
@@ -83,6 +81,14 @@ class ExpensesController < ApplicationController
     # TODO: AJAX slide remove instead of flash
     flash[:success] = "Expense successfully completed!"
     return redirect_to expenses_path    
+  end
+
+  private
+
+  def redirect_empty
+    # Redirect to welcome page if user groups empty
+    @groups = current_user.groups
+    return redirect_to welcome_path if @groups.blank?
   end
     
 end
