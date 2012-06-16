@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def welcome
     # First time login - belong to no groups
-    return redirect_to groups_path unless current_user.groups.blank?
+    return redirect_to expenses_path unless current_user.groups.blank?
   end
 
 end
