@@ -23,7 +23,7 @@
   }
 
   p {
-    color: lighten($gray-text, 15);
+    color: $light-text;
     font-size: 1.2em;
     line-height: 1.5em;
   }
@@ -155,7 +155,7 @@
 .landing-footer {
   background-color: #262626;
   border-top: 10px solid $gray-text;
-  color: lighten($gray-text, 15);
+  color: $light-text;
   padding: 50px 0;
   text-align: center;
 

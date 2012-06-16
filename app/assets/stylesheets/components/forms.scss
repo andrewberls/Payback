@@ -6,7 +6,7 @@ form {
   @extend .whitebox;
   
   .help-block {
-    color: darken($med-gray, 15);
+    color: $light-text;
     margin: -5px 0 10px;
   }
 
@@ -81,7 +81,7 @@ form {
 //------------------------------------
 .form-suggestion {
   // "Already have an account?..."
-  color: lighten($gray-text, 15);
+  color: $light-text;
   float: right;
   font-size: 1.2em;
   font-weight: bold;

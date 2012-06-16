@@ -60,7 +60,8 @@
   }
 
   .expense-date {
-    clear: left;    
+    clear: left;
+    color: $light-text;
     font-size: 0.5em;
   }
 
@@ -81,7 +82,7 @@
 }
 
 .expense-total {
-  color: lighten($gray-text, 15);
+  color: $light-text;
   margin: 10px 0;
   text-align: right;
 }
