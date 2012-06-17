@@ -31,6 +31,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+   
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Profile successfully updated."
+      return redirect_to expenses_path      
+    else
+      flash.now[:error] = "Something went wrong - please check your fields and try again."
+      return render :edit
+    end
   end
 
   def destroy
