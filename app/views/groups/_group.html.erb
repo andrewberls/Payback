@@ -22,15 +22,13 @@
 
   <div class="right">
     <%  if current_user == group.owner %>
-
       <%= link_to "Edit", edit_group_path(group.gid), class: "btn" %>
-
-      <%= link_to "Leave Group", {action: 'leave', gid: group.gid }, {
-        confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.", 
-        class: "btn btn-red",
-      } %>
-      
     <% end %>
+
+    <%= link_to "Leave Group", { action: 'leave', gid: group.gid }, {
+      confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.", 
+      class: "btn btn-red",
+    } %>
   </div>
 
 </div><!-- .group -->
