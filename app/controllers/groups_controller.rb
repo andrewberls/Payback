@@ -73,7 +73,6 @@ class GroupsController < ApplicationController
   end
 
   def update
-    #raise params.inspect
     @group = Group.find_by_gid(params[:gid])
    
     if @group.update_attributes(params[:group])
