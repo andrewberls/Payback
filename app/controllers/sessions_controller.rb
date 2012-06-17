@@ -16,21 +16,21 @@ class SessionsController < ApplicationController
       end
 
       if user.groups.blank?
-        redirect_to welcome_path
+        return redirect_to welcome_path
       else
-        redirect_to expenses_path  
+        return redirect_to expenses_path  
       end
 
     else
       flash.now[:error] = "Invalid email or password"
-      render :new
+      return render :new
     end
 
   end
 
   def destroy    
     cookies.delete(:auth_token)
-    redirect_to root_url
+    return redirect_to root_url
   end
 
 end
