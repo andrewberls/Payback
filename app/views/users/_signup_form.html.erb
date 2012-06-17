@@ -1,7 +1,7 @@
 <%= form_for(@user, html: {class: "signup-form"}) do |f| %>
   <h1 class="form-title">Sign Up</h1>
   
-  <%= render "signup_error_messages" %>      
+  <%= render "user_error_messages" %>      
 
   <%= f.label :full_name, "Full Name" %>
   <%= f.text_field :full_name %>                    
