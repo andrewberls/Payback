@@ -35,6 +35,5 @@ Payback::Application.routes.draw do
 
   # ROUTE ALL PAGE NOT FOUND TO 404 action
   match "*a" => "static#not_found"
-  #match "*a" => redirect("/")
 
 end

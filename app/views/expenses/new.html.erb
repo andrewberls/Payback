@@ -16,7 +16,7 @@
 
       <%=
         select("group", "gid", @groups.collect { |g| [g.title, g.gid] },
-          { :include_blank => false },
+          { include_blank: false },
           { id: "group-select" })
       %>
 

@@ -9,7 +9,7 @@
       <% @debts.each do |expense| %>
 
         <div class="expense">
-          <span class="expense-price"><%= number_to_currency(expense.amount, :precision => 2) %></span>
+          <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
           <span class="expense-creditor"><%= expense.creditor.first_name %></span> 
           
           <div class="info-stack">
@@ -24,7 +24,7 @@
   </div><!-- .group-container -->
 
   <% if @debts.count > 1 %>
-    <p class="expense-total">You owe <%= number_to_currency(@debts.inject(0) { |total, exp| total + exp.amount }, :precision => 2) %>.</p>
+    <p class="expense-total">You owe <%= number_to_currency(@debts.inject(0) { |total, exp| total + exp.amount }, precision: 2) %>.</p>
   <% end %>
 
 <% end %><%# @groups.each %>

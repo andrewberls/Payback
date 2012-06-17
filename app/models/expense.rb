@@ -21,8 +21,8 @@ class Expense < ActiveRecord::Base
   belongs_to :group
 
   # Users
-  belongs_to :creditor, :class_name => "User"
-  belongs_to :debtor,   :class_name => "User"
+  belongs_to :creditor, class_name: "User"
+  belongs_to :debtor,   class_name: "User"
 
   def assign_to(*users)
     # Split and assign a debt amongst a set of selected users
