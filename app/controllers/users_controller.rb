@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :check_auth, except: [:new, :create]
+  before_filter :check_access, only: [:edit, :update]
     
   def new
     return redirect_to expenses_path if current_user
@@ -31,12 +32,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-   
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile successfully updated."
       return redirect_to expenses_path      
@@ -54,6 +52,18 @@ class UsersController < ApplicationController
   def welcome
     # First time login - belong to no groups
     return redirect_to expenses_path unless current_user.groups.blank?
+  end
+
+  private
+
+  def check_access
+    # Check if a user is allowed to perform a modification action
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to expenses_path unless @user == current_user }
+      format.json { render json: {} unless @user == current_user }
+    end
   end
 
 end

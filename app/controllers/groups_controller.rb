@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 
   before_filter :check_auth
+  before_filter :check_access, except: [:new, :create, :index, :join, :add]
 
   #------------------------------
   # CREATE
@@ -35,31 +36,21 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find_by_gid(params[:id])
-
     respond_to do |format|
-      authorized = @group.present? && @group.users.include?(current_user)
-
-      format.html { return redirect_to root_url unless authorized }
+      format.html
       format.json do
+        users = if params[:others]
+                  @group.users - [current_user]
+                else
+                  @group.users
+                end
 
-        if authorized
-          users = if params[:others]
-                    @group.users - [current_user]
-                  else
-                    @group.users
-                  end
-
-          render json: {
-            group: @group,
-            users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
-          }
-        else
-          # TODO: HTTP status code
-          return render json: {}
-        end
-
+        render json: {
+          group: @group,
+          users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
+        }
       end
+
     end
   end
 
@@ -68,13 +59,10 @@ class GroupsController < ApplicationController
   # UPDATE
   #------------------------------
   def edit
-    @group = Group.find_by_gid(params[:id])
     return redirect_to groups_path unless current_user == @group.owner
   end
 
   def update
-    @group = Group.find_by_gid(params[:gid])
-   
     if @group.update_attributes(params[:group])
       flash[:success] = "Group successfully updated."
       return redirect_to groups_path      
@@ -92,9 +80,8 @@ class GroupsController < ApplicationController
     # Need to destroy group and expenses, but preserve users
     # TODO: move this to an action on the group model and test it
     
-    group = Group.find_by_gid(params[:id])
-    group.expenses.each { |expense| expense.destroy } 
-    group.destroy
+    @group.expenses.each { |expense| expense.destroy } 
+    @group.destroy
     flash[:success] = "Group successfully deleted"
     return redirect_to groups_path
   end
@@ -127,10 +114,21 @@ class GroupsController < ApplicationController
   end
 
   def leave
-    @group = Group.find_by_gid(params[:gid])
     @group.remove_user(current_user)
     flash[:success] = "You have successfully left #{@group.title}."
     return redirect_to groups_path
+  end
+
+  private
+
+  def check_access
+    @group = Group.find_by_gid(params[:id])
+    authorized = @group.present? && @group.users.include?(current_user)
+    
+    respond_to do |format|
+      format.html { redirect_to expenses_path unless authorized }
+      format.json { render json: {} unless authorized }
+    end
   end
 
 end
