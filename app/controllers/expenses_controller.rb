@@ -36,6 +36,11 @@ class ExpensesController < ApplicationController
         selected_users = group.users - [current_user]
       end
 
+      if selected_users.count == 0
+        flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
+        return redirect_to new_expense_path
+      end
+
       cost_per_user = if action == :split
                         # Split - selected including current
                         @expense.amount / (selected_users+[current_user]).count
