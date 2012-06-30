@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :must_be_logged_in, except: [:new, :create]
-  before_filter :check_access, except: [:new, :create]
+  before_filter :check_access, except: [:new, :create, :welcome]
     
   def new
     return redirect_to expenses_path if current_user
@@ -20,12 +20,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    # respond_to do |format|
-    #   format.html # show.html.erb
-    #   format.json do
-    #     render :json => { @user.as_json(except: [:password_digest, :auth_token, :updated_at]) }
-    #   end
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: @user.as_json }
+    end
   end
 
   def edit
