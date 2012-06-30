@@ -2,7 +2,7 @@ class StaticController < ApplicationController
 
   layout :choose_layout
 
-  #before_filter :check_auth, only: [:contact, :mail]
+  #before_filter :must_be_logged_in, only: [:contact, :mail]
 
   def start
     redirect_to expenses_path if signed_in?

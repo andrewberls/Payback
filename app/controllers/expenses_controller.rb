@@ -1,8 +1,8 @@
 class ExpensesController < ApplicationController
 
-  before_filter :check_auth
+  before_filter :must_be_logged_in
 
-  before_filter :redirect_empty, only: [:new, :index]
+  before_filter :redirect_empty_groups, only: [:new, :index]
 
   #------------------------------
   # CREATE
@@ -90,7 +90,7 @@ class ExpensesController < ApplicationController
 
   private
 
-  def redirect_empty
+  def redirect_empty_groups
     # Redirect to welcome page if user groups empty
     @groups = current_user.groups
     return redirect_to welcome_path if @groups.blank?

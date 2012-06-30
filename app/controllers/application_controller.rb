@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
   
   protect_from_forgery
-  #force_ssl
 
-  def check_auth    
+  def must_be_logged_in
     respond_to do |format|
       format.html { redirect_to login_path unless current_user }
       format.json { render json: {} unless current_user }

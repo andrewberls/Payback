@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :check_auth, except: [:new, :create]
-  before_filter :check_access, only: [:edit, :update]
+  before_filter :must_be_logged_in, except: [:new, :create]
+  before_filter :check_access, except: [:new, :create]
     
   def new
     return redirect_to expenses_path if current_user
@@ -20,15 +20,12 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
-
     # respond_to do |format|
     #   format.html # show.html.erb
     #   format.json do
     #     render :json => { @user.as_json(except: [:password_digest, :auth_token, :updated_at]) }
     #   end
     # end
-
   end
 
   def edit
@@ -45,7 +42,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    user = User.find(params[:id])
+    user.destroy if user == current_user
+    reset_session
     return redirect_to login_path
   end
 
@@ -59,10 +58,11 @@ class UsersController < ApplicationController
   def check_access
     # Check if a user is allowed to perform a modification action
     @user = User.find(params[:id])
+    authorized = @user == current_user
 
     respond_to do |format|
-      format.html { redirect_to expenses_path unless @user == current_user }
-      format.json { render json: {} unless @user == current_user }
+      format.html { redirect_to expenses_path unless authorized }
+      format.json { render json: {} unless authorized }
     end
   end
 

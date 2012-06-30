@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  before_filter :check_auth
+  before_filter :must_be_logged_in
   before_filter :check_access, except: [:new, :create, :index, :join, :add]
 
   #------------------------------
