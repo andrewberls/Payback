@@ -40,6 +40,7 @@ describe Expense do
     @expense.debtor.should == @user
   end
 
+
   context "it assigns correctly" do
     before do
       @creditor = FactoryGirl.create(:user)
@@ -58,5 +59,6 @@ describe Expense do
       pending "write test"
     end
   end
+  
 
 end

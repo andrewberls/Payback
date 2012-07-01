@@ -35,6 +35,7 @@ describe Group do
     @group.should_not be_valid
   end
 
+
   context "gid" do
     it "has a gid present before save" do
       @group[:gid].should_not be_blank
@@ -44,6 +45,7 @@ describe Group do
       @group[:gid].length.should == 6
     end
   end
+
 
   context "initialize owner" do
     before do
@@ -63,6 +65,7 @@ describe Group do
     end
   end
 
+
   context "add user" do
     before do
       @user = FactoryGirl.create(:user, full_name: "Bob Smith")
@@ -79,6 +82,7 @@ describe Group do
     end
   end
 
+
   context "remove user" do
     before do
       @user = FactoryGirl.create(:user)
@@ -92,9 +96,8 @@ describe Group do
     end
 
     it "removes the user from the group" do
-      num_users = @group.users.count
       @group.remove_user(@user)
-      @group.users.count.should == num_users - 1
+      @group.users.should_not include @user
     end
 
     it "removes itself from the users groups" do
@@ -104,7 +107,9 @@ describe Group do
 
     it "removes the users expenses" do
       @group.expenses.should_not be_blank
+      puts "Expenses before: " + @group.expenses.collect { |e| e.creditor.full_name }.inspect
       @group.remove_user(@user)
+      puts "Expenses after: " + @group.expenses.collect { |e| e.creditor.full_name }.inspect
       @group.expenses.should be_blank
     end
   end
