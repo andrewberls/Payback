@@ -126,7 +126,7 @@ class GroupsController < ApplicationController
     authorized = @group.present? && @group.users.include?(current_user)
     
     respond_to do |format|
-      format.html { redirect_to expenses_path unless authorized }
+      format.html { redirect_to ACCESS_DENIED_PATH unless authorized }
       format.json { render json: {} unless authorized }
     end
   end
