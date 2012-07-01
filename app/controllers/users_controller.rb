@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :must_be_logged_in, except: [:new, :create]
-  before_filter :check_access, except: [:new, :create, :welcome]
+  before_filter :check_access, except: [:new, :create, :show, :welcome]
     
   def new
     return redirect_to expenses_path if current_user
@@ -20,10 +20,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    aggregate_users = current_user.groups.collect { |g| g.users }.flatten
+    authorized = @user.present? && (@user == current_user || aggregate_users.include?(@user))
+
     respond_to do |format|
-      format.html
-      format.json { render json: @user.as_json }
+      format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
+      format.json do
+        if authorized
+          return render json: @user.as_json
+        else
+          return render json: {}
+        end
+      end
     end
+
   end
 
   def edit
@@ -59,8 +70,8 @@ class UsersController < ApplicationController
     authorized = @user == current_user
 
     respond_to do |format|
-      format.html { redirect_to expenses_path unless authorized }
-      format.json { render json: {} unless authorized }
+      format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
+      format.json { return render json: {} unless authorized }
     end
   end
 
