@@ -10,7 +10,7 @@
 
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
-          <span class="expense-creditor"><%= expense.creditor.first_name %></span> 
+          <span class="expense-creditor"><%= expense.creditor.first_name %></span>
           
           <div class="info-stack">
             <span class="expense-title"><%= expense.title %></span>
@@ -27,4 +27,4 @@
     <p class="expense-total">You owe <%= number_to_currency(@debts.inject(0) { |total, exp| total + exp.amount }, precision: 2) %>.</p>
   <% end %>
 
-<% end %><%# @groups.each %>
+<% end %>

@@ -29,7 +29,7 @@
           </div>
         </div><!-- .expense -->
 
-      <% end %><%# @credits.each %>
+      <% end %>
 
     </div><!-- .expenses-container -->
   </div><!-- .group-container -->
@@ -38,4 +38,4 @@
     <p class="expense-total">You are owed <%= number_to_currency(@credits.inject(0) { |total, exp| total + exp.amount }, precision: 2) %>.</p>
   <% end %>
 
-<% end %><%# @groups.each  %>
+<% end %>
