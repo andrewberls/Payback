@@ -15,7 +15,7 @@ class ExpensesController < ApplicationController
 
     # TODO: This controller action is bad and you should feel bad.
 
-    @expense = Expense.new(params[:expense].except(:type))
+    @expense = Expense.new(params[:expense])
 
     if @expense.valid?
 
@@ -28,8 +28,6 @@ class ExpensesController < ApplicationController
       # 3) Calculate the cost per user depending on the action
       # 4) Set nonchanging expense attrs (group, creditor, amt,..)
       # 5) Clone the expense for each of the debtors
-
-      action = params[:expense][:type] == 'payback' ? :payback : :split
 
       group = Group.find_by_gid(params[:group][:gid])
 
@@ -48,7 +46,7 @@ class ExpensesController < ApplicationController
         return redirect_to new_expense_path
       end
 
-      cost_per_user = if action == :split
+      cost_per_user = if @expense.action == "split"
                         # Split - selected including current
                         @expense.amount / (selected_users+[current_user]).count
                       else
@@ -91,10 +89,9 @@ class ExpensesController < ApplicationController
   # DELETE
   #------------------------------
   def destroy
-    puts "destroy being called in the controller"
     Expense.find_by_id(params[:id]).update_attributes(active: false)
     # TODO: AJAX slide remove instead of flash
-    flash[:success] = "Expense successfully completed!"
+    #flash[:success] = "Expense successfully completed!"
     return redirect_to expenses_path    
   end
 

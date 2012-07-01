@@ -41,6 +41,6 @@ $ ->
 
   # Submit button handling
   #-------------------
-  $type = $('#expense_type')
+  $type = $('#expense_action')
   $('#expense-split').click ->
     $type.val('split')

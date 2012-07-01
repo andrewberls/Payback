@@ -2,9 +2,8 @@ class Expense < ActiveRecord::Base
 
   # TODO: fat model, skinny controller. Get on it.
 
-  #------------------------------
-  # Validations
-  #------------------------------
+  attr_accessible :title, :amount, :action, :active
+
   validates :amount, 
     presence: true,
     numericality: true
@@ -14,9 +13,6 @@ class Expense < ActiveRecord::Base
     length: {maximum: 50}
 
 
-  #------------------------------
-  # Associations
-  #------------------------------
   # Groups
   belongs_to :group
 
