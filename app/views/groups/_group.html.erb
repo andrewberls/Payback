@@ -25,10 +25,10 @@
       <%= link_to "Edit", edit_group_path(group.gid), class: "btn" %>
     <% end %>
 
-    <%= link_to "Leave Group", { action: 'leave', gid: group.gid }, {
+    <%= link_to "Leave Group", leave_group_path(group.gid),
       confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.", 
-      class: "btn btn-red",
-    } %>
+      class: "btn btn-red"
+     %>
   </div>
 
 </div><!-- .group -->
