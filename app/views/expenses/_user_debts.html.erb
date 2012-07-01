@@ -1,4 +1,4 @@
-<% @groups.reject { |g| g.debts_from(current_user).blank? }.each do |group| %>
+<% @debt_groups.each do |group| %>
 
   <div class="group-container">
     <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
@@ -24,7 +24,7 @@
   </div><!-- .group-container -->
 
   <% if @debts.count > 1 %>
-    <p class="expense-total">You owe <%= number_to_currency(@debts.inject(0) { |total, exp| total + exp.amount }, precision: 2) %>.</p>
+    <p class="expense-total">You owe <%= number_to_currency(current_user.total_debt_owed, precision: 2) %>.</p>
   <% end %>
 
 <% end %>

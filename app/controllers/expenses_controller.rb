@@ -22,6 +22,13 @@ class ExpensesController < ApplicationController
       # TODO: No way to log expense type after its created. Should type somehow be made
       # into a field on the expense?
 
+
+      # 1) Determine the action type
+      # 2) Find the selected users
+      # 3) Calculate the cost per user depending on the action
+      # 4) Set nonchanging expense attrs (group, creditor, amt,..)
+      # 5) Clone the expense for each of the debtors
+
       action = params[:expense][:type] == 'payback' ? :payback : :split
 
       group = Group.find_by_gid(params[:group][:gid])
@@ -72,6 +79,8 @@ class ExpensesController < ApplicationController
   #------------------------------
   def index
     # Main dashboard
+    @credit_groups = current_user.groups_with_credits
+    @debt_groups   = current_user.groups_with_debts
   end
 
   #def condensed
@@ -82,6 +91,7 @@ class ExpensesController < ApplicationController
   # DELETE
   #------------------------------
   def destroy
+    puts "destroy being called in the controller"
     Expense.find_by_id(params[:id]).update_attributes(active: false)
     # TODO: AJAX slide remove instead of flash
     flash[:success] = "Expense successfully completed!"

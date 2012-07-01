@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
 
-  #------------------------------
-  # Validations
-  #------------------------------
   attr_accessible :full_name, :email, :password, :password_confirmation
 
   has_secure_password
@@ -22,9 +19,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_auth_token
 
-  #------------------------------
-  # Associations
-  #------------------------------
+
   # Groups
   has_and_belongs_to_many :groups
   has_many :owned, class_name: "Group", :foreign_key => :owner_id
@@ -32,6 +27,7 @@ class User < ActiveRecord::Base
   # Expenses
   has_many :debts,   class_name: "Expense", :foreign_key => :debtor_id
   has_many :credits, class_name: "Expense", :foreign_key => :creditor_id
+
 
   def as_json(options={})
     options[:except] = [:password_digest, :auth_token, :updated_at]
@@ -57,6 +53,24 @@ class User < ActiveRecord::Base
   def add_debt(expense)
     expense.debtor = self
     self.debts << expense
+  end
+
+  def total_credit_owed
+    active_credits.inject(0) { |total, exp| total + exp.amount }
+  end
+
+  def total_debt_owed
+    active_debts.inject(0) { |total, exp| total + exp.amount }
+  end
+
+  def groups_with_credits
+    # Groups in which this user has outstanding credits
+    groups.reject { |group| group.credits_from(self).blank? }
+  end
+
+  def groups_with_debts
+    # Groups in which this user has outstanding debts
+    groups.reject { |group| group.debts_from(self).blank? }
   end
 
   private
