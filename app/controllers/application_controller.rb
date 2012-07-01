@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
 
+  ACCESS_DENIED_PATH = '/expenses'
+
   def must_be_logged_in
     respond_to do |format|
       format.html { redirect_to login_path unless current_user }
