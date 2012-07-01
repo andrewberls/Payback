@@ -35,31 +35,31 @@ class Group < ActiveRecord::Base
   end
 
   def initialize_owner(user)
-    self.owner = user
-    self.users << user
+    owner = user
+    users << user
     user.owned << self # user.groups automatically covered
   end
 
   def add_user(user)
-    self.users << user
+    users << user
   end
 
   def remove_user(user)
     expenses = (user.credits + user.debts).select { |e| e.group == self }
     expenses.each { |e| e.destroy }
-    self.users.delete user
+    users.delete user
   end
 
   def expenses
-    self.debts + self.credits
+    debts + credits
   end
 
   def credits_from(user)
-    self.credits.where(creditor_id: user)
+    credits.where(creditor_id: user)
   end
 
   def debts_from(user)
-    self.debts.where(debtor_id: user)
+    debts.where(debtor_id: user)
   end
 
   private
