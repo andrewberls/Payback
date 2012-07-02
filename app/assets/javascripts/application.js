@@ -12,6 +12,7 @@
 
 //-- SITE SCRIPTS
 //------------------------------------
+//= require alerts
 //= require word_slide
 //= require validation
 //= require form-helpers

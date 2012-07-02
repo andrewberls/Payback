@@ -6,6 +6,11 @@
   margin: 5px 0 10px;
   padding: 10px 5px;
 
+  [class^="icon-"] {
+    float: right;
+    margin-right: 5px;
+  }
+
   &.alert-success {
     background-color: #DFF0D8;
     border-color: #D6E9C6;
@@ -16,6 +21,12 @@
     background-color: #F2DEDE;
     border-color: #EED3D7;
     color: #B94A48;
+  }
+
+  &.alert-notice {
+    background-color: lighten($blue, 45);
+    border-color: lighten($blue, 15);
+    color: darken($blue, 5);
   }
 
 }
