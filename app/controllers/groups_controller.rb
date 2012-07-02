@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 
   before_filter :must_be_logged_in
-  before_filter :check_access, except: [:new, :create, :index, :join, :add]
+  before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add]
 
   #------------------------------
   # CREATE
@@ -99,7 +99,7 @@ class GroupsController < ApplicationController
     group = Group.find_by_gid(params[:gid])
 
     if group && group.authenticate(params[:password])
-      if group.users.include? current_user
+      if group.users.include?(current_user)
         flash.now[:error] = "You already belong to that group!"
         return render :join
       else
@@ -121,7 +121,7 @@ class GroupsController < ApplicationController
 
   private
 
-  def check_access
+  def user_must_be_in_group
     @group = Group.find_by_gid(params[:id])
     authorized = @group.present? && @group.users.include?(current_user)
     
