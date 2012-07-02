@@ -10,14 +10,14 @@
 
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
-          <span class="expense-debtor"><%= expense.debtor.first_name %></span>
+          <span class="expense-debtor"><%= link_to expense.debtor.first_name, credits_path(expense.debtor) %></span><!-- TODO CREDITS PATH -->
 
           <div class="info-stack">
             <span class="expense-title"><%= expense.title %></span>
             <span class="expense-date"><%= render_date expense.created_at %></span>
           </div>
 
-          <%= render 'stale_badge', creation: expense.created_at %>
+          <%= render 'stale_badge', expense: expense %>
 
           <div class="expense-actions">            
             <%= link_to raw("<i class='icon-ok icon-white'></i>"), {action: 'destroy', id: expense.id}, {

@@ -1,0 +1,27 @@
+<% provide(:title, "Debts to #{@user.full_name}") %>
+
+<div class="row">
+  <div class="span-8 offset-4">
+    <h1>Debts to <%= @user.full_name %></h1>
+
+    <div class="expenses-container">
+
+      <% current_user.debts_to(@user).each do |expense| %>
+
+        <div class="expense">
+          <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
+          <span class="expense-creditor"><%= link_to expense.creditor.first_name, debts_path(expense.creditor) %></span><!-- TODO DEBTS PATH -->
+          
+          <div class="info-stack">
+            <span class="expense-title"><%= expense.title %></span>
+            <span class="expense-date"><%= render_date expense.created_at %></span>
+          </div>
+        </div><!-- .expense -->
+
+      <% end %>
+
+    </div><!-- .expenses-container -->
+
+    <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
+  </div>
+</div>

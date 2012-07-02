@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   before_filter :must_be_logged_in, except: [:new, :create]
-  before_filter :check_access, except: [:new, :create, :show, :welcome]
+  before_filter :user_must_be_current, only: [:show, :edit, :update, :destroy]
+  before_filter :user_must_be_in_current_groups, only: [:debts, :credits]
+
+  # ALL: new create show edit update destroy welcome debts credits
+  # MUST BE SELF: edit update destroy
+  # USER MUST BE IN GROUPS (NOT SELF): show, debts, credits
     
   def new
     return redirect_to expenses_path if current_user
@@ -20,21 +25,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    aggregate_users = current_user.groups.collect { |g| g.users }.flatten
-    authorized = @user.present? && (@user == current_user || aggregate_users.include?(@user))
-
-    respond_to do |format|
-      format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
-      format.json do
-        if authorized
-          return render json: @user.as_json
-        else
-          return render json: {}
-        end
-      end
-    end
-
+    # Currently not a user-available action
+    return redirect_to expenses_path
   end
 
   def edit
@@ -51,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # Currently not a user-available action
     user = User.find(params[:id])
     user.destroy if user == current_user
     reset_session
@@ -59,16 +52,35 @@ class UsersController < ApplicationController
 
   def welcome
     # First time login - belong to no groups
-    return redirect_to expenses_path unless current_user.groups.blank?
+    #return redirect_to expenses_path unless current_user.groups.blank?
+  end
+
+  def debts
+    return redirect_to ACCESS_DENIED_PATH if @user == current_user
+  end
+
+  def credits
+    return redirect_to ACCESS_DENIED_PATH if @user == current_user
   end
 
   private
 
-  def check_access
-    # Check if a user is allowed to perform a modification action
-    @user = User.find(params[:id])
+  def user_must_be_current
+    @user = User.find_by_id(params[:id])
     authorized = @user == current_user
 
+    reject_unauthorized(authorized)
+  end
+
+  def user_must_be_in_current_groups
+    @user = User.find_by_id(params[:id])
+    aggregate_users = current_user.groups.collect { |g| g.users }.flatten
+    authorized = @user.present? && aggregate_users.include?(@user)
+
+    reject_unauthorized(authorized)
+  end
+
+  def reject_unauthorized(authorized)
     respond_to do |format|
       format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
       format.json { return render json: {} unless authorized }

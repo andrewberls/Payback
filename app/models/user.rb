@@ -43,12 +43,21 @@ class User < ActiveRecord::Base
   end
 
   def active_credits
-    self.credits.where(active: true)
+    credits.where(active: true)
   end
 
   def active_debts
-    self.debts.where(active: true)
+    debts.where(active: true)
   end
+
+  def credits_to(user)
+    credits.where(debtor_id: user).reverse # equivalent to ordering by id desc
+  end
+
+  def debts_to(user)
+    debts.where(creditor_id: user).reverse # equivalent to ordering by id desc
+  end
+
 
   def add_debt(expense)
     expense.debtor = self

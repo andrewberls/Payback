@@ -1,0 +1,38 @@
+<% provide(:title, "Credits to #{@user.full_name}") %>
+
+<div class="row">
+  <div class="span-8 offset-4">
+    <h1>Credits to <%= @user.full_name %></h1>
+
+    <div class="expenses-container">
+
+      <% current_user.credits_to(@user).each do |expense| %>
+
+        <div class="expense">
+          <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
+          <span class="expense-debtor"><%= expense.debtor.first_name %></span>
+
+          <div class="info-stack">
+            <span class="expense-title"><%= expense.title %></span>
+            <span class="expense-date"><%= render_date expense.created_at %></span>
+          </div>
+
+          <%= render 'expenses/stale_badge', expense: expense %>
+
+          <div class="expense-actions">            
+            <%= link_to raw("<i class='icon-ok icon-white'></i>"), {controller: 'expenses', action: 'destroy', id: expense.id}, {
+              :method => :delete, 
+              confirm: "Are you sure you want to mark this expense completed?", 
+              class: "btn no-text btn-green",
+              id: "delete-expense"
+            } %>
+          </div>
+        </div><!-- .expense -->
+
+      <% end %>
+
+    </div><!-- .expenses-container -->
+
+    <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
+  </div>
+</div>
