@@ -33,6 +33,8 @@
 
     </div><!-- .expenses-container -->
 
+    <p class="expense-total-large">You owe <%= "#{@user.first_name} #{number_to_currency(current_user.active_credit_amt_to(@user), precision: 2)}" %>.</p>
+
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
   </div>
 </div>

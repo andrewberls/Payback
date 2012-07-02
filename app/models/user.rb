@@ -58,6 +58,14 @@ class User < ActiveRecord::Base
     debts.where(creditor_id: user, active: true).reverse # equivalent to ordering by id desc
   end
 
+  def active_credit_amt_to(user)
+    active_credits_to(user).inject(0) { |total, exp| total + exp.amount }
+  end
+
+  def active_debt_amt_to(user)
+    active_debts_to(user).inject(0) { |total, exp| total + exp.amount }
+  end
+
 
   def add_debt(expense)
     expense.debtor = self
