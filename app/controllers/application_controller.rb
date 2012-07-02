@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   def must_be_logged_in
     respond_to do |format|
-      format.html { redirect_to login_path unless current_user }
-      format.json { render json: {} unless current_user }
+      format.html { return redirect_to login_path unless current_user }
+      format.json { return render json: {} unless current_user }
     end
   end
 

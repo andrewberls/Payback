@@ -45,7 +45,7 @@ class GroupsController < ApplicationController
                   @group.users
                 end
 
-        render json: {
+        return render json: {
           group: @group,
           users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
         }
@@ -126,8 +126,8 @@ class GroupsController < ApplicationController
     authorized = @group.present? && @group.users.include?(current_user)
     
     respond_to do |format|
-      format.html { redirect_to ACCESS_DENIED_PATH unless authorized }
-      format.json { render json: {} unless authorized }
+      format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
+      format.json { return render json: {} unless authorized }
     end
   end
 

@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to expenses_path if current_user
+    return redirect_to expenses_path if current_user
   end
 
   def create
