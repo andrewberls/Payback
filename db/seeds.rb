@@ -40,16 +40,6 @@ seed_group = Group.create(
   password_confirmation: "password"
 )
 
-
-fake_user = User.create(
-  full_name: "Fake User",
-  email: "fake@gmail.com",
-  password: "password",
-  password_confirmation: "password"
-)
-
-
-
 seed_group.initialize_owner admin_user
 seed_group.users << aux_user_1
 seed_group.users << aux_user_1b
