@@ -50,12 +50,12 @@ class User < ActiveRecord::Base
     debts.where(active: true)
   end
 
-  def credits_to(user)
-    credits.where(debtor_id: user).reverse # equivalent to ordering by id desc
+  def active_credits_to(user)
+    credits.where(debtor_id: user, active: true).reverse # equivalent to ordering by id desc
   end
 
-  def debts_to(user)
-    debts.where(creditor_id: user).reverse # equivalent to ordering by id desc
+  def active_debts_to(user)
+    debts.where(creditor_id: user, active: true).reverse # equivalent to ordering by id desc
   end
 
 
