@@ -45,9 +45,20 @@ seed_group.users << aux_user_1
 seed_group.users << aux_user_1b
 seed_group.users << aux_user_2
 
+# nicole owes 65 for beanbag
 # jeff owes 45 for groceries
 # nicole owes 10 for movie
 # owe 500 to david for rent
+
+movies = Expense.create(
+  title: "Movie ticket",
+  amount: 10,
+  active: 1
+)
+movies.group = seed_group
+movies.creditor = admin_user
+movies.assign_to aux_user_2
+
 
 groceries = Expense.create(
   title: "Groceries",
@@ -59,14 +70,14 @@ groceries.creditor = admin_user
 groceries.assign_to aux_user_1
 
 
-movies = Expense.create(
-  title: "Movie ticket",
-  amount: 10,
+beanbag = Expense.create(
+  title: "Beanbag chair",
+  amount: 65,
   active: 1
 )
-movies.group = seed_group
-movies.creditor = admin_user 
-movies.assign_to aux_user_2
+beanbag.group = seed_group
+beanbag.creditor = admin_user
+beanbag.assign_to aux_user_2
 
 
 rent = Expense.create(
