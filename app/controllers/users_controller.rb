@@ -56,11 +56,17 @@ class UsersController < ApplicationController
   end
 
   def debts
-    return redirect_to ACCESS_DENIED_PATH if @user == current_user
+    # Condensed debts to a specific user (can't be blank or current user)
+    @debts = current_user.active_debts_to(@user)
+    can_view_page = @user != current_user && @debts.present?
+    return redirect_to ACCESS_DENIED_PATH unless can_view_page
   end
 
   def credits
-    return redirect_to ACCESS_DENIED_PATH if @user == current_user
+    # Condensed debts to a specific user (can't be blank or current user)
+    @credits = current_user.active_credits_to(@user)
+    can_view_page = @user != current_user && @credits.present?
+    return redirect_to ACCESS_DENIED_PATH unless can_view_page
   end
 
   private

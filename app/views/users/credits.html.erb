@@ -6,7 +6,7 @@
 
     <div class="expenses-container">
 
-      <% current_user.active_credits_to(@user).each do |expense| %>
+      <% @credits.each do |expense| %>
 
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
