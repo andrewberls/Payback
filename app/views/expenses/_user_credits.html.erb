@@ -9,7 +9,7 @@
       <% @credits.each do |expense| %>
 
         <div class="expense">
-          <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
+          <span class="expense-price"><%= number_to_currency expense.amount %></span>
           <span class="expense-debtor"><%= link_to expense.debtor.first_name, credits_path(expense.debtor) %></span><!-- TODO CREDITS PATH -->
 
           <div class="info-stack">
@@ -22,7 +22,7 @@
           <div class="expense-actions">            
             <%= link_to raw("<i class='icon-ok icon-white'></i>"), {action: 'destroy', id: expense.id}, {
               :method => :delete, 
-              confirm: "Are you sure you want to mark this expense completed?", 
+              confirm: "Mark #{number_to_currency(expense.amount)} from #{expense.debtor.first_name} completed?",
               class: "btn no-text btn-green",
               id: "delete-expense"
             } %>
@@ -35,7 +35,7 @@
   </div><!-- .group-container -->
 
   <% if @credits.count > 1 %>
-    <p class="expense-total">You are owed <%= number_to_currency(current_user.total_credit_owed, precision: 2) %>.</p>
+    <p class="expense-total">You are owed <%= number_to_currency(current_user.total_credit_owed) %>.</p>
   <% end %>
 
 <% end %>
