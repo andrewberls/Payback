@@ -16,6 +16,8 @@
             <span class="expense-title"><%= expense.title %></span>
             <span class="expense-date"><%= render_date expense.created_at %></span>
           </div>
+
+          <%= render 'stale_badge', expense: expense %>
         </div><!-- .expense -->
 
       <% end %>
