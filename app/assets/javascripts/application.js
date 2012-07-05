@@ -8,6 +8,7 @@
 //= require laconic
 //= require jquery.mailcheck.min
 //= require jquery.tipsy
+//= require jquery.cookie
 
 
 //-- SITE SCRIPTS
