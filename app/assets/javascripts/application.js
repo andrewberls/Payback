@@ -14,7 +14,7 @@
 //-- SITE SCRIPTS
 //------------------------------------
 //= require alerts
-//= require word_slide
 //= require validation
-//= require form-helpers
 //= require tipsy
+//= require word_slide
+//= require add-expense

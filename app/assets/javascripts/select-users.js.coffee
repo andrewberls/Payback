@@ -10,17 +10,17 @@ loadUsers = (gid) ->
           "name" : "users[#{user.id}]"
         }
         first_name = user.full_name.split(" ")[0]
-        label = $.el.label({}, "#{first_name}")
+        label = $.el.label("#{first_name}")
         $column.append $.el.userbox(input, label)
   }
 
 $ ->
 
-  speed = 350
-  $groups    = $('#group-select')
-  $container = $('#users-container')
-  $group     = $('#users-group')
-  $select    = $('#users-select')
+  speed         = 350
+  $groups       = $('#group-select')
+  $container    = $('#users-container')
+  $group        = $('#users-group')
+  $select       = $('#users-select')
   disabledClass = 'btn-disabled2'
 
   $.el.registerTag 'userbox', (one, two) ->
