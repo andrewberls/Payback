@@ -25,26 +25,26 @@ $ ->
 
   $.el.registerTag 'userbox', (one, two) ->
     # Register a laconic element for user rendering
-    this.appendChild(one)
-    this.appendChild(two)
+    @.appendChild(one)
+    @.appendChild(two)
 
   # TODO: I don't like the repetition for init and subsequent changes. Can this be combined?
   gid = $groups.find("option:selected").val()
   loadUsers(gid)
 
   $groups.change ->
-    gid = $(this).find("option:selected").val()
+    gid = $(@).find("option:selected").val()
     loadUsers(gid)
 
   # Slide select up/down and change button display
   $group.click ->
     $container.slideUp(speed)
-    $(this).addClass(disabledClass)
+    $(@).addClass(disabledClass)
     $select.removeClass(disabledClass)
     return false
 
   $select.click ->
     $container.slideDown(speed)
-    $(this).addClass(disabledClass)
+    $(@).addClass(disabledClass)
     $group.removeClass(disabledClass)
     return false

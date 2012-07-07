@@ -1,9 +1,9 @@
 $email = $('#user_email')
-$hint = $("#hint")
+$hint  = $("#hint")
 
 $email.on 'blur', ->
 
-  $(this).mailcheck {
+  $(@).mailcheck {
     suggested: (elem, suggestion) ->
       if !$hint.html()
         # First error - fill in/show entire hint element
@@ -17,4 +17,4 @@ $email.on 'blur', ->
 $(document.body).delegate '.domain', 'click', ->
   # On click, fill in the field with the suggestion and remove the hint
   $email.val $(".suggestion").text()
-  $hint.fadeOut(200, -> $(this).empty())
+  $hint.fadeOut(200, -> $(@).empty())

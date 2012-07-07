@@ -40,9 +40,10 @@ $ ->
 #------------------------------
 $ ->
   # Create and insert an alet error box if blank fields present
+  # TODO: only the validation is unique. Refactor alertbox creation
 
   $('#submit-login').click ->
-    $form = $(this).parent()
+    $form = $(@).parent()
     $email = $("#email")
     $password = $("#password")
     errors = validate([$email, $password])
@@ -55,7 +56,7 @@ $ ->
       return false
 
   $('#expense-payback, #expense-split').click ->
-    $form = $(this).parent()
+    $form = $(@).parent()
     $amount = $("#expense_amount")
     $title = $("#expense_title")
     errors = validate([$amount, $title])
