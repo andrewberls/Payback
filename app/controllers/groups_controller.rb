@@ -125,10 +125,7 @@ class GroupsController < ApplicationController
     @group = Group.find_by_gid(params[:id])
     authorized = @group.present? && @group.users.include?(current_user)
     
-    respond_to do |format|
-      format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
-      format.json { return render json: {} unless authorized }
-    end
+    reject_unauthorized(authorized)
   end
 
 end

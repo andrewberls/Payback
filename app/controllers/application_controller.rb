@@ -5,10 +5,7 @@ class ApplicationController < ActionController::Base
   ACCESS_DENIED_PATH = '/expenses'
 
   def must_be_logged_in
-    respond_to do |format|
-      format.html { return redirect_to login_path unless current_user }
-      format.json { return render json: {} unless current_user }
-    end
+    reject_unauthorized(signed_in?, login_path)
   end
 
   private
@@ -22,5 +19,12 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
   helper_method :signed_in?
+
+  def reject_unauthorized(authorized, path=ACCESS_DENIED_PATH)
+    respond_to do |format|
+      format.html { return redirect_to path unless authorized }
+      format.json { return render json: {} unless authorized }
+    end
+  end
 
 end

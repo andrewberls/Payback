@@ -86,11 +86,4 @@ class UsersController < ApplicationController
     reject_unauthorized(authorized)
   end
 
-  def reject_unauthorized(authorized)
-    respond_to do |format|
-      format.html { return redirect_to ACCESS_DENIED_PATH unless authorized }
-      format.json { return render json: {} unless authorized }
-    end
-  end
-
 end
