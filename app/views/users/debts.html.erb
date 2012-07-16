@@ -22,7 +22,29 @@
 
     </div><!-- .expenses-container -->
 
-    <p class="expense-total-large">You owe <%= "#{@user.first_name} #{number_to_currency(current_user.active_debt_amt_to(@user), precision: 2)}" %>.</p>
+    <% if @debts.count > 1 %>
+    <p class="expense-total-large">
+      You owe <%= "#{@user.first_name} #{number_to_currency(current_user.active_debt_amt_to(@user))}" %>.
+    </p>
+    <% end %>
+
+    <% if @user.active_debts_to(current_user).present? %>
+      <%# TODO: Find a way to factor this into a shared partial  %>
+      <p class="expense-total-small">
+        Taking into account money <%= @user.first_name %> owes you,
+        <% if current_user.active_debt_amt_to(@user) > @user.active_debt_amt_to(current_user) %>
+
+          <% net = current_user.active_debt_amt_to(@user) - @user.active_debt_amt_to(current_user) %>
+          you owe <%= @user.first_name %> a net total of <strong><%= number_to_currency(net) %></strong>.
+
+        <% else %>
+
+          <% net = @user.active_debt_amt_to(current_user) - current_user.active_debt_amt_to(@user) %>
+          <%= @user.first_name %> owes you a net total of <strong><%= number_to_currency(net) %></strong>.
+
+        <% end %>
+      </p>
+    <% end %>
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
   </div>
