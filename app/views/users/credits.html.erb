@@ -42,7 +42,7 @@
     <% if current_user.active_debts_to(@user).present? %>
       <%# TODO: Find a way to factor this into a shared partial  %>
       <p class="expense-total-small">
-        Taking into account money you owe <%= @user.first_name %>,
+        With the <%= number_to_currency(current_user.active_debt_amt_to(@user)) %> you owe <%= @user.first_name %>,
         <% if current_user.active_debt_amt_to(@user) > @user.active_debt_amt_to(current_user) %>
 
           <% net = current_user.active_debt_amt_to(@user) - @user.active_debt_amt_to(current_user) %>
