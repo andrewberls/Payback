@@ -19,10 +19,11 @@
 
           <%= render 'expenses/stale_badge', expense: expense %>
 
-          <div class="expense-actions">            
-            <%= link_to raw("<i class='icon-ok icon-white'></i>"), {controller: 'expenses', action: 'destroy', id: expense.id}, {
-              :method => :delete, 
-              confirm: "Are you sure you want to mark this expense completed?", 
+          <div class="expense-actions">
+            <%= link_to raw("<i class='icon-ok icon-white'></i>"),
+              {controller: 'expenses', action: 'destroy', id: expense.id, redirect: credits_path(expense.debtor)},
+              { :method => :delete,
+              confirm: "Are you sure you want to mark this expense completed?",
               class: "btn no-text btn-green",
               id: "delete-expense"
             } %>

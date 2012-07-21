@@ -12,7 +12,6 @@ class ExpensesController < ApplicationController
   end
 
   def create
-
     # TODO: This controller action is bad and you should feel bad.
 
     @expense = Expense.new(params[:expense])
@@ -26,7 +25,6 @@ class ExpensesController < ApplicationController
       # 5) Clone the expense for each of the debtors
 
       group = Group.find_by_gid(params[:group][:gid])
-
       selected_users = []
 
       if params[:users]
@@ -55,7 +53,6 @@ class ExpensesController < ApplicationController
       @expense.group    = group
       @expense.creditor = current_user
       @expense.amount   = cost_per_user
-
       @expense.assign_to selected_users
 
       return redirect_to expenses_path
@@ -63,7 +60,6 @@ class ExpensesController < ApplicationController
       @groups = current_user.groups
       flash.now[:error] = "Error -  check your fields and try again!"
       return render :new
-
     end
 
   end
@@ -88,10 +84,9 @@ class ExpensesController < ApplicationController
   # DELETE
   #------------------------------
   def destroy
-    Expense.find_by_id(params[:id]).update_attributes(active: false)
     # TODO: AJAX slide remove instead of flash
-    #flash[:success] = "Expense successfully completed!"
-    return redirect_to expenses_path
+    Expense.find_by_id(params[:id]).update_attributes(active: false)
+    return redirect_to params[:redirect]
   end
 
   private
@@ -106,6 +101,5 @@ class ExpensesController < ApplicationController
     @credit_groups = current_user.groups_with_credits
     @debt_groups   = current_user.groups_with_debts
   end
-
 
 end
