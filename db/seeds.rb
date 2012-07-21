@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 admin_user = User.create(
-  full_name: "Dan User",
+  full_name: "Admin User",
   email: "admin@admin.com",
   password: "admin",
   password_confirmation: "admin"
@@ -66,7 +66,7 @@ groceries = Expense.create(
   active: 1
 )
 groceries.group = seed_group
-groceries.creditor = admin_user 
+groceries.creditor = admin_user
 groceries.assign_to aux_user_1
 
 
