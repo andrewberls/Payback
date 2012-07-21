@@ -19,10 +19,6 @@ class ExpensesController < ApplicationController
 
     if @expense.valid?
 
-      # TODO: No way to log expense type after its created. Should type somehow be made
-      # into a field on the expense?
-
-
       # 1) Determine the action type
       # 2) Find the selected users
       # 3) Calculate the cost per user depending on the action
@@ -55,7 +51,7 @@ class ExpensesController < ApplicationController
                       end
 
       cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
-      
+
       @expense.group    = group
       @expense.creditor = current_user
       @expense.amount   = cost_per_user
@@ -67,22 +63,25 @@ class ExpensesController < ApplicationController
       @groups = current_user.groups
       flash.now[:error] = "Error -  check your fields and try again!"
       return render :new
+
     end
-    
+
   end
 
 
   #------------------------------
   # READ
   #------------------------------
+  before_filter :find_dashboard_resources, only: [:index, :condensed]
+
   def index
     # Main dashboard
-    @credit_groups = current_user.groups_with_credits
-    @debt_groups   = current_user.groups_with_debts
+
   end
 
-  #def condensed
-  #end
+  def condensed
+    # Dashboard - one listing per group user
+  end
 
 
   #------------------------------
@@ -92,7 +91,7 @@ class ExpensesController < ApplicationController
     Expense.find_by_id(params[:id]).update_attributes(active: false)
     # TODO: AJAX slide remove instead of flash
     #flash[:success] = "Expense successfully completed!"
-    return redirect_to expenses_path    
+    return redirect_to expenses_path
   end
 
   private
@@ -102,5 +101,11 @@ class ExpensesController < ApplicationController
     @groups = current_user.groups
     return redirect_to welcome_path if @groups.blank?
   end
-    
+
+  def find_dashboard_resources
+    @credit_groups = current_user.groups_with_credits
+    @debt_groups   = current_user.groups_with_debts
+  end
+
+
 end

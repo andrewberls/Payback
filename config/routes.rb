@@ -6,6 +6,9 @@ Payback::Application.routes.draw do
   resources :expenses
   resources :sessions, :only => [:new, :create, :destroy]
 
+  # TODO: how to match expenses/condensed ?
+  match 'condensed' => 'expenses#condensed', as: 'condensed'
+
   # Group actions
   match 'join'      => 'groups#join',  as: 'join_group' # View
   match 'add'       => 'groups#add',   as: 'add_group'  # Processing

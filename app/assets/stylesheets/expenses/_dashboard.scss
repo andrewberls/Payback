@@ -47,6 +47,7 @@
     }
 
     a {
+      border-bottom: 1px dashed $blue;
       color: $gray-text;
 
       &:hover {
@@ -58,12 +59,12 @@
 
   .info-stack {
     display: inline-block;
-    margin: 10px 0 0;   
+    margin: 10px 0 0;
     padding-left: 5px;
   }
 
   .expense-title {
-    font-size: 0.7em;        
+    font-size: 0.7em;
     margin-bottom: 5px;
   }
 
@@ -142,8 +143,8 @@
     }
 
     .info-stack {
-      float: right;      
-      margin: 5px 0 10px;     
+      float: right;
+      margin: 5px 0 10px;
     }
 
     .expense-title {

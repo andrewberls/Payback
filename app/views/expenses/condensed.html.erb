@@ -1,0 +1,106 @@
+<% provide(:title, 'Condensed View') %>
+
+<div class="row">
+  <div class="span-16">
+    <div class="condensed-header">
+      You're looking at the condensed view.
+      <%= link_to raw("Go back to the main dashboard &raquo;"), expenses_path %>
+    </div>
+  </div>
+</div>
+
+<%= render 'dashboard_buttons' %>
+
+<div class="row">
+
+  <%#---------------------------------
+      CREDITS
+  ------------------------------------%>
+  <div class="span-8">
+
+    <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
+
+    <h2>Total Owed to You</h2>
+
+    <% if current_user.active_credits.blank? %>
+      <div class="expenses-container">
+        <div class="expense expense-blank">
+          <p>Nobody owes you money! Click <%= link_to "here", new_expense_path %> to add a new expense.</p>
+        </div>
+      </div>
+    <% else %>
+
+      <% @credit_groups.each do |group| %>
+
+        <div class="group-container">
+          <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
+
+          <div class="expenses-container">
+            <% users = group.users - [current_user] %>
+            <% group.users.each do |user| %>
+              <% next if user.active_debt_amt_to(current_user) == 0 %>
+
+              <div class="expense">
+                <span class="expense-price"><%= number_to_currency user.active_debt_amt_to(current_user) %></span>
+                <span class="expense-debtor"><%= link_to user.first_name, credits_path(user) %></span>
+              </div>
+            <% end %>
+
+          </div>
+        </div><!-- .group-container -->
+
+        <% unless current_user.total_credit_owed == 0 %>
+          <p class="expense-total">You are owed <%= number_to_currency(current_user.total_credit_owed) %>.</p>
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+
+  <%#---------------------------------
+      DEBTS
+  ------------------------------------%>
+  <div class="span-8">
+
+    <h2>Total You Owe</h2>
+
+    <% if current_user.active_debts.blank? %>
+      <div class="expenses-container">
+        <div class="expense expense-blank">
+          <p>You don't owe anybody money! :-)</p>
+        </div>
+      </div>
+    <% else %>
+
+
+      <% @debt_groups.each do |group| %>
+
+        <div class="group-container">
+          <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
+
+          <div class="expenses-container">
+            <% users = group.users - [current_user] %>
+            <% group.users.each do |user| %>
+              <% next if current_user.active_debt_amt_to(user) == 0 %>
+
+              <div class="expense">
+                <span class="expense-price"><%= number_to_currency current_user.active_debt_amt_to(user) %></span>
+                <span class="expense-debtor"><%= link_to user.first_name, credits_path(user) %></span>
+              </div>
+            <% end %>
+
+          </div>
+        </div><!-- .group-container -->
+
+        <% unless current_user.total_debt_owed == 0 %>
+          <p class="expense-total">You owe <%= number_to_currency(current_user.total_debt_owed) %>.</p>
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+</div><!-- .row -->
