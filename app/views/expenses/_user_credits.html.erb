@@ -1,16 +1,16 @@
 <% @credit_groups.each do |group| %>
 
   <div class="group-container">
-    <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
+    <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
 
-    <div class="expenses-container">  
+    <div class="expenses-container">
 
       <% @credits = group.credits.select { |exp| exp.active && exp.creditor == current_user }.reverse %>
       <% @credits.each do |expense| %>
 
         <div class="expense">
           <span class="expense-price"><%= number_to_currency expense.amount %></span>
-          <span class="expense-debtor"><%= link_to expense.debtor.first_name, credits_path(expense.debtor) %></span><!-- TODO CREDITS PATH -->
+          <span class="expense-debtor"><%= link_to expense.debtor.first_name, credits_path(expense.debtor) %></span>
 
           <div class="info-stack">
             <span class="expense-title"><%= expense.title %></span>
@@ -19,9 +19,9 @@
 
           <%= render 'stale_badge', expense: expense %>
 
-          <div class="expense-actions">            
+          <div class="expense-actions">
             <%= link_to raw("<i class='icon-ok icon-white'></i>"), {action: 'destroy', id: expense.id}, {
-              :method => :delete, 
+              :method => :delete,
               confirm: "Mark #{number_to_currency(expense.amount)} from #{expense.debtor.first_name} completed?",
               class: "btn no-text btn-green",
               id: "delete-expense"

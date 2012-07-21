@@ -10,8 +10,8 @@
 
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
-          <span class="expense-creditor"><%= link_to expense.creditor.first_name, debts_path(expense.creditor) %></span><!-- TODO DEBTS PATH -->
-          
+          <span class="expense-creditor"><%= link_to expense.creditor.first_name, debts_path(expense.creditor) %></span>
+
           <div class="info-stack">
             <span class="expense-title"><%= expense.title %></span>
             <span class="expense-date"><%= render_date expense.created_at %></span>

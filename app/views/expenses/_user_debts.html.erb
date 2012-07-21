@@ -1,7 +1,7 @@
 <% @debt_groups.each do |group| %>
 
   <div class="group-container">
-    <%= content_tag(:h3, group.title) unless @groups.count == 1 %>
+    <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
 
     <div class="expenses-container">
 
@@ -11,7 +11,7 @@
         <div class="expense">
           <span class="expense-price"><%= number_to_currency(expense.amount) %></span>
           <span class="expense-creditor"><%= link_to expense.creditor.first_name, debts_path(expense.creditor) %></span>
-          
+
           <div class="info-stack">
             <span class="expense-title"><%= expense.title %></span>
             <span class="expense-date"><%= render_date expense.created_at %></span>
