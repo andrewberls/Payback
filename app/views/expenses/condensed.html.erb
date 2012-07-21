@@ -87,7 +87,7 @@
 
               <div class="expense">
                 <span class="expense-price"><%= number_to_currency current_user.active_debt_amt_to(user) %></span>
-                <span class="expense-debtor"><%= link_to user.first_name, credits_path(user) %></span>
+                <span class="expense-debtor"><%= link_to user.first_name, debts_path(user) %></span>
               </div>
             <% end %>
 
