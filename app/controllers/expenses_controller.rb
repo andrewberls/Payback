@@ -15,6 +15,7 @@ class ExpensesController < ApplicationController
     # TODO: This controller action is bad and you should feel bad.
 
     @expense = Expense.new(params[:expense])
+    @expense.action = (params[:commit] == 'Payback') ? :payback : :split
 
     if @expense.valid?
 
@@ -24,7 +25,7 @@ class ExpensesController < ApplicationController
       # 4) Set nonchanging expense attrs (group, creditor, amt,..)
       # 5) Clone the expense for each of the debtors
 
-      group = Group.find_by_gid(params[:group][:gid])
+      group          = Group.find_by_gid(params[:group][:gid])
       selected_users = []
 
       if params[:users]
@@ -40,7 +41,7 @@ class ExpensesController < ApplicationController
         return redirect_to new_expense_path
       end
 
-      cost_per_user = if @expense.action == "split"
+      cost_per_user = if @expense.action == :split
                         # Split - selected including current
                         @expense.amount / (selected_users+[current_user]).count
                       else
@@ -58,7 +59,7 @@ class ExpensesController < ApplicationController
       return redirect_to expenses_path
     else
       @groups = current_user.groups
-      flash.now[:error] = "Error -  check your fields and try again!"
+      flash.now[:error] = "Error - check your fields and try again!"
       return render :new
     end
 

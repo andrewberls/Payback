@@ -13,7 +13,7 @@ $ ->
     $(@).addClass('disabled')
     $select.removeClass('disabled')
     return false
-  
+
   $select.click ->
     $container.slideDown(speed)
     $(@).addClass('disabled')
@@ -23,7 +23,7 @@ $ ->
   # Split/Payback FAQ slide
   #-------------------
   $faq = $('#expense-faqs')
-  
+
   $('#show-expense-faqs').click ->
     if $faq.is(":hidden")
         $faq.slideDown(speed)
@@ -31,12 +31,6 @@ $ ->
         $faq.slideUp(speed)
     return false
 
-  $('#hide-expense-faqs').click ->  
+  $('#hide-expense-faqs').click ->
     $('#expense-faqs').slideUp(350)
     return false
-
-  # Submit button handling
-  #-------------------
-  $type = $('#expense_action')
-  $('#expense-split').click ->
-    $type.val('split')
