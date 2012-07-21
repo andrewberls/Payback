@@ -15,7 +15,6 @@ loadUsers = (gid) ->
   }
 
 $ ->
-
   speed         = 350
   $groups       = $('#group-select')
   $container    = $('#users-container')
