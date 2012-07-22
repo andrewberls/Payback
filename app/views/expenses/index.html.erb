@@ -2,7 +2,6 @@
 
 <div class="row">
   <div class="span-16">
-    <!-- <h1 class="main-title dashboard-title">Dashboard</h1> -->
     <div class="condensed-header">
       Too much?
       <%= link_to raw("Try the condensed view &raquo;"), condensed_path %>
@@ -24,13 +23,9 @@
     <h2>Owed to You</h2>
 
     <% if current_user.active_credits.blank? %>
-      <div class="expenses-container">
-        <div class="expense expense-blank">
-          <p>Nobody owes you money! Click <%= link_to "here", new_expense_path %> to add a new expense.</p>
-        </div>
-      </div>
+      <%= render 'blank_credit' %>
     <% else %>
-      <%= render 'user_credits' %>
+      <%= render 'dashboard_credits' %>
     <% end %>
 
   </div>
@@ -44,13 +39,9 @@
     <h2>You Owe</h2>
 
     <% if current_user.active_debts.blank? %>
-      <div class="expenses-container">
-        <div class="expense expense-blank">
-          <p>You don't owe anybody money! :-)</p>
-        </div>
-      </div>
+      <%= render 'blank_debt' %>
     <% else %>
-      <%= render 'user_debts' %>
+      <%= render 'dashboard_debts' %>
     <% end %>
 
   </div>

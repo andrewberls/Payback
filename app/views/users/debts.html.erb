@@ -5,22 +5,10 @@
     <h1>Debts to <%= @user.full_name %></h1>
 
     <div class="expenses-container">
-
       <% @debts.each do |expense| %>
-
-        <div class="expense">
-          <span class="expense-price"><%= number_to_currency(expense.amount, precision: 2) %></span>
-          <span class="expense-creditor"><%= link_to expense.creditor.first_name, debts_path(expense.creditor) %></span>
-
-          <div class="info-stack">
-            <span class="expense-title"><%= expense.title %></span>
-            <span class="expense-date"><%= render_date expense.created_at %></span>
-          </div>
-        </div><!-- .expense -->
-
+        <%= render 'expenses/debt', expense: expense %>
       <% end %>
-
-    </div><!-- .expenses-container -->
+    </div>
 
     <% if @debts.count > 1 %>
     <p class="expense-total-large">

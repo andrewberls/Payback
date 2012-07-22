@@ -1,0 +1,18 @@
+<% @debt_groups.each do |group| %>
+
+  <div class="group-container">
+    <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
+
+    <div class="expenses-container">
+      <% @debts = group.debts.select { |exp| exp.active && exp.debtor == current_user }.reverse %>
+      <% @debts.each do |expense| %>
+        <%= render 'debt', expense: expense %>
+      <% end %>
+    </div>
+  </div><!-- .group-container -->
+
+  <% if @debts.count > 1 %>
+    <p class="expense-total">You owe <%= number_to_currency(current_user.total_debt_owed) %>.</p>
+  <% end %>
+
+<% end %>
