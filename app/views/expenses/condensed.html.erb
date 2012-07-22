@@ -40,7 +40,7 @@
             <% group.users.each do |user| %>
               <% next if user.active_debt_amt_to(current_user) == 0 %>
 
-              <div class="expense">
+              <div class="expense expense-condensed">
                 <span class="expense-price"><%= number_to_currency user.active_debt_amt_to(current_user) %></span>
                 <span class="expense-debtor"><%= link_to user.first_name, credits_path(user) %></span>
               </div>
@@ -85,7 +85,7 @@
             <% group.users.each do |user| %>
               <% next if current_user.active_debt_amt_to(user) == 0 %>
 
-              <div class="expense">
+              <div class="expense expense-condensed">
                 <span class="expense-price"><%= number_to_currency current_user.active_debt_amt_to(user) %></span>
                 <span class="expense-debtor"><%= link_to user.first_name, debts_path(user) %></span>
               </div>
