@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+
   protect_from_forgery
 
   ACCESS_DENIED_PATH = '/expenses'
@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
   def reject_unauthorized(authorized, path=ACCESS_DENIED_PATH)
     respond_to do |format|
       format.html { return redirect_to path unless authorized }
+      format.js { render layout: false }
       format.json { return render json: {} unless authorized }
     end
   end

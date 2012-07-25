@@ -1,0 +1,27 @@
+<% provide(:title, "Messages for: #{@group.title}") %>
+
+<h2>Messages for <%= @group.title %></h2>
+
+<div class="row">
+
+  <div class="span-8">
+    <%= form_tag "#{params[:gid]}/new", remote: true, class: "messages-form" do %>
+      <%= text_field_tag :text, nil, id: "new-message", placeholder: "Send a message to the group..." %>
+
+      <%= hidden_field_tag :gid, @group.gid %>
+
+      <%= submit_tag "Post", class: "btn btn-blue" %>
+    <% end %>
+  </div>
+
+  <div class="span-8" id="messages">
+    <!--
+      <div class="message">
+        <p class="message-user">Andrew</p>
+        <p class="message-date"><%= render_date Time.now %></p>
+        <p class="message-text">This is my awesome message. I have lots of interesting things to say. Really, this goes on for a few lines or more. Something something something.</p>
+      </div>
+    -->
+  </div>
+
+</div>

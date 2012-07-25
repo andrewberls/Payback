@@ -4,11 +4,11 @@ class Group < ActiveRecord::Base
 
   has_secure_password
 
-  validates :title, 
+  validates :title,
     presence: true,
     length: {maximum: 50}
 
-  validates :password, presence: { on: :create }, 
+  validates :password, presence: { on: :create },
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_gid
@@ -24,7 +24,7 @@ class Group < ActiveRecord::Base
 
 
   def as_json(options={})
-    options[:except] ||= [:password_digest, :id] 
+    options[:except] ||= [:password_digest, :id]
     super(options)
   end
 
@@ -54,6 +54,10 @@ class Group < ActiveRecord::Base
 
   def debts_from(user)
     debts.where(debtor_id: user)
+  end
+
+  def messages
+    # Get all messages from redis associated with this gid
   end
 
   private

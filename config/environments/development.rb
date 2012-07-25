@@ -30,4 +30,6 @@ Payback::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:baa70211f058979eb46c7d71d111a5df@tetra.redistogo.com:9603/'
 end
