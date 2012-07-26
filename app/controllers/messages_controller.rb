@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new(
       username: current_user.full_name,
-      date: Time.now,
+      date: Time.now.strftime("%-d %b %Y"),
       text: params[:text],
       gid: params[:gid]
     )
