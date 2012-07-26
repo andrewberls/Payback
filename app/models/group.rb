@@ -57,12 +57,12 @@ class Group < ActiveRecord::Base
   end
 
   def messages
-    # Return all associated messages from redis as hash
-    results = []
-    $redis.lrange("#{gid}:lookups", 0, -1).each do |id|
-      results << $redis.hgetall("message:#{gid}:#{id}")
+    # Return all associated group messages from redis as hash
+    # IDs are stored chronologically - we need to append in reverse
+
+    $redis.lrange("#{gid}:lookups", 0, -1).reverse.map do |id|
+      $redis.hgetall("message:#{gid}:#{id}")
     end
-    results
   end
 
   private
