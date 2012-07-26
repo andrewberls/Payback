@@ -7,7 +7,7 @@ $ ->
   $.ajax {
     url: "/groups/#{gid}/messages.json",
     success: (messages) ->
-      for json in messages # TODO: loop better
+      for json in messages
         $messages.append "
           <div class='message'>
             <p class='message-user'>#{json.username}</p>

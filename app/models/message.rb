@@ -2,10 +2,10 @@ class Message
   attr_accessor :date, :text, :username, :gid
 
   def initialize(params)
-    @text = params[:text]
+    @text     = params[:text]
     @username = params[:username]
-    @date = params[:date]
-    @gid = params[:gid]
+    @date     = params[:date]
+    @gid      = params[:gid]
   end
 
   def save
@@ -13,11 +13,15 @@ class Message
     counter = $redis.get "counter:#{@gid}" || 0
 
     $redis.multi do
-      $redis.hmset "message:#{@gid}:#{counter}", :text, @text, :date, @date.to_i, :username, @username
-      # set gid:lookup -> [counter1, counter2] : then find msgs with message:gid:counter
+      $redis.hmset "message:#{@gid}:#{counter}", :text, @text, :date, @date, :username, @username
       $redis.lpush "#{@gid}:lookups", counter
       $redis.incr "counter:#{@gid}"
     end
 
   end
 end
+
+# Redis key design:
+#   counter:gid         -> Message id counter for each group
+#   message:gid:counter -> Hash with message attributes for a group identified by counter
+#   gid:lookups         -> List of group message ids, for association lookups
