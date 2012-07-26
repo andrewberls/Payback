@@ -13,7 +13,7 @@
   -->
 
   <div class="span-8">
-    <%= form_tag "#{params[:gid]}/new", remote: true, class: "messages-form" do %>
+    <%= form_tag new_message_path(params[:gid]), remote: true, class: "messages-form" do %>
       <%= text_field_tag :text, nil, id: "new-message", placeholder: "Send a message to the group..." %>
 
       <%= hidden_field_tag :gid, @group.gid %>
@@ -23,7 +23,6 @@
   </div>
 
   <div class="span-8" id="messages">
-    <% @group.messages %>
     <!--
       <div class="message">
         <p class="message-user">Andrew</p>
