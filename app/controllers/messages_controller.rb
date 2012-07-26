@@ -9,25 +9,14 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = {
-      user: current_user,
+    @message = Message.new(
+      username: current_user.full_name,
       date: Time.now,
-      text: params[:text]
-    }
+      text: params[:text],
+      gid: params[:gid]
+    )
 
-    respond_to do |format|
-      format.html { return redirect_to messages_path(params[:gid]) }
-      format.js
-      format.json { render json: @message }
-    end
-
-    # id = $redis.get "notes:counter"
-    # $redis.hmset "notes:#{id}",
-    #              :date, Time.now.to_i,
-    #              :text, params[:text],
-    #              :user_id, current_user.id,
-    #              :gid, params[:gid]
-    # $redis.incr "notes:counter"
+    @message.save
   end
 
 end

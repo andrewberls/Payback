@@ -11,6 +11,7 @@ Payback::Application.routes.draw do
   match 'leave/:id'         => 'groups#leave',    as: 'leave_group'
   match 'messages/:gid'     => 'messages#index',  as: 'messages'
   post  'messages/:gid/new' => 'messages#new',    as: 'new_message'
+  match 'groups/:gid/messages' => 'groups#messages'
 
 
   # User actions

@@ -57,7 +57,12 @@ class Group < ActiveRecord::Base
   end
 
   def messages
-    # Get all messages from redis associated with this gid
+    # Return all associated messages from redis as hash
+    results = []
+    $redis.lrange("#{gid}:lookups", 0, -1).each do |id|
+      results << $redis.hgetall("message:#{gid}:#{id}")
+    end
+    results
   end
 
   private

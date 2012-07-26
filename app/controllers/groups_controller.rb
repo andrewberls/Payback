@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 
   before_filter :must_be_logged_in
-  before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add]
+  before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add, :messages]
 
   #------------------------------
   # CREATE
@@ -118,6 +118,17 @@ class GroupsController < ApplicationController
     flash[:success] = "You have successfully left #{@group.title}."
     return redirect_to groups_path
   end
+
+
+  def messages
+    @group = Group.find_by_gid(params[:gid])
+
+    respond_to do |format|
+      format.html { raise @group.messages.inspect }
+      format.json { render json: @group.messages.as_json }
+    end
+  end
+
 
   private
 

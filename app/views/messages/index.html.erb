@@ -1,8 +1,16 @@
 <% provide(:title, "Messages for: #{@group.title}") %>
 
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "messages" %>
+<% end %>
+
 <h2>Messages for <%= @group.title %></h2>
 
 <div class="row">
+
+  <!--
+    TODO: PUT FORM UNDER MESSAGE LIST (FB)
+  -->
 
   <div class="span-8">
     <%= form_tag "#{params[:gid]}/new", remote: true, class: "messages-form" do %>
@@ -15,6 +23,7 @@
   </div>
 
   <div class="span-8" id="messages">
+    <% @group.messages %>
     <!--
       <div class="message">
         <p class="message-user">Andrew</p>
