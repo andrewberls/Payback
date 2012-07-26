@@ -1,4 +1,4 @@
-class Message
+class Feedback
 
   include ActiveModel::Validations
   include ActiveModel::Conversion
@@ -10,7 +10,7 @@ class Message
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: valid_email_regex }
-  
+
   def initialize(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)

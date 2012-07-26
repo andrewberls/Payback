@@ -9,15 +9,15 @@ class StaticController < ApplicationController
   end
 
   def contact
-    @message = Message.new
+    @feedback = Feedback.new
   end
 
   def mail
-    @message = Message.new(params[:message])
-    
-    if @message.valid?      
-      Notifier.new_message(@message).deliver
-      flash[:success] = "Thanks! We'll get back to you as soon as possible." 
+    @feedback = Feedback.new(params[:feedback])
+
+    if @feedback.valid?
+      Notifier.new_message(@feedback).deliver
+      flash[:success] = "Thanks! We'll get back to you as soon as possible."
       return redirect_to contact_path
     else
       flash[:error] = "Please check your fields and try again!"
