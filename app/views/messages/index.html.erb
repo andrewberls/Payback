@@ -4,15 +4,25 @@
   <%= javascript_include_tag "messages" %>
 <% end %>
 
-<h2>Messages for <%= @group.title %></h2>
+
 
 <div class="row">
+  <div class="span-10 offset-3">
 
-  <!--
-    TODO: PUT FORM UNDER MESSAGE LIST (FB)
-  -->
+    <h2>Messages for <%= @group.title %></h2>
 
-  <div class="span-8">
+    <div class="" id="messages">
+      <!--
+      <div class="message">
+        <div class="message-content">
+          <p class="message-user">Andrew</p>
+          <p class="message-date"><%= render_date Time.now %></p>
+          <p class="message-text">This is my awesome message. I have lots of interesting things to say. Really, this goes on for a few lines or more. Something something something.</p>
+        </div>
+      </div>
+      -->
+    </div>
+
     <%= form_tag new_message_path(params[:gid]), remote: true, class: "messages-form" do %>
       <%= text_field_tag :text, nil, id: "new-message", placeholder: "Send a message to the group..." %>
 
@@ -20,16 +30,6 @@
 
       <%= submit_tag "Post", class: "btn btn-blue" %>
     <% end %>
-  </div>
 
-  <div class="span-8" id="messages">
-    <!--
-      <div class="message">
-        <p class="message-user">Andrew</p>
-        <p class="message-date"><%= render_date Time.now %></p>
-        <p class="message-text">This is my awesome message. I have lots of interesting things to say. Really, this goes on for a few lines or more. Something something something.</p>
-      </div>
-    -->
   </div>
-
 </div>

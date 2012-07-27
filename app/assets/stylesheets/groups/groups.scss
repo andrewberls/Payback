@@ -127,6 +127,9 @@
 //-- MESSAGES PAGE
 //------------------------------------
 .messages-form {
+  @include border-radius(0px);
+  background-color: $light-gray;
+  border-top-width: 2px;
   padding-bottom: 10px;
 
   input[type=text] {
@@ -136,7 +139,6 @@
 
 #messages {
   // TODO: TOP SHADOW + BOTTOM IF UNREAD?
-
   height: 500px;
   overflow: auto;
 }
