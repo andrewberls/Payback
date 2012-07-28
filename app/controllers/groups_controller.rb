@@ -124,7 +124,6 @@ class GroupsController < ApplicationController
     @group = Group.find_by_gid(params[:gid])
 
     respond_to do |format|
-      format.html { raise @group.messages.inspect }
       format.json { render json: @group.messages.as_json }
     end
   end
