@@ -15,7 +15,8 @@ class Message
     $redis.multi do
       $redis.hmset "message:#{@gid}:#{counter}", :text, @text, :date, @date, :username, @username
       $redis.lpush "#{@gid}:lookups", counter
-      $redis.incr "counter:#{@gid}"
+      $redis.incr "counter:#{@gid}"  # Counter for the group
+      $redis.incr "messages:counter" # Global counter
     end
 
   end
