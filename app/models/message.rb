@@ -26,3 +26,4 @@ end
 #   counter:gid         -> Message id counter for each group
 #   message:gid:counter -> Hash with message attributes for a group identified by counter
 #   gid:lookups         -> List of group message ids, for association lookups
+#   messages:counter    -> Global message counter
