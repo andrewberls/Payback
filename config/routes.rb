@@ -22,6 +22,10 @@ Payback::Application.routes.draw do
   match 'credits/:id' => 'users#credits', as: 'credits'
 
 
+  # Expense actions
+  match 'clear/:id' => 'expenses#clear', as: 'clear'
+
+
   # Session management
   match 'login'  => 'sessions#new',     as: 'login'
   match 'logout' => 'sessions#destroy', as: 'logout'
