@@ -37,7 +37,7 @@
   </div><!-- .container -->
 
 
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "#{FAYE_DOMAIN}/faye.js", "application" %>
   <%= yield :javascript_includes %>
 
 </body>
