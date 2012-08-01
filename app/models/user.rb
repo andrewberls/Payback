@@ -4,17 +4,17 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates :full_name, 
-    presence: true, 
+  validates :full_name,
+    presence: true,
     length: {maximum: 50}
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, 
-    presence: true, 
+  validates :email,
+    presence: true,
     format: {with: valid_email_regex},
     uniqueness: { case_sensitive: false }
 
-  validates :password, presence: { on: :create }, 
+  validates :password, presence: { on: :create },
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_auth_token
@@ -42,6 +42,11 @@ class User < ActiveRecord::Base
     self.full_name.split(" ").last
   end
 
+  def add_debt(expense)
+    expense.debtor = self
+    self.debts << expense
+  end
+
   def active_credits
     credits.where(active: true)
   end
@@ -64,12 +69,6 @@ class User < ActiveRecord::Base
 
   def active_debt_amt_to(user)
     active_debts_to(user).inject(0) { |total, exp| total + exp.amount }
-  end
-
-
-  def add_debt(expense)
-    expense.debtor = self
-    self.debts << expense
   end
 
   def total_credit_owed
