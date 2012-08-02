@@ -1,7 +1,10 @@
 <% @credit_groups.each do |group| %>
 
   <div class="group-container">
-    <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
+    <div style="overflow: auto; margin-bottom: 10px;">
+      <%= content_tag(:h3, group.title, style: 'float: left;') unless current_user.groups.count == 1 %>
+      <%= link_to raw("Group Messages &raquo;"), messages_path(group.gid), style: 'font-size: 1.1em' %>
+    </div>
 
     <div class="expenses-container">
       <% @credits = group.credits.select { |exp| exp.active && exp.creditor == current_user }.reverse %>

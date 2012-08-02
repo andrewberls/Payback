@@ -1,8 +1,9 @@
 $ ->
   # Initial load of existing group messages
-
   $messages = $("#messages")
-  gid = window.location.pathname.slice(10) # :-(
+  gid       = window.location.pathname.slice(10) # :-(
+  faye      = new Faye.Client("<%= FAYE_DOMAIN %>/faye")
+  faye.subscribe "/group/#{gid}/messages/", (data) -> alert data
 
   $.ajax {
     url: "/groups/#{gid}/messages.json",
