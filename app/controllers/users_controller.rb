@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # ALL: new create show edit update destroy welcome debts credits
   # MUST BE SELF: edit update destroy
   # USER MUST BE IN GROUPS (NOT SELF): show, debts, credits
-    
+
   def new
     return redirect_to expenses_path if current_user
     @user = User.new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    
+
     if @user.save
       cookies[:auth_token] = @user.auth_token
       return redirect_to welcome_path
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile successfully updated."
-      return redirect_to expenses_path      
+      return redirect_to expenses_path
     else
       flash.now[:error] = "Something went wrong - please check your fields and try again."
       return render :edit
@@ -59,14 +59,14 @@ class UsersController < ApplicationController
     # Condensed debts to a specific user (can't be blank or current user)
     @debts = current_user.active_debts_to(@user)
     can_view_page = @user != current_user && @debts.present?
-    return redirect_to ACCESS_DENIED_PATH unless can_view_page
+    reject_unauthorized(can_view_page)
   end
 
   def credits
     # Condensed debts to a specific user (can't be blank or current user)
     @credits = current_user.active_credits_to(@user)
     can_view_page = @user != current_user && @credits.present?
-    return redirect_to ACCESS_DENIED_PATH unless can_view_page
+    reject_unauthorized(can_view_page)
   end
 
   private
@@ -74,7 +74,6 @@ class UsersController < ApplicationController
   def user_must_be_current
     @user = User.find_by_id(params[:id])
     authorized = @user == current_user
-
     reject_unauthorized(authorized)
   end
 
@@ -82,7 +81,6 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     aggregate_users = current_user.groups.collect { |g| g.users }.flatten
     authorized = @user.present? && aggregate_users.include?(@user)
-
     reject_unauthorized(authorized)
   end
 
