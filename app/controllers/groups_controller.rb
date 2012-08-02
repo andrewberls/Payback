@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html { return redirect_to welcome_path if @groups.blank? }
-      format.json { render json: @groups }
+      format.json { return render json: @groups }
     end
   end
 
@@ -65,7 +65,7 @@ class GroupsController < ApplicationController
   def update
     if @group.update_attributes(params[:group])
       flash[:success] = "Group successfully updated."
-      return redirect_to groups_path      
+      return redirect_to groups_path
     else
       flash.now[:error] = "Something went wrong - please check your fields and try again."
       return render :edit
@@ -76,11 +76,11 @@ class GroupsController < ApplicationController
   #------------------------------
   # DELETE
   #------------------------------
-  def destroy   
+  def destroy
     # Need to destroy group and expenses, but preserve users
     # TODO: move this to an action on the group model and test it
-    
-    @group.expenses.each { |expense| expense.destroy } 
+
+    @group.expenses.each { |expense| expense.destroy }
     @group.destroy
     flash[:success] = "Group successfully deleted"
     return redirect_to groups_path
@@ -91,7 +91,7 @@ class GroupsController < ApplicationController
   # JOIN/LEAVE
   #------------------------------
   def join
-    # View  
+    # View
   end
 
   def add
@@ -124,7 +124,7 @@ class GroupsController < ApplicationController
   def user_must_be_in_group
     @group = Group.find_by_gid(params[:id])
     authorized = @group.present? && @group.users.include?(current_user)
-    
+
     reject_unauthorized(authorized)
   end
 
