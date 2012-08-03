@@ -34,8 +34,16 @@
   }
 
   .expense-price {
-    margin: 20px 0;
-    margin-right: 10px;
+    margin: 20px 10px 0 0;
+
+    a {
+      color: $gray-text;
+
+      &:hover {
+        color: $blue;
+        text-decoration: none;
+      }
+    }
   }
 
   .expense-debtor,

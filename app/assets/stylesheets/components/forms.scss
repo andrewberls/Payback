@@ -4,15 +4,23 @@ form {
   @include border-radius(3px);
   @include clearfix;
   @extend .whitebox;
-  
+
   .help-block {
     color: $light-text;
     margin: -5px 0 15px;
   }
 
+  .form-title,
+  .form-title-small {
+    margin-bottom: 15px;
+  }
+
   .form-title {
     font-size: 2em;
-    margin-bottom: 15px;
+  }
+
+  .form-title-small {
+    font-size: 1.2em;
   }
 
   label {
@@ -55,7 +63,7 @@ form {
   margin-left: 5px;
 }
 
-.help-block {  
+.help-block {
   margin-bottom: 10px;
 }
 
@@ -96,8 +104,8 @@ form {
     float: right;
     margin: -23px 0 0;
   }
-  
-  label.checkbox {    
+
+  label.checkbox {
     display: inline-block;
     margin: 5px 0 0;
   }

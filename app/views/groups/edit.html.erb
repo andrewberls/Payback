@@ -7,19 +7,19 @@
 
       <h1 class="form-title">Edit Group</h1>
 
-      <%= render "group_error_messages" %>      
+      <%= render "group_error_messages" %>
 
-      <%= f.label :title %>                
+      <%= f.label :title %>
       <%= f.text_field :title %>
 
-      <%= f.label :password, "New Password" %>               
+      <%= f.label :password, "New Password" %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Confirm New Password" %>
       <%= f.password_field :password_confirmation %>
 
       <%= link_to "Cancel", groups_path, class: "btn" %>
-      <%= submit_tag "Update Group", class: "btn btn-blue" %>
+      <%= submit_tag "Update", class: "btn btn-blue" %>
 
     <% end %><!-- .edit-group-form -->
 

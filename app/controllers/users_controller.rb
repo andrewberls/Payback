@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :must_be_logged_in, except: [:new, :create]
-  before_filter :user_must_be_current, only: [:show, :edit, :update, :destroy]
+  before_filter :must_be_logged_in,              except: [:new, :create]
+  before_filter :user_must_be_current,           only: [:show, :edit, :update, :destroy]
   before_filter :user_must_be_in_current_groups, only: [:debts, :credits]
 
   # ALL: new create show edit update destroy welcome debts credits
