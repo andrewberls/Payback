@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
 
-  before_filter :must_be_logged_in, except: [:new, :create]
-  before_filter :user_must_be_current, only: [:show, :edit, :update, :destroy]
+  before_filter :must_be_logged_in,              except: [:new, :create]
+  before_filter :user_must_be_current,           only: [:show, :edit, :update, :destroy]
   before_filter :user_must_be_in_current_groups, only: [:debts, :credits]
 
   # ALL: new create show edit update destroy welcome debts credits
   # MUST BE SELF: edit update destroy
   # USER MUST BE IN GROUPS (NOT SELF): show, debts, credits
-    
+
   def new
     return redirect_to expenses_path if current_user
     @user = User.new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    
+
     if @user.save
       cookies[:auth_token] = @user.auth_token
       return redirect_to welcome_path
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile successfully updated."
-      return redirect_to expenses_path      
+      return redirect_to expenses_path
     else
       flash.now[:error] = "Something went wrong - please check your fields and try again."
       return render :edit

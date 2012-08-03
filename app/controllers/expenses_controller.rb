@@ -1,8 +1,8 @@
 class ExpensesController < ApplicationController
 
   before_filter :must_be_logged_in
-
-  before_filter :redirect_empty_groups, only: [:new, :index]
+  before_filter :redirect_empty_groups,     only: [:new, :index]
+  before_filter :must_be_in_current_groups, only: [:edit, :update]
 
   #------------------------------
   # CREATE
@@ -82,6 +82,23 @@ class ExpensesController < ApplicationController
 
 
   #------------------------------
+  # UPDATE
+  #------------------------------
+  def edit
+  end
+
+  def update
+    if @expense.update_attributes(params[:expense])
+      flash[:success] = "Expense successfully updated."
+      return redirect_to expenses_path
+    else
+      flash.now[:error] = "Something went wrong - please check your fields and try again."
+      return render :edit
+    end
+  end
+
+
+  #------------------------------
   # DELETE
   #------------------------------
   def destroy
@@ -101,6 +118,15 @@ class ExpensesController < ApplicationController
   def find_dashboard_resources
     @credit_groups = current_user.groups_with_credits
     @debt_groups   = current_user.groups_with_debts
+  end
+
+  private
+
+  def must_be_in_current_groups
+    @expense = Expense.find(params[:id])
+    authorized = current_user.active_credits.include?(@expense)
+
+    reject_unauthorized(authorized)
   end
 
 end
