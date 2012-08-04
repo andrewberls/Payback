@@ -25,7 +25,7 @@
     border: none;
   }
 
-  .expense-price,
+  .expense-amount,
   .expense-debtor,
   .expense-creditor,
   .expense-title,
@@ -33,7 +33,7 @@
     float: left;
   }
 
-  .expense-price {
+  .expense-amount {
     margin: 20px 10px 0 0;
 
     a {
@@ -93,7 +93,7 @@
 
     .expense-creditor,
     .expense-debtor,
-    .expense-price {
+    .expense-amount {
       margin: 5px 5px 5px 0;
     }
 
@@ -134,7 +134,7 @@
 
   .expense-creditor,
   .expense-debtor,
-  .expense-price {
+  .expense-amount {
     margin: 5px 5px 5px 0;
   }
 }

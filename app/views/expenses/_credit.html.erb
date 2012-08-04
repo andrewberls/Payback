@@ -1,6 +1,6 @@
 <div class="expense">
   <%# TODO: AJAX OVERLAY? %>
-  <span class="expense-price"><%= link_to number_to_currency(expense.amount), edit_expense_path(expense) %></span>
+  <span class="expense-amount"><%= link_to number_to_currency(expense.amount), edit_expense_path(expense) %></span>
   <span class="expense-debtor"><%= link_to_unless_current expense.debtor.first_name, credits_path(expense.debtor) %></span>
 
   <div class="info-stack">
