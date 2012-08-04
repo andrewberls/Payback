@@ -33,6 +33,15 @@
     float: left;
   }
 
+  .expense-edited {
+    // A mark shown the expense has been edited
+    color: $blue;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .expense-amount {
     margin: 20px 10px 0 0;
 

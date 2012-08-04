@@ -1,5 +1,16 @@
 <% provide(:title, 'Dashboard') %>
 
+<% unless cookies[:closed_alert] %>
+  <div class="row">
+    <div class="span-16">
+      <div class="alert alert-notice feature-notice">
+        Someone only partially pay you back? Click on an expense amount to edit it.
+        <i class="icon-remove close-alert"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="span-16">
     <div class="condensed-header">
@@ -17,7 +28,6 @@
       CREDITS
   ------------------------------------%>
   <div class="span-8">
-
     <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
 
     <h2>Owed to You</h2>
@@ -27,7 +37,6 @@
     <% else %>
       <%= render 'dashboard_credits' %>
     <% end %>
-
   </div>
 
 
@@ -35,7 +44,6 @@
       DEBTS
   ------------------------------------%>
   <div class="span-8">
-
     <h2>You Owe</h2>
 
     <% if current_user.active_debts.blank? %>
@@ -43,7 +51,6 @@
     <% else %>
       <%= render 'dashboard_debts' %>
     <% end %>
-
   </div>
 
 </div><!-- .row -->

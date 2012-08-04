@@ -4,12 +4,12 @@ class Expense < ActiveRecord::Base
 
   attr_accessible :title, :amount, :action, :active
 
-  validates :amount, 
+  validates :amount,
     presence: true,
     numericality: true
 
-  validates :title, 
-    presence: true, 
+  validates :title,
+    presence: true,
     length: {maximum: 50}
 
 
@@ -19,6 +19,11 @@ class Expense < ActiveRecord::Base
   # Users
   belongs_to :creditor, class_name: "User"
   belongs_to :debtor,   class_name: "User"
+
+
+  def edited
+    created_at != updated_at
+  end
 
   def assign_to(*users)
     # Split and assign a debt amongst a set of selected users
