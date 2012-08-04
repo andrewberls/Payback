@@ -17,21 +17,7 @@
     <% end %>
 
     <% if current_user.active_debts_to(@user).present? %>
-      <%# TODO: Find a way to factor this into a shared partial  %>
-      <p class="expense-total-small">
-        With the <%= number_to_currency(current_user.active_debt_amt_to(@user)) %> you owe <%= @user.first_name %>,
-        <% if current_user.active_debt_amt_to(@user) > @user.active_debt_amt_to(current_user) %>
-
-          <% net = current_user.active_debt_amt_to(@user) - @user.active_debt_amt_to(current_user) %>
-          you owe <%= @user.first_name %> a net total of <strong><%= number_to_currency(net) %></strong>.
-
-        <% else %>
-
-          <% net = @user.active_debt_amt_to(current_user) - current_user.active_debt_amt_to(@user) %>
-          <%= @user.first_name %> owes you a net total of <strong><%= number_to_currency(net) %></strong>.
-
-        <% end %>
-      </p>
+      <%= render 'expenses/net_total', :direction => :credit %>
     <% end %>
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
