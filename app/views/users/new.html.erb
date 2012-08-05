@@ -13,13 +13,12 @@
 
   <div class="span-6 offset-5">
 
-    <%# 
+    <%#
       TODO: Interactive signup process with email invites
     %>
 
     <%= render 'signup_form' %>
 
-    <p><%# link_to "Already have an account? Log in!", login_path, class: "form-suggestion" %></p>
     <span class="form-suggestion">Already have an account? <%= link_to raw("Log in! &raquo;"), login_path %></span>
 
   </div>
