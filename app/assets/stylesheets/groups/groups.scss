@@ -5,10 +5,15 @@
     margin-bottom: 5px;
   }
 
-  ul li {
-    font-size: 1.2em;
-    line-height: 1.4;
-    margin-bottom: 10px;
+  ul {
+    @extend .whitebox;
+    text-align: center;
+
+    li {
+      font-size: 1.2em;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -17,7 +22,7 @@
 //------------------------------------
 .group-welcome {
   // Landing page after group creation
-  
+
   @extend .whitebox;
   text-align: center;
 
@@ -102,7 +107,7 @@
       margin: 2px 0 0 5px;
     }
   }
-  
+
   .group-owner {
     clear: both;
     color: darken($med-gray, 15);

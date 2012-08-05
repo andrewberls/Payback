@@ -36,6 +36,12 @@ strong {
   font-weight: bold;
 }
 
+.header-line {
+  border-bottom: 1px solid $med-gray;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
 .pretext-block {
   // A block of centered text for informationals
   margin-bottom: 20px;
