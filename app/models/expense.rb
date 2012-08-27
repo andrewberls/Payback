@@ -21,7 +21,7 @@ class Expense < ActiveRecord::Base
   belongs_to :debtor,   class_name: "User"
 
 
-  def edited
+  def edited?
     created_at != updated_at
   end
 

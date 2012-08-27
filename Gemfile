@@ -14,8 +14,6 @@ gem 'jquery-rails'
 
 gem 'thin'
 
-gem 'newrelic_rpm'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,8 +24,10 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  #gem 'rspec-rails'
+  #gem 'factory_girl_rails'
+  gem 'shoulda-context'
+  gem 'mocha'
 end
 
 group :test do
