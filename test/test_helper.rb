@@ -1,9 +1,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
-require "test/unit"
-require "mocha"
-
 # Bit hacky here due to the way expense associations are architectured.
 # Since expenses get cloned among debtors, you can't do something like
 # user.debts.include?(debt). Instead, we check for field &
@@ -12,8 +9,8 @@ require "mocha"
 def has_debt_to?(debtor, creditor, debt)
   # I give John $5. John has debt to me.
   found_debt = debtor.debts.detect do |d|
-    d.title == debt.title &&
-    d.amount == debt.amount &&
+    d.title    == debt.title  &&
+    d.amount   == debt.amount &&
     d.creditor == creditor
   end
 

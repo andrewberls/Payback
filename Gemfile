@@ -24,17 +24,16 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  #gem 'rspec-rails'
-  #gem 'factory_girl_rails'
-  gem 'shoulda-context'
-  gem 'mocha'
+  gem 'test-unit', :require => "test/unit"
+  gem 'shoulda'
+  #gem 'shoulda-context'
+  #gem 'mocha'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'faker'
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
+  #gem "test-unit", "~> 2.5.2"
 end

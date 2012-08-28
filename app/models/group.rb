@@ -1,17 +1,19 @@
 class Group < ActiveRecord::Base
 
-  attr_accessible :title, :password, :password_confirmation
+  attr_accessible :title, :password, :password_confirmation, :gid
 
   has_secure_password
 
-  validates :title, 
+  validates :title,
     presence: true,
     length: {maximum: 50}
 
-  validates :password, presence: { on: :create }, 
+  validates :password, presence: { on: :create },
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_gid
+
+  # validates_uniqueness_of :gid
 
 
   # Users
@@ -24,7 +26,7 @@ class Group < ActiveRecord::Base
 
 
   def as_json(options={})
-    options[:except] ||= [:password_digest, :id] 
+    options[:except] ||= [:password_digest, :id]
     super(options)
   end
 
@@ -61,8 +63,13 @@ class Group < ActiveRecord::Base
   def generate_gid
     # A unique external identifier used for the 'Join by ID' feature
     # Note that the external GID is distinct from the internal ID (primary key only)
-    digest_string = self.id.to_s << Time.now.to_i.to_s # Combine auto id + timestamp for uniqueness
-    self.gid = Digest::MD5.hexdigest(digest_string)[0..5]
+    # This does nothing if the gid has been set manually
+
+    unless self.gid.present?
+      # Combine auto id + timestamp for uniqueness
+      digest_string = self.id.to_s << Time.now.to_i.to_s
+      self.gid = Digest::MD5.hexdigest(digest_string)[0..5]
+    end
   end
 
 end

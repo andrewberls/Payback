@@ -6,38 +6,39 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin_user = User.create(
+admin_user = User.create!(
   full_name: "Admin User",
   email: "admin@admin.com",
   password: "admin",
   password_confirmation: "admin"
 )
 
-aux_user_1 = User.create(
+aux_user_1 = User.create!(
   full_name: "Jeff Schmoe",
   email: "jeff@gmail.com",
   password: "password",
   password_confirmation: "password"
 )
 
-aux_user_1b = User.create(
+aux_user_1b = User.create!(
   full_name: "David Dawg",
   email: "david@gmail.com",
   password: "password",
   password_confirmation: "password"
 )
 
-aux_user_2 = User.create(
+aux_user_2 = User.create!(
   full_name: "Nicole Doe",
   email: "nicole@gmail.com",
   password: "password",
   password_confirmation: "password"
 )
 
-seed_group = Group.create(
+seed_group = Group.create!(
   title: "221B Baker Street",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
+  gid: 'abcdef'
 )
 
 seed_group.initialize_owner admin_user
@@ -50,7 +51,7 @@ seed_group.users << aux_user_2
 # nicole owes 10 for movie
 # owe 500 to david for rent
 
-movies = Expense.create(
+movies = Expense.create!(
   title: "Movie ticket",
   amount: 10,
   active: 1
@@ -60,7 +61,7 @@ movies.creditor = admin_user
 movies.assign_to aux_user_2
 
 
-groceries = Expense.create(
+groceries = Expense.create!(
   title: "Groceries",
   amount: 45,
   active: 1
@@ -70,7 +71,7 @@ groceries.creditor = admin_user
 groceries.assign_to aux_user_1
 
 
-beanbag = Expense.create(
+beanbag = Expense.create!(
   title: "Beanbag chair",
   amount: 65,
   active: 1
@@ -80,7 +81,7 @@ beanbag.creditor = admin_user
 beanbag.assign_to aux_user_2
 
 
-rent = Expense.create(
+rent = Expense.create!(
   title: "Textbook",
   amount: 85,
   active: 1
@@ -88,3 +89,32 @@ rent = Expense.create(
 rent.group = seed_group
 rent.creditor = aux_user_1b
 rent.assign_to admin_user
+
+
+
+
+
+blank_user_1 = User.create!(
+  full_name: "Blank One",
+  email: "blank_one@email.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
+blank_user_2 = User.create!(
+  full_name: "Blank Two",
+  email: "blank_two@email.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
+
+
+# ERROR HERE
+#
+blank_group = Group.create!(
+  title: "Blank Group",
+  password: "blank_password",
+  password_confirmation: "blank_password",
+  gid: 'abc123'
+)

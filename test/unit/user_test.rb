@@ -1,5 +1,31 @@
 require File.expand_path('../../test_helper',  __FILE__)
 
+class UserTest < Test::Unit::TestCase
+  context "group" do
+    setup do
+      @user = User.first
+    end
+
+    context "validations" do
+      should "not be valid without a full name"
+      should "not be valid when the full name is too long"
+
+      context "email" do
+        should "be required"
+        should "be formatted correctly"
+        should "be unique for each user"
+      end
+
+      should "not be valid without a password"
+      should "not be valid when the password doesn't match confirmation"
+      should "not be valid when the password is too short"
+    end
+
+    should "generate an auth token before save"
+
+
+  end
+end
 
 # require 'spec_helper'
 

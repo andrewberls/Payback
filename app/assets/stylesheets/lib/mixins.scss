@@ -36,7 +36,7 @@
      -moz-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
           box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
           // -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
-          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');       
+          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');
 }
 
 @mixin inset-box-shadow($horizOffset: 0px, $vertOffset: 0px, $blurDist: 0px, $spreadDist: 0px, $color: #000) {
@@ -44,11 +44,24 @@
      -moz-box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
           box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
           // -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
-          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');    
+          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');
 }
 
 //-- PRESENTATIONAL CLASSES
 //------------------------------------
+
+
+// %banner {
+//   background-color: #eee;
+//   border: 1px solid #ddd;
+//   font-family: 'Helvetica', sans-serif;
+// }
+
+// .yellow-banner {
+//   @extend %banner;
+//   background-color: yellow;
+// }
+
 
 .whitebox {
   // A pretty white box with a light gray border

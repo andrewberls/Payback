@@ -1,3 +1,19 @@
+// %banner {
+//   background-color: #eee;
+//   border: 1px solid #ddd;
+//   font-family: 'Helvetica', sans-serif;
+// }
+
+// .yellow-banner {
+//   @extend %banner;
+//   background-color: yellow;
+// }
+
+
+
+
+
+
 .alert {
   @include border-box;
   @include border-radius(5px);
