@@ -109,9 +109,9 @@ class ExpensesController < ApplicationController
 
   def clear
     # Mark all expenses to a user completed
-    user = User.find(params[:id])
+    user     = User.find(params[:id])
     expenses = current_user.active_credits_to(user)
-    expenses.each { |expense| expense.update_attributes(active: false) }
+    expenses.each { |exp| exp.update_attributes(active: false) }
     return redirect_to expenses_path
   end
 

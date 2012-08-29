@@ -22,6 +22,7 @@
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
     <% if @credits.count > 1 %>
+
       <%= link_to raw("<i class='icon-ok icon-white'></i> Mark all"),
         { controller: 'expenses', action: 'clear' }, :method => :delete,
         confirm: "Mark #{@credits.count} credits to #{@user.first_name} completed?",

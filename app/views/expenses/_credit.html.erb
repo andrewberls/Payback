@@ -4,7 +4,7 @@
     <%= render 'expenses/edit_mark', expense: expense %>
     <%= link_to number_to_currency(expense.amount), edit_expense_path(expense) %>
   </span>
-  <span class="expense-debtor"><%= link_to_unless_current expense.debtor.first_name, credits_path(expense.debtor) %></span>
+  <span class="expense-debtor"><%= link_to_unless_current expense.debtor.first_name, credits_user_path(expense.debtor) %></span>
 
   <div class="info-stack">
     <span class="expense-title"><%= expense.title %></span>
