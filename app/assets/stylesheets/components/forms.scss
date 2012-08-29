@@ -3,7 +3,7 @@
 form {
   @include border-radius(3px);
   @include clearfix;
-  @extend .whitebox;
+  @extend %whitebox;
 
   .help-block {
     color: $light-text;

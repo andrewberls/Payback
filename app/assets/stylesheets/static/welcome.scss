@@ -1,11 +1,11 @@
 //-- POST-SIGNUP WELCOME
 //------------------------------------
 .welcome-container {
-  @extend .whitebox;
+  @extend %whitebox;
   text-align: center;
 
   h1 {
-    font-size: 3.5em;   
+    font-size: 3.5em;
     margin-bottom: 20px;
   }
 

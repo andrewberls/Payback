@@ -6,7 +6,7 @@
   }
 
   ul {
-    @extend .whitebox;
+    @extend %whitebox;
     text-align: center;
 
     li {
@@ -23,7 +23,7 @@
 .group-welcome {
   // Landing page after group creation
 
-  @extend .whitebox;
+  @extend %whitebox;
   text-align: center;
 
   h1 {
@@ -52,7 +52,7 @@
 //-- GROUP DASHBOARD
 //------------------------------------
 .groups-container {
-  @extend .whitebox;
+  @extend %whitebox;
   margin-bottom: 15px;
   padding: 0;
 }

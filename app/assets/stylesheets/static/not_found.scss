@@ -1,5 +1,5 @@
 .error-box {
-  @extend .whitebox;
+  @extend %whitebox;
   text-align: center;
 
   h1 {

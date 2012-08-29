@@ -47,23 +47,10 @@
           //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');
 }
 
+
 //-- PRESENTATIONAL CLASSES
 //------------------------------------
-
-
-// %banner {
-//   background-color: #eee;
-//   border: 1px solid #ddd;
-//   font-family: 'Helvetica', sans-serif;
-// }
-
-// .yellow-banner {
-//   @extend %banner;
-//   background-color: yellow;
-// }
-
-
-.whitebox {
+%whitebox {
   // A pretty white box with a light gray border
   // Things such as padding can easily be overridden
 

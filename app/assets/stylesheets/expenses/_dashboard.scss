@@ -9,7 +9,7 @@
 }
 
 .expenses-container {
-  @extend .whitebox;
+  @extend %whitebox;
   margin-bottom: 15px;
   padding: 0;
 }
