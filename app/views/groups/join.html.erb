@@ -10,16 +10,12 @@
 
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
 
-      <div class="field control-group">
-        <%= label_tag :gid, "Group ID" %>
-        <span class="help-text">6 letters/numbers</span>
-        <%= text_field_tag :gid %>
-      </div>
+      <%= label_tag :gid, "Group ID" %>
+      <span class="help-text">6 letters/numbers</span>
+      <%= text_field_tag :gid %>
 
-      <div class="field control-group">
-        <%= label_tag :password %>
-        <%= password_field_tag :password%>
-      </div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password%>
 
       <%= submit_tag "Join Group", class: "btn btn-blue", id: "submit-validate" %>
 
