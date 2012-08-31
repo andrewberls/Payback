@@ -4,23 +4,9 @@
 
     <nav>
       <ul>
-        <% if action_request == "expenses#index" %>
-          <li><%= link_to "Dashboard", expenses_path, class: "current" %></li>
-        <% else %>
-          <li><%= link_to "Dashboard", expenses_path %></li>
-        <% end %>
-
-        <% if action_request == "expenses#new" %>
-          <li><%= link_to "New Expense", new_expense_path, class: "current" %></li>
-        <% else %>
-          <li><%= link_to "New Expense", new_expense_path %></li>
-        <% end %>
-
-        <% if action_request == "groups#index" %>
-          <li><%= link_to "Groups", groups_path, class: "current" %></li>
-        <% else %>
-          <li><%= link_to "Groups", groups_path %></li>
-        <% end %>  
+        <li><%= link_to "Dashboard",   expenses_path,    class: (current_page? expenses_path)    ? 'current' : '' %></li>
+        <li><%= link_to "New Expense", new_expense_path, class: (current_page? new_expense_path) ? 'current' : '' %></li>
+        <li><%= link_to "Groups",      groups_path,      class: (current_page? groups_path)      ? 'current' : '' %></li>
       </ul>
     </nav>
 
