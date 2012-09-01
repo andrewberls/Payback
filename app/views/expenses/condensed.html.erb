@@ -37,7 +37,7 @@
               <% next if user.active_debt_amt_to(current_user) == 0 %>
 
               <div class="expense expense-condensed">
-                <span class="expense-amount"><%= number_to_currency user.active_debt_amt_to(current_user) %></span>
+                <span class="expense-amount"><%= number_to_currency current_user.active_credit_amt_to(user) %></span>
                 <span class="expense-debtor"><%= link_to user.first_name, credits_user_path(user) %></span>
               </div>
             <% end %>

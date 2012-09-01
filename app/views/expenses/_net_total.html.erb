@@ -4,7 +4,7 @@
 
   <%# With the money <name> owes you... %>
   <p class="expense-total-small">
-    With the <%= number_to_currency(@user.active_debt_amt_to(current_user)) %> <%= @user.first_name %> owes you,
+    With the <%= number_to_currency(current_user.active_credit_amt_to(@user)) %> <%= @user.first_name %> owes you,
     <% if current_user.active_debt_amt_to(@user) > @user.active_debt_amt_to(current_user) %>
 
       <% net = current_user.active_debt_amt_to(@user) - @user.active_debt_amt_to(current_user) %>
