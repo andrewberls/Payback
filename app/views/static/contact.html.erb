@@ -8,26 +8,26 @@
 
   <div class="span-6 offset-5">
 
-    <%= form_for(@message, url: contact_path, html: {class: "contact-form"}) do |f| %> 
+    <%= form_for(@message, url: contact_path, html: {class: "contact-form"}) do |f| %>
       <h1 class="form-title">Contact Us</h1>
 
       <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success]%>
-      
+
       <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
 
       <%= f.label :name %>
       <span class="help-text">Optional</span>
-      <%= f.text_field :name %>            
+      <%= f.text_field :name, autofocus: true %>
 
       <%= f.label :email %>
       <%= f.text_field :email %>
 
       <%= f.label :message %>
       <%= f.text_area :message %>
-        
+
       <%= submit_tag "Submit", class: "btn btn-blue" %>
-      
-    <% end %><!-- .contact-form -->  
+
+    <% end %><!-- .contact-form -->
 
   </div>
 </div>

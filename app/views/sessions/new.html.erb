@@ -5,25 +5,25 @@
 
     <%= form_tag(sessions_path, class: "login-form") do %>
       <h1 class="form-title">Log In</h1>
-      
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>            
+
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
 
       <%= label_tag :email %>
-      <%= email_field_tag :email %>
-        
+      <%= email_field_tag :email, '', autofocus: true %>
+
       <%= label_tag :password %>
       <%= password_field_tag :password%>
 
-      <label class="checkbox">                
+      <label class="checkbox">
         <%= check_box_tag :remember_me, 1 %>
         Remember Me
       </label>
 
       <%= submit_tag "Log in", class: "btn btn-blue", id: "submit-login" %>
-      
+
     <% end %><!-- .login-form -->
 
-    <span class="form-suggestion">Don't have an account? <%= link_to raw("Sign up for free &raquo;"), signup_path %></span>   
+    <span class="form-suggestion">Don't have an account? <%= link_to raw("Sign up for free &raquo;"), signup_path %></span>
 
   </div>
 </div>
