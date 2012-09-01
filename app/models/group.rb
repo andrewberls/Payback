@@ -58,6 +58,16 @@ class Group < ActiveRecord::Base
     debts.where(debtor_id: user)
   end
 
+   def active_credit_users_for(user)
+    # All users from a specific group with outstanding credits from a user
+    (users - [user]).reject { |u| user.active_credits_to(u).blank? }
+  end
+
+  def active_debt_users_for(user)
+    # All users from a specific group with outstanding credits to a user
+    (users - [user]).reject { |u| user.active_debts_to(u).blank? }
+  end
+
   private
 
   def generate_gid

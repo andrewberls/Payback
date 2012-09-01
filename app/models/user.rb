@@ -35,16 +35,16 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    self.full_name.split(" ").first
+    full_name.split(" ").first
   end
 
   def last_name
-    self.full_name.split(" ").last
+    full_name.split(" ").last
   end
 
   def add_debt(expense)
     expense.debtor = self
-    self.debts << expense
+    debts << expense
   end
 
   def active_credits
@@ -64,11 +64,11 @@ class User < ActiveRecord::Base
   end
 
   def active_credit_amt_to(user)
-    active_credits_to(user).inject(0) { |total, exp| total + exp.amount }
+    sum_amounts active_credits_to(user)
   end
 
   def active_debt_amt_to(user)
-    active_debts_to(user).inject(0) { |total, exp| total + exp.amount }
+    sum_amounts active_debts_to(user)
   end
 
   def total_credit_owed
@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   end
 
   def sum_amounts(expenses)
-    expenses.map(&:amount).inject(&:+)
+    expenses.map(&:amount).inject(&:+) || 0
   end
 
 end

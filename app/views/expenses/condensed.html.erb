@@ -32,17 +32,15 @@
           <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
 
           <div class="expenses-container">
-            <% users = group.users - [current_user] %>
-            <% group.users.each do |user| %>
-              <% next if user.active_debt_amt_to(current_user) == 0 %>
-
+            <% users = group.active_credit_users_for(current_user) %>
+            <% users.each do |user| %>
               <div class="expense expense-condensed">
                 <span class="expense-amount"><%= number_to_currency current_user.active_credit_amt_to(user) %></span>
                 <span class="expense-debtor"><%= link_to user.first_name, credits_user_path(user) %></span>
               </div>
             <% end %>
-
           </div>
+
         </div><!-- .group-container -->
 
         <% unless current_user.total_credit_owed == 0 %>
@@ -72,17 +70,15 @@
           <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
 
           <div class="expenses-container">
-            <% users = group.users - [current_user] %>
-            <% group.users.each do |user| %>
-              <% next if current_user.active_debt_amt_to(user) == 0 %>
-
+            <% users = group.active_debt_users_for(current_user) %>
+            <% users.each do |user| %>
               <div class="expense expense-condensed">
                 <span class="expense-amount"><%= number_to_currency current_user.active_debt_amt_to(user) %></span>
                 <span class="expense-debtor"><%= link_to user.first_name, debts_user_path(user) %></span>
               </div>
             <% end %>
-
           </div>
+
         </div><!-- .group-container -->
 
         <% unless current_user.total_debt_owed == 0 %>
