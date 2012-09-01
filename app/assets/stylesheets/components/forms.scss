@@ -1,7 +1,7 @@
 //-- GENERIC
 //------------------------------------
 form {
-  @include border-radius(3px);
+  @include border-radius;
   @include clearfix;
   @extend %whitebox;
 

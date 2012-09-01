@@ -18,7 +18,7 @@ header {
   }
 
   nav a {
-    @include border-radius(3px);
+    @include border-radius;
     color: $gray-text;
     display: inline-block;
     float: left;
@@ -33,7 +33,7 @@ header {
       text-decoration: none;
     }
   }
-  
+
 
   @media (max-width: 480px) {
     h1 {

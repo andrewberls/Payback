@@ -11,7 +11,7 @@
   }
 }
 
-@mixin border-radius($rad: 5px) {
+@mixin border-radius($rad: 3px) {
   -webkit-border-radius: $rad;
      -moz-border-radius: $rad;
           border-radius: $rad;
