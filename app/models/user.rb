@@ -64,11 +64,11 @@ class User < ActiveRecord::Base
   end
 
   def active_credit_amt_to(user)
-    sum_amounts active_credits_to(user)
+    active_credits_to(user).inject(0) { |total, exp| total + exp.amount }
   end
 
   def active_debt_amt_to(user)
-    sum_amounts active_debts_to(user)
+    active_debts_to(user).inject(0) { |total, exp| total + exp.amount }
   end
 
   def total_credit_owed
