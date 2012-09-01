@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
     presence: true,
-    format: {with: valid_email_regex},
+    format: { with: valid_email_regex },
     uniqueness: { case_sensitive: false }
 
   validates :password, presence: { on: :create },
@@ -64,19 +64,19 @@ class User < ActiveRecord::Base
   end
 
   def active_credit_amt_to(user)
-    active_credits_to(user).inject(0) { |total, exp| total + exp.amount }
+    sum_amounts active_credits_to(user)
   end
 
   def active_debt_amt_to(user)
-    active_debts_to(user).inject(0) { |total, exp| total + exp.amount }
+    sum_amounts active_debts_to(user)
   end
 
   def total_credit_owed
-    active_credits.inject(0) { |total, exp| total + exp.amount }
+    sum_amounts active_credits
   end
 
   def total_debt_owed
-    active_debts.inject(0) { |total, exp| total + exp.amount }
+    sum_amounts active_debts
   end
 
   def groups_with_credits
@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
 
   def generate_auth_token
     self.auth_token = SecureRandom.urlsafe_base64
+  end
+
+  def sum_amounts(expenses)
+    expenses.map(&:amount).inject(&:+)
   end
 
 end
