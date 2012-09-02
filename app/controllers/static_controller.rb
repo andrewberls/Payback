@@ -2,10 +2,10 @@ class StaticController < ApplicationController
 
   layout :choose_layout
 
-  #before_filter :must_be_logged_in, only: [:contact, :mail]
+  caches_page :start
 
   def start
-    redirect_to expenses_path if signed_in?
+    return redirect_to expenses_path if signed_in?
   end
 
   def contact
@@ -14,15 +14,15 @@ class StaticController < ApplicationController
 
   def mail
     @message = Message.new(params[:message])
-    
-    if @message.valid?      
+
+    if @message.valid?
       Notifier.new_message(@message).deliver
-      flash[:success] = "Thanks! We'll get back to you as soon as possible." 
-      return redirect_to contact_path
+      flash[:success] = "Thanks! We'll get back to you as soon as possible."
     else
       flash[:error] = "Please check your fields and try again!"
-      return redirect_to contact_path
     end
+
+    return redirect_to contact_path
   end
 
   def not_found
@@ -31,11 +31,7 @@ class StaticController < ApplicationController
   private
 
   def choose_layout
-    if ['start'].include? action_name
-      'static'
-    else
-      'application'
-    end
+    (action_name == 'start') ? 'static' : 'application'
   end
 
 end

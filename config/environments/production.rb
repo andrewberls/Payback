@@ -20,6 +20,9 @@ Payback::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Use a different cache store in production
+  config.cache_store = :dalli_store
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
@@ -36,8 +39,6 @@ Payback::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
