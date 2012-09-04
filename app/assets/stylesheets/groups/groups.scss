@@ -118,6 +118,15 @@
   }
 }
 
+.group-btn-container {
+  float: right;
+
+  @media (max-width: 630px) {
+    float: none;
+    text-align: center;
+  }
+}
+
 .group-back {
   // 'Back to Groups' in Group#show
   margin-bottom: 15px;
