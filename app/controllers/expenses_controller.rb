@@ -31,6 +31,7 @@ class ExpensesController < ApplicationController
       if params[:users]
         # Have any users been checked?
         params[:users].keys.each { |id| selected_users << User.find(id) }
+        selected_users.reject! { |user| !group.users.include? user } # ID manipulation vulnerability
       else
         # Otherwise just use the group
         selected_users = group.users - [current_user]
