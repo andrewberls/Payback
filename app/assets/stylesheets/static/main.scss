@@ -79,13 +79,11 @@
     @media (max-width: 630px) { margin-bottom: 15px; }
   }
 
-  // img
-
   @media (max-width: 630px) {
     padding-top: 20px;
-    text-align: center; 
+    text-align: center;
 
-    h1, p { text-align: left; } // Hack to center the cta btn
+    p { text-align: left; } // Hack to center the cta btn
   }
 }
 
