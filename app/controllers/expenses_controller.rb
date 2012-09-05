@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
         return redirect_to new_expense_path
       end
 
-      cost_per_user = Expense.cost_for(@expense, selected_users)
+      cost_per_user = @expense.cost_for(selected_users)
 
       @expense.tap do |exp|
         exp.group    = group
