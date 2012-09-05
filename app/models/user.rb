@@ -29,6 +29,24 @@ class User < ActiveRecord::Base
   has_many :credits, class_name: "Expense", :foreign_key => :creditor_id
 
 
+  def self.users_from_keys(users, group, current_user)
+    # TODO: current_user parameter is a hack as its only accessible through controllers.
+    selected_users = []
+
+    if users
+      # Have any users been checked?
+      users.keys.each do |id|
+        user = User.find(id)
+        selected_users << user if group.users.include?(user)
+      end
+    else
+      # Otherwise just use the whole group
+      selected_users = group.users - [current_user]
+    end
+
+    selected_users
+  end
+
   def as_json(options={})
     options[:except] = [:password_digest, :auth_token, :updated_at]
     super(options)

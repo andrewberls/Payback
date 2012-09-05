@@ -25,6 +25,15 @@ class Expense < ActiveRecord::Base
     created_at != updated_at
   end
 
+  def self.cost_for(expense, users)
+    # Split includes current user, Payback excludes
+    user_count    = (expense.action == :split) ? users.count + 1 : users.count
+    cost_per_user = expense.amount / users.count
+    cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
+
+    cost_per_user
+  end
+
   def assign_to(*users)
     # Split and assign a debt amongst a set of selected users
 
