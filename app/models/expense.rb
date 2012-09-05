@@ -30,7 +30,7 @@ class Expense < ActiveRecord::Base
     cost_per_user = amount / user_count
     cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
 
-    cost_per_user
+    cost_per_user.to_f
   end
 
   def assign_to(*users)

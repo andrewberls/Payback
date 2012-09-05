@@ -108,10 +108,6 @@ blank_user_2 = User.create!(
   password_confirmation: "password"
 )
 
-
-
-# ERROR HERE
-#
 blank_group = Group.create!(
   title: "Blank Group",
   password: "blank_password",

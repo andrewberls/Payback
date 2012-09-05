@@ -7,126 +7,76 @@ class UserTest < Test::Unit::TestCase
     end
 
     context "validations" do
-      should "not be valid without a full name"
-      should "not be valid when the full name is too long"
-
-      context "email" do
-        should "be required"
-        should "be formatted correctly"
-        should "be unique for each user"
+      setup do
+        @user = User.new(full_name: "Invalid User", email: "invalid@gmail.com",
+          password: "password", password_confirmation: "password")
+        assert @user.valid?
       end
 
-      should "not be valid without a password"
-      should "not be valid when the password doesn't match confirmation"
-      should "not be valid when the password is too short"
+      should "not be valid without a full name" do
+        @user.full_name = ""
+        assert !@user.valid?
+      end
+
+      should "not be valid when the full name is too long" do
+        @user.full_name = "a" * 51
+        assert !@user.valid?
+      end
+
+      context "email" do
+        should "be required" do
+          @user.email = ""
+          assert !@user.valid?
+        end
+
+        should "be formatted correctly" do
+          %w( user@foo,com user_at_foo.org example.user@foo. ).each do |email|
+            @user.email = email
+            assert !@user.valid?
+          end
+        end
+
+        should "be unique for each user" do
+          @user.email = "admin@admin.com"
+          assert !@user.valid?
+        end
+      end
+
+      should "not be valid without a password" do
+        @user.password = ""
+        assert !@user.valid?
+      end
+
+      should "not be valid when the password doesn't match confirmation" do
+        @user.password_confirmation = "mismatch"
+        assert !@user.valid?
+      end
+
+      should "not be valid when the password is too short" do
+        @user.password = "a" * 4
+        assert !@user.valid?
+      end
     end
 
-    should "generate an auth token before save"
+    should "generate an auth token before save" do
+      @user.save!
+      assert @user.auth_token.present?
+    end
 
+    should "return a safe list of users from id keys" do
+      group        = Group.find_by_title("221B Baker Street")
+      current_user = User.find_by_email("admin@admin.com")
+      user_params  = { '2'=>'on', '3'=>'on' }
+
+      jeff         = User.find_by_email("jeff@gmail.com")
+      david        = User.find_by_email("david@gmail.com")
+      not_in_group = User.find_by_email("blank_one@email.com")
+
+      assert_equal [jeff, david], User.users_from_keys(user_params, group, current_user)
+
+      user_params.merge({ '5'=>'on' }) # not_in_group" id 5
+      assert_equal [jeff, david], User.users_from_keys(user_params, group, current_user)
+    end
 
   end
 end
-
-# require 'spec_helper'
-
-# describe User do
-
-# 	before do
-# 		@user = User.new(
-#       full_name: "John Smith",
-#       email: "user@example.com",
-#       password: "12345",
-#       password_confirmation: "12345"
-#     )
-# 	end
-
-#   subject { @user }
-
-#   it { should respond_to(:full_name) }
-#   it { should respond_to(:first_name) }
-#   it { should respond_to(:last_name) }
-#   it { should respond_to(:email) }
-#   it { should respond_to(:password_digest) }
-#   it { should respond_to(:password) }
-#   it { should respond_to(:password_confirmation) }
-#   it { should respond_to(:authenticate) }
-
-#   describe "when full name is not present" do
-#   	before { @user.full_name = "" }
-#   	it { should_not be_valid }
-#   end
-
-#   describe "when full name is too long" do
-#   	before { @user.full_name = "a" * 51 }
-#   	it { should_not be_valid }
-#   end
-
-#   describe "when email is not present" do
-#   	before { @user.email = "" }
-#   	it { should_not be_valid }
-#   end
-
-#   describe "when email format is invalid" do
-#     invalid_addresses =  %w[ user@foo,com user_at_foo.org example.user@foo. ]
-
-#     invalid_addresses.each do |invalid_address|
-#       before { @user.email = invalid_address }
-#       it { should_not be_valid }
-#     end
-#   end
-
-#   describe "when email format is valid" do
-#     valid_addresses = %w[ user@foo.com A_USER@f.b.org frst.lst@foo.jp a+b@baz.cn ]
-#     valid_addresses.each do |valid_address|
-#       before { @user.email = valid_address }
-#       it { should be_valid }
-#     end
-#   end
-
-#   describe "when email address is already taken" do
-#     before do
-#       user_with_same_email = @user.dup
-#       user_with_same_email.email = @user.email.upcase
-#       user_with_same_email.save
-#     end
-
-#     it { should_not be_valid }
-#   end
-
-#   describe "when password is not present" do
-#     before { @user.password = @user.password_confirmation = " " }
-#     it { should_not be_valid }
-#   end
-
-#   describe "when password doesn't match confirmation" do
-#     before { @user.password_confirmation = "mismatch" }
-#     it { should_not be_valid }
-#   end
-
-#   describe "return value of authenticate method" do
-#     before { @user.save }
-#     let(:found_user) { User.find_by_email(@user.email) }
-
-#     describe "with valid password" do
-#       it { should == found_user.authenticate(@user.password) }
-#     end
-
-#     describe "with invalid password" do
-#       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
-
-#       it { should_not == user_for_invalid_password }
-#       specify { user_for_invalid_password.should be_false }
-#     end
-#   end
-
-#   describe "with a password that's too short" do
-#     before { @user.password = @user.password_confirmation = "a" * 4 }
-#     it { should be_invalid }
-#   end
-
-#   describe "auth token" do
-#     before { @user.save }
-#     its(:auth_token) { should_not be_blank }
-#   end
-
-# end
