@@ -10,32 +10,33 @@ end
 
 
 # Nicole owes Admin 10 for movie
-Expense.create!(title: "Movie ticket", amount: 10, active: 1) do |exp|
+Expense.new(title: "Movie ticket", amount: 10, active: true, action: :payback) do |exp|
   exp.group    = seed_group
   exp.creditor = admin_user
   exp.assign_to nicole
 end
 
 # Jeff owes Admin 45 for groceries
-Expense.create!(title: "Groceries", amount: 45, active: 1) do |exp|
+Expense.new(title: "Groceries", amount: 45, active: true, action: :payback) do |exp|
   exp.group    = seed_group
   exp.creditor = admin_user
   exp.assign_to jeff
 end
 
 # Nicole owes Admin 65 for beanbag chair
-Expense.create!(title: "Beanbag chair", amount: 65, active: 1) do |exp|
+Expense.new(title: "Beanbag chair", amount: 65, active: true, action: :payback) do |exp|
   exp.group    = seed_group
   exp.creditor = admin_user
   exp.assign_to nicole
 end
 
 # Admin owes David 85 for textbook
-Expense.create!(title: "Textbook", amount: 85, active: 1) do |exp|
+Expense.new(title: "Textbook", amount: 85, active: true, action: :payback) do |exp|
   exp.group    = seed_group
   exp.creditor = david
   exp.assign_to admin_user
 end
+
 
 # Users/groups with no associations
 blank_user_1 = User.create!(full_name: "Blank One", email: "blank_one@email.com", password: "password", password_confirmation: "password")

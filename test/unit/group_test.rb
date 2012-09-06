@@ -62,26 +62,42 @@ class GroupTest < Test::Unit::TestCase
     end
 
     context "users" do
-      should "add users" do
+      setup do
+        @group = Group.find_by_title("221B Baker Street")
+      end
 
+      should "add users" do
+        user  = User.create!(full_name: "Added User", email: "added@gmail.com",
+          password: "password", password_confirmation: "password")
+        @group.add_user(user)
+
+        assert @group.users.include? user
+        assert user.groups.include? @group
       end
 
       should "remove users and their expenses" do
+        user = User.find_by_email("admin@admin.com")
+        assert Expense.where(title: "Movie ticket", active: true).count == 1
+        @group.remove_user(user)
 
+        assert !@group.users.include?(user)
+        assert !user.groups.include?(@group)
+        assert Expense.where(title: "Movie ticket").count == 0
       end
     end
 
     context "expenses" do
-      should "report aggregate expenses from all users" do
-
+      setup do
+        @user = User.find_by_email("admin@admin.com")
+        @group = Group.find_by_title("221B Baker Street")
       end
 
       should "report all credits from a specific user" do
-
+        assert_equal @user.credits, @group.credits_from(@user)
       end
 
       should "report all debts from a specific user" do
-
+        assert_equal @user.debts, @group.debts_from(@user)
       end
     end
 
