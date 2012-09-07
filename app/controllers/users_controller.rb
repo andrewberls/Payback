@@ -58,15 +58,13 @@ class UsersController < ApplicationController
   def debts
     # Condensed debts to a specific user (can't be blank or current user)
     @debts = current_user.active_debts_to(@user)
-    can_view_page = @user != current_user && @debts.present?
-    reject_unauthorized(can_view_page)
+    reject_empty_expenses(@debts)
   end
 
   def credits
     # Condensed debts to a specific user (can't be blank or current user)
     @credits = current_user.active_credits_to(@user)
-    can_view_page = @user != current_user && @credits.present?
-    reject_unauthorized(can_view_page)
+    reject_empty_expenses(@credits)
   end
 
   private
@@ -82,6 +80,11 @@ class UsersController < ApplicationController
     aggregate_users = current_user.groups.collect { |g| g.users }.flatten
     authorized = @user.present? && aggregate_users.include?(@user)
     reject_unauthorized(authorized)
+  end
+
+  def reject_empty_expenses(expenses)
+    can_view_page = (@user != current_user) && expenses.present?
+    reject_unauthorized(can_view_page)
   end
 
 end
