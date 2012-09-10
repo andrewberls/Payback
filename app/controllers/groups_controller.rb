@@ -39,12 +39,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        users = if params[:others]
-                  @group.users - [current_user]
-                else
-                  @group.users
-                end
-
+        users = @group.users - (params[:others] ? [current_user] : [])
         return render json: {
           group: @group,
           users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
@@ -124,7 +119,6 @@ class GroupsController < ApplicationController
   def user_must_be_in_group
     @group = Group.find_by_gid(params[:id])
     authorized = @group.present? && @group.users.include?(current_user)
-
     reject_unauthorized(authorized)
   end
 
