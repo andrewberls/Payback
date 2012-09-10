@@ -4,10 +4,6 @@ class UsersController < ApplicationController
   before_filter :user_must_be_current,           only: [:show, :edit, :update, :destroy]
   before_filter :user_must_be_in_current_groups, only: [:debts, :credits]
 
-  # ALL: new create show edit update destroy welcome debts credits
-  # MUST BE SELF: edit update destroy
-  # USER MUST BE IN GROUPS (NOT SELF): show, debts, credits
-
   def new
     return redirect_to expenses_path if current_user
     @user = User.new
@@ -42,17 +38,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    # Currently not a user-available action
-    user = User.find(params[:id])
-    user.destroy if user == current_user
-    reset_session
-    return redirect_to login_path
-  end
-
   def welcome
     # First time login - belong to no groups
-    #return redirect_to expenses_path unless current_user.groups.blank?
+    return redirect_to expenses_path unless current_user.brand_new?
   end
 
   def debts

@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
-  
+
   protect_from_forgery
 
   ACCESS_DENIED_PATH = '/expenses'
+
+  helper_method :current_user, :signed_in?
 
   def must_be_logged_in
     reject_unauthorized(signed_in?, login_path)
@@ -13,12 +15,10 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
-  helper_method :current_user
 
   def signed_in?
-    !current_user.nil?
+    current_user.present?
   end
-  helper_method :signed_in?
 
   def reject_unauthorized(authorized, path=ACCESS_DENIED_PATH)
     respond_to do |format|

@@ -69,20 +69,6 @@ class GroupsController < ApplicationController
 
 
   #------------------------------
-  # DELETE
-  #------------------------------
-  def destroy
-    # Need to destroy group and expenses, but preserve users
-    # TODO: move this to an action on the group model and test it
-
-    @group.expenses.each { |expense| expense.destroy }
-    @group.destroy
-    flash[:success] = "Group successfully deleted"
-    return redirect_to groups_path
-  end
-
-
-  #------------------------------
   # JOIN/LEAVE
   #------------------------------
   def join
