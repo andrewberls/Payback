@@ -41,8 +41,8 @@ class Group < ActiveRecord::Base
   end
 
   def remove_user(user)
-    expenses = (user.credits + user.debts).select { |e| e.group == self }
-    expenses.each { |e| e.destroy }
+    expenses = user.expenses.select { |e| e.group == self }
+    expenses.map(&:destroy)
     users.delete user
   end
 
@@ -50,15 +50,15 @@ class Group < ActiveRecord::Base
     debts + credits
   end
 
-  def credits_from(user)
-    credits.where(creditor_id: user)
+  def active_credits_for(user)
+    credits.where(creditor_id: user, active: true).order('id DESC')
   end
 
-  def debts_from(user)
-    debts.where(debtor_id: user)
+  def active_debts_for(user)
+    debts.where(debtor_id: user, active: true).order('id DESC')
   end
 
-   def active_credit_users_for(user)
+  def active_credit_users_for(user)
     # All users from a specific group with outstanding credits from a user
     (users - [user]).reject { |u| user.active_credits_to(u).blank? }
   end

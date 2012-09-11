@@ -60,6 +60,16 @@ class User < ActiveRecord::Base
     full_name.split(" ").last
   end
 
+  def expenses
+    # All expenses, not just active
+    debts + credits
+  end
+
+  def brand_new?
+    # This could be smarter. Meh.
+    expenses.blank?
+  end
+
   def add_debt(expense)
     expense.debtor = self
     debts << expense
@@ -74,11 +84,11 @@ class User < ActiveRecord::Base
   end
 
   def active_credits_to(user)
-    credits.where(debtor_id: user, active: true).reverse # equivalent to ordering by id desc
+    credits.where(debtor_id: user, active: true).order('id DESC')
   end
 
   def active_debts_to(user)
-    debts.where(creditor_id: user, active: true).reverse # equivalent to ordering by id desc
+    debts.where(creditor_id: user, active: true).order('id DESC')
   end
 
   def active_credit_amt_to(user)
@@ -99,12 +109,12 @@ class User < ActiveRecord::Base
 
   def groups_with_credits
     # Groups in which this user has outstanding credits
-    groups.reject { |group| group.credits_from(self).blank? }
+    groups.reject { |group| group.active_credits_for(self).blank? }
   end
 
   def groups_with_debts
     # Groups in which this user has outstanding debts
-    groups.reject { |group| group.debts_from(self).blank? }
+    groups.reject { |group| group.active_debts_for(self).blank? }
   end
 
   private
