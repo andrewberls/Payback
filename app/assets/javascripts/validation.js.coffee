@@ -1,6 +1,3 @@
-#------------------------------
-# UTILITIES
-#------------------------------
 insertAfter = (refNode, newNode) ->
   refNode.parentNode.insertBefore(newNode, refNode.nextSibling)
 
@@ -9,10 +6,7 @@ inputFields = ($form) ->
   $form.find('input:not([type=submit]):visible').serializeArray()
 
 validate = (fields) ->
-  errors = false
-  for field in fields
-    errors = true if !field.value
-  errors
+  return true if !field.value for field in fields
 
 rejectBlank = ($form, message) ->
   # Create and insert an alert error box if blank fields present
@@ -22,7 +16,7 @@ rejectBlank = ($form, message) ->
   message ||= "Error - Please check your fields and try again!"
 
   if errors && $form.find('.alert').size() == 0
-    alertBox = $.el.div({'class':'alert alert-error'}, message)
+    alertBox = $.el.div {'class':'alert alert-error'}, message
     $title   = $form.find('.form-title')[0]
     insertAfter($title, alertBox)
     $('.alert').hide().slideDown('fast')
