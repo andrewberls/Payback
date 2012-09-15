@@ -48,7 +48,7 @@
 }
 
 
-//-- PRESENTATIONAL CLASSES
+//-- PRESENTATIONAL
 //------------------------------------
 %whitebox {
   // A pretty white box with a light gray border
@@ -59,4 +59,9 @@
   background-color: white;
   border: 1px solid $med-gray;
   padding: 20px;
+}
+
+@mixin bold($font_size: 1em) {
+  font-size: $font_size;
+  font-weight: bold;
 }

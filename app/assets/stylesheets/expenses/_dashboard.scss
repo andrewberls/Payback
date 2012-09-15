@@ -156,8 +156,7 @@
 }
 
 .expense-total-large {
-  font-size: 1.3em;
-  font-weight: bold;
+  @include bold(1.3em);
   margin-bottom: 20px;
   text-align: center;
 }

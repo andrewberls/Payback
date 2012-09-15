@@ -90,8 +90,7 @@ form {
   // "Already have an account?..."
   color: $light-text;
   float: right;
-  font-size: 1.2em;
-  font-weight: bold;
+  @include bold(1.2em);
   margin-top: 10px;
 }
 

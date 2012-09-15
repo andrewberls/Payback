@@ -10,8 +10,7 @@
 }
 
 .condensed-header {
-  font-size: 1.1em;
-  font-weight: bold;
+  @include bold(1.1em);
   margin-bottom: 25px;
 }
 
@@ -21,14 +20,12 @@ h1 {
 }
 
 h2 {
-  font-size: 1.6em;
-  font-weight: bold;
+  @include bold(1.6em);
   margin-bottom: 10px;
 }
 
 h3 {
-  font-size: 1.3em;
-  font-weight: bold;
+  @include bold(1.3em);
   margin-bottom: 5px;
 }
 
