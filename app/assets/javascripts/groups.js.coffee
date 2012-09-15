@@ -1,5 +1,5 @@
 $ ->
-  speed = 350
+  speed   = 350
   $toggle = $('.group-member-count')
 
   $toggle.click ->
