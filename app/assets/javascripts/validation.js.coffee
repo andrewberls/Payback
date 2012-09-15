@@ -29,7 +29,7 @@ rejectBlank = ($form, message) ->
     return false
 
 $ ->
-  $('#submit-validate').click ->
+  $('.submit-validate').click ->
     rejectBlank $(@).parent()
 
   $('#submit-login').click ->
