@@ -7,12 +7,12 @@
 
       <h1 class="form-title">Edit Your Profile</h1>
 
-      <%= render "user_error_messages" %>
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
       <%= f.label :email %>
       <%= f.text_field :email %>
 
-      <%= f.label :password, "New Password" %>  
+      <%= f.label :password, "New Password" %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Confirm New Password" %>

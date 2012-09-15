@@ -6,9 +6,7 @@
     <h2>The Basics</h2>
     <ul>
       <li class="header-line">Groups are used to share expenses with a set of people.</li>
-
       <li>When you create a group, it will be assigned a unique ID number. <strong>Give this along with the password you chose to anyone you want to be able to join!</strong></li>
-
       <li>You can create and belong to as many groups as you like!</li>
     </ul>
   </div><!-- .group-faq -->
@@ -17,7 +15,7 @@
     <%= form_for(@group, html: {class: "new-group-form"}) do |f| %>
       <h1 class="form-title">Create New Group</h1>
 
-      <%= render "group_error_messages" %>
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
 
       <%= f.label :title %>
       <span class="help-text">Describe your group!</span>
@@ -32,7 +30,7 @@
 
       <%= submit_tag "Create Group", class: "btn btn-blue", id: "submit-validate" %>
 
-    <% end %><!-- .new-group-form -->
+    <% end %>
   </div>
 
 </div>

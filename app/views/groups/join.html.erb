@@ -5,10 +5,11 @@
 
     <%= form_tag(add_groups_path, class: "join-group-form") do %>
       <h1 class="form-title">Join A Group</h1>
+
+      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
+
       <div class="help-block">You only need to do this once - after this, you're ready to go!</div>
       <div class="help-block">This information should have been given to you by the group creator. </div>
-
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
 
       <%= label_tag :gid, "Group ID" %>
       <span class="help-text">6 letters/numbers</span>
@@ -19,7 +20,7 @@
 
       <%= submit_tag "Join Group", class: "btn btn-blue", id: "submit-validate" %>
 
-    <% end %><!-- .join-group-form -->
+    <% end %>
 
   </div>
 </div>

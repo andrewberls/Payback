@@ -1,69 +1,36 @@
 #------------------------------
 # UTILITIES
 #------------------------------
-insertAfter = (referenceNode, newNode) ->
-  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+insertAfter = (refNode, newNode) ->
+  refNode.parentNode.insertBefore(newNode, refNode.nextSibling)
+
+inputFields = ($form) ->
+  # Serialized array of all user-facing input fields in a form
+  $form.find('input:not([type=submit]):visible').serializeArray()
 
 validate = (fields) ->
   errors = false
   for field in fields
-    errors = true if !field.val()
+    errors = true if !field.value
   errors
 
+rejectBlank = ($form, message) ->
+  # Create and insert an alert error box if blank fields present
+  # Only if an alert doesn't already exist
 
-#------------------------------
-# User creation
-# Group creation
-# Group join
-#------------------------------
+  errors = validate inputFields($form)
+  message ||= "Error - Please check your fields and try again!"
+
+  if errors && $form.find('.alert').size() == 0
+    alertBox = $.el.div({'class':'alert alert-error'}, message)
+    $title   = $form.find('.form-title')[0]
+    insertAfter($title, alertBox)
+    $('.alert').hide().slideDown('fast')
+    return false
+
 $ ->
-  # Add red border around blank fields
-
-  $('#submit-validate').click ->    
-    errors = false
-    $form = $(@).parent()    
-    $fields = $form.find('input')
-
-    $fields.each ->
-      if !$(@).val()
-        $(@).addClass('field-error')
-        errors = true
-      else
-        $(@).removeClass('field-error')
-
-    return false if errors
-
-
-#------------------------------
-# Login
-# Add Expense
-#------------------------------
-$ ->
-  # Create and insert an alet error box if blank fields present
-  # TODO: only the validation is unique. Refactor alertbox creation
+  $('#submit-validate').click ->
+    rejectBlank $(@).parent()
 
   $('#submit-login').click ->
-    $form = $(@).parent()
-    $email = $("#email")
-    $password = $("#password")
-    errors = validate([$email, $password])
-    
-    if errors && $form.find('.alert').size() == 0 # Only if an alert doesn't already exist
-      alertBox = $.el.div({'class':'alert alert-error'}, "Invalid email or password")
-      $title = $form.find('.form-title')[0]
-      insertAfter($title, alertBox)
-      $('.alert').hide().slideDown('fast')
-      return false
-
-  $('#expense-payback, #expense-split').click ->
-    $form = $(@).parent()
-    $amount = $("#expense_amount")
-    $title = $("#expense_title")
-    errors = validate([$amount, $title])
-    
-    if errors && $form.find('.alert').size() == 0 # Only if an alert doesn't already exist
-      alertBox = $.el.div({'class':'alert alert-error'}, "Please check your fields and try again")
-      $title = $form.find('.form-title')[0]
-      insertAfter($title, alertBox)
-      $('.alert').hide().slideDown('fast')
-      return false
+    rejectBlank $(@).parent(), "Invalid email or password"

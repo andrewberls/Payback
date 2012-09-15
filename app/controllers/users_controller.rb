@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       cookies[:auth_token] = @user.auth_token
       return redirect_to welcome_path
     else
+      flash.now[:error] = " server Error - please check your fields and try again."
       return render :new
     end
   end
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile successfully updated."
       return redirect_to expenses_path
     else
-      flash.now[:error] = "Something went wrong - please check your fields and try again."
+      flash.now[:error] = "Error - please check your fields and try again."
       return render :edit
     end
   end
