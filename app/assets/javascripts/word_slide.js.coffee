@@ -8,11 +8,7 @@ $ ->
     offset   = Math.abs(i - 1)
     distance = wordHeight * offset;
 
-    $window.animate({ top: -distance }, 750, 'easeInQuint', ->
-      if i == numWords
-        i = 1
-      else
-        i++
-    )
+    $window.animate { top: -distance }, 750, 'easeInQuint', ->
+      if i == numWords then i = 1 else i++
 
   setInterval(rotate, 2250)
