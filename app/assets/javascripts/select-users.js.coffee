@@ -24,10 +24,10 @@ $ ->
   $select       = $('#users-select')
   disabledClass = 'btn-disabled2'
 
-  $.el.registerTag 'userbox', (one, two) ->
+  $.el.registerTag 'userbox', (input, label) ->
     # Register a DOM element for user checkbox/labels
-    @.appendChild(one)
-    @.appendChild(two)
+    @.appendChild(input)
+    @.appendChild(label)
 
   loadUsers()                   # Initialization
   $groups.change -> loadUsers() # Select from dropdown
