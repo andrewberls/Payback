@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     if users
       # Have any users been checked?
       users.keys.each do |id|
-        user = User.find(id)
+        user = User.find_by_id(id)
         selected_users << user if group.users.include?(user)
       end
     else
