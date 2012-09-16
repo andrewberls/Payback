@@ -6,10 +6,9 @@ inputFields = ($form) ->
   $form.find('input:not([type=submit]):visible').serializeArray()
 
 validate = (fields) ->
-  errors = false
   for field in fields
-    errors = true if !field.value
-  errors
+    return true if !field.value
+  return false
 
 rejectBlank = ($form, message) ->
   # Create and insert an alert error box if blank fields present
