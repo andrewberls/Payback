@@ -81,7 +81,7 @@ class ExpensesController < ApplicationController
   #------------------------------
   def destroy
     # TODO: AJAX slide remove instead of flash
-    Expense.find_by_id(params[:id]).update_attributes(active: false)
+    Expense.find_by_id(params[:id]).deactivate
     return redirect_to params[:redirect]
   end
 
@@ -89,7 +89,7 @@ class ExpensesController < ApplicationController
     # Mark all expenses to a user completed
     user     = User.find(params[:id])
     expenses = current_user.active_credits_to(user)
-    expenses.each { |exp| exp.update_attributes(active: false) }
+    expenses.map(&:deactivate)
     return redirect_to expenses_path
   end
 
@@ -109,7 +109,7 @@ class ExpensesController < ApplicationController
   private
 
   def must_be_in_current_groups
-    @expense = Expense.find(params[:id])
+    @expense   = Expense.find(params[:id])
     authorized = current_user.active_credits.include?(@expense)
 
     reject_unauthorized(authorized)

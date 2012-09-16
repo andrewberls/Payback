@@ -23,6 +23,10 @@ class Expense < ActiveRecord::Base
     created_at != updated_at
   end
 
+  def deactivate
+    update_attributes active: false
+  end
+
   def cost_for(users)
     # The cost for each user, calculated based on the action type
     # Split includes current user, Payback excludes
