@@ -9,6 +9,10 @@
   @include clearfix;
   margin: 15px 0 10px;
 
+  [class^="icon-"] {
+    margin: -2px 4px 0 -5px
+  }
+
   .btn:last-of-type {
     float: right;
   }

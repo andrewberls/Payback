@@ -17,4 +17,3 @@
 //= require validation
 //= require tipsy
 //= require word_slide
-//= require add-expense

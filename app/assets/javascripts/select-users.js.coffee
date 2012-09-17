@@ -17,12 +17,15 @@ loadUsers = ->
   }
 
 $ ->
-  speed         = 350
-  $groups       = $('#group-select')
-  $container    = $('#users-container')
-  $group        = $('#users-group')
-  $select       = $('#users-select')
-  disabledClass = 'btn-disabled2'
+  speed           = 350
+  $groups         = $('#group-select')
+  $container      = $('#users-container')
+  $group          = $('#users-group')
+  $select         = $('#users-select')
+  primaryClass    = 'btn-blue'
+  group_btn_text  = "Group Expense"
+  users_btn_text  = "Select Users &raquo;"
+  check_icon      = '<i class="icon-white icon-ok"></i>'
 
   $.el.registerTag 'userbox', (input, label) ->
     # Register a DOM element for user checkbox/labels
@@ -35,12 +38,12 @@ $ ->
   # Slide select up/down and change button display
   $group.click ->
     $container.slideUp(speed)
-    $(@).addClass(disabledClass)
-    $select.removeClass(disabledClass)
+    $(@).addClass(primaryClass).html(check_icon + group_btn_text)
+    $select.removeClass(primaryClass).html(users_btn_text)
     return false
 
   $select.click ->
     $container.slideDown(speed)
-    $(@).addClass(disabledClass)
-    $group.removeClass(disabledClass)
+    $(@).addClass(primaryClass).html(check_icon + users_btn_text)
+    $group.removeClass(primaryClass).html(group_btn_text)
     return false
