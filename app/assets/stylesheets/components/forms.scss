@@ -1,7 +1,4 @@
-//-- GENERIC
-//------------------------------------
 form {
-  @include border-radius;
   @include clearfix;
   @extend %whitebox;
 
@@ -84,8 +81,7 @@ form {
   }
 }
 
-//-- LOGIN
-//------------------------------------
+
 .form-suggestion {
   // "Already have an account?..."
   color: $light-text;

@@ -10,7 +10,6 @@
 
 .expenses-container {
   @extend %whitebox;
-  @include border-radius(2px);
   margin-bottom: 15px;
   padding: 0;
 }
@@ -35,7 +34,7 @@
   }
 
   .expense-edited {
-    // A mark shown the expense has been edited
+    // A mark showing that the amount has been edited
     color: $blue;
 
     &:hover {

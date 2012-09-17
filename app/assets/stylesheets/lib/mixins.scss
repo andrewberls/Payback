@@ -55,6 +55,7 @@
   // Things such as padding can easily be overridden
 
   @include border-box;
+  @include border-radius(2px);
   @include clearfix;
   background-color: white;
   border: 1px solid $med-gray;
