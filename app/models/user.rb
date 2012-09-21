@@ -60,9 +60,10 @@ class User < ActiveRecord::Base
     full_name.split(" ").last
   end
 
-  def expenses
+  def expenses(group=nil)
     # All expenses, not just active
-    debts + credits
+    expenses = debts + credits
+    return (group.present?) ? expenses.select { |e| e.group == group } : expenses
   end
 
   def brand_new?

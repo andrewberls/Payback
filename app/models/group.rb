@@ -41,8 +41,7 @@ class Group < ActiveRecord::Base
   end
 
   def remove_user(user)
-    expenses = user.expenses.select { |e| e.group == self }
-    expenses.map(&:destroy)
+    user.expenses(self).map(&:destroy)
     users.delete user
   end
 
