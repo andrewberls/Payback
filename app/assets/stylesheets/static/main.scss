@@ -1,6 +1,19 @@
-//-- MAIN LANDING PAGE
-//------------------------------------
 @import "word_scroll";
+
+.round-number {
+  $height: 25px;
+
+  @include border-radius($height);
+  background-color: $gray-text;
+  color: white;
+  display: inline-block;
+  float: left;
+  font-size: 1.2em;
+  line-height: $height;
+  margin-right: 10px;
+  text-align: center;
+  width: $height; height: $height;
+}
 
 .landing-main,
 .landing-how {
@@ -29,34 +42,13 @@
   }
 }
 
-
-
-.round-number {
-  // TODO: MOVE TO GENERIC FILE
-  $height: 25px;
-
-  @include border-radius($height);
-  background-color: $gray-text;
-  color: white;
-  display: inline-block;
-  float: left;
-  font-size: 1.2em;
-  line-height: $height;
-  margin-right: 10px;
-  text-align: center;
-  width: $height; height: $height;
-}
-
-
-
-
 .section-title {
   // Light main section header
   color: lighten($gray-text, 20);
   margin-bottom: 50px;
   text-align: center;
 
-  @media(max-width: 630px) { margin-bottom: 25px; }
+  @media (max-width: 630px) { margin-bottom: 25px; }
 }
 
 

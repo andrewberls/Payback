@@ -35,7 +35,7 @@ $ ->
   loadUsers()                   # Initialization
   $groups.change -> loadUsers() # Select from dropdown
 
-  # Slide select up/down and change button display
+  # Slide user select up/down and change button display
   $group.click ->
     $container.slideUp(speed)
     $(@).addClass(primaryClass).html(check_icon + group_btn_text)
@@ -48,9 +48,7 @@ $ ->
     $group.removeClass(primaryClass).html(group_btn_text)
     return false
 
-
   # Split/Payback FAQ slide
-  #-------------------
   $faq = $('#expense-faqs')
   $('#show-expense-faqs, #hide-expense-faqs').click ->
     if $faq.is(":hidden")

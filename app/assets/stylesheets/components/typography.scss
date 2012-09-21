@@ -4,11 +4,6 @@
   margin-bottom: 15px;
 }
 
-.dashboard-title {
-  // TODO: this is a hack
-  margin-top: -10px;
-}
-
 .condensed-header {
   @include bold(1.1em);
   margin-bottom: 25px;

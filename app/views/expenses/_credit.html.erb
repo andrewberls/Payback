@@ -1,5 +1,4 @@
 <div class="expense">
-  <%# TODO: AJAX OVERLAY? %>
   <span class="expense-amount">
     <%= render 'expenses/edit_mark', expense: expense %>
     <%= link_to number_to_currency(expense.amount), edit_expense_path(expense) %>
@@ -20,8 +19,7 @@
       { controller: 'expenses', action: 'destroy', id: expense.id, redirect: return_path },
       :method => :delete,
       confirm: "Mark #{number_to_currency(expense.amount)} from #{expense.debtor.first_name} completed?",
-      class: "btn no-text btn-green",
-      id: "delete-expense"
+      class: "btn no-text btn-green delete-expense"
     %>
   </div>
 </div><!-- .expense -->

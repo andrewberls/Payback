@@ -1,8 +1,4 @@
-<%
-  # TODO: put this in a user-configurable setting or at least move it out of the view
-  threshold = 10.days
-%>
-
+<% threshold = 10.days %>
 <% if Time.now - expense.created_at > threshold %>
   <span class="expense-stale badge badge-red" title="This expense is over <%= distance_of_time_in_words(threshold) %> old!">
     <i class="icon-white icon-warning-sign"></i>

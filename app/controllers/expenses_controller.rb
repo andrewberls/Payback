@@ -1,8 +1,8 @@
 class ExpensesController < ApplicationController
 
   before_filter :must_be_logged_in
-  before_filter :redirect_empty_groups,     only: [:new, :index]
-  before_filter :must_be_in_current_groups, only: [:edit, :update]
+  before_filter :redirect_empty_groups, only: [:new, :index]
+  before_filter :must_own_expense,      only: [:edit, :update, :destroy]
 
   #------------------------------
   # CREATE
@@ -20,7 +20,7 @@ class ExpensesController < ApplicationController
       group          = Group.find_by_gid(params[:group][:gid])
       selected_users = User.users_from_keys(params[:users], group, current_user)
 
-      if selected_users.count == 0
+      if selected_users.empty?
         flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
         return redirect_to new_expense_path
       end
@@ -80,8 +80,7 @@ class ExpensesController < ApplicationController
   # DELETE
   #------------------------------
   def destroy
-    # TODO: AJAX slide remove instead of flash
-    Expense.find_by_id(params[:id]).deactivate
+    @expense.deactivate
     return redirect_to params[:redirect]
   end
 
@@ -108,10 +107,9 @@ class ExpensesController < ApplicationController
 
   private
 
-  def must_be_in_current_groups
+  def must_own_expense
     @expense   = Expense.find(params[:id])
     authorized = current_user.active_credits.include?(@expense)
-
     reject_unauthorized(authorized)
   end
 
