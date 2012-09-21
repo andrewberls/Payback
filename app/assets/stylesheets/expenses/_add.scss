@@ -25,6 +25,7 @@
 }
 
 #expense-faqs {
+  @extend %whitebox;
   @include clearfix;
   display: none;
   margin-bottom: 0;
