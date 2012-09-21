@@ -3,7 +3,7 @@ insertAfter = (refNode, newNode) ->
 
 inputFields = ($form) ->
   # Serialized array of all user-facing input fields in a form
-  $form.find('input:not([type=submit]):visible').serializeArray()
+  $form.find('input:not([type=submit]):visible, textarea').serializeArray()
 
 validate = (fields) ->
   for field in fields
