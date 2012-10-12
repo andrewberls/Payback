@@ -14,6 +14,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(params[:expense]) do |exp|
       exp.action = (params[:commit] == 'Payback') ? :payback : :split
+      exp.amount = ExpressionParser.parse(params[:expense][:amount])
     end
 
     if @expense.valid?
