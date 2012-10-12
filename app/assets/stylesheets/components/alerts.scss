@@ -1,6 +1,6 @@
 .alert {
   @include border-box;
-  @include border-radius(5px);
+  @include border-radius;
   border: 1px solid white;
   font-size: 0.9em;
   margin: 5px 0 10px;
