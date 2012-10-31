@@ -19,7 +19,7 @@
         Remember Me
       </label>
 
-      <%= submit_tag "Log in", class: "btn btn-blue", id: "submit-login" %>
+      <%= submit_tag "Log in", class: "btn btn-blue submit-validate", data: { failure: 'Invalid email or password' } %>
 
     <% end %>
 
