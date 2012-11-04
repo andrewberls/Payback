@@ -12,11 +12,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    if User.find_by_email(params[:user][:email]).present?
+      flash.now[:error] = "There's already an account with that email address!"
+      return render :new
+    end
+
     if @user.save
       cookies[:auth_token] = @user.auth_token
       return redirect_to welcome_path
     else
-      flash.now[:error] = " server Error - please check your fields and try again."
+      flash.now[:error] = "Error - please check your fields and try again."
       return render :new
     end
   end
