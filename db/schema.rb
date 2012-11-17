@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20120701023010) do
     t.integer  "creditor_id"
     t.integer  "debtor_id"
     t.integer  "group_id"
-    t.decimal  "amount"
-    t.boolean  "active",      :default => true
+    t.decimal  "amount",      :precision => 10, :scale => 2
+    t.boolean  "active",                                     :default => true
     t.string   "action"
   end
 
