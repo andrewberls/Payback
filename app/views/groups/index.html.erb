@@ -9,12 +9,10 @@
 
     <h1>Your Groups</h1>
 
-    <%= render "group_success_messages" %>
+    <%= flash_success %>
 
     <div class="groups-container">
-      <% @groups.each do |group| %>
-        <%= render group %>
-      <% end %>
+      <%= render @groups %>
     </div>
 
     <div class="group-btn-container">

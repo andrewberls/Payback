@@ -6,9 +6,6 @@ class ExpensesController < ApplicationController
   before_filter :redirect_empty_groups, only: [:new, :index]
   before_filter :must_own_expense,      only: [:edit, :update, :destroy]
 
-  #------------------------------
-  # CREATE
-  #------------------------------
   def new
     @expense = Expense.new
   end
@@ -47,9 +44,6 @@ class ExpensesController < ApplicationController
   end
 
 
-  #------------------------------
-  # READ
-  #------------------------------
   before_filter :find_dashboard_resources, only: [:index, :condensed]
 
   def index
@@ -62,9 +56,7 @@ class ExpensesController < ApplicationController
   end
 
 
-  #------------------------------
-  # UPDATE
-  #------------------------------
+
   def edit
   end
 
@@ -79,9 +71,6 @@ class ExpensesController < ApplicationController
   end
 
 
-  #------------------------------
-  # DELETE
-  #------------------------------
   def destroy
     @expense.deactivate
     return redirect_to params[:redirect]

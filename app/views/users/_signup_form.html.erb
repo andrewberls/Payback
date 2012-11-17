@@ -1,7 +1,7 @@
-<%= form_for(@user, html: {class: "signup-form"}) do |f| %>
+<%= form_for @user do |f| %>
   <h1 class="form-title">Sign Up</h1>
 
-  <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
+  <%= flash_error %>
 
   <%= f.label :full_name, "Full Name" %>
   <%= f.text_field :full_name, autofocus: true  %>

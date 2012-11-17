@@ -6,7 +6,7 @@
     <%= form_tag(sessions_path, class: "login-form") do %>
       <h1 class="form-title">Log In</h1>
 
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
+      <%= flash_error %>
 
       <%= label_tag :email %>
       <%= email_field_tag :email, '', autofocus: true %>

@@ -6,7 +6,7 @@
     <%= form_tag(add_groups_path, class: "join-group-form") do %>
       <h1 class="form-title">Join A Group</h1>
 
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
+      <%= flash_error %>
 
       <div class="help-block">You only need to do this once - after this, you're ready to go!</div>
       <div class="help-block">This information should have been given to you by the group creator. </div>

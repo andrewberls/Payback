@@ -3,9 +3,6 @@ class GroupsController < ApplicationController
   before_filter :must_be_logged_in
   before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add]
 
-  #------------------------------
-  # CREATE
-  #------------------------------
   def new
     @group = Group.new
   end
@@ -23,9 +20,6 @@ class GroupsController < ApplicationController
   end
 
 
-  #------------------------------
-  # READ
-  #------------------------------
   def index
     @groups = current_user.groups
 
@@ -50,9 +44,6 @@ class GroupsController < ApplicationController
   end
 
 
-  #------------------------------
-  # UPDATE
-  #------------------------------
   def edit
     return redirect_to groups_path unless current_user == @group.owner
   end
@@ -68,9 +59,6 @@ class GroupsController < ApplicationController
   end
 
 
-  #------------------------------
-  # JOIN/LEAVE
-  #------------------------------
   def join
     # View
   end

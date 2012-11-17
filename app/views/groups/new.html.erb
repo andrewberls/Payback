@@ -15,10 +15,10 @@
     <%= form_for(@group, html: {class: "new-group-form"}) do |f| %>
       <h1 class="form-title">Create New Group</h1>
 
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
+      <%= flash_error %>
 
       <%= f.label :title %>
-      <span class="help-text">Describe your group!</span>
+      <span class="help-text">Try your address!</span>
       <%= f.text_field :title, autofocus: true %>
 
       <%= f.label :password %>

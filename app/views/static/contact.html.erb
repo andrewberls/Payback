@@ -8,12 +8,11 @@
 
   <div class="span-6 offset-5">
 
-    <%= form_for(@message, url: contact_path, html: {class: "contact-form"}) do |f| %>
+    <%= form_for @message, url: contact_path do |f| %>
       <h1 class="form-title">Contact Us</h1>
 
-      <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success]%>
-
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error]%>
+      <%= flash_success %>
+      <%= flash_error %>
 
       <%= f.label :name %>
       <span class="help-text">Optional</span>
@@ -27,7 +26,7 @@
 
       <%= submit_tag "Submit", class: "btn btn-blue submit-validate" %>
 
-    <% end %><!-- .contact-form -->
+    <% end %>
 
   </div>
 </div>

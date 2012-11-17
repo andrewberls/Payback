@@ -8,13 +8,10 @@ class Expense < ActiveRecord::Base
 
   validates :title,
     presence: true,
-    length: {maximum: 50}
+    length: { maximum: 50 }
 
-
-  # Groups
   belongs_to :group
 
-  # Users
   belongs_to :creditor, class_name: "User"
   belongs_to :debtor,   class_name: "User"
 

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :full_name,
     presence: true,
-    length: {maximum: 50}
+    length: { maximum: 50 }
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
@@ -19,12 +19,9 @@ class User < ActiveRecord::Base
 
   before_create :generate_auth_token
 
-
-  # Groups
   has_and_belongs_to_many :groups
   has_many :owned, class_name: "Group", :foreign_key => :owner_id
 
-  # Expenses
   has_many :debts,   class_name: "Expense", :foreign_key => :debtor_id
   has_many :credits, class_name: "Expense", :foreign_key => :creditor_id
 

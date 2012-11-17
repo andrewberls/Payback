@@ -10,7 +10,7 @@
     <%= form_for(@expense, html: {class: "new-expense-form"}) do |f| %>
       <h1 class="form-title">Add New Expense</h1>
 
-      <%= content_tag(:div, flash[:error], class: "alert alert-error") if flash[:error] %>
+      <%= flash_error %>
 
       <p>Select a group:</p>
 

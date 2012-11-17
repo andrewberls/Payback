@@ -6,21 +6,16 @@ class Group < ActiveRecord::Base
 
   validates :title,
     presence: true,
-    length: {maximum: 50}
+    length: { maximum: 50 }
 
   validates :password, presence: { on: :create },
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_gid
 
-  # validates_uniqueness_of :gid
-
-
-  # Users
   has_and_belongs_to_many :users
   belongs_to :owner, class_name: "User"
 
-  # Expenses
   has_many :debts, class_name: "Expense"
   has_many :credits, class_name: "Expense"
 
@@ -33,7 +28,7 @@ class Group < ActiveRecord::Base
   def initialize_owner(user)
     owner = user
     users << user
-    user.owned << self # user.groups automatically covered
+    user.owned << self
   end
 
   def add_user(user)

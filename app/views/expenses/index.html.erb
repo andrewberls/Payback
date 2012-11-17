@@ -12,7 +12,8 @@
 <%= render 'dashboard_buttons' %>
 
 <div class="row">
-  <%= content_tag(:div, flash[:success], class: "alert alert-success") if flash[:success] %>
+
+  <%= flash_success %>
 
   <% [:credits, :debts].each do |type| %>
     <div class="span-8">
