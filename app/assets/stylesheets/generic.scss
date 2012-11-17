@@ -16,7 +16,7 @@ body > .container {
   margin: 25px auto 0;
 }
 
-@media (max-width: 630px) {
+@include mobile {
   body .container { padding: 0 5px; }
 }
 

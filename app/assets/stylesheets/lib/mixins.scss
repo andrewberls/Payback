@@ -6,9 +6,7 @@
     display: table;
     content: "";
   }
-  &:after {
-    clear: both;
-  }
+  &:after { clear: both; }
 }
 
 @mixin border-radius($rad: 3px) {
@@ -16,8 +14,6 @@
      -moz-border-radius: $rad;
           border-radius: $rad;
 }
-//-- UTILITY/VENDOR PREFIXES
-//------------------------------------
 
 @mixin border-box {
   -webkit-box-sizing: border-box;
@@ -35,21 +31,21 @@
   -webkit-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
      -moz-box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
           box-shadow: $horizOffset $vertOffset $blurDist $spreadDist $color;
-          // -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
-          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');
 }
 
 @mixin inset-box-shadow($horizOffset: 0px, $vertOffset: 0px, $blurDist: 0px, $spreadDist: 0px, $color: #000) {
   -webkit-box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
      -moz-box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
           box-shadow: inset $horizOffset $vertOffset $blurDist $spreadDist $color;
-          // -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=2, Direction=225, Color='#{$color}')";
-          //     filter: progid:DXImageTransform.Microsoft.Shadow(strength=2, direction=225, color='#{$color}');
+}
+
+@mixin mobile {
+  @media (max-width: 630px) {
+    @content;
+  }
 }
 
 
-//-- PRESENTATIONAL
-//------------------------------------
 %whitebox {
   // A pretty white box with a light gray border
   // Things such as padding can easily be overridden

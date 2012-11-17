@@ -724,7 +724,7 @@ input[type="submit"] {
   margin-bottom: 20px;
   padding: 18px 25px;
 
-  @media (max-width: 630px) {
+  @include mobile {
     padding-left: 40px;
     padding-right: 40px;
   }

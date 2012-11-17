@@ -21,7 +21,7 @@
     border: 1px solid $med-gray;
     max-width: 100%;
 
-    @media (max-width: 630px) { display: none; }
+    @include mobile { display: none; }
   }
 }
 
@@ -48,7 +48,7 @@
   margin-bottom: 50px;
   text-align: center;
 
-  @media (max-width: 630px) { margin-bottom: 25px; }
+  @include mobile { margin-bottom: 25px; }
 }
 
 
@@ -68,10 +68,10 @@
     line-height: 1.5;
     margin-bottom: 50px;
 
-    @media (max-width: 630px) { margin-bottom: 15px; }
+    @include mobile { margin-bottom: 15px; }
   }
 
-  @media (max-width: 630px) {
+  @include mobile {
     padding-top: 20px;
     text-align: center;
 
@@ -95,7 +95,7 @@
     }
   }
 
-  @media (max-width: 630px) {
+  @include mobile {
     padding: 25px 0;
 
     p {
@@ -121,7 +121,7 @@
   .row + .row {
     margin-top: 35px;
 
-    @media (max-width: 630px) { margin-top: 25px; }
+    @include mobile { margin-top: 25px; }
   }
 
   .closing-cta {
@@ -133,7 +133,7 @@
       margin: 5px 0 10px;
     }
 
-    @media (max-width: 630px) {
+    @include mobile {
       p { margin-top: -10px; }
     }
   }
@@ -141,7 +141,7 @@
   .btn-cta {
     margin-top: 25px;
 
-    @media (max-width: 630px) { margin: 10px 0; }
+    @include mobile { margin: 10px 0; }
   }
 }
 
