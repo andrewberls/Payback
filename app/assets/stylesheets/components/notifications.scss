@@ -7,15 +7,16 @@
   position: absolute;
   top: 35px;
   width: 325px;
+  z-index: 100;
 
   @include mobile {
     width: 350px;
-    z-index: 100;
   }
 }
 
 .notification {
   @include border-box;
+  @include clearfix;
   border-bottom: 1px solid $med-gray;
   padding: 10px 5px;
 
@@ -26,6 +27,11 @@
   &.notification-completed {
     background-color: darken($light-gray, 2);
     color: darken($med-gray, 40);
+  }
+
+  .notification-text {
+    float: left;
+    max-width: 90%;
   }
 
   .user-from {
@@ -41,7 +47,5 @@
   .btn {
     margin-top: -3px;
     padding: 3px;
-    float: right;
   }
 }
-

@@ -2,7 +2,7 @@ class Notification < ActiveRecord::Base
 
   VALID_STATES = %w( mark_off )
 
-  attr_accessible :user_from, :user_to, :expense_id, :notif_type, :read
+  attr_accessible :user_from_id, :user_to_id, :expense_id, :notif_type, :read
 
   belongs_to :expense
   belongs_to :user_from, class_name: 'User'

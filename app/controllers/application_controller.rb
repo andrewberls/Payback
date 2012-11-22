@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def reject_unauthorized(authorized, path=ACCESS_DENIED_PATH)
+  def reject_unauthorized(authorized=false, path=ACCESS_DENIED_PATH)
     unless authorized
       logger.warn "WARNING: Unauthorized access attempt"
 

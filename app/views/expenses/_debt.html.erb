@@ -11,4 +11,10 @@
   </div>
 
   <%= render 'expenses/stale_badge', expense: expense %>
+
+  <% if current_user.can_notify_on?(expense.id) %>
+    <div class="expense-actions">
+      <%= render 'notifications/mark_off', expense: expense %>
+    </div>
+  <% end %>
 </div><!-- .expense -->

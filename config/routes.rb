@@ -24,8 +24,8 @@ Payback::Application.routes.draw do
   end
   match 'clear/:id' => 'expenses#clear', as: 'clear'
 
-  namespace :notifications do
-    post 'read'
+  resources :notifications, :only => [:new, :create] do
+    post 'read', on: :collection
   end
 
   resources :sessions, :only => [:new, :create, :destroy]

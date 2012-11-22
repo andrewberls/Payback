@@ -122,6 +122,14 @@ class User < ActiveRecord::Base
     notifications_to.select(&:unread?)
   end
 
+  def can_notify_on?(exp_id)
+    notifications_from.none? { |e| e.expense_id == exp_id }
+  end
+
+  def recent_notifications
+    notifications_to.reverse.take(5)
+  end
+
   private
 
   def generate_auth_token
