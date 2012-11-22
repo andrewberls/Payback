@@ -17,3 +17,4 @@
 //= require validation
 //= require tipsy
 //= require word_slide
+//= require notifications

@@ -37,6 +37,13 @@ Expense.new(title: "Textbook", amount: 85, active: true, action: :payback) do |e
   exp.assign_to admin_user
 end
 
+# Jeff requests Admin mark off groceries
+groceries = Expense.find_by_title("Groceries")
+Notification.create!(user_from: jeff, user_to: admin_user, expense_id: groceries.id, notif_type: 'mark_off')
+
+# Nicole requests Admin mark off movie ticket
+movies = Expense.find_by_title("Movie ticket")
+Notification.create!(user_from: nicole, user_to: admin_user, expense_id: movies.id, notif_type: 'mark_off', read: true)
 
 # Users/groups with no associations
 blank_user_1 = User.create!(full_name: "Blank One", email: "blank_one@email.com", password: "password", password_confirmation: "password")

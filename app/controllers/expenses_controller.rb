@@ -55,8 +55,6 @@ class ExpensesController < ApplicationController
     # Dashboard - one listing per group user
   end
 
-
-
   def edit
   end
 
@@ -73,7 +71,10 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.deactivate
-    return redirect_to params[:redirect]
+    respond_to do |format|
+      format.html { return redirect_to params[:redirect] || expenses_path }
+      format.json { return render json: {} }
+    end
   end
 
   def clear

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701023010) do
+ActiveRecord::Schema.define(:version => 20121121212249) do
 
   create_table "expenses", :force => true do |t|
     t.string   "title"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20120701023010) do
   create_table "groups_users", :id => false, :force => true do |t|
     t.integer "group_id"
     t.integer "user_id"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.string   "notif_type"
+    t.boolean  "read",         :default => false
+    t.integer  "expense_id"
+    t.integer  "user_from_id"
+    t.integer  "user_to_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

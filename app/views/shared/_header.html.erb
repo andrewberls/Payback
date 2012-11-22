@@ -7,6 +7,10 @@
         <li><%= link_to "Dashboard",   expenses_path,    class: (current_page? expenses_path)    ? 'current' : '' %></li>
         <li><%= link_to "New Expense", new_expense_path, class: (current_page? new_expense_path) ? 'current' : '' %></li>
         <li><%= link_to "Groups",      groups_path,      class: (current_page? groups_path)      ? 'current' : '' %></li>
+        <li>
+          <a href="#" class="dropdown-trigger">Notifications</a>
+          <%= render 'shared/notifications' %>
+        </li>
       </ul>
     </nav>
 

@@ -17,28 +17,42 @@ header {
     }
   }
 
-  nav a {
-    @include border-radius;
-    color: $gray-text;
+  li {
     display: inline-block;
-    float: left;
-    font-weight: bold;
-    margin-right: 5px;
-    padding: 8px 10px;
+    position: relative;
 
-    &:hover,
-    &.current {
-      background-color: lighten($dark-gray, 15);
-      color: white;
-      text-decoration: none;
+    & > a {
+      @include border-radius;
+      color: $gray-text;
+      display: inline-block;
+      float: left;
+      font-weight: bold;
+      margin-right: 5px;
+      padding: 8px 10px;
+      position: relative;
+
+      &:hover,
+      &.current {
+        background-color: lighten($dark-gray, 15);
+        color: white;
+        text-decoration: none;
+      }
     }
   }
 
+  .badge {
+    $height: 20px;
+    @include border-radius($height);
+    line-height: $height;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    bottom: -5px; right: 0px;
+    width: $height; height: $height;
+  }
 
   @media (max-width: 480px) {
-    h1 {
-      display: none;
-    }
+    h1 { display: none; }
 
     nav {
       padding-top: 4px;
@@ -53,9 +67,7 @@ header {
           margin: 0 5px;
         }
 
-        a {
-          padding: 8px;
-        }
+        a { padding: 8px; }
       }
     }
   }

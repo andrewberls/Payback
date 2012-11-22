@@ -1,0 +1,28 @@
+<% unread_count = current_user.unread_notifications.count %>
+<% if unread_count > 0  %>
+  <span class="badge badge-red dropdown-trigger"><%= unread_count %></span>
+<% end %>
+
+<div class="notifications-container">
+  <% current_user.notifications_to.each do |notif| %>
+    <%
+      aux_class =
+      if notif.unread?
+        'notification-unread'
+      elsif !notif.expense.active
+        'notification-completed'
+      end
+    %>
+    <div class="notification <%= aux_class %>">
+      <%= notif_text(notif) %>
+
+      <% if notif.expense.active %>
+        <%= link_to raw("<i class='icon-ok icon-white'></i>"),
+          { controller: 'expenses', action: 'destroy', id: notif.expense, redirect: request.fullpath },
+          method: :delete,
+          class: "btn btn-green no-text"
+        %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
