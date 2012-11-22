@@ -1,9 +1,10 @@
 <%
+  expense = notification.expense
   # Is the notification unread, completed, etc
   aux_class =
   if notification.unread?
     'notification-unread'
-  elsif !notification.expense.active
+  elsif !expense.active
     'notification-completed'
   end
 %>
@@ -13,11 +14,12 @@
     <%= notif_text(notification) %>
   </div>
 
-  <% if notification.expense.active %>
+  <% if expense.active %>
     <div class="right">
       <%= link_to raw("<i class='icon-ok icon-white'></i>"),
-        { controller: 'expenses', action: 'destroy', id: notification.expense, redirect: request.fullpath },
+        { controller: 'expenses', action: 'destroy', id: expense, redirect: request.fullpath },
         method: :delete,
+        confirm: "Mark #{number_to_currency(expense.amount)} from #{expense.debtor.first_name} completed?",
         class: "btn btn-green no-text mark-off"
       %>
     </div>
