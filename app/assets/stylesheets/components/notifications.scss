@@ -10,7 +10,8 @@
   z-index: 100;
 
   @include mobile {
-    width: 350px;
+    right: 0;
+    width: 300px;
   }
 }
 

@@ -51,7 +51,7 @@ header {
     width: $height; height: $height;
   }
 
-  @media (max-width: 480px) {
+  @include mobile {
     h1 { display: none; }
 
     nav {
@@ -70,6 +70,12 @@ header {
         a { padding: 8px; }
       }
     }
+
+    #group-tab {
+      display: none;
+    }
   }
+
+
 
 }
