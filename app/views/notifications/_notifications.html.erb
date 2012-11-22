@@ -1,0 +1,8 @@
+<% unread_count = current_user.unread_notifications.count %>
+<% if unread_count > 0  %>
+  <span class="badge badge-red dropdown-trigger"><%= unread_count %></span>
+<% end %>
+
+<div class="notifications-container">
+  <%= render current_user.recent_notifications %>
+</div>

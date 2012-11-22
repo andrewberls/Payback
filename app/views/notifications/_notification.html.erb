@@ -1,0 +1,25 @@
+<%
+  # Is the notification unread, completed, etc
+  aux_class =
+  if notification.unread?
+    'notification-unread'
+  elsif !notification.expense.active
+    'notification-completed'
+  end
+%>
+
+<div class="notification <%= aux_class %>">
+  <div class="notification-text">
+    <%= notif_text(notification) %>
+  </div>
+
+  <% if notification.expense.active %>
+    <div class="right">
+      <%= link_to raw("<i class='icon-ok icon-white'></i>"),
+        { controller: 'expenses', action: 'destroy', id: notification.expense, redirect: request.fullpath },
+        method: :delete,
+        class: "btn btn-green no-text mark-off"
+      %>
+    </div>
+  <% end %>
+</div>
