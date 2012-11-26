@@ -34,15 +34,11 @@
 .badge {
   @include border-radius;
   display: inline-block;
+  color: white;
   font-size: 0.9em;
   padding: 2px 5px;
 
-  &:hover {
-    cursor: pointer;
-  }
+  &:hover { cursor: pointer; }
 
-  &.badge-red {
-    background-color: #D03130;
-    color: white;
-  }
+  &.badge-red { background-color: #D03130; }
 }
