@@ -7,7 +7,7 @@
 
       <h1 class="form-title">Edit Your Profile</h1>
 
-      <%= flash_error %>
+      <%= render 'shared/instance_errors', instance: @user %>
 
       <%= f.label :email %>
       <%= f.text_field :email %>

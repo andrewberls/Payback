@@ -12,10 +12,10 @@
   </div><!-- .group-faq -->
 
   <div class="span-7">
-    <%= form_for(@group, html: {class: "new-group-form"}) do |f| %>
+    <%= form_for @group do |f| %>
       <h1 class="form-title">Create New Group</h1>
 
-      <%= flash_error %>
+      <%= render 'shared/instance_errors', instance: @group %>
 
       <%= f.label :title %>
       <span class="help-text">Try your address!</span>

@@ -7,7 +7,7 @@
 
       <h1 class="form-title">Edit Group</h1>
 
-      <%= flash_error %>
+      <%= render 'shared/instance_errors', instance: @group %>
 
       <%= f.label :title %>
       <%= f.text_field :title %>

@@ -29,6 +29,11 @@
     color: darken($blue, 5);
   }
 
+  li {
+    margin-left: 10px;
+    &:before { content: "-"; }
+  }
+
 }
 
 .badge {

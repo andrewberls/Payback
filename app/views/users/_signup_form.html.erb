@@ -1,7 +1,15 @@
 <%= form_for @user do |f| %>
   <h1 class="form-title">Sign Up</h1>
 
-  <%= flash_error %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-error">
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
 
   <%= f.label :full_name, "Full Name" %>
   <%= f.text_field :full_name, autofocus: true  %>
