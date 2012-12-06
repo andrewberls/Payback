@@ -37,6 +37,14 @@ header {
         color: white;
         text-decoration: none;
       }
+
+      &.link-dead {
+        color: lighten($gray-text, 30);
+        &:hover {
+          background-color: $med-gray;
+          cursor: default;
+        }
+      }
     }
   }
 

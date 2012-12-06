@@ -1,4 +1,5 @@
-<a href="#" class="<%= 'dropdown-trigger' if current_user.notifications_to.count > 0 %>">Notifications</a>
+<% link_class = current_user.notifications_to.count > 0 ? 'dropdown-trigger' : 'link-dead' %>
+<a href="#" class="<%= link_class %>">Notifications</a>
 
 <% unread_count = current_user.unread_notifications.count %>
 <% if unread_count > 0  %>
