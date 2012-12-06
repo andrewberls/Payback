@@ -48,7 +48,7 @@ class ExpensesController < ApplicationController
 
   def index
     # Main dashboard
-
+    @notice = SiteNotice.last
   end
 
   def condensed

@@ -13,7 +13,7 @@
 
 //-- SITE SCRIPTS
 //------------------------------------
-//= require alerts
+//= require site-notices
 //= require validation
 //= require tipsy
 //= require word_slide

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121212249) do
+ActiveRecord::Schema.define(:version => 20121206084406) do
 
   create_table "expenses", :force => true do |t|
     t.string   "title"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20121121212249) do
     t.integer  "expense_id"
     t.integer  "user_from_id"
     t.integer  "user_to_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "site_notices", :force => true do |t|
+    t.string   "title"
+    t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
