@@ -3,6 +3,7 @@
     <%= render 'expenses/edit_mark', expense: expense %>
     <%= number_to_currency(expense.amount) %>
   </span>
+
   <span class="expense-creditor"><%= link_to_unless_current expense.creditor.first_name, debts_user_path(expense.creditor) %></span>
 
   <div class="info-stack">

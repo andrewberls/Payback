@@ -10,18 +10,7 @@
 %>
 
 <div class="notification <%= aux_class %>">
-  <div class="notification-text">
-    <%= notif_text(notification) %>
-  </div>
+  <%= content_tag :div, notif_text(notification), class: 'notification-text' %>
 
-  <% if expense.active %>
-    <div class="right">
-      <%= link_to raw("<i class='icon-ok icon-white'></i>"),
-        { controller: 'expenses', action: 'destroy', id: expense, redirect: request.fullpath },
-        method: :delete,
-        confirm: "Mark #{number_to_currency(expense.amount)} from #{expense.debtor.first_name} completed?",
-        class: "btn btn-green no-text mark-off"
-      %>
-    </div>
-  <% end %>
+  <%= content_tag :div, mark_off_btn(expense), class: 'right' if expense.active %>
 </div>
