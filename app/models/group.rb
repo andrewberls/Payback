@@ -41,7 +41,7 @@ class Group < ActiveRecord::Base
   end
 
   def expenses
-    debts + credits
+    (debts + credits).uniq
   end
 
   def active_credits_for(user)
