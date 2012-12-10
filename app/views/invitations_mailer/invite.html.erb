@@ -1,4 +1,4 @@
-<p><%= @sender.full_name %> has invited you to join their group <%= @group.title %> on Payback.io! Payback is the easiest way to track spending and borrowing with your household - never forget who owes you money or how much again. Once you click the link below and create your account, you'll automatically be added to <%= @group.title %> and ready to go!<p>
+<p><%= @sender.full_name %> has invited you to join their group '<%= @group.title %>' on Payback.io! Payback is the easiest way to track spending and borrowing with your household - never forget who owes you money or how much again. Once you click the link below and create your account, you'll automatically be added to the group and ready to go!<p>
 
 <% path = invitations_url(@invitation.token) %>
 <p>Create your account here: <%= link_to path, path %></p>
