@@ -26,4 +26,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'test-unit', :require => "test/unit"
   gem 'shoulda'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
