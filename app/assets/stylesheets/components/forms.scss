@@ -1,3 +1,13 @@
+%input-full {
+  @include border-box;
+  border: 1px solid $med-gray;
+  margin-bottom: 15px;
+  padding: 7px;
+  width: 100%;
+
+  &:focus { outline: none; }
+}
+
 form {
   @include clearfix;
   @extend %whitebox;
@@ -23,13 +33,7 @@ form {
 
   input:not([type="submit"]),
   textarea {
-    @include border-box;
-    border: 1px solid $med-gray;
-    margin-bottom: 15px;
-    padding: 7px;
-    width: 100%;
-
-    &:focus { outline: none; }
+    @extend %input-full;
   }
 
   textarea {

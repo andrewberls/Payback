@@ -1,4 +1,4 @@
-<% if instance.errors.any? %>
+<% if instance.present? && instance.errors.any? %>
   <div class="alert alert-error">
   <h3>Something went wrong!</h3>
   <ul>

@@ -1,4 +1,5 @@
 <%= form_for @user do |f| %>
+
   <h1 class="form-title">Sign Up</h1>
 
   <%= render 'shared/instance_errors', instance: @user %>
@@ -8,7 +9,6 @@
 
   <%= f.label :email %>
   <%= f.email_field :email %>
-
   <div id="hint"></div>
 
   <%= f.label :password %>

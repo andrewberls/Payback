@@ -730,6 +730,12 @@ input[type="submit"] {
   }
 }
 
+.btn-full {
+  @include border-box;
+  float: none;
+  width: 100%;
+}
+
 .btn-shadow {
   // Darken the shadow to make a button more pronounced
   // on a light background

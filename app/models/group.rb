@@ -19,6 +19,8 @@ class Group < ActiveRecord::Base
   has_many :debts, class_name: "Expense"
   has_many :credits, class_name: "Expense"
 
+  has_many :invitations
+  accepts_nested_attributes_for :invitations
 
   def as_json(options={})
     options[:except] ||= [:password_digest, :id]

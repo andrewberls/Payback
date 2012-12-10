@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
 
-  before_filter :must_be_logged_in
-  before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add]
+  before_filter :must_be_logged_in, except: [:invitations]
+  before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add, :invitations]
+  before_filter :invitation_token_must_be_valid, only: [:invitations]
 
   def new
     @group = Group.new
@@ -60,25 +61,23 @@ class GroupsController < ApplicationController
 
 
   def join
-    # View
-  end
+    if request.post?
+      group = Group.find_by_gid(params[:gid])
 
-  def add
-    # Processing
-    group = Group.find_by_gid(params[:gid])
-
-    if group && group.authenticate(params[:password])
-      if group.users.include?(current_user)
-        flash.now[:error] = "You already belong to that group!"
-        return render :join
+      if group && group.authenticate(params[:password])
+        if group.users.include?(current_user)
+          flash.now[:error] = "You already belong to that group!"
+          return render :join
+        else
+          group.add_user(current_user)
+          flash[:success] = "You are now a member of #{group.title}!"
+          return redirect_to groups_path
+        end
       else
-        group.add_user(current_user)
-        flash[:success] = "You are now a member of #{group.title}!"
-        return redirect_to groups_path
+        flash.now[:error] = "Invalid ID/Password combination."
+        return render :join
       end
-    else
-      flash.now[:error] = "Invalid ID/Password combination."
-      return render :join
+
     end
   end
 
@@ -88,12 +87,57 @@ class GroupsController < ApplicationController
     return redirect_to groups_path
   end
 
+
+  def invite
+    # Parse email list and dispatch invitation emails
+    group = Group.find_by_gid(params[:id])
+
+    if inv_params = params[:invitations]
+      inv_params.values.each do |params|
+        email = params[:recipient_email]
+        Invitation.create(group: group, sender: current_user, recipient_email: email)
+      end
+    end
+
+    flash[:success] = "Invitations sent!"
+    return redirect_to expenses_path
+  end
+
+  def invitations
+    # Join by token
+    if request.post?
+      group = @invitation.group
+      @user = User.new(email: @invitation.recipient_email) do |u|
+        u.full_name = params[:full_name]
+        u.password  = params[:password]
+      end
+
+      if @user.save
+        cookies[:auth_token] = @user.auth_token
+        group.add_user(@user)
+        @invitation.update_attributes used: true
+        flash[:success] = "You are now a member of #{group.title}!"
+        return redirect_to groups_path
+      else
+        flash.now[:error] = "Error - please check your fields and try again."
+        return render :invitations
+      end
+    end
+  end
+
   private
 
   def user_must_be_in_group
-    @group = Group.find_by_gid(params[:id])
+    @group     = Group.find_by_gid(params[:id])
     authorized = @group.present? && @group.users.include?(current_user)
     reject_unauthorized(authorized)
+  end
+
+  def invitation_token_must_be_valid
+    # raise params.inspect
+    @invitation = Invitation.find_by_token(params[:token])
+    authorized  = @invitation.present? && !@invitation.used
+    reject_unauthorized(authorized, root_url)
   end
 
 end

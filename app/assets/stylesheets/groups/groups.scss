@@ -37,9 +37,7 @@
   h1 {
     margin: 5px 0;
 
-    & + p {
-      margin-bottom: 20px;
-    }
+    & + p { margin-bottom: 20px; }
   }
 
   p {
@@ -47,13 +45,52 @@
     line-height: 1.4;
   }
 
-  .btn:first-of-type {
-    float: left;
+  & > .btn {
+    padding: 10px 0;
+    font-size: 1.1em;
+  }
+}
+
+.group-invitations {
+  margin-bottom: 35px;
+
+  h3 {
+    color: lighten($gray-text, 15);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    text-align: left;
   }
 
-  .btn:last-of-type {
-    float: right;
+  .invitation-field {
+    @include clearfix;
+    position: relative;
+
+    input:not([type="submit"]) {
+      @extend %input-full;
+      margin-bottom: 5px;
+    }
+
+    .invitation-remove {
+      color: lighten($gray-text, 32);
+      font-size: 1.3em;
+      font-weight: bold;
+      position: absolute;
+      top: 5px;
+      right: 7px;
+
+      &:hover { text-decoration: none; }
+    }
   }
+
+  .invite-btns {
+    margin-top: 10px;
+
+    .btn {
+      margin: 0;
+      width: 45%;
+    }
+  }
+
 }
 
 

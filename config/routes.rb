@@ -1,13 +1,17 @@
 Payback::Application.routes.draw do
 
   resources :groups do
-    get 'leave', :on => :member
+    member do
+      get 'leave'
+      post 'invite'
+    end
 
     collection do
-      get 'join'
-      post 'add'
+      match 'join'
     end
   end
+
+  match 'invitations/:token' => "groups#invitations", as: 'invitations'
 
   resources :users do
     member do
@@ -20,15 +24,15 @@ Payback::Application.routes.draw do
   match 'welcome' => 'users#welcome', as: 'welcome'
 
   resources :expenses do
-    get 'condensed', :on => :collection
+    get 'condensed', on: :collection
   end
   match 'clear/:id' => 'expenses#clear', as: 'clear'
 
-  resources :notifications, :only => [:new, :create] do
+  resources :notifications, only: [:new, :create] do
     post 'read', on: :collection
   end
 
-  resources :sessions, :only => [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   match 'login'  => 'sessions#new',     as: 'login'
   match 'logout' => 'sessions#destroy', as: 'logout'
 

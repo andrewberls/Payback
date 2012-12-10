@@ -1,7 +1,7 @@
 <% provide(:title, "Group: #{@group.title}") %>
 
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag "groups" %>
+  <%= javascript_include_tag "groups", "invitations" %>
 <% end %>
 
 <% if @group.users.count == 1 && current_user == @group.owner %>

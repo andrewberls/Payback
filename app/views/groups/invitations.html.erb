@@ -1,0 +1,28 @@
+<div class="row">
+
+  <div class="span-10 offset-3 pretext-block">
+    <h1>Welcome to Payback.</h1>
+    <p>After you sign up, you'll automatically be added to</p>
+    <p><%= @invitation.group.title %></p>
+  </div>
+
+  <div class="span-6 offset-5">
+    <%= form_tag invitations_path do |f| %>
+
+    <h1 class="form-title">Sign Up</h1>
+
+    <%= render 'shared/instance_errors', instance: @user %>
+
+    <%= label_tag :full_name, "Full Name" %>
+    <%= text_field_tag :full_name, '', autofocus: true  %>
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+
+    <%= submit_tag "Submit", class: "btn btn-blue btn-large submit-validate" %>
+
+  <% end %>
+
+  </div>
+
+</div>
