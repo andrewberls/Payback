@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 
   before_filter :must_be_logged_in, except: [:invitations]
-  before_filter :user_must_be_in_group, except: [:new, :create, :index, :join, :add, :invitations]
+  before_filter :user_must_be_in_group, only: [:show, :edit, :update, :leave, :invite]
   before_filter :invitation_token_must_be_valid, only: [:invitations]
 
   def new
@@ -66,11 +66,11 @@ class GroupsController < ApplicationController
 
       if group && group.authenticate(params[:password])
         if group.add_user(current_user)
-          flash.now[:error] = "You already belong to that group!"
-          return render :join
-        else
           flash[:success] = "You are now a member of #{group.title}!"
           return redirect_to groups_path
+        else
+          flash.now[:error] = "You already belong to that group!"
+          return render :join
         end
       else
         flash.now[:error] = "Invalid ID/Password combination."
