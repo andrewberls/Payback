@@ -1,5 +1,5 @@
 class InvitationsMailer < ActionMailer::Base
-  default from: "noreply@payback.io"
+  default from: "noreply.paybackio@gmail.com"
 
   def invite(invitation)
     @invitation = invitation

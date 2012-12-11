@@ -1,4 +1,7 @@
+<% group_owned = (current_user == group.owner) %>
+
 <div class="group">
+
   <div class="group-info">
     <span class="group-title"><%= link_to_unless_current group.title, group_path(group.gid) %></span>
 
@@ -13,15 +16,11 @@
     </div>
 
     <span class="group-owner">
-      <% if current_user == group.owner %>
-        You own this group.
-      <% else %>
-        Owned by <%= group.owner.full_name %>
-      <% end %>
+      <%= group_owned ? "You own this group" : "Owned by #{group.owner.full_name}" %>
     </span>
 
     <div class="right">
-      <%  if current_user == group.owner %>
+      <%  if group_owned %>
         <%= link_to "Invite people", group_path(group.gid), class: 'btn btn-blue' unless params[:action] == 'show' %>
         <%= link_to "Edit Info", edit_group_path(group.gid), class: "btn" %>
       <% end %>
@@ -31,13 +30,8 @@
         class: "btn btn-red"
       %>
     </div>
+  </div><!-- .group-info -->
 
-  </div>
+  <%= render 'group_invitations', group: group, header: "Invite people by email:" if show_invs && group_owned %>
 
-  <% if show_invs && current_user == @group.owner %>
-    <div>
-      <%= render 'group_invitations', group: @group, header: "Invite people by email:" %>
-    </div>
-  <% end %>
-
-</div><!-- .group -->
+</div>

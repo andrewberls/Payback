@@ -109,10 +109,8 @@ class GroupsController < ApplicationController
     # Join by token
     group = @invitation.group
 
-    if request.get?
-      if signed_in?
-        return complete_invitation(user: current_user, group: group, invitation: @invitation)
-      end
+    if request.get? && signed_in?
+      return complete_invitation(user: current_user, group: group, invitation: @invitation)
     elsif request.post?
 
       if params[:existing]
@@ -148,7 +146,6 @@ class GroupsController < ApplicationController
   end
 
   def invitation_token_must_be_valid
-    # raise params.inspect
     @invitation = Invitation.find_by_token(params[:token])
     authorized  = @invitation.present? && !@invitation.used
     reject_unauthorized(authorized, root_url)
