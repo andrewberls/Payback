@@ -2,9 +2,7 @@
   @extend %whitebox;
   text-align: center;
 
-  h1 {
-    font-size: 3.2em;
-  }
+  h1 { font-size: 3.2em; }
 
   p {
     color: lighten($gray-text, 20);
@@ -18,9 +16,7 @@
     }
   }
 
-  .sorry {
-    color: $blue;
-  }
+  .sorry { color: $blue; }
 
   .support {
     color: darken($med-gray, 10);

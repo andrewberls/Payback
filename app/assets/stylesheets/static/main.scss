@@ -31,9 +31,7 @@
   @include inset-box-shadow(0, 10px, 5px, -8px, lighten($med-gray, 5));
   padding: 75px 0;
 
-  h2 {
-    color: lighten($dark-gray, 15);
-  }
+  h2 { color: lighten($dark-gray, 15); }
 
   p {
     color: $light-text;
@@ -98,9 +96,7 @@
   @include mobile {
     padding: 25px 0;
 
-    p {
-      margin-bottom: 10px;
-    }
+    p { margin-bottom: 10px; }
   }
 }
 
@@ -114,9 +110,7 @@
     text-align: left;
   }
 
-  p {
-    line-height: 1.5;
-  }
+  p { line-height: 1.5; }
 
   .row + .row {
     margin-top: 35px;
@@ -154,9 +148,7 @@
   padding: 50px 0;
   text-align: center;
 
-  p {
-    margin-bottom: 10px;
-  }
+  p { margin-bottom: 10px; }
 
   a {
     color: lighten($gray-text, 25);

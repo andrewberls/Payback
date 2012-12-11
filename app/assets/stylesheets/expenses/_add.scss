@@ -4,14 +4,10 @@
   margin-bottom: 5px;
   padding: 20px;
 
-  label:first-of-type {
-    margin-top: 5px;
-  }
+  label:first-of-type { margin-top: 5px; }
 }
 
-#expense-payback {
-  margin-left: 10px;
-}
+#expense-payback { margin-left: 10px; }
 
 .expense-back {
   // Left-floated back button
@@ -31,9 +27,7 @@
   margin-bottom: 0;
   padding: 10px;
 
-  h3, p {
-    margin-bottom: 5px;
-  }
+  h3, p { margin-bottom: 5px; }
 
   #hide-expense-faqs {
     // Button

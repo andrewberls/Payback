@@ -1,9 +1,7 @@
 //-- NEW GROUP FAQ
 //------------------------------------
 .group-faq {
-  h2 {
-    margin-bottom: 10px;
-  }
+  h2 { margin-bottom: 10px; }
 
   ul {
     @extend %whitebox;
@@ -18,9 +16,7 @@
   }
 
   @include mobile {
-    h2, ul {
-      display: none;
-    }
+    h2, ul { display: none; }
   }
 
 }
@@ -116,9 +112,7 @@
   border-bottom: 1px dashed $med-gray;
   padding: 10px;
 
-  .group-info {
-    @include clearfix;
-  }
+  .group-info { @include clearfix; }
 
   &:last-of-type { border: none; }
 

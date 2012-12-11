@@ -3,9 +3,7 @@
 #dashboard-buttons {
   margin-bottom: 15px;
 
-  .btn {
-    margin-right: 10px;
-  }
+  .btn { margin-right: 10px; }
 }
 
 .expenses-container {
@@ -21,9 +19,7 @@
   padding: 5px;
   position: relative;
 
-  &:first-of-type {
-    border: none;
-  }
+  &:first-of-type { border: none; }
 
   .expense-amount,
   .expense-debtor,
@@ -37,9 +33,7 @@
     // A mark showing that the amount has been edited
     color: $blue;
 
-    &:hover {
-      cursor: pointer;
-    }
+    &:hover { cursor: pointer; }
   }
 
   .expense-amount {
@@ -59,9 +53,7 @@
   .expense-creditor {
     margin: 20px 10px 20px 0;
 
-    &:before {
-      content: " - ";
-    }
+    &:before { content: " - "; }
 
     a {
       border-bottom: 1px dashed $blue;
@@ -125,9 +117,7 @@
       margin: 3px 0 0 10px;
     }
 
-    .expense-actions {
-      top: 5px;
-    }
+    .expense-actions { top: 5px; }
   }
 
 } // .expense
@@ -135,9 +125,7 @@
 .expense-blank {
   font-size: 1em;
 
-  p {
-    margin: 5px 0;
-  }
+  p { margin: 5px 0; }
 }
 
 .expense-condensed {
@@ -188,9 +176,7 @@
       margin: 0;
       padding: 15px 18px;
 
-      &:last-of-type {
-        float: right;
-      }
+      &:last-of-type { float: right; }
     }
   }
 }

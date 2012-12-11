@@ -4,6 +4,7 @@ $ ->
 
   $toggle.click ->
     $names = $(@).parent().find('.group-member-names')
+
     if $names.is(':hidden')
       $names.slideDown(speed)
     else
