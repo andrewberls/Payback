@@ -65,11 +65,10 @@ class GroupsController < ApplicationController
       group = Group.find_by_gid(params[:gid])
 
       if group && group.authenticate(params[:password])
-        if group.users.include?(current_user)
+        if group.add_user(current_user)
           flash.now[:error] = "You already belong to that group!"
           return render :join
         else
-          group.add_user(current_user)
           flash[:success] = "You are now a member of #{group.title}!"
           return redirect_to groups_path
         end
@@ -95,7 +94,10 @@ class GroupsController < ApplicationController
     if inv_params = params[:invitations]
       inv_params.values.each do |params|
         email = params[:recipient_email]
-        Invitation.create(group: group, sender: current_user, recipient_email: email)
+
+        unless group.users.include?(user)
+          Invitation.create(group: group, sender: current_user, recipient_email: email)
+        end
       end
     end
 
@@ -105,23 +107,35 @@ class GroupsController < ApplicationController
 
   def invitations
     # Join by token
-    if request.post?
-      group = @invitation.group
-      @user = User.new(email: @invitation.recipient_email) do |u|
-        u.full_name = params[:full_name]
-        u.password  = params[:password]
+    group = @invitation.group
+
+    if request.get?
+      if signed_in?
+        return complete_invitation(user: current_user, group: group, invitation: @invitation)
+      end
+    elsif request.post?
+
+      if params[:existing]
+        # Log in
+        @user = User.find_by_email(@invitation.recipient_email)
+        valid =  @user && @user.authenticate(params[:password])
+      else
+        # Sign up
+        @user = User.new(email: @invitation.recipient_email) do |u|
+          u.full_name = params[:full_name]
+          u.password  = params[:password]
+        end
+        valid = @user.save
       end
 
-      if @user.save
+      if valid
         cookies[:auth_token] = @user.auth_token
-        group.add_user(@user)
-        @invitation.update_attributes used: true
-        flash[:success] = "You are now a member of #{group.title}!"
-        return redirect_to groups_path
+        return complete_invitation(user: @user, group: group, invitation: @invitation)
       else
-        flash.now[:error] = "Error - please check your fields and try again."
+        flash[:error] = "Error - please check your fields and try again."
         return render :invitations
       end
+
     end
   end
 
@@ -138,6 +152,21 @@ class GroupsController < ApplicationController
     @invitation = Invitation.find_by_token(params[:token])
     authorized  = @invitation.present? && !@invitation.used
     reject_unauthorized(authorized, root_url)
+  end
+
+  def complete_invitation(options={})
+    user  = options[:user]
+    group = options[:group]
+    inv   = options[:invitation]
+
+    if group.add_user(user)
+      inv.update_attributes used: true
+      flash[:success] = "You are now a member of #{group.title}!"
+      return redirect_to groups_path
+    else
+      flash.now[:error] = "You already belong to that group!"
+      return render :join
+    end
   end
 
 end

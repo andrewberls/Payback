@@ -54,6 +54,11 @@ form {
     padding: 0;
   }
 
+  .field-disabled {
+    color: darken($med-gray, 35);
+    margin-bottom: 15px;
+  }
+
   .field-error { border: 1px solid #D34332 !important; }
 }
 

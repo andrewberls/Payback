@@ -1,0 +1,16 @@
+<div class="group-invitations">
+  <h3><%= header %></h3>
+  <form action="/groups/<%= group.gid %>/invite" class="form-invisible" method="post">
+
+    <!-- <div class="invitation-field">
+      <input type="text" name="invitations[0]recipient_email">
+      <a href="" class="invitation-remove">&times;</a>
+    </div> -->
+
+    <div class="invite-btns">
+      <a href="#" class="btn btn-blue add-invitation"><i class="icon-white icon-plus"></i></a>
+      <input type="submit" class="btn btn-green right" value="Send invitations! &raquo;">
+    </div>
+
+  </form>
+</div>

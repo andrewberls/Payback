@@ -34,7 +34,12 @@ class Group < ActiveRecord::Base
   end
 
   def add_user(user)
-    users << user
+    if users.include?(user)
+      return false
+    else
+      users << user
+      return true
+    end
   end
 
   def remove_user(user)

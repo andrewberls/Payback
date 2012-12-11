@@ -1,7 +1,7 @@
 <% provide(:title, "Group: #{@group.title}") %>
 
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag "groups", "invitations" %>
+  <%= javascript_include_tag "groups", "invitation-add" %>
 <% end %>
 
 <% if @group.users.count == 1 && current_user == @group.owner %>
@@ -13,7 +13,7 @@
       <%= link_to raw("&laquo; Back to Groups"), groups_path, class: "btn btn-shadow btn-large group-back" %>
 
       <div class="groups-container">
-        <%= render @group %>
+        <%= render @group, show_invs: true %>
       </div>
 
     </div>

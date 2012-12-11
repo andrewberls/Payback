@@ -1,33 +1,43 @@
 <div class="group">
-  <span class="group-title"><%= group.title %></span>
+  <div class="group-info">
+    <span class="group-title"><%= link_to_unless_current group.title, group_path(group.gid) %></span>
 
-  <span class="group-gid">ID: <%= group.gid %></span>
+    <span class="group-gid">ID: <%= group.gid %></span>
 
-  <span class="group-member-count"><%= link_to pluralize(group.users.count, 'member'), "#" %></span>
+    <span class="group-member-count"><%= link_to pluralize(group.users.count, 'member'), "#" %></span>
 
-  <div class="group-member-names">
-    <% group.users.each do |user| %>
-      <span class="group-member"><%= user.full_name %></span>
-    <% end %>
+    <div class="group-member-names">
+      <% group.users.each do |user| %>
+        <span class="group-member"><%= user.full_name %></span>
+      <% end %>
+    </div>
+
+    <span class="group-owner">
+      <% if current_user == group.owner %>
+        You own this group.
+      <% else %>
+        Owned by <%= group.owner.full_name %>
+      <% end %>
+    </span>
+
+    <div class="right">
+      <%  if current_user == group.owner %>
+        <%= link_to "Invite people", group_path(group.gid), class: 'btn btn-blue' unless params[:action] == 'show' %>
+        <%= link_to "Edit Info", edit_group_path(group.gid), class: "btn" %>
+      <% end %>
+
+      <%= link_to "Leave Group", leave_group_path(group.gid),
+        confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.",
+        class: "btn btn-red"
+      %>
+    </div>
+
   </div>
 
-  <span class="group-owner">
-    <% if current_user == group.owner %>
-      You own this group.
-    <% else %>
-      Owned by <%= group.owner.full_name %>
-    <% end %>
-  </span>
-
-  <div class="right">
-    <%  if current_user == group.owner %>
-      <%= link_to "Edit", edit_group_path(group.gid), class: "btn" %>
-    <% end %>
-
-    <%= link_to "Leave Group", leave_group_path(group.gid),
-      confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.",
-      class: "btn btn-red"
-    %>
-  </div>
+  <% if show_invs && current_user == @group.owner %>
+    <div>
+      <%= render 'group_invitations', group: @group, header: "Invite people by email:" %>
+    </div>
+  <% end %>
 
 </div><!-- .group -->

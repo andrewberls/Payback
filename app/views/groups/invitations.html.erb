@@ -1,3 +1,7 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "invitation-join" %>
+<% end %>
+
 <div class="row">
 
   <div class="span-10 offset-3 pretext-block">
@@ -7,14 +11,23 @@
   </div>
 
   <div class="span-6 offset-5">
-    <%= form_tag invitations_path do |f| %>
+    <%= form_tag invitations_path do %>
 
     <h1 class="form-title">Sign Up</h1>
 
     <%= render 'shared/instance_errors', instance: @user %>
 
-    <%= label_tag :full_name, "Full Name" %>
-    <%= text_field_tag :full_name, '', autofocus: true  %>
+    <div style="margin-bottom: 15px;">
+      <%= check_box_tag :existing, 0 %>
+      <label>I already have an account</label>
+    </div>
+
+    <p class="field-disabled">Email: <%= @invitation.recipient_email %></p>
+
+    <div id="field-name">
+      <%= label_tag :full_name, "Full Name" %>
+      <%= text_field_tag :full_name, '', autofocus: true  %>
+    </div>
 
     <%= label_tag :password %>
     <%= password_field_tag :password %>
