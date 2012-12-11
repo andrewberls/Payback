@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
 
   def must_be_logged_in
-    reject_unauthorized(signed_in?, login_path)
+    authorized = signed_in?
+    session[:return_to] = request.fullpath unless authorized
+    reject_unauthorized(authorized, path: login_path)
   end
 
   private
@@ -20,7 +22,9 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def reject_unauthorized(authorized=false, path=ACCESS_DENIED_PATH)
+  def reject_unauthorized(authorized=false, options={})
+    path = options.delete(:path) || ACCESS_DENIED_PATH
+
     unless authorized
       logger.warn "WARNING: Unauthorized access attempt"
 
