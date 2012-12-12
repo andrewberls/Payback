@@ -95,7 +95,7 @@ class GroupsController < ApplicationController
       inv_params.values.each do |params|
         email = params[:recipient_email]
 
-        unless group.users.include?(user)
+        unless group.users.map(&:email).include?(email)
           Invitation.create(group: group, sender: current_user, recipient_email: email)
         end
       end
