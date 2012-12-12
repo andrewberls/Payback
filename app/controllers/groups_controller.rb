@@ -148,7 +148,7 @@ class GroupsController < ApplicationController
   def invitation_token_must_be_valid
     @invitation = Invitation.find_by_token(params[:token])
     authorized  = @invitation.present? && !@invitation.used
-    reject_unauthorized(authorized, root_url)
+    reject_unauthorized(authorized, path: root_url)
   end
 
   def complete_invitation(options={})
