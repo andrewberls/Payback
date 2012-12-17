@@ -6,23 +6,19 @@ emailField = (num) ->
   </div>
   """
 
-
-
 $ ->
-  inv_num      = 1
-  $invitations = $(".group-invitations form")
-  $submit      = $invitations.find('.invite-btns')
+  inv_num = 1
+  $invs   = $(".group-invitations form")
+  $submit = $invs.find('.invite-btns')
   $(emailField(inv_num)).insertBefore($submit);
 
   $(".add-invitation").click ->
     # Slide down new invitations
     $field = $( emailField(++inv_num) ).hide()
-    $field.insertBefore($submit);
-    $field.slideDown()
+    $field.insertBefore($submit).slideDown()
 
   $(document.body).delegate '.invitation-remove', 'click', ->
     # Slide up and destroy an invitation
-    invitation = $(@).parent()
-    invitation.slideUp ->
-      invitation.remove()
+    $inv = $(@).parent()
+    $inv.slideUp -> $inv.remove()
     return false

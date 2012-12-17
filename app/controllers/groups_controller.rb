@@ -109,15 +109,17 @@ class GroupsController < ApplicationController
   def invitations
     # Join by token
     group = @invitation.group
+    @user = User.find_by_email(@invitation.recipient_email)
 
-    if request.get? && signed_in?
-      return complete_invitation(user: current_user, group: group, invitation: @invitation)
+    if request.get?
+
+      if signed_in?
+        return complete_invitation(user: current_user, group: group, invitation: @invitation)
+      end
     elsif request.post?
-
-      if params[:existing]
+      if @user.present?
         # Log in
-        @user = User.find_by_email(@invitation.recipient_email)
-        valid =  @user && @user.authenticate(params[:password])
+        valid = @user.authenticate(params[:password])
       else
         # Sign up
         @user = User.new(email: @invitation.recipient_email) do |u|
