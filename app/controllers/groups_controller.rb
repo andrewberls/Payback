@@ -112,7 +112,7 @@ class GroupsController < ApplicationController
     @user = User.find_by_email(@invitation.recipient_email)
 
     if request.get?
-
+      # Complete automatically if already signed in, else render the form
       if signed_in?
         return complete_invitation(user: current_user, group: group, invitation: @invitation)
       end

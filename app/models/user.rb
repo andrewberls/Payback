@@ -4,6 +4,16 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  has_and_belongs_to_many :groups
+  has_many :owned, class_name: 'Group', :foreign_key => :owner_id
+
+  has_many :debts,   class_name: 'Expense', :foreign_key => :debtor_id
+  has_many :credits, class_name: 'Expense', :foreign_key => :creditor_id
+
+  has_many :notifications_from, class_name: 'Notification', :foreign_key => 'user_from_id'
+  has_many :notifications_to,   class_name: 'Notification', :foreign_key => 'user_to_id'
+
+
   validates :full_name,
     presence: true,
     length: { maximum: 50 }
@@ -18,15 +28,6 @@ class User < ActiveRecord::Base
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_auth_token
-
-  has_and_belongs_to_many :groups
-  has_many :owned, class_name: 'Group', :foreign_key => :owner_id
-
-  has_many :debts,   class_name: 'Expense', :foreign_key => :debtor_id
-  has_many :credits, class_name: 'Expense', :foreign_key => :creditor_id
-
-  has_many :notifications_from, class_name: 'Notification', :foreign_key => 'user_from_id'
-  has_many :notifications_to,   class_name: 'Notification', :foreign_key => 'user_to_id'
 
 
   def self.users_from_keys(users, group, current_user)

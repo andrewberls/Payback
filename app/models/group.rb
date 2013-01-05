@@ -4,15 +4,6 @@ class Group < ActiveRecord::Base
 
   has_secure_password
 
-  validates :title,
-    presence: true,
-    length: { maximum: 50 }
-
-  validates :password, presence: { on: :create },
-                       length: { minimum: 5 }, :if => :password_digest_changed?
-
-  before_create :generate_gid
-
   has_and_belongs_to_many :users
   belongs_to :owner, class_name: "User"
 
@@ -21,6 +12,15 @@ class Group < ActiveRecord::Base
 
   has_many :invitations
   accepts_nested_attributes_for :invitations
+
+  validates :title,
+    presence: true,
+    length: { maximum: 50 }
+
+  validates :password, presence: { on: :create },
+                       length: { minimum: 5 }, :if => :password_digest_changed?
+
+  before_create :generate_gid
 
   def as_json(options={})
     options[:except] ||= [:password_digest, :id]

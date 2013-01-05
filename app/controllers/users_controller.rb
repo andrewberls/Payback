@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :user_must_be_in_current_groups, only: [:debts, :credits]
 
   def new
-    return redirect_to expenses_path if current_user
+    return redirect_to expenses_path if signed_in?
     @user = User.new
   end
 
@@ -70,10 +70,10 @@ class UsersController < ApplicationController
   end
 
   def user_must_be_in_current_groups
-    @user = User.find_by_id(params[:id])
-    aggregate_users = current_user.groups.collect { |g| g.users }.flatten
-    authorized = @user.present? && aggregate_users.include?(@user)
-    reject_unauthorized(authorized)
+    @user   = User.find_by_id(params[:id])
+    members = current_user.groups.map(&:users).flatten
+    auth    = @user.present? && members.include?(@user)
+    reject_unauthorized(auth)
   end
 
   def reject_empty_expenses(expenses)

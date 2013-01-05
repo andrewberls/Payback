@@ -2,6 +2,12 @@ class Expense < ActiveRecord::Base
 
   attr_accessible :title, :amount, :action, :active
 
+  belongs_to :group
+
+  belongs_to :creditor, class_name: "User"
+  belongs_to :debtor,   class_name: "User"
+
+
   validates :amount,
     presence: true,
     numericality: { greater_than_or_equal_to: 0.01 }
@@ -9,11 +15,6 @@ class Expense < ActiveRecord::Base
   validates :title,
     presence: true,
     length: { maximum: 75 }
-
-  belongs_to :group
-
-  belongs_to :creditor, class_name: "User"
-  belongs_to :debtor,   class_name: "User"
 
 
   def edited?
