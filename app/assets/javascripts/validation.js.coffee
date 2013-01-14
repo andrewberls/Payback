@@ -4,13 +4,13 @@ insertAfter = (refNode, newNode) ->
 
 # User-facing input fields in a form
 inputFields = ($form) ->
-  $form.find('input:not([type=submit]):visible, textarea')
+  $form.find('input[type=text]')
 
 # Filter blank fields from a list
 fieldsWithErrors = (fields) ->
   result = []
   for f in fields
-    result.push(f) if !f.value
+    result.push(f) if !f.value or f.value.length == 0
   result
 
 # Add error classes to fields with errors
