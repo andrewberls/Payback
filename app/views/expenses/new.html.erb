@@ -13,14 +13,22 @@
       <%= render 'shared/instance_errors', instance: @expense %>
 
       <p>Select a group:</p>
+      <%= select("group", "gid", @groups.map { |g| [g.title, g.gid] },
+          { include_blank: false }, id: "group-select") %>
 
-      <%=
-        select("group", "gid", @groups.map { |g| [g.title, g.gid] },
-          { include_blank: false },
-          id: "group-select")
-      %>
 
-      <%= render 'select_users' %>
+      <div class="users-prompt">
+        <!-- Group Expense selected by default -->
+        <a href="#" class="btn btn-large btn-blue" id="users-group"><i class="icon-white icon-ok"></i>Group Expense</a>
+        <a href="#" class="btn btn-large btn-disabled2x" id="users-select">Select Users &raquo;</a>
+      </div>
+
+      <div id="users-container">
+        <h5>Select Members</h5>
+
+        <div class="user-column"></div>
+      </div>
+
 
       <%= f.label :amount %>
       <span class="help-text">Decimal optional</span>
@@ -37,7 +45,13 @@
 
     <% end %><!-- .new-expense-form -->
 
-    <%= render 'expense_faqs' %>
+    <div id="expense-faqs">
+      <h3>Split vs Payback</h3>
+      <p><strong>Split Evenly</strong> will split the cost among the members selected, including yourself.</p>
+      <p><strong>Payback</strong> will have the selected members pay you back in full.</p>
+      <a id="hide-expense-faqs" class="btn">Got it!</a>
+    </div>
+
 
     <%= link_to raw("&laquo; Back to Expenses "), expenses_path, class: "btn btn-shadow expense-back" %>
 
