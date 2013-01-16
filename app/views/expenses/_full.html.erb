@@ -1,0 +1,32 @@
+<div class="dashboard-container">
+
+<div class="row">
+  <div class="span-16">
+    <div class="condensed-header">
+      Too much?
+      <%= link_to raw("Try the condensed view &raquo;"), condensed_expenses_path, remote: true %>
+    </div>
+  </div>
+</div>
+
+<%= render 'dashboard_buttons' %>
+
+<div class="row">
+
+  <%= flash_success %>
+
+  <% [:credits, :debts].each do |type| %>
+    <div class="span-8">
+      <h2><%= (type == :credits) ? 'Owed to You' : 'You Owe' %></h2>
+
+      <% if current_user.send("active_#{type}").blank? %>
+        <%= render "blank_#{type}" %>
+      <% else %>
+        <%= render "dashboard_#{type}" %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+</div>

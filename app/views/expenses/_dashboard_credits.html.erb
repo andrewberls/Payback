@@ -9,7 +9,7 @@
         <%= render 'credit', expense: expense %>
       <% end %>
     </div>
-  </div><!-- .group-container -->
+  </div>
 
   <% if @credits.count > 1 %>
     <p class="expense-total">You are owed <%= number_to_currency(current_user.total_credit_owed) %>.</p>

@@ -49,10 +49,18 @@ class ExpensesController < ApplicationController
   def index
     # Main dashboard
     @notice = SiteNotice.last
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def condensed
     # Dashboard - one listing per group user
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit
