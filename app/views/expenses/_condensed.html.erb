@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<%= render 'dashboard_buttons' %>
+<%= render 'expenses/dashboard/buttons' %>
 
 <div class="row">
 
@@ -23,7 +23,7 @@
     <h2>Total Owed to You</h2>
 
     <% if current_user.active_credits.blank? %>
-      <%= content_tag :div, render("blank_credits"), class: "expenses-container" %>
+      <%= content_tag :div, blank_credits, class: "expenses-container" %>
     <% else %>
 
       <% @credit_groups.each do |group| %>
@@ -61,7 +61,7 @@
     <h2>Total You Owe</h2>
 
     <% if current_user.active_debts.blank? %>
-      <%= render 'blank_debts' %>
+      <%= content_tag :div, blank_debts, class: "expenses-container" %>
     <% else %>
 
       <% @debt_groups.each do |group| %>

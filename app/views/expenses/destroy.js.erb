@@ -5,6 +5,6 @@ $('*[data-id="' + "<%= @expense.id %>" + '"]').remove();
 $total.find('.amount').html("<%= number_to_currency(@credit_owed) %>");
 
 if ($container.children().length === 0) {
-  $container.html("<%= j render 'blank_credits' %>")
+  $container.html("<%= j blank_credits %>")
   $total.remove()
 }

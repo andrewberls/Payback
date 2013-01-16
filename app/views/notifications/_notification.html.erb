@@ -9,7 +9,7 @@
   end
 %>
 
-<div class="notification <%= aux_class %>">
+<div class="notification <%= aux_class %>" data-id="<%= expense.id %>">
   <%= content_tag :div, notif_text(notification), class: 'notification-text' %>
 
   <%= content_tag :div, mark_off_btn(expense), class: 'right' if expense.active %>

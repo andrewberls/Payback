@@ -56,6 +56,11 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def show
+    # TODO: find the cause for this
+    redirect_to expenses_path
+  end
+
   def condensed
     # Dashboard - one listing per group user
     respond_to do |format|

@@ -25,8 +25,8 @@ $ ->
 
     $.post "/notifications/read"
 
+
   $(document.body).delegate '.mark-off-btn', 'click', ->
-    console.log $(@).parent().parent()
     id = $(@).parent().parent().data('id')
     $(@).parent().html confirm_btns(id)
     return false

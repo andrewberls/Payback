@@ -90,9 +90,6 @@
     bottom: 10px; right: 10px;
   }
 
-  .confirm-yes { color: #35aa47; }
-  .confirm-no { color: #B94A48; }
-
   .mark-off-notification { padding: 4px; }
 
   @media (max-width: 1100px) {
@@ -120,8 +117,6 @@
       clear: none;
       margin: 3px 0 0 10px;
     }
-
-    .expense-actions { top: 5px; }
   }
 
 } // .expense
