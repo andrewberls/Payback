@@ -20,7 +20,7 @@
       <h2><%= (type == :credits) ? 'Owed to You' : 'You Owe' %></h2>
 
       <% if current_user.send("active_#{type}").blank? %>
-        <%= render "blank_#{type}" %>
+        <%= content_tag :div, render("blank_#{type}"), class: "expenses-container" %>
       <% else %>
         <%= render "dashboard_#{type}" %>
       <% end %>

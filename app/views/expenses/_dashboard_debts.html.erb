@@ -3,7 +3,7 @@
   <div class="group-container">
     <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
 
-    <div class="expenses-container">
+    <div class="expenses-container debts-container">
       <% @debts = group.active_debts_for(current_user) %>
       <% @debts.each do |expense| %>
         <%= render 'debt', expense: expense %>

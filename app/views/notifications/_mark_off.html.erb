@@ -4,7 +4,7 @@
   <%= f.hidden_field :notif_type,   value: 'mark_off' %>
   <%= f.hidden_field :expense_id,   value: expense.id %>
 
-  <%= button_tag type: :submit, title: "Request for #{expense.creditor.first_name} to mark this off", class: 'btn btn-blue no-text mark-off' do %>
+  <%= button_tag type: :submit, title: "Request for #{expense.creditor.first_name} to mark this off", class: 'btn btn-blue no-text mark-off-notification' do %>
     <i class='icon-comment icon-white'></i>
   <% end %>
 <% end %>

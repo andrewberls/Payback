@@ -1,7 +1,7 @@
 //-- EXPENSES DASHBOARD
 //------------------------------------
 #dashboard-buttons {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 
   .btn { margin-right: 10px; }
 }
@@ -89,7 +89,7 @@
     bottom: 10px; right: 10px;
   }
 
-  .mark-off { padding: 4px; }
+  .mark-off-notification { padding: 4px; }
 
   @media (max-width: 1100px) {
     padding: 5px;
