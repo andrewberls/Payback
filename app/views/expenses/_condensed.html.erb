@@ -23,7 +23,7 @@
     <h2>Total Owed to You</h2>
 
     <% if current_user.active_credits.blank? %>
-      <%= render 'blank_credits' %>
+      <%= content_tag :div, render("blank_credits"), class: "expenses-container" %>
     <% else %>
 
       <% @credit_groups.each do |group| %>
