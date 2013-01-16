@@ -85,9 +85,13 @@
 
   .expense-actions {
     // Button container
+    font-size: 14px;
     position: absolute;
     bottom: 10px; right: 10px;
   }
+
+  .confirm-yes { color: #35aa47; }
+  .confirm-no { color: #B94A48; }
 
   .mark-off-notification { padding: 4px; }
 

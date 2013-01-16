@@ -13,5 +13,10 @@
 
   <%= render 'expenses/stale_badge', expense: expense %>
 
-  <%= content_tag :div, mark_off_btn(expense), class: 'expense-actions' %>
+  <div class="expense-actions">
+    <a href="#" class="btn no-text btn-green mark-off-btn">
+      <i class='icon-ok icon-white'></i>
+    </a>
+  </div>
+
 </div><!-- .expense -->
