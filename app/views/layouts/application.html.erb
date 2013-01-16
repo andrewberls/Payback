@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width">
-  <title>Payback | <%= yield(:title) %></title>
+  <title>Payback | <%= yield :title %></title>
   <%= stylesheet_link_tag :payback %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/ico" href="/favicon.gif" />
@@ -22,11 +22,7 @@
 </head>
 <body>
 
-  <% if signed_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/static_header' %>
-  <% end %>
+  <%= render (signed_in?) ? 'shared/header' : 'shared/static_header' %>
 
   <div class="container">
 
@@ -34,7 +30,7 @@
 
     <%= render "shared/footer" %>
 
-  </div><!-- .container -->
+  </div>
 
 
   <%= javascript_include_tag "application" %>

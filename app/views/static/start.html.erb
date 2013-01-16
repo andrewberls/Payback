@@ -1,9 +1,124 @@
 <% provide(:title, 'The easiest way to track spending and borrowing with your group') %>
 
-<%= render 'landing_main' %>
+<section class="landing-main">
+  <div class="container">
+    <div class="row">
 
-<%= render 'landing_reasons' %>
+      <div class="span-6">
+        <h1>Welcome to Payback.</h1>
 
-<%= render 'landing_how' %>
+        <p class="easy-way">
+          The easiest way to track spending and borrowing with your
+          <span id="word-scroll">
+            <span id="word-scroll-inner">
+              <span class="word">household.</span>
+              <span class="word">group.</span>
+              <span class="word">friends.</span>
+              <span class="word">family.</span>
+              <span class="word">roommates.</span>
+            </span>
+          </span><!-- #word-scroll -->
+        </p>
 
-<%= render 'landing_footer' %>
+        <%= link_to raw("Get started for free &raquo;"), signup_path, class: "btn btn-green btn-cta" %>
+      </div>
+
+      <div class="span-10">
+        <%= image_tag "comparison.png", alt: "The Payback interface" %>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="landing-reasons">
+  <div class="container">
+    <div class="row">
+
+      <h1 class="section-title">A few reasons we think you'll love Payback:</h1>
+
+      <div class="span-5">
+        <h2 class="quote">I swear you owed me $10...</h2>
+        <aside class="blueborder"></aside>
+        <p>Was it from the time at the movies? Or was it that restaurant? Payback never forgets who you've lent money to or when it happened.</p>
+      </div>
+
+      <div class="span-6">
+        <h2>No more arguments</h2>
+        <aside class="blueborder"></aside>
+        <p>Use Payback to automatically split your shared expenses, and track exactly who's paid you back and who still owes you money.</p>
+      </div>
+
+      <div class="span-5">
+        <h2>Built for your phone</h2>
+        <aside class="blueborder"></aside>
+        <p>Payback is built to look great on your phone for when you're on the go. No downloads required!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="landing-how">
+  <div class="container">
+    <div class="row">
+      <div class="span-12 offset-2">
+
+        <h1>How it works:</h1>
+
+        <div class="row">
+          <div class="span-5">
+            <%= image_tag "group-thumb.png", alt: "Joining a group" %>
+          </div>
+          <div class="span-7">
+            <span class="round-number">1</span>
+            <h2>Create your group</h2>
+            <p>Signing up for Payback and creating your first group takes seconds. Once everyone you want to share expenses with has joined, you're ready to go!</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="span-7">
+            <span class="round-number">2</span>
+            <h2>Start spending</h2>
+            <p>Whenever you lend out money, just let Payback know and it will remember the details for you. If you're entering a shared expense, select the group members you want and choose how you want to divide the cost.</p>
+          </div>
+          <div class="span-5">
+            <%= image_tag "expense-thumb.png", alt: "Adding a new expense" %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span-16 closing-cta">
+        <p>Payback makes lending easier.</p>
+        <%= link_to raw("Get started for free &raquo;"), signup_path, class: "btn btn-green btn-cta" %>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="landing-footer">
+  <div class="container">
+    <div class="row">
+      <div class="span-8 offset-4">
+
+        <p>Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.</p>
+        <%= link_to "Log in", login_path %>
+        <span class="divider">|</span>
+        <%= link_to "Contact", contact_path %>
+
+      </div>
+    </div>
+  </div>
+</section>

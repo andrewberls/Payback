@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width">
-  <title>Payback | <%= yield(:title) %></title>
-  <%= stylesheet_link_tag "payback" %>
+  <title>Payback | <%= yield :title %></title>
+  <%= stylesheet_link_tag :payback %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/ico" href="/favicon.gif" />
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -12,7 +12,7 @@
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-32566261-1']);
     _gaq.push(['_trackPageview']);
-  
+
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -21,17 +21,12 @@
   </script>
 </head>
 <body>
-  
-  <% if signed_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/static_header' %>
-  <% end %>
 
+  <%= render (signed_in?) ? 'shared/header' : 'shared/static_header' %>
 
   <%= yield %>
 
-    
+
   <%= javascript_include_tag "application" %>
   <%= yield :javascript_includes %>
 

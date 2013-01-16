@@ -1,5 +1,14 @@
 <% provide(:title, 'Dashboard') %>
 
-<%= render 'shared/site_notice' %>
+<% if @notice.present? && @notice.expires_at > Time.now && cookies[@notice.close_key].blank? %>
+  <div class="row">
+    <div class="span-16">
+      <div class="alert alert-notice feature-notice" data-key="<%= @notice.id %>">
+        <%= @notice.title %>
+        <i class="icon-remove close-alert"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= render 'full' %>
