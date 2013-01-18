@@ -54,11 +54,11 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    full_name.split(" ").first
+    @first_name ||= full_name.split(" ").first
   end
 
   def last_name
-    full_name.split(" ").last
+    @last_name ||= full_name.split(" ").last
   end
 
   def expenses(group=nil)
