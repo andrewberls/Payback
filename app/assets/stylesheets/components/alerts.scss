@@ -29,6 +29,8 @@
     color: darken($blue, 5);
   }
 
+  .close-alert:hover { cursor: pointer; }
+
   li {
     margin-left: 10px;
     &:before { content: "-"; }
