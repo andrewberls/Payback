@@ -4,13 +4,13 @@
   <div class="span-8 offset-4 welcome-container">
 
     <h1>Welcome to Payback!</h1>
-    <p>Hey <%= current_user.first_name %>, you're almost ready to go! To get started, would you like to join an existing group, or create a new one?</p>
+    <p>Hey <%= current_user.first_name %>, you're almost ready to go! To get started, would you like to create a new group, or join an existing one?</p>
 
     <div class="row">
       <div class="span-6 offset-1">
-        <%= link_to "Join existing group", join_groups_path, class: "btn btn-blue btn-huge", id: "group-join" %>
-
         <%= link_to "Create a new group", new_group_path, class: "btn btn-blue btn-huge", id: "group-new" %>
+
+        <%= link_to "Join existing group", join_groups_path, class: "btn btn-blue btn-huge", id: "group-join" %>
       </div>
     </div>
 
