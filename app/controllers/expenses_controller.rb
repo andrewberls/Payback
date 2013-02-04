@@ -85,6 +85,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.deactivate
     @credit_owed = current_user.total_credit_owed
+    @debtor = User.find_by_id(params[:debtor_id])
 
     respond_to do |format|
       format.html { return redirect_to params[:redirect] || expenses_path }

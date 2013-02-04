@@ -1,9 +1,11 @@
 # TODO: factor out all the hard-coded stuff
 
-confirm_btns = (id) ->
+confirm_btns = (exp_id, debtor_id) ->
+  debtor_param = if debtor_id? then "?debtor_id=#{debtor_id}" else ""
   """
     <p>
-      <a href="/expenses/#{id}?redirect=%2Fexpenses" data-method="delete" data-remote="true" rel="nofollow" class="confirm-yes">yes</a> /
+      <a href="/expenses/#{exp_id}#{debtor_param}" data-method="delete" data-remote="true"
+        rel="nofollow" class="confirm-yes">yes</a> /
       <a href='#' class="confirm-no">no</a>
     </p>
   """
@@ -27,12 +29,21 @@ $ ->
 
 
   $(document.body).delegate '.mark-off-btn', 'click', ->
-    id = $(@).parent().parent().data('id')
-    $(@).parent().html confirm_btns(id)
+    $expense  = $(@).parent().parent()
+    exp_id    = $expense.data('id')
+    debtor_id = $expense.data('debtor-id')
+    $(@).parent().html confirm_btns(exp_id, debtor_id)
     return false
 
+  $(document.body).delegate '.confirm-yes', 'click', ->
+    $actions = $(@).parent().parent()
+    exp_id   = $actions.parent().data('id')
+    $expense = $('*[data-id="' + exp_id + '"]')
+    $actions.remove()
+    $expense.slideUp -> $expense.remove()
+
   $(document.body).delegate '.confirm-no', 'click', ->
-    $(@).parent().parent().html   """
+    $(@).parent().parent().html """
       <a href="#" class="btn no-text btn-green mark-off-btn">
         <i class='icon-ok icon-white'></i>
       </a>

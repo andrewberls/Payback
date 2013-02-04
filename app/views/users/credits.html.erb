@@ -4,7 +4,7 @@
   <div class="span-8 offset-4">
     <h1>Credits to <%= @user.full_name %></h1>
 
-    <div class="expenses-container">
+    <div class="expenses-container user-container">
       <% @credits.each do |expense| %>
         <%= render 'expenses/credit', expense: expense %>
       <% end %>
@@ -24,9 +24,9 @@
     <% if @credits.count > 1 %>
 
       <%= link_to raw("<i class='icon-ok icon-white'></i> Mark all"),
-        { controller: 'expenses', action: 'clear' }, :method => :delete,
+        { controller: 'expenses', action: 'clear' }, method: :delete,
         confirm: "Mark #{@credits.count} credits to #{@user.first_name} completed?",
-        class: "btn btn-large btn-red", style: 'float: right'
+        class: "btn btn-large btn-red right mark-all"
       %>
     <% end  %>
   </div>

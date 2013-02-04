@@ -1,10 +1,30 @@
+// Dashboard
+// ----------------
 $container = $(".credits-container");
 $total     = $('.expense-total');
 
-$('*[data-id="' + "<%= @expense.id %>" + '"]').remove();
 $total.find('.amount').html("<%= number_to_currency(@credit_owed) %>");
 
-if ($container.children().length === 0) {
+// Hack here - event propagates to controller before DOM node is removed,
+// making the children include the just-deleted node
+if ($container.children().length === 1) {
   $container.html("<%= j blank_credits %>")
   $total.remove()
+}
+
+
+// User credits
+// ----------------
+$userContainer = $('.user-container');
+$userTotal     = $('.expense-total-large');
+$markAllBtn    = $('.mark-all')
+
+switch ($userContainer.children().length) {
+  case 2:
+    $userTotal.html('')
+    $markAllBtn.remove()
+    break;
+  case 1:
+    $userContainer.html("<%= j blank_credits(@debtor.full_name) if @debtor.present? %>")
+    break;
 }
