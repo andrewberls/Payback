@@ -26,7 +26,6 @@ class ExpensesController < ApplicationController
       end
 
       cost_per_user = @expense.cost_for(selected_users)
-
       @expense.tap do |exp|
         exp.group    = group
         exp.creditor = current_user
@@ -36,7 +35,6 @@ class ExpensesController < ApplicationController
 
       return redirect_to expenses_path
     else
-      @groups = current_user.groups
       flash.now[:error] = "Error - check your fields and try again!"
       return render :new
     end
@@ -92,7 +90,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.deactivate
     @credit_owed = current_user.total_credit_owed
-    @debtor = User.find_by_id(params[:debtor_id])
+    @debtor_name = @expense.debtor.full_name
 
     respond_to do |format|
       format.html { return redirect_to params[:redirect] || expenses_path }
@@ -112,9 +110,7 @@ class ExpensesController < ApplicationController
   private
 
   def redirect_empty_groups
-    # Redirect to welcome page if user groups empty
-    @groups = current_user.groups
-    return redirect_to welcome_path if @groups.blank?
+    return redirect_to welcome_path if current_user.groups.blank?
   end
 
   def find_dashboard_resources

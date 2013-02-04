@@ -25,6 +25,6 @@ switch ($userContainer.children().length) {
     $markAllBtn.remove()
     break;
   case 1:
-    $userContainer.html("<%= j blank_credits(@debtor.full_name) if @debtor.present? %>")
+    $userContainer.html("<%= j blank_credits(@debtor_name) %>")
     break;
 }

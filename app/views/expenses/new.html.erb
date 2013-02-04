@@ -13,7 +13,7 @@
       <%= render 'shared/instance_errors', instance: @expense %>
 
       <p>Select a group:</p>
-      <%= select("group", "gid", @groups.map { |g| [g.title, g.gid] },
+      <%= select("group", "gid", current_user.groups.map { |g| [g.title, g.gid] },
           { include_blank: false }, id: "group-select") %>
 
 
