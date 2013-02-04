@@ -1,5 +1,3 @@
-require 'expression_parser'
-
 class ExpensesController < ApplicationController
 
   before_filter :must_be_logged_in
@@ -11,19 +9,12 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(params[:expense]) do |exp|
-      exp.action = (params[:commit] == 'Payback') ? :payback : :split
-      exp.amount = ExpressionParser.parse(params[:expense][:amount])
-    end
+    @expense = Expense.build(params)
 
     if @expense.valid?
       group          = Group.find_by_gid(params[:group][:gid])
       selected_users = User.users_from_keys(params[:users], group, current_user)
-
-      if selected_users.empty?
-        flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
-        return redirect_to new_expense_path
-      end
+      reject_empty_users(selected_users)
 
       cost_per_user = @expense.cost_for(selected_users)
       @expense.tap do |exp|
@@ -46,8 +37,6 @@ class ExpensesController < ApplicationController
 
   def index
     # Main dashboard
-    @notice = SiteNotice.last
-
     respond_to do |format|
       format.html
       format.js
@@ -124,6 +113,13 @@ class ExpensesController < ApplicationController
     @expense   = Expense.find(params[:id])
     authorized = current_user.active_credits.include?(@expense)
     reject_unauthorized(authorized)
+  end
+
+  def reject_empty_users(users)
+    if users.blank?
+      flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
+      return render :new
+    end
   end
 
 end

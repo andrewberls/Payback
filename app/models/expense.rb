@@ -1,3 +1,5 @@
+require 'expression_parser'
+
 class Expense < ActiveRecord::Base
 
   attr_accessible :title, :amount, :action, :active
@@ -17,6 +19,13 @@ class Expense < ActiveRecord::Base
     length: { maximum: 75 }
 
 
+  def self.build(params)
+    Expense.new(params[:expense]) do |exp|
+      exp.action = (params[:commit] == 'Payback') ? :payback : :split
+      exp.amount = ExpressionParser.parse(params[:expense][:amount])
+    end
+  end
+
   def edited?
     created_at != updated_at
   end
@@ -35,9 +44,9 @@ class Expense < ActiveRecord::Base
     cost_per_user.to_f
   end
 
+  # Split and assign a debt amongst a set of selected users
+  # Creates a duplicated instance to assign to each user
   def assign_to(*users)
-    # Split and assign a debt amongst a set of selected users
-    # Creates a duplicated instance to assign to each user
 
     users.flatten.each do |user|
       expense = self.dup

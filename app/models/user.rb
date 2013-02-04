@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
   before_create :generate_auth_token
 
 
-  def self.users_from_keys(users, group, current_user)
-    # TODO: current_user parameter is a hack as its only accessible through controllers.
+  def self.users_from_keys(users, group, creditor)
     selected_users = []
 
     if users
@@ -42,7 +41,7 @@ class User < ActiveRecord::Base
       end
     else
       # Otherwise just use the whole group
-      selected_users = group.users - [current_user]
+      selected_users = group.users - [creditor]
     end
 
     selected_users
