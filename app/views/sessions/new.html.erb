@@ -19,11 +19,14 @@
         Remember Me
       </label>
 
-      <%= submit_tag "Log in", class: "btn btn-blue submit-validate", data: { failure: 'Invalid email or password' } %>
+      <%= submit_tag "Log in", class: "btn btn-blue submit-validate" %>
 
     <% end %>
 
-    <span class="form-suggestion">Don't have an account? <%= link_to raw("Sign up for free &raquo;"), signup_path %></span>
+    <span class="form-suggestion">
+      Don't have an account?
+      <%= link_to raw("Sign up for free &raquo;"), signup_path %>
+    </span>
 
   </div>
 </div>
