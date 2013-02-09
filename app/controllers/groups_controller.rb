@@ -33,7 +33,11 @@ class GroupsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html
+      format.html {
+        unless current_user == @group.owner && @group.users.count == 1
+          return redirect_to groups_path
+        end
+      }
       format.json do
         users = @group.users - (params[:others] ? [current_user] : [])
         return render json: {

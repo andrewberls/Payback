@@ -12,6 +12,13 @@
 
 
 $ ->
+  # Utils
+  window.toggleSlide = ($selector, speed=350) ->
+    if $selector.is(':hidden')
+      $selector.slideDown(speed)
+    else
+      $selector.slideUp(speed)
+
   # Set up tooltips
   $('.expense-stale').tipsy()
   $('.expense-edited').tipsy()

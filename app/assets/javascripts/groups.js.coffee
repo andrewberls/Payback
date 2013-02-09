@@ -1,13 +1,5 @@
 $ ->
-  speed   = 350
-  $toggle = $('.group-member-count')
-
-  $toggle.click ->
+  $('.group-member-count').click ->
     $names = $(@).parent().find('.group-member-names')
-
-    if $names.is(':hidden')
-      $names.slideDown(speed)
-    else
-      $names.slideUp(speed)
-
+    toggleSlide($names)
     return false

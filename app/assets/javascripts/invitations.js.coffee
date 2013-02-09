@@ -7,9 +7,14 @@ emailField = (num) ->
   """
 
 $ ->
+  $('.show-invitations').click ->
+    $groupInvitations = $(@).parent().parent().next('.group-invitations')
+    toggleSlide($groupInvitations, 500)
+
+
   inv_num = 1
-  $invs   = $(".group-invitations form")
-  $submit = $invs.find('.invite-btns')
+  $form   = $(".group-invitations form")
+  $submit = $form.find('.invite-btns')
   $(emailField(inv_num)).insertBefore($submit);
 
   $(".add-invitation").click ->
@@ -22,3 +27,5 @@ $ ->
     $inv = $(@).parent()
     $inv.slideUp -> $inv.remove()
     return false
+
+
