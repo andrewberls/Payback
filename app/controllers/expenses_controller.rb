@@ -14,7 +14,11 @@ class ExpensesController < ApplicationController
     if @expense.valid?
       group          = Group.find_by_gid(params[:group][:gid])
       selected_users = User.users_from_keys(params[:users], group, current_user)
-      reject_empty_users(selected_users)
+
+      if selected_users.blank?
+        flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
+        return render :new
+      end
 
       cost_per_user = @expense.cost_for(selected_users)
       @expense.tap do |exp|
@@ -113,13 +117,6 @@ class ExpensesController < ApplicationController
     @expense   = Expense.find(params[:id])
     authorized = current_user.active_credits.include?(@expense)
     reject_unauthorized(authorized)
-  end
-
-  def reject_empty_users(users)
-    if users.blank?
-      flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
-      return render :new
-    end
   end
 
 end
