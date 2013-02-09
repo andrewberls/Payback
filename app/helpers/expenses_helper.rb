@@ -6,6 +6,10 @@ module ExpensesHelper
     end
   end
 
+  def expense_total_for(user)
+    "#{user.first_name} owes you #{number_to_currency(current_user.active_credit_amt_to(user))}"
+  end
+
   def blank_debts
     blank_expense do
       content_tag :p, "You don't owe anybody money! :-)"

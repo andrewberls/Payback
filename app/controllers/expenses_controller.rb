@@ -83,7 +83,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.deactivate
     @credit_owed = current_user.total_credit_owed
-    @debtor_name = @expense.debtor.full_name
+    @user = @expense.debtor
 
     respond_to do |format|
       format.html { return redirect_to params[:redirect] || expenses_path }
