@@ -7,9 +7,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
 
   def must_be_logged_in
-    authorized = signed_in?
-    session[:return_to] = request.fullpath unless authorized
-    reject_unauthorized(authorized, path: login_path)
+
+    respond_to do |format|
+      format.html {
+        authorized = signed_in?
+        session[:return_to] = request.fullpath unless authorized
+        reject_unauthorized(authorized, path: login_path)
+      }
+      format.json {
+        # authenticate_or_request_with_http_token do |token, options|
+        #   ApiKey.exists?(access_token: token)
+        # end
+      }
+    end
+
   end
 
   private

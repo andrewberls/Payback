@@ -28,7 +28,15 @@ class UsersController < ApplicationController
 
   def show
     # Currently not a user-available action
-    return redirect_to expenses_path
+
+    respond_to do |format|
+      format.html { return redirect_to expenses_path }
+      format.json {
+        return render json: current_user.as_json(
+          methods: [:expenses]
+        )
+      }
+    end
   end
 
   def edit

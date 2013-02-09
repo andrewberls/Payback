@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html { return redirect_to welcome_path if @groups.blank? }
-      format.json { return render json: @groups }
+      format.json { return render json: @groups.as_json(methods: [:users]) }
     end
   end
 
