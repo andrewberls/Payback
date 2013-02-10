@@ -6,13 +6,12 @@
 
 <div class="row">
   <div class="span-10 offset-3">
-
     <h1>Your Groups</h1>
 
     <%= flash_success %>
 
     <div class="groups-container">
-      <%= render @groups, show_invs: false %>
+      <%= render @groups %>
     </div>
 
     <div class="group-btn-container">

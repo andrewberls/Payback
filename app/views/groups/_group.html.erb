@@ -3,7 +3,7 @@
 <div class="group">
 
   <div class="group-info">
-    <span class="group-title"><%= link_to_unless_current group.title, group_path(group.gid) %></span>
+    <span class="group-title"><%= group.title %></span>
 
     <span class="group-gid">ID: <%= group.gid %></span>
 
@@ -20,8 +20,8 @@
     </span>
 
     <div class="right">
-      <%  if group_owned %>
-        <%= link_to "Invite people", group_path(group.gid), class: 'btn btn-blue' unless params[:action] == 'show' %>
+      <% if group_owned %>
+        <%= link_to "Invite people", '#', class: 'btn btn-blue show-invitations' %>
         <%= link_to "Edit Info", edit_group_path(group.gid), class: "btn" %>
       <% end %>
 
@@ -32,6 +32,6 @@
     </div>
   </div><!-- .group-info -->
 
-  <%= render 'group_invitations', group: group, header: "Invite people by email:" if show_invs && group_owned %>
+  <%= render 'group_invitations', group: group, header: "Invite people by email:", visible: false if group_owned %>
 
 </div>

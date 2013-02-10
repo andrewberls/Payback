@@ -51,8 +51,5 @@ $ ->
   # Split/Payback FAQ slide
   $faq = $('#expense-faqs')
   $('#show-expense-faqs, #hide-expense-faqs').click ->
-    if $faq.is(":hidden")
-      $faq.slideDown(speed)
-    else
-      $faq.slideUp(speed)
+    toggleSlide($faq)
     return false

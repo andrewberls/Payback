@@ -1,14 +1,16 @@
-<div class="group-invitations">
+<div class="group-invitations" style="<%= visible ? '' : 'display: none' %>">
   <h3><%= header %></h3>
   <form action="/groups/<%= group.gid %>/invite" class="form-invisible" method="post">
 
-    <!-- <div class="invitation-field">
+    <!--
+    <div class="invitation-field">
       <input type="text" name="invitations[0]recipient_email">
       <a href="" class="invitation-remove">&times;</a>
-    </div> -->
+    </div>
+    -->
 
     <div class="invite-btns">
-      <a href="#" class="btn btn-blue add-invitation">
+      <a href="#" class="btn btn-blue left add-invitation">
         <i class="icon-white icon-plus"></i>
         <span style="display: inline-block; margin-top: 1px">Add</span>
       </a>

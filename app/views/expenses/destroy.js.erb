@@ -16,15 +16,21 @@ if ($container.children().length === 1) {
 // User credits
 // ----------------
 $userContainer = $('.user-container');
-$userTotal     = $('.expense-total-large');
+$largeTotal    = $('.expense-total-large');
+$smallTotal    = $('.expense-total-small')
 $markAllBtn    = $('.mark-all')
+
 
 switch ($userContainer.children().length) {
   case 2:
-    $userTotal.html('')
+    $largeTotal.html('')
+    $smallTotal.html('')
     $markAllBtn.remove()
     break;
   case 1:
-    $userContainer.html("<%= j blank_credits(@debtor_name) %>")
+    $userContainer.html("<%= j blank_credits(@user.full_name) %>")
     break;
+  default:
+    $largeTotal.html("<%= expense_total_for(@user) %>")
+    $smallTotal.html("<%= j render 'expenses/net_total', :direction => :credit %>")
 }

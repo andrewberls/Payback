@@ -11,18 +11,19 @@
     </div>
 
     <% if @credits.count > 1 %>
-      <p class="expense-total-large">
-        <%= @user.first_name %> owes you <%= number_to_currency(current_user.active_credit_amt_to(@user)) %>.
-      </p>
+      <%= content_tag :p, expense_total_for(@user), class: 'expense-total-large' %>
+
+      <% if current_user.active_debts_to(@user).present?  %>
+        <p class="expense-total-small">
+          <%= render 'expenses/net_total', :direction => :credit %>
+        </p>
+      <% end %>
     <% end %>
 
-    <% if current_user.active_debts_to(@user).present? %>
-      <%= render 'expenses/net_total', :direction => :credit %>
-    <% end %>
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
-    <% if @credits.count > 1 %>
 
+    <% if @credits.count > 1 %>
       <%= link_to raw("<i class='icon-ok icon-white'></i> Mark all"),
         { controller: 'expenses', action: 'clear' }, method: :delete,
         confirm: "Mark #{@credits.count} credits to #{@user.first_name} completed?",
