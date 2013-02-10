@@ -25,7 +25,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def send_invitation_email
-    InvitationsMailer.invite(self).deliver if Rails.env == 'production'
+    InvitationsMailer.invite(self).deliver
   end
 
 end

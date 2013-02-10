@@ -1,6 +1,6 @@
 <div class="group-invitations" style="<%= visible ? '' : 'display: none' %>">
   <h3><%= header %></h3>
-  <form action="/groups/<%= group.gid %>/invite" class="form-invisible" method="post">
+  <%= form_tag invite_group_path(group.gid), class: 'form-invisible' do %>
 
     <!--
     <div class="invitation-field">
@@ -18,5 +18,5 @@
       <input type="submit" class="btn btn-green right" value="Send invitations! &raquo;">
     </div>
 
-  </form>
+  <% end %>
 </div>
