@@ -47,9 +47,8 @@ class User < ActiveRecord::Base
     selected_users
   end
 
-  def as_json(options={})
-    options[:except] = [:password_digest, :auth_token, :updated_at]
-    super(options)
+  def owns?(group)
+    group.owner == self
   end
 
   def first_name

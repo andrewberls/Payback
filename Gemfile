@@ -16,6 +16,8 @@ gem 'thin'
 
 gem 'dalli'
 
+gem "active_model_serializers", :github => "rails-api/active_model_serializers"
+
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'

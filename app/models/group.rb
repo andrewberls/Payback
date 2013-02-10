@@ -22,11 +22,6 @@ class Group < ActiveRecord::Base
 
   before_create :generate_gid
 
-  def as_json(options={})
-    options[:except] ||= [:password_digest, :id]
-    super(options)
-  end
-
   def initialize_owner(user)
     owner = user
     users << user

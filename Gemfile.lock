@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: 3e9b366a4531e6795b73b41e732f9db849874903
+  specs:
+    active_model_serializers (0.5.2)
+      activemodel (>= 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -154,6 +161,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   bcrypt-ruby (~> 3.0.0)
   better_errors
   binding_of_caller

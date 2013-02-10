@@ -27,21 +27,21 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html { return redirect_to welcome_path if @groups.blank? }
-      format.json { return render json: @groups.as_json(methods: [:users]) }
+      format.json { return render json: @groups }
     end
   end
 
   def show
     respond_to do |format|
-      format.html
-      format.json do
-        users = @group.users - (params[:others] ? [current_user] : [])
-        return render json: {
-          group: @group,
-          users: users.as_json(except: [:password_digest, :auth_token, :updated_at])
-        }
-      end
-
+      format.html {
+        unless current_user.owns?(@group) && @group.users.count == 1
+          return redirect_to groups_path
+        end
+      }
+      format.json {
+        scope = params[:exclude_current] ? current_user : nil
+        return render json: GroupSerializer.new(@group, :scope => scope)
+      }
     end
   end
 

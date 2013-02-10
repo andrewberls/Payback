@@ -44,13 +44,7 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json {
-        return render json: current_user.expenses.as_json(
-          :include => {
-            :group => { except: [:password_digest, :id] },
-          }
-        )
-      }
+      format.json { return render json: current_user.expenses }
     end
   end
 

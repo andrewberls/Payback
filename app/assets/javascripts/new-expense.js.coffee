@@ -3,10 +3,10 @@ loadUsers = ->
   $column = $(".user-column")
 
   $.ajax {
-    url: "/groups/#{gid}.json?others=true",
+    url: "/groups/#{gid}.json?exclude_current=true",
     success: (json) ->
       $column.empty()
-      for user in json.users
+      for user in json.group.users
         input = $.el.input {
           "type" : "checkbox",
           "name" : "users[#{user.id}]"
