@@ -1,10 +1,7 @@
-# TODO: factor out all the hard-coded stuff
-
-confirm_btns = (exp_id, debtor_id) ->
-  debtor_param = if debtor_id? then "?debtor_id=#{debtor_id}" else ""
+confirm_btns = (exp_id) ->
   """
     <p>
-      <a href="/expenses/#{exp_id}#{debtor_param}" data-method="delete" data-remote="true"
+      <a href="/expenses/#{exp_id}" data-method="delete" data-remote="true"
         rel="nofollow" class="confirm-yes">yes</a> /
       <a href='#' class="confirm-no">no</a>
     </p>
@@ -31,8 +28,7 @@ $ ->
   $(document.body).delegate '.mark-off-btn', 'click', ->
     $expense  = $(@).parent().parent()
     exp_id    = $expense.data('id')
-    debtor_id = $expense.data('debtor-id')
-    $(@).parent().html confirm_btns(exp_id, debtor_id)
+    $(@).parent().html confirm_btns(exp_id)
     return false
 
   $(document.body).delegate '.confirm-yes', 'click', ->
