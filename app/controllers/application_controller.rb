@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
         #   ApiKey.exists?(access_token: token)
         # end
       }
+      format.js {}
     end
 
   end
