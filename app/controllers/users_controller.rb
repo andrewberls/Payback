@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    user_params = params[:user]
+    @user = User.new(user_params)
 
-    if User.find_by_email(params[:user][:email]).present?
+    if User.exists?(email: user_params[:email])
       flash.now[:error] = "There's already an account with that email address!"
       return render :new
     end
