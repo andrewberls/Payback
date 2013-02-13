@@ -14,15 +14,14 @@ class Expense < ActiveRecord::Base
     presence: true,
     numericality: { greater_than_or_equal_to: 0.01 }
 
-  validates :title,
-    presence: true,
-    length: { maximum: 75 }
+  validates :title, presence: true, length: { maximum: 75 }
 
 
   def self.build(params)
-    Expense.new(params[:expense]) do |exp|
+    exp_params = params[:expense]
+    Expense.new(exp_params) do |exp|
       exp.action = (params[:commit] == 'Payback') ? :payback : :split
-      exp.amount = ExpressionParser.parse(params[:expense][:amount])
+      exp.amount = ExpressionParser.parse(exp_params[:amount])
     end
   end
 
@@ -47,7 +46,6 @@ class Expense < ActiveRecord::Base
   # Split and assign a debt amongst a set of selected users
   # Creates a duplicated instance to assign to each user
   def assign_to(*users)
-
     users.flatten.each do |user|
       expense = self.dup
       user.add_debt(expense)

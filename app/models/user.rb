@@ -14,9 +14,7 @@ class User < ActiveRecord::Base
   has_many :notifications_to,   class_name: 'Notification', :foreign_key => 'user_to_id'
 
 
-  validates :full_name,
-    presence: true,
-    length: { maximum: 50 }
+  validates :full_name, presence: true, length: { maximum: 50 }
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
@@ -136,7 +134,7 @@ class User < ActiveRecord::Base
   end
 
   def sum_amounts(expenses)
-    expenses.map(&:amount).inject(&:+) || 0
+    expenses.map(&:amount).inject(:+) || 0
   end
 
 end
