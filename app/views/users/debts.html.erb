@@ -17,7 +17,9 @@
     <% end %>
 
     <% if @user.active_debts_to(current_user).present? %>
-      <%= render 'expenses/net_total', :direction => :debt %>
+      <p class="expense-total-small">
+        <%= render 'expenses/net_total', :direction => :debt %>
+      </p>
     <% end %>
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
