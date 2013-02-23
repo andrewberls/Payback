@@ -4,7 +4,7 @@ insertAfter = (refNode, newNode) ->
 
 # User-facing input fields in a form
 inputFields = ($form) ->
-  $form.find('input:not([type=submit])')
+  $form.find('input[type=text],input[type=email],input[type=password]')
 
 # Filter blank fields from a list
 fieldsWithErrors = (fields) ->
