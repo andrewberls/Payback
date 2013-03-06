@@ -4,7 +4,7 @@ Payback is a free app to help you track expenses with your friends and roommates
 
 ## How does it work?
 ### Sign Up
-Getting started with Payback is simple. Once you've signed up for an account, you can create groups to track your expenses. With a simple ID and password, your friends can join your group and get started instantly.
+Getting started with Payback is simple. Once you've signed up for an account, you can create groups to track your expenses. You can invite your friends to join your group by email and get started instantly.
 
 ### Start Spending
 Adding expenses to Payback is easy. You can select whether you want to divide the amount among all members of a group, or just a few. You're given two options when adding a new expense - Split Evenly or Payback, which determines how the cost will be split. That's all there is to it! Payback will take care of all the math for you, and never forgets.
