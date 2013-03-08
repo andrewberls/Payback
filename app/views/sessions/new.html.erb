@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span-6 offset-5">
 
-    <%= form_tag(sessions_path, class: "login-form") do %>
+    <%= form_tag sessions_path, class: "login-form form-validate" do %>
       <h1 class="form-title">Log In</h1>
 
       <%= flash_error %>
@@ -19,7 +19,7 @@
         Remember Me
       </label>
 
-      <%= submit_tag "Log in", class: "btn btn-blue submit-validate" %>
+      <%= submit_tag "Log in", class: "btn btn-blue" %>
 
     <% end %>
 

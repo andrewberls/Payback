@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, html: { class: 'form-validate' } do |f| %>
 
   <h1 class="form-title">Sign Up</h1>
 
@@ -14,6 +14,6 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= submit_tag "Submit", class: "btn btn-blue btn-large submit-validate" %>
+  <%= submit_tag "Submit", class: "btn btn-blue btn-large" %>
 
 <% end %>

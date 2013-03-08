@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span-6 offset-5">
 
-    <%= form_tag(join_groups_path, class: "join-group-form") do %>
+    <%= form_tag join_groups_path, class: "join-group-form form-validate" do %>
       <h1 class="form-title">Join A Group</h1>
 
       <%= flash_error %>
@@ -18,7 +18,7 @@
       <%= label_tag :password %>
       <%= password_field_tag :password%>
 
-      <%= submit_tag "Join Group", class: "btn btn-blue submit-validate" %>
+      <%= submit_tag "Join Group", class: "btn btn-blue" %>
 
     <% end %>
 

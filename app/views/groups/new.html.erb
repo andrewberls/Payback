@@ -12,7 +12,7 @@
   </div><!-- .group-faq -->
 
   <div class="span-7">
-    <%= form_for @group do |f| %>
+    <%= form_for @group, html: { class: 'form-validate' } do |f| %>
       <h1 class="form-title">Create New Group</h1>
 
       <%= render 'shared/instance_errors', instance: @group %>
@@ -28,7 +28,7 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
 
-      <%= submit_tag "Create Group", class: "btn btn-blue submit-validate" %>
+      <%= submit_tag "Create Group", class: "btn btn-blue" %>
 
     <% end %>
   </div>

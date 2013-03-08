@@ -11,7 +11,7 @@
   </div>
 
   <div class="span-6 offset-5">
-    <%= form_tag invitations_path do %>
+    <%= form_tag invitations_path, class: "form-validate" do %>
 
       <h1 class="form-title"><%= use_login ? 'Log In' : 'Sign Up' %></h1>
 
@@ -27,7 +27,7 @@
       <%= label_tag :password %>
       <%= password_field_tag :password %>
 
-      <%= submit_tag "Submit", class: "btn btn-blue btn-large submit-validate" %>
+      <%= submit_tag "Submit", class: "btn btn-blue btn-large" %>
 
     <% end %>
 
