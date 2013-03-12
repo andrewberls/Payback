@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   ACCESS_DENIED_PATH = '/expenses'
 
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :login_user
 
   def must_be_logged_in
 
@@ -32,6 +32,14 @@ class ApplicationController < ActionController::Base
 
   def signed_in?
     current_user.present?
+  end
+
+  def login_user(user, options={})
+    if options.delete(:permanent)
+      cookies.permanent[:auth_token] = user.auth_token
+    else
+      cookies[:auth_token] = user.auth_token
+    end
   end
 
   def reject_unauthorized(authorized=false, options={})

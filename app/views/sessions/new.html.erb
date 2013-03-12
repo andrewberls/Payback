@@ -12,6 +12,9 @@
       <%= email_field_tag :email, '', autofocus: true %>
 
       <%= label_tag :password %>
+      <span class="help-text" style="font-weight: bold;">
+        <%= link_to "(Forgot password?)", forgot_password_path %>
+      </span>
       <%= password_field_tag :password %>
 
       <label class="checkbox">

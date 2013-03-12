@@ -10,6 +10,10 @@ class SiteNotice < ActiveRecord::Base
     self.expires_at ||= 4.days.from_now
   end
 
+  def expired?
+    Time.now > self.expires_at
+  end
+
   def close_key
     "closed-#{id}".to_sym
   end

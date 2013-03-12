@@ -18,6 +18,11 @@
       <%= f.label :password_confirmation, "Confirm New Password" %>
       <%= f.password_field :password_confirmation %>
 
+      <div style="font-weight:bold; text-align:center; margin-bottom:20px; font-size:1.2em">
+        <%= link_to "Forgot your password?", forgot_password_path %>
+      </div>
+
+
       <%= link_to "Cancel", expenses_path, class: "btn" %>
       <%= submit_tag "Update profile", class: "btn btn-blue" %>
 

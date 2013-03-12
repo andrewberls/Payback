@@ -1,7 +1,7 @@
 <% provide(:title, 'Dashboard') %>
 
 <% notice = SiteNotice.last %>
-<% if notice.present? && notice.expires_at > Time.now && cookies[notice.close_key].blank? %>
+<% if notice.present? && !notice.expired? && cookies[notice.close_key].blank? %>
   <div class="row">
     <div class="span-16">
       <div class="alert alert-notice feature-notice" data-key="<%= notice.id %>">

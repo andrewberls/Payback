@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
 
     if @user.save
-      cookies[:auth_token] = @user.auth_token
+      login_user(@user)
       return redirect_to welcome_path
     else
       flash.now[:error] = "Error - please check your fields and try again."

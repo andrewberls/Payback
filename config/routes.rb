@@ -42,6 +42,9 @@ Payback::Application.routes.draw do
   get 'contact'  => 'static#contact', as: 'contact'
   post 'contact' => 'static#mail',    as: 'contact'
 
+  match 'forgot_password'       => 'sessions#forgot_password', as: 'forgot_password'
+  match 'reset_password/:token' => 'sessions#reset_password',  as: 'reset_password'
+
   root :to => 'static#start'
 
   # Route page not found to 404 page

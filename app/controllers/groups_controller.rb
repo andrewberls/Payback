@@ -130,7 +130,7 @@ class GroupsController < ApplicationController
       end
 
       if valid
-        cookies[:auth_token] = @user.auth_token
+        login_user(@user)
         return complete_invitation(user: @user, group: group, invitation: @invitation)
       else
         flash[:error] = "Error - please check your fields and try again."

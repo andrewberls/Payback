@@ -5,7 +5,7 @@
 
         <!-- Facebook sharing information tags -->
 
-        <title><%= "Invitation to join #{@group.title} on Payback.io" %></title>
+        <title>Reset Password on payback.io</title>
     <style type="text/css">
       /* Client-specific Styles */
       #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
@@ -371,13 +371,11 @@
                                                     <tr mc:repeatable>
                                                         <td valign="top">
                                                             <div mc:edit="std_content00">
-                                                                <!-- <h1 class="h1">Heading 1</h1> -->
-                                                                <p><%= @sender.full_name %> has invited you to join their group '<%= @group.title %>' on <a href="http://payback.io">Payback.io</a>! Payback is the easiest way to track spending and borrowing with your household - never forget who owes you money or how much again.</p>
 
-                                                                <p>Once you click the link below and create your account, you'll automatically be added to <%= @group.title %> and ready to go!<p>
+                                                                <p>Hey <%= @user.first_name %>, you can use the link below to reset your password! It'll be valid for the next 4 hours.</p>
 
-                                                                <% path = invitations_url(@invitation.token) %>
-                                                                <p>You can join the group here: <%= link_to path, path %></p>
+                                                                <p>Here's the link: <%= link_to reset_password_url(token: @token.token), reset_password_url(token: @token.token) %></p>
+
                                                             </div>
                                                         </td>
                                                     </tr>

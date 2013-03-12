@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209072414) do
+ActiveRecord::Schema.define(:version => 20130312212838) do
 
   create_table "expenses", :force => true do |t|
     t.string   "title"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(:version => 20121209072414) do
     t.integer  "expense_id"
     t.integer  "user_from_id"
     t.integer  "user_to_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reset_tokens", :force => true do |t|
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "expires_at"
+    t.boolean  "used",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
