@@ -68,6 +68,7 @@
 
     .invitation-remove {
       color: lighten($gray-text, 32);
+      display: none;
       font-size: 1.3em;
       font-weight: bold;
       position: absolute;

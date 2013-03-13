@@ -27,6 +27,12 @@ $ ->
     # Slide down new invitations
     $field = $( emailField(++inv_num) ).hide()
     $field.insertBefore($submit).slideDown()
+
+    # Show the remove button for additional fields
+    $submit.parent().find('.invitation-field').each (idx, fld) ->
+      $(fld).find('.invitation-remove').show() if idx > 0
+
+
     return false
 
   $(document.body).delegate '.invitation-remove', 'click', ->
