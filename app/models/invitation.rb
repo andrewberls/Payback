@@ -15,7 +15,7 @@ class Invitation < ActiveRecord::Base
 
   before_create :generate_token
 
-  after_save :send_invitation_email
+  after_create :send_invitation_email
 
   private
 
