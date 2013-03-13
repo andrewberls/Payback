@@ -2,7 +2,6 @@ class GroupsController < ApplicationController
 
   before_filter :must_be_logged_in, except: [:invitations]
   before_filter :user_must_be_in_group, only: [:show, :edit, :update, :leave, :invite]
-  before_filter :invitation_token_must_be_valid, only: [:invitations]
 
   def new
     @group = Group.new
@@ -87,7 +86,6 @@ class GroupsController < ApplicationController
     return redirect_to groups_path
   end
 
-
   def invite
     # Parse email list and dispatch invitation emails
     group = Group.find_by_gid(params[:id])
@@ -106,16 +104,13 @@ class GroupsController < ApplicationController
     return redirect_to expenses_path
   end
 
+  before_filter :find_invitation, only: [:invitations]
   def invitations
     # Join by token
-    group = @invitation.group
-    @user = User.find_by_email(@invitation.recipient_email)
 
-    if request.get?
+    if request.get? && signed_in?
       # Complete automatically if already signed in, else render the form
-      if signed_in?
-        return complete_invitation(user: current_user, group: group, invitation: @invitation)
-      end
+      return complete_invitation(user: current_user, group: @group, invitation: @invitation)
     elsif request.post?
       if @user.present?
         # Log in
@@ -131,7 +126,7 @@ class GroupsController < ApplicationController
 
       if valid
         login_user(@user)
-        return complete_invitation(user: @user, group: group, invitation: @invitation)
+        return complete_invitation(user: @user, group: @group, invitation: @invitation)
       else
         flash[:error] = "Error - please check your fields and try again."
         return render :invitations
@@ -148,10 +143,11 @@ class GroupsController < ApplicationController
     reject_unauthorized(authorized)
   end
 
-  def invitation_token_must_be_valid
+  def find_invitation
     @invitation = Invitation.find_by_token(params[:token])
-    authorized  = @invitation.present? && !@invitation.used
-    reject_unauthorized(authorized, path: root_url)
+    return reject_unauthorized if @invitation.blank? || @invitation.invalid?
+    @group = @invitation.group
+    @user  = User.find_by_email(@invitation.recipient_email)
   end
 
   def complete_invitation(options={})
@@ -160,7 +156,7 @@ class GroupsController < ApplicationController
     inv   = options[:invitation]
 
     if group.add_user(user)
-      inv.update_attributes used: true
+      inv.mark_used
       flash[:success] = "You are now a member of #{group.title}!"
       return redirect_to groups_path
     else
