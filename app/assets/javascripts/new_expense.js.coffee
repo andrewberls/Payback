@@ -24,7 +24,7 @@ $ ->
   $select         = $('#users-select')
   primaryClass    = 'btn-blue'
   group_btn_text  = "Group Expense"
-  users_btn_text  = "Select Users &raquo;"
+  users_btn_text  = "Select Members &raquo;"
   check_icon      = '<i class="icon-white icon-ok"></i>'
 
   $.el.registerTag 'userbox', (input, label) ->
