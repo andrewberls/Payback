@@ -12,11 +12,12 @@
 @import "components/alerts";
 @import "components/notifications";
 @import "components/forms";
-@import "expenses/expenses";
-@import "groups/groups";
+@import "pages/expense_add";
+@import "pages/expense_dashboard";
+@import "pages/groups";
 
-@import "static/main";
-@import "static/welcome";
-@import "static/not_found";
+@import "pages/static/main";
+@import "pages/static/welcome";
+@import "pages/static/not_found";
 
 @import "generic"
