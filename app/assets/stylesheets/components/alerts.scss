@@ -27,6 +27,12 @@
     background-color: lighten($blue, 45);
     border-color: lighten($blue, 15);
     color: darken($blue, 5);
+
+    a {
+      color: darken($blue, 5);
+
+      &:hover { color: darken($blue, 12); }
+    }
   }
 
   .close-alert:hover { cursor: pointer; }
@@ -34,6 +40,11 @@
   li {
     margin-left: 10px;
     &:before { content: "-"; }
+  }
+
+  a {
+    font-weight: bold;
+    text-decoration: underline;
   }
 
 }
