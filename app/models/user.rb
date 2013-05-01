@@ -127,6 +127,17 @@ class User < ActiveRecord::Base
     notifications_to.reverse.take(5)
   end
 
+  def expire_reset_tokens
+    # Expire all reset tokens for this user
+    ResetToken.where(user_id: self.id).each(&:mark_used)
+  end
+
+  def generate_reset_token
+    # Expire any existing reset tokens and generate a new one
+    expire_reset_tokens
+    ResetToken.create(user: self)
+  end
+
   private
 
   def generate_auth_token

@@ -41,10 +41,7 @@ class SessionsController < ApplicationController
         return render :forgot_password
       end
 
-      # Expire any existing tokens for this user
-      ResetToken.where(user_id: user.id).each(&:mark_used)
-
-      token = generate_reset_token(user)
+      token = user.generate_reset_token
       PasswordsMailer.reset(token).deliver
       flash[:success] = "A email has been sent to #{user.email} with instructions on resetting your password!"
       return redirect_to forgot_password_path
@@ -84,10 +81,6 @@ class SessionsController < ApplicationController
 
   def clear_return_to
     session.delete(:return_to)
-  end
-
-  def generate_reset_token(user)
-    ResetToken.create(user: user)
   end
 
   def find_reset_token
