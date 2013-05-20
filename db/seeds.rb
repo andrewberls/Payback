@@ -39,7 +39,7 @@ end
 
 # Jeff requests Admin mark off groceries
 groceries = Expense.find_by_title("Groceries")
-Notification.create!(user_from: jeff, user_to: admin_user, expense_id: groceries.id, notif_type: 'mark_off')
+Notification.create!(user_from_id: jeff.id, user_to_id: admin_user.id, expense_id: groceries.id, notif_type: 'mark_off')
 
 # Users/groups with no associations
 blank_user_1 = User.create!(full_name: "Blank One", email: "blank_one@email.com", password: "password", password_confirmation: "password")
