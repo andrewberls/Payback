@@ -18,4 +18,12 @@ class Notification < ActiveRecord::Base
     update_attributes! read: true
   end
 
+  def expense_title
+    if expense.present?
+      expense.title
+    else
+      ""
+    end
+  end
+
 end
