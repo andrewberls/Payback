@@ -1,36 +1,36 @@
 // Dashboard
 // ----------------
-$container = $(".credits-container");
-$total     = $('.expense-total');
+var $container = $(".credits-container"),
+    $total     = $('.expense-total');
 
 $total.find('.amount').html("<%= number_to_currency(@credit_owed) %>");
 
 // Hack here - event propagates to controller before DOM node is removed,
 // making the children include the just-deleted node
 if ($container.children().length === 1) {
-  $container.html("<%= j blank_credits %>")
-  $total.remove()
+  $container.html("<%= j blank_credits %>");
+  $total.remove();
 }
 
 
 // User credits
 // ----------------
-$userContainer = $('.user-container');
-$largeTotal    = $('.expense-total-large');
-$smallTotal    = $('.expense-total-small')
-$markAllBtn    = $('.mark-all')
+var $userContainer = $('.user-container'),
+    $largeTotal    = $('.expense-total-large'),
+    $smallTotal    = $('.expense-total-small'),
+    $markAllBtn    = $('.mark-all');
 
 
 switch ($userContainer.children().length) {
   case 2:
-    $largeTotal.html('')
-    $smallTotal.html('')
-    $markAllBtn.remove()
+    $largeTotal.html('');
+    $smallTotal.html('');
+    $markAllBtn.remove();
     break;
   case 1:
-    $userContainer.html("<%= j blank_credits(@user.full_name) %>")
+    $userContainer.html("<%= j blank_credits(@user.full_name) %>");
     break;
   default:
-    $largeTotal.html("<%= expense_total_for(@user) %>")
-    $smallTotal.html("<%= j render 'expenses/net_total', :direction => :credit %>")
+    $largeTotal.html("<%= expense_total_for(@user) %>");
+    $smallTotal.html("<%= j render 'expenses/net_total', :direction => :credit %>");
 }
