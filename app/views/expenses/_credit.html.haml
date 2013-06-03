@@ -1,0 +1,19 @@
+- debtor = expense.debtor
+
+.expense{data: { id: expense.id }}
+
+  .expense-amount
+    = render 'expenses/edit_mark', expense: expense
+    = link_to number_to_currency(expense.amount), edit_expense_path(expense)
+
+  %span.expense-debtor= link_to_unless_current debtor.first_name, credits_user_path(debtor)
+
+  .info-stack
+    %span.expense-title= expense.title
+    %span.expense-date= render_date expense.created_at
+
+  = render 'expenses/stale_badge', expense: expense
+
+  .expense-actions
+    %a.btn.no-text.btn-green.mark-off-btn{href: "#"}
+      %i.icon-ok.icon-white

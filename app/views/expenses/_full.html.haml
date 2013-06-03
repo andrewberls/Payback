@@ -1,0 +1,21 @@
+.dashboard-container
+
+  .row
+    .span-16
+      .condensed-header
+        Too much?
+        = link_to raw("Try the condensed view &raquo;"), condensed_expenses_path, remote: true
+
+  = render 'expenses/dashboard/buttons'
+
+  .row
+    = flash_success
+
+    - [:credits, :debts].each do |type|
+      .span-8
+        %h2= (type == :credits) ? 'Owed to You' : 'You Owe'
+
+        - if current_user.send("active_#{type}").blank?
+          = content_tag :div, send("blank_#{type}"), class: "expenses-container"
+        - else
+          = render "expenses/dashboard/#{type}"

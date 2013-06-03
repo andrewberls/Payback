@@ -1,0 +1,15 @@
+- @debt_groups.each do |group|
+
+  .group-container
+    = content_tag(:h3, group.title) unless current_user.groups.count == 1
+
+    .expenses-container.debts-container
+      - @debts = group.active_debts_for(current_user)
+      - @debts.each do |expense|
+        = render 'debt', expense: expense
+
+  - if @debts.count > 1
+    %p.expense-total
+      You owe
+      = number_to_currency(current_user.total_debt_owed)
+      \.

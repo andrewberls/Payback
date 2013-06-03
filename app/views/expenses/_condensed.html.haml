@@ -1,0 +1,66 @@
+- provide(:title, 'Condensed View')
+
+.row
+  .span-16
+    .condensed-header
+      You're looking at the condensed view.
+      = link_to raw("Go back to the main dashboard &raquo;"), expenses_path, remote: true
+
+= render 'expenses/dashboard/buttons'
+
+.row
+  .span-8
+
+    = flash_success
+
+    %h2 Total Owed to You
+
+    - if current_user.active_credits.blank?
+      = content_tag :div, blank_credits, class: "expenses-container"
+    - else
+      - @credit_groups.each do |group|
+
+        .group-container
+          = content_tag(:h3, group.title) unless current_user.groups.count == 1
+
+          .expenses-container
+            - users = group.active_credit_users_for(current_user)
+            - users.each do |user|
+              .expense.expense-condensed
+                %span.expense-amount= number_to_currency current_user.active_credit_amt_to(user)
+                %span.expense-debtor= link_to user.first_name, credits_user_path(user)
+
+
+        - unless current_user.total_credit_owed == 0
+          %p.expense-total
+            You are owed
+            = number_to_currency(current_user.total_credit_owed)
+            \.
+
+
+
+  .span-8
+
+    %h2 Total You Owe
+
+    - if current_user.active_debts.blank?
+      = content_tag :div, blank_debts, class: "expenses-container"
+    - else
+
+      - @debt_groups.each do |group|
+
+        .group-container
+          = content_tag(:h3, group.title) unless current_user.groups.count == 1
+
+          .expenses-container
+            - users = group.active_debt_users_for(current_user)
+            - users.each do |user|
+              .expense.expense-condensed
+                %span.expense-amount= number_to_currency current_user.active_debt_amt_to(user)
+                %span.expense-debtor= link_to user.first_name, debts_user_path(user)
+
+        - unless current_user.total_debt_owed == 0
+          %p.expense-total
+            You owe
+            = number_to_currency(current_user.total_debt_owed)
+            \.

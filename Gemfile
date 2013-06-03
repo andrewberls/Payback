@@ -6,6 +6,8 @@ gem 'pg'
 
 gem 'heroku'
 
+gem 'haml'
+
 gem 'therubyracer', :platforms => :ruby
 
 gem 'bcrypt-ruby', '~> 3.0.0'

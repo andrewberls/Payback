@@ -1,0 +1,11 @@
+- provide(:title, 'Dashboard')
+
+- notice = SiteNotice.last
+- if notice.present? && !notice.expired? && cookies[notice.close_key].blank?
+  .row
+    .span-16
+      .alert.alert-notice.feature-notice{ data: {key: notice.id } }
+        = raw notice.title
+        %i.icon-remove.close-alert
+
+= render 'full'

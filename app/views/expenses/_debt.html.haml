@@ -1,0 +1,16 @@
+.expense
+  %span.expense-amount
+    = render 'expenses/edit_mark', expense: expense
+    = number_to_currency(expense.amount)
+
+  %span.expense-creditor= link_to_unless_current expense.creditor.first_name, debts_user_path(expense.creditor)
+
+  .info-stack
+    %span.expense-title= expense.title
+    %span.expense-date= render_date expense.created_at
+
+  = render 'expenses/stale_badge', expense: expense
+
+  - if current_user.can_notify_on?(expense.id)
+    .expense-actions
+      = render 'notifications/mark_off', expense: expense

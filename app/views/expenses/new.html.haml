@@ -1,0 +1,54 @@
+- provide(:title, 'Add Expense')
+
+- content_for :javascript_includes do
+  = javascript_include_tag "new_expense"
+
+.row
+  .span-8.offset-4
+
+    = form_for @expense, html: { class: "new-expense-form form-validate" } do |f|
+      %h1.form-title Add New Expense
+
+      = render 'shared/instance_errors', instance: @expense
+
+      %p Select a group:
+      = select("group", "gid", current_user.groups.map { |g| [g.title, g.gid] }, { include_blank: false }, id: "group-select")
+
+      .users-prompt
+        %a.btn.btn-large.btn-blue#users-group{href: "#"}
+          %i.icon-white.icon-ok
+          Group Expense
+        %a.btn.btn-large#users-select{href: "#"} Select Members &raquo;
+
+      #users-container
+        %h5 Select Members
+        .user-column
+
+
+      = f.label :amount
+      %span.help-text Decimal optional
+      = f.text_field :amount
+
+      = f.label :title
+      %span.help-text Describe the expense, ex: "Groceries"
+      = f.text_field :title, maxlength: 75
+
+      = submit_tag "Payback",      class: "btn btn-red btn-large",  id: "expense-payback"
+      = submit_tag "Split Evenly", class: "btn btn-blue btn-large", id: "expense-split"
+
+      %a#show-expense-faqs{href: "#"}
+        %i.icon-question-sign
+        What are these?
+
+
+    #expense-faqs
+      %h3 Split vs Payback
+      %p
+        %strong Split Evenly
+        will split the cost among the members selected, including yourself.
+      %p
+        %strong Payback
+        will have the selected members pay you back in full.
+      %a#hide-expense-faqs.btn Got it!
+
+    = link_to raw("&laquo; Back to Expenses "), expenses_path, class: "btn btn-shadow expense-back"

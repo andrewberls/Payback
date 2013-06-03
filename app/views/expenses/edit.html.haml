@@ -1,0 +1,21 @@
+- provide(:title, "Edit Expense: #{@expense.title}")
+
+.row
+  .span-6.offset-5
+
+    = form_for @expense do |f|
+
+      %p.form-title-small
+        Editing:
+        %strong= @expense.title
+        to
+        %strong= @expense.debtor.first_name
+
+      = flash_error
+
+      = f.label :amount
+      %span.help-text Decimal Optional
+      = f.text_field :amount
+
+      = link_to "Cancel", expenses_path, class: "btn"
+      = submit_tag "Update", class: "btn btn-blue"

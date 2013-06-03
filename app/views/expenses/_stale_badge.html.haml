@@ -1,0 +1,4 @@
+- threshold = 10.days
+- if Time.now - expense.created_at > threshold
+  %span.expense-stale.badge.badge-red{title: "This expense is over #{ distance_of_time_in_words(threshold) } old!" }
+    %i.icon-warning-sign.icon-white
