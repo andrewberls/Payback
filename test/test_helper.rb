@@ -1,10 +1,12 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+require 'rails/test_help'
+
 
 # Bit hacky here due to the way expense associations are architectured.
 # Since expenses get cloned among debtors, you can't do something like
 # user.debts.include?(debt). Instead, we check for field &
-# association matches. It's probably good enough.
+# association matches.
 
 def has_debt_to?(debtor, creditor, debt)
   # I give John $5. John has debt to me.

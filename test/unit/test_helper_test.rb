@@ -1,6 +1,6 @@
 require File.expand_path('../test_helper',  __FILE__)
 
-class ExpenseTest < Test::Unit::TestCase
+class TestHelperTest < Test::Unit::TestCase
   context "test helper" do
     setup do
       @debtor   = User.find_by_full_name("Nicole Doe")

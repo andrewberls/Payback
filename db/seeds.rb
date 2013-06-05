@@ -8,7 +8,6 @@ seed_group = Group.create!(title: "221B Baker Street", password: "password", pas
   group.users << [jeff, david, nicole]
 end
 
-
 # Nicole owes Admin 10 for movie
 Expense.new(title: "Movie ticket", amount: 10, active: true, action: :payback) do |exp|
   exp.group    = seed_group
@@ -41,7 +40,13 @@ end
 groceries = Expense.find_by_title("Groceries")
 Notification.create!(user_from_id: jeff.id, user_to_id: admin_user.id, expense_id: groceries.id, notif_type: 'mark_off')
 
+# TEST DATA
 # Users/groups with no associations
 blank_user_1 = User.create!(full_name: "Blank One", email: "blank_one@email.com", password: "password", password_confirmation: "password")
 blank_user_2 = User.create!(full_name: "Blank Two", email: "blank_two@email.com", password: "password", password_confirmation: "password")
 blank_group  = Group.create!(title: "Blank Group", password: "blank_password", password_confirmation: "blank_password", gid: 'abc123')
+
+# Single-member group
+admin_group = Group.create!(title: "Admin Only", password: "password", password_confirmation: "password", gid: 'defabc') do |group|
+  group.initialize_owner(admin_user)
+end
