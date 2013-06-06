@@ -12,7 +12,7 @@ module Tokenable
 
     def expired?
       begin
-        Time.now > self.expires_at
+        Time.zone.now > self.expires_at
       rescue
         # No expires_at field, assumed infinite
         false
