@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.10'
+gem "rails", "~> 3.2.13"
 
 gem 'pg'
 
@@ -20,8 +20,8 @@ gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
