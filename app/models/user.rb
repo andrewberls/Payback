@@ -5,13 +5,13 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_and_belongs_to_many :groups
-  has_many :owned, class_name: 'Group', :foreign_key => :owner_id
+  has_many :owned, class_name: 'Group', foreign_key: :owner_id
 
-  has_many :debts,   class_name: 'Expense', :foreign_key => :debtor_id
-  has_many :credits, class_name: 'Expense', :foreign_key => :creditor_id
+  has_many :debts,   class_name: 'Expense', foreign_key: :debtor_id
+  has_many :credits, class_name: 'Expense', foreign_key: :creditor_id
 
-  has_many :notifications_from, class_name: 'Notification', :foreign_key => 'user_from_id'
-  has_many :notifications_to,   class_name: 'Notification', :foreign_key => 'user_to_id'
+  has_many :notifications_from, class_name: 'Notification', foreign_key: 'user_from_id'
+  has_many :notifications_to,   class_name: 'Notification', foreign_key: 'user_to_id'
 
 
   validates :full_name, presence: true, length: { maximum: 50 }
@@ -29,17 +29,18 @@ class User < ActiveRecord::Base
 
 
   def self.users_from_keys(users, group, creditor)
+    group_users    = group.users
     selected_users = []
 
     if users
       # Have any users been checked?
       users.keys.each do |id|
         user = User.find_by_id(id)
-        selected_users << user if group.users.include?(user)
+        selected_users << user if group_users.include?(user)
       end
     else
       # Otherwise just use the whole group
-      selected_users = group.users - [creditor]
+      selected_users = group_users - [creditor]
     end
 
     selected_users
@@ -145,7 +146,7 @@ class User < ActiveRecord::Base
   end
 
   def sum_amounts(expenses)
-    expenses.map(&:amount).inject(:+) || 0
+    expenses.reduce(0.0) { |total, e| total + e.amount }
   end
 
 end
