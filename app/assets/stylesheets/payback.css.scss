@@ -1,12 +1,9 @@
-//-- LIB/IMPORTS
-//------------------------------------
 //= require lib/cheeky.min
 //= require tipsy
 
 @import "lib/variables";
 @import "lib/mixins";
-@import "nav/header";
-@import "nav/footer";
+@import "nav/nav";
 @import "components/typography";
 @import "components/buttons";
 @import "components/alerts";
@@ -15,9 +12,7 @@
 @import "pages/expense_add";
 @import "pages/expense_dashboard";
 @import "pages/groups";
-
 @import "pages/static/main";
 @import "pages/static/welcome";
 @import "pages/static/not_found";
-
 @import "generic"

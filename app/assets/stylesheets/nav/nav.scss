@@ -1,8 +1,11 @@
 header {
   @include clearfix;
-  background-color: $med-gray;
+  background-color: $dark-nav;
   border-bottom: 1px solid darken($med-gray, 10);
   padding: 5px;
+
+  h1 a,
+  li > a { color: #E3E3E3; }
 
   h1 {
     float: left;
@@ -11,10 +14,12 @@ header {
     margin: 0;
     margin-right: 25px;
 
-    a {
-      color: inherit;
-      &:hover { text-decoration: none; }
-    }
+    a:hover { text-decoration: none; }
+  }
+
+  ul {
+    @include clearfix;
+    display: inline-block;
   }
 
   li {
@@ -23,7 +28,6 @@ header {
 
     & > a {
       @include border-radius;
-      color: $gray-text;
       display: inline-block;
       float: left;
       font-weight: bold;
@@ -59,6 +63,13 @@ header {
     width: $height; height: $height;
   }
 
+  .user-links {
+    @include clearfix;
+    color: #bbb;
+    float: right;
+    margin: 10px 0 0;
+  }
+
   @include mobile {
     h1 { display: none; }
 
@@ -67,23 +78,28 @@ header {
       text-align: center;
 
       ul {
-        display: inline-block;
-        text-align: center;
-
-        li {
-          float: left;
-          margin: 0 2px;
-        }
+        li { margin: 0 2px; }
 
         a { padding: 8px 6px; }
       }
     }
 
-    #group-tab {
-      display: none;
+    #group-tab { display: none; }
+
+    .user-links {
+      display: block;
+      margin: 10px auto 0;
+      width: 100%;
+
+      a { padding: 0; }
     }
   }
+}
 
-
-
+footer {
+  background-color: $dark-nav;
+  color: $light-text;
+  visibility: hidden;
+  padding: 10px 0;
+  text-align: center;
 }

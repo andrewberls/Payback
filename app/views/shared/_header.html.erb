@@ -9,6 +9,11 @@
         <li><%= link_to "Groups",      groups_path, id: 'group-tab', class: (current_page? groups_path)      ? 'current' : '' %></li>
         <li><%= render 'notifications/notifications' %></li>
       </ul>
+
+      <div class="user-links">
+        Signed in as <%= link_to current_user.full_name, edit_user_path(current_user) %> |
+        <%= link_to "Log Out", logout_path %>
+      </div>
     </nav>
 
   </div>
