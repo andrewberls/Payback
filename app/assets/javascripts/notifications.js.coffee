@@ -34,9 +34,12 @@ $ ->
   $(document.body).delegate '.confirm-yes', 'click', ->
     $actions = $(@).parent().parent()
     exp_id   = $actions.parent().data('id')
-    $expense = $('*[data-id="' + exp_id + '"]')
+    $expense = $("*[data-id='#{exp_id}']")
     $actions.remove()
-    $expense.slideUp -> $expense.remove()
+    $expense.slideUp ->
+      $expense.remove()
+      unless $(".notification:not([class~='notification-completed'])").length
+        $dropdown.hide()
 
   $(document.body).delegate '.confirm-no', 'click', ->
     $(@).parent().parent().html """

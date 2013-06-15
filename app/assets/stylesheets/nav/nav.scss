@@ -5,7 +5,11 @@ header {
   padding: 5px;
 
   h1 a,
-  li > a { color: #E3E3E3; }
+  li > a {
+    color: #E3E3E3;
+
+    &:hover { color: #f9f9f9; }
+  }
 
   h1 {
     float: left;
@@ -38,14 +42,14 @@ header {
       &:hover,
       &.current {
         background-color: lighten($dark-gray, 15);
-        color: white;
         text-decoration: none;
       }
 
       &.link-dead {
         color: lighten($gray-text, 30);
+
         &:hover {
-          background-color: $med-gray;
+          background: none;
           cursor: default;
         }
       }
