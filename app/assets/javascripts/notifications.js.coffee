@@ -1,3 +1,10 @@
+check_btn = ->
+  """
+    <a href="#" class="btn no-text btn-green mark-off-btn">
+      <i class='icon-ok icon-white'></i>
+    </a>
+  """
+
 confirm_btns = (exp_id) ->
   """
     <p>
@@ -6,6 +13,7 @@ confirm_btns = (exp_id) ->
       <a href='#' class="confirm-no">no</a>
     </p>
   """
+
 
 $ ->
   $doc      = $(document)
@@ -22,7 +30,7 @@ $ ->
         $notif.removeClass('notification-unread')
         $doc.unbind('click')
 
-    $.post "/notifications/read"
+    $.post '/notifications/read'
 
 
   $(document.body).delegate '.mark-off-btn', 'click', ->
@@ -42,9 +50,5 @@ $ ->
         $dropdown.hide()
 
   $(document.body).delegate '.confirm-no', 'click', ->
-    $(@).parent().parent().html """
-      <a href="#" class="btn no-text btn-green mark-off-btn">
-        <i class='icon-ok icon-white'></i>
-      </a>
-    """
+    $(@).parent().parent().html check_btn()
     return false
