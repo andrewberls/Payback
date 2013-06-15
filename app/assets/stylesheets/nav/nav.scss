@@ -77,11 +77,9 @@ header {
       padding-top: 4px;
       text-align: center;
 
-      ul {
-        li { margin: 0 2px; }
+      li { margin: 0 2px; }
 
-        a { padding: 8px 6px; }
-      }
+      a { padding: 8px 6px; }
     }
 
     #group-tab { display: none; }
@@ -99,7 +97,7 @@ header {
 footer {
   background-color: $dark-nav;
   color: $light-text;
-  visibility: hidden;
   padding: 10px 0;
   text-align: center;
+  visibility: hidden;
 }
