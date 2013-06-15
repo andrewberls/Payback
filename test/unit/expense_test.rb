@@ -21,7 +21,8 @@ class ExpenseTest < Test::Unit::TestCase
     end
 
     should "indicate when has been edited" do
-      @expense.update_attributes! :title => "changed"
+      assert !@expense.edited?
+      @expense.update_attributes! title: "changed"
       assert @expense.edited?
     end
 
