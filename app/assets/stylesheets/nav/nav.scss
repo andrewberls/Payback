@@ -94,10 +94,13 @@ header {
   }
 }
 
+$footerHeight: 40px;
+
 footer {
   background-color: $dark-nav;
   color: $light-text;
-  padding: 10px 0;
+  line-height: $footerHeight;
   text-align: center;
-  visibility: hidden;
 }
+footer,
+.page-wrap:after { height: $footerHeight; }

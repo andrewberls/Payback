@@ -10,19 +10,7 @@
 #= require word_slide
 #= require notifications
 
-
-
-# TODO: this is hacky. Sticky footers are hard.
-adjustHeight = ->
-  $('body > .container').css('height', $(document).height()-100)
-  $('footer').css('visibility', 'visible')
-
-
 $ ->
-
-  adjustHeight()
-
-  $(window).resize(adjustHeight)
 
   # Utils
   window.toggleSlide = ($selector, speed=350) ->

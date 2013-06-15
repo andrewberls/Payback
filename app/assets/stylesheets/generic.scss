@@ -1,8 +1,6 @@
-//-- GENERIC
-//------------------------------------
-html {
-  overflow-y: scroll;
-}
+html, body { height: 100%; }
+
+html { overflow-y: scroll; }
 
 body {
   background-color: $light-gray;
@@ -12,15 +10,23 @@ body {
   font-size: 13px;
 }
 
-body > .container { margin: 25px auto 0; }
+.page-wrap > .container { margin: 25px auto 0; }
 
 @include mobile {
   body .container { padding: 0 5px; }
 }
 
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -$footerHeight;
 
-//-- LIB CLASSES
-//------------------------------------
+  &:after {
+    content: "";
+    display: block;
+  }
+}
+
+
 .left { float: left }
 .right { float: right }
 %noise { background: url('/images/noise.png') }
@@ -37,6 +43,4 @@ body > .container { margin: 25px auto 0; }
   margin: 0 5px;
 }
 
-.feature-notice {
-  margin-bottom: 20px;
-}
+.feature-notice { margin-bottom: 20px; }
