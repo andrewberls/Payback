@@ -24,30 +24,6 @@
 
 }
 
-.round-number {
-  $height: 25px;
-
-  @include border-radius($height);
-  background-color: $gray-text;
-  color: white;
-  display: inline-block;
-  float: left;
-  font-size: 1.2em;
-  line-height: $height;
-  margin-right: 10px;
-  text-align: center;
-  width: $height; height: $height;
-}
-
-.landing-main,
-.landing-how {
-  img {
-    border: 1px solid $med-gray;
-    max-width: 100%;
-
-    @include mobile { display: none; }
-  }
-}
 
 
 .landing-reasons,
@@ -64,18 +40,15 @@
   }
 }
 
-.section-title {
-  // Light main section header
-  color: lighten($gray-text, 20);
-  margin-bottom: 50px;
-  text-align: center;
-
-  @include mobile { margin-bottom: 25px; }
-}
 
 
 .landing-main {
+  background: url('/images/glasses.jpg') no-repeat;
+  background-size: cover;
+
   padding: 100px 0 0;
+
+  h1,p { color: $light-gray; }
 
   h1 {
     margin-top: 75px;
@@ -85,7 +58,6 @@
   }
 
   p {
-    color: lighten($gray-text, 10);
     font-size: 1.7em;
     line-height: 1.5;
     margin-bottom: 50px;
@@ -93,7 +65,16 @@
     @include mobile { margin-bottom: 15px; }
   }
 
+  img {
+    display: none;
+    width: 750px;
+
+    @media (min-width: 790px) { display: block; }
+  }
+
+
   @include mobile {
+    background: url('/images/glasses_blur.jpg') no-repeat;
     padding-top: 20px;
     text-align: center;
 
@@ -102,6 +83,15 @@
 }
 
 
+
+.section-title {
+  // Light main section header
+  color: lighten($gray-text, 20);
+  margin-bottom: 50px;
+  text-align: center;
+
+  @include mobile { margin-bottom: 25px; }
+}
 
 .landing-reasons {
   background-color: white;
@@ -127,7 +117,6 @@
 
 
 .landing-how {
-
   h1 {
     color: lighten($gray-text, 20);
     margin-bottom: 25px;
@@ -140,6 +129,13 @@
     margin-top: 35px;
 
     @include mobile { margin-top: 25px; }
+  }
+
+  img {
+    border: 1px solid $med-gray;
+    max-width: 100%;
+
+    @include mobile { display: none; }
   }
 
   .closing-cta {
@@ -161,6 +157,23 @@
 
     @include mobile { margin: 10px 0; }
   }
+}
+
+
+
+.round-number {
+  $height: 25px;
+
+  @include border-radius($height);
+  background-color: $gray-text;
+  color: white;
+  display: inline-block;
+  float: left;
+  font-size: 1.2em;
+  line-height: $height;
+  margin-right: 10px;
+  text-align: center;
+  width: $height; height: $height;
 }
 
 
