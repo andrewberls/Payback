@@ -8,7 +8,7 @@
 
   <div class="span-6 offset-5">
 
-    <%= form_for @message, url: contact_path, html: { class: 'form-validate' } do |f| %>
+    <%= form_for @message, url: contact_path do |f| %>
       <h1 class="form-title">Contact Us</h1>
 
       <%= flash_success %>
@@ -19,6 +19,7 @@
       <%= f.text_field :name, autofocus: true %>
 
       <%= f.label :email %>
+      <span class="help-text">Optional</span>
       <%= f.text_field :email %>
 
       <%= f.label :message %>
