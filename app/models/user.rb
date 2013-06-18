@@ -83,11 +83,11 @@ class User < ActiveRecord::Base
   end
 
   def active_credits_to(user)
-    credits.where(debtor_id: user, active: true).order('id DESC')
+    active_credits.where(debtor_id: user).order('id DESC')
   end
 
   def active_debts_to(user)
-    debts.where(creditor_id: user, active: true).order('id DESC')
+    active_debts.where(creditor_id: user).order('id DESC')
   end
 
   def active_credit_amt_to(user)
