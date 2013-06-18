@@ -8,6 +8,7 @@ emailField = (num) ->
 
 
 $ ->
+
   $('.group-member-count').click ->
     $names = $(@).parent().find('.group-member-names')
     toggleSlide($names)
@@ -31,7 +32,6 @@ $ ->
     # Show the remove button for additional fields
     $submit.parent().find('.invitation-field').each (idx, fld) ->
       $(fld).find('.invitation-remove').show() if idx > 0
-
 
     return false
 

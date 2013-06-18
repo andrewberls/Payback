@@ -38,7 +38,16 @@ class Group < ActiveRecord::Base
   end
 
   def remove_user(user)
-    user.expenses(self).map(&:destroy)
+    user.expenses(self).each do |e|
+      if user.id == e.creditor_id
+        e.creditor_id = nil
+      else
+        e.debtor_id = nil
+      end
+      e.deactivate
+      e.save!
+    end
+
     users.delete user
   end
 
