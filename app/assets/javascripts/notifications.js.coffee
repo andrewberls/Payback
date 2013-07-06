@@ -33,13 +33,13 @@ $ ->
     $.post '/notifications/read'
 
 
-  $(document.body).delegate '.mark-off-btn', 'click', ->
+  $(document).on 'click', '.mark-off-btn', ->
     $expense  = $(@).parent().parent()
     exp_id    = $expense.data('id')
     $(@).parent().html confirm_btns(exp_id)
     return false
 
-  $(document.body).delegate '.confirm-yes', 'click', ->
+  $(document).on 'click', '.confirm-yes', ->
     $actions = $(@).parent().parent()
     exp_id   = $actions.parent().data('id')
     $expense = $("*[data-id='#{exp_id}']")
@@ -49,6 +49,6 @@ $ ->
       unless $(".notification:not([class~='notification-completed'])").length
         $dropdown.hide()
 
-  $(document.body).delegate '.confirm-no', 'click', ->
+  $(document).on 'click', '.confirm-no', ->
     $(@).parent().parent().html check_btn()
     return false

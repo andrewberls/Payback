@@ -18,7 +18,7 @@ $email.on 'blur', ->
         $(".domain").html(domain)
   }
 
-$(document.body).delegate '.domain', 'click', ->
+$(document).on 'click', '.domain', ->
   # On click, fill in the field with the suggestion and remove the hint
   $email.val $(".suggestion").text()
   $hint.fadeOut 200, -> $(@).empty()

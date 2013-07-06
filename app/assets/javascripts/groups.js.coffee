@@ -35,7 +35,7 @@ $ ->
 
     return false
 
-  $(document.body).delegate '.invitation-remove', 'click', ->
+  $(document).on 'click', '.invitation-remove', ->
     # Slide up and destroy an invitation
     $inv = $(@).parent()
     $inv.slideUp -> $inv.remove()

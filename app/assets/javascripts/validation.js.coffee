@@ -14,5 +14,5 @@ $ ->
     return !errors
 
   # Remove the error class if we add a valid value
-  $(document.body).delegate '.field-error', 'keyup', ->
+  $(document).on 'keyup', '.field-error', ->
     $(@).removeClass(errClass) if $(@).val()
