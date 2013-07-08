@@ -22,7 +22,7 @@ $ ->
   inv_num = 1
   $form   = $(".group-invitations form")
   $submit = $form.find('.invite-btns')
-  $(emailField(inv_num)).insertBefore($submit);
+  $(emailField(inv_num)).insertBefore($submit)
 
   $(".add-invitation").click ->
     # Slide down new invitations

@@ -6,7 +6,7 @@ $ ->
 
   rotate =  ->
     offset   = Math.abs(i - 1)
-    distance = wordHeight * offset;
+    distance = wordHeight * offset
 
     $window.animate { top: -distance }, 750, 'easeInQuint', ->
       if i == numWords then i = 1 else i++
