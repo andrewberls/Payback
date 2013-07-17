@@ -1,9 +1,11 @@
-class PasswordsMailer < ActionMailer::Base
-  default from: "noreply.paybackio@gmail.com"
+class PasswordsMailer < ApplicationMailer
 
   def reset(token)
-    @token = token
-    @user  = token.user
-    mail to: @user.email, subject: "Reset Password on payback.io"
+    @token      = token
+    @recipient  = token.user
+    @hide_unsub = true
+    @subject    = "Reset Password on payback.io"
+
+    mail to: @recipient.email, subject: @subject
   end
 end
