@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
       }
       format.json {
         scope = params[:exclude_current] ? current_user : nil
-        return render json: GroupSerializer.new(@group, :scope => scope)
+        return render json: GroupSerializer.new(@group, scope: scope)
       }
     end
   end

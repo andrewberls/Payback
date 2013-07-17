@@ -18,10 +18,24 @@
       <%= f.label :password_confirmation, "Confirm New Password" %>
       <%= f.password_field :password_confirmation %>
 
+      <div class="communication-preferences">
+        <h2 class="form-title-small">Communication Preferences</h2>
+        <p>Receive email when:</p>
+
+        <%= f.fields_for :communication_preferences do |builder| %>
+          <% Notification::VALID_TYPES.each do |type| %>
+            <label class="checkbox">
+              <% checked = @user.receive_communication?(type) %>
+              <%= builder.check_box type, { checked: checked } %>
+              <%= preference_text(type) %>
+            </label>
+          <% end %>
+        <% end %>
+      </div>
+
       <div style="font-weight:bold; text-align:center; margin-bottom:20px; font-size:1.2em">
         <%= link_to "Forgot your password?", forgot_password_path %>
       </div>
-
 
       <%= link_to "Cancel", expenses_path, class: "btn" %>
       <%= submit_tag "Update profile", class: "btn btn-blue" %>

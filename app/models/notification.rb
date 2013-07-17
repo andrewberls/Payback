@@ -1,6 +1,9 @@
 class Notification < ActiveRecord::Base
 
-  VALID_STATES = %w( mark_off )
+  MARKOFF = 'mark_off'
+  VALID_TYPES = [
+    MARKOFF
+  ]
 
   attr_accessible :user_from_id, :user_to_id, :expense_id, :notif_type, :read
 
@@ -8,7 +11,7 @@ class Notification < ActiveRecord::Base
   belongs_to :user_from, class_name: 'User'
   belongs_to :user_to,   class_name: 'User'
 
-  validates_inclusion_of :notif_type, :in => VALID_STATES, :message => "Type is not valid"
+  validates_inclusion_of :notif_type, :in => VALID_TYPES, :message => "Type is not valid"
 
   def unread?
     !read
@@ -19,10 +22,13 @@ class Notification < ActiveRecord::Base
   end
 
   def expense_title
-    if expense.present?
-      expense.title
-    else
-      ""
+    expense.try(:title) || ''
+  end
+
+  def deliver_mail
+    case notif_type
+    when Notification::MARKOFF
+        NotificationsMailer.mark_off(self.expense).deliver
     end
   end
 

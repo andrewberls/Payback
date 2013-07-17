@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :full_name, :email, :password, :password_confirmation
+  attr_accessible :full_name, :email, :password, :password_confirmation, :communication_preference
 
   has_secure_password
 
@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :notifications_from, class_name: 'Notification', foreign_key: 'user_from_id'
   has_many :notifications_to,   class_name: 'Notification', foreign_key: 'user_to_id'
 
+  has_one :communication_preference
+  accepts_nested_attributes_for :communication_preference
 
   validates :full_name, presence: true, length: { maximum: 50 }
 
@@ -125,7 +127,33 @@ class User < ActiveRecord::Base
   end
 
   def recent_notifications
-    notifications_to.reverse.take(5)
+    notifications_to.order('id DESC').limit(5)
+  end
+
+  def receive_communication?(type)
+    if communication_preference
+      # Preferences are stored as integer strings rather than booleans
+      # to play nicely with Rails checkboxes
+      communication_preference.send(type).to_i.nonzero?
+    else
+      true
+    end
+  end
+
+  # Communication preferences are lazily created, i.e., if one
+  # does not exist for a user we assume true for all notifications
+  # It is only when they explicitly disable a notification that
+  # we create the associated preference record
+  def lazy_create_communication_preferences!(prefs)
+    return if self.communication_preference.present?
+    if prefs.values.any? { |v| v.to_i == 0 }
+      self.communication_preference = CommunicationPreference.create!(user: self)
+    end
+  end
+
+  def update_communication_preferences(prefs)
+    lazy_create_communication_preferences!(prefs)
+    self.communication_preference.update_attributes(prefs)
   end
 
   def expire_reset_tokens

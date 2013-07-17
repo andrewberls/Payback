@@ -37,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user]) &&
+      @user.update_communication_preferences(params[:user][:communication_preferences])
       flash[:success] = "Profile successfully updated."
       return redirect_to expenses_path
     else
@@ -82,5 +83,6 @@ class UsersController < ApplicationController
     can_view_page = (@user != current_user) && expenses.present?
     reject_unauthorized(can_view_page)
   end
+
 
 end
