@@ -1,0 +1,75 @@
+#simplemodal-overlay {
+  background-color: #000;
+
+  @include mobile { padding: 0 10px; }
+}
+
+#simplemodal-container {
+  // top: 200px !important;
+  top: 20% !important;
+
+  @include mobile { top: 10% !important; }
+}
+
+.modal {
+  @include border-box;
+  @include clearfix;
+  background-color: white;
+  border: 1px solid $med-gray;
+  display: none;
+  margin: 0 auto;
+  padding: 15px;
+  width: 700px;
+
+  @include mobile {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .simplemodal-close {
+    @include bold(1.2em);
+    color: darken($med-gray, 5);
+    float: right;
+    margin-top: -5px;
+
+    &:hover {
+      color: lighten($gray-text, 10);
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  // img {
+  //   float: left;
+  //   margin-right: 15px;
+
+  //   @include mobile {
+  //     display: block;
+  //     float: none;
+  //     margin: 0 auto 10px;
+  //   }
+  // }
+
+  a:hover { text-decoration: underline; }
+}
+
+#mailer-modal  {
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+
+  p {
+    line-height: 1.5;
+    font-size: 1.2em;
+
+    & + p { margin-top: 15px; }
+  }
+
+  .btn-cancel {
+    color: $gray-text;
+    float: right;
+    font-size: 12px;
+    margin-top: -34px
+  }
+}
