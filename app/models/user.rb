@@ -133,30 +133,14 @@ class User < ActiveRecord::Base
     notifications_to.order('id DESC').limit(5)
   end
 
-  def receive_communication?(type)
-    if communication_preference
-      # Preferences are stored as integer strings rather than booleans
-      # to play nicely with Rails checkboxes
-      communication_preference.send(type).to_i.nonzero?
-    else
-      true
-    end
-  end
-
-  # Communication preferences are lazily created, i.e., if one
-  # does not exist for a user we assume true for all notifications
-  # It is only when they explicitly disable a notification that
-  # we create the associated preference record
-  def lazy_create_communication_preferences!(prefs)
-    return if self.communication_preference.present?
-    if prefs.values.any? { |v| v.to_i == 0 }
-      self.communication_preference = CommunicationPreference.create!(user: self)
-    end
-  end
-
   def update_communication_preferences(prefs)
-    lazy_create_communication_preferences!(prefs)
-    self.communication_preference.update_attributes(prefs)
+    communication_preference.update_attributes(prefs)
+  end
+
+  def receive_communication?(type)
+    # Preferences are stored as integer strings rather than booleans
+    # to play nicely with Rails checkboxes
+    !!communication_preference.send(type).to_i.nonzero?
   end
 
   def expire_reset_tokens

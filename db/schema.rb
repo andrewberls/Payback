@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717031211) do
+ActiveRecord::Schema.define(:version => 20130717080131) do
 
   create_table "communication_preferences", :force => true do |t|
     t.integer  "user_id"

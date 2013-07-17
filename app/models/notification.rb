@@ -30,7 +30,10 @@ class Notification < ActiveRecord::Base
   def deliver_mail
     case notif_type
     when Notification::MARKOFF
+      recipient = expense.creditor
+      if recipient.receive_communication?(Notification::MARKOFF)
         NotificationsMailer.mark_off(self.expense).deliver
+      end
     end
   end
 
