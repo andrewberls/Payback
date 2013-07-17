@@ -5,7 +5,7 @@ class CreateCommunicationPreferences < ActiveRecord::Migration
 
       # Store boolean preferences as strings to work with convoluted Rails checkboxes
       # i.e., "1" or "0"
-      t.string :mark_off
+      t.string :mark_off, default: "1"
       t.timestamps
     end
   end

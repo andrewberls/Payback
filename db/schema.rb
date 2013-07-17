@@ -15,16 +15,16 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
 
   create_table "communication_preferences", :force => true do |t|
     t.integer  "user_id"
-    t.string   "mark_off"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "new_debt"
+    t.string   "mark_off",   :default => "1"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "new_debt",   :default => "1"
   end
 
   create_table "expenses", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.integer  "creditor_id"
     t.integer  "debtor_id"
     t.integer  "group_id"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
     t.string   "gid"
     t.string   "title"
     t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "owner_id"
   end
 
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
     t.integer  "group_id"
     t.string   "recipient_email"
     t.boolean  "used",            :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "notifications", :force => true do |t|
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
     t.integer  "expense_id"
     t.integer  "user_from_id"
     t.integer  "user_to_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "reset_tokens", :force => true do |t|
@@ -74,23 +74,23 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
     t.integer  "user_id"
     t.datetime "expires_at"
     t.boolean  "used",       :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "site_notices", :force => true do |t|
     t.string   "title"
     t.datetime "expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "password_digest"
     t.string   "auth_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "full_name"
   end
 

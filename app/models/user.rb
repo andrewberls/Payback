@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
                        length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_auth_token
+  after_create :generate_communication_preference
 
 
   def self.users_from_keys(users, group, creditor)
@@ -158,6 +159,10 @@ class User < ActiveRecord::Base
 
   def generate_auth_token
     self.auth_token = SecureRandom.urlsafe_base64
+  end
+
+  def generate_communication_preference
+    CommunicationPreference.create!(user: self)
   end
 
   def sum_amounts(expenses)
