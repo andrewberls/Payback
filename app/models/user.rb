@@ -74,6 +74,9 @@ class User < ActiveRecord::Base
   def add_debt(expense)
     expense.debtor = self
     debts << expense
+    if receive_communication?(Notification::NEW_DEBT)
+      NotificationsMailer.new_debt(expense).deliver
+    end
   end
 
   def active_credits

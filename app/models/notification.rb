@@ -1,8 +1,10 @@
 class Notification < ActiveRecord::Base
 
-  MARKOFF = 'mark_off'
+  MARKOFF  = 'mark_off'
+  NEW_DEBT = 'new_debt'
   VALID_TYPES = [
-    MARKOFF
+    MARKOFF,
+    NEW_DEBT
   ]
 
   attr_accessible :user_from_id, :user_to_id, :expense_id, :notif_type, :read

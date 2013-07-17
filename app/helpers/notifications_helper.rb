@@ -9,7 +9,9 @@ module NotificationsHelper
   def preference_text(notif_type)
     case notif_type
     when Notification::MARKOFF
-      'A user asks me to mark off an expense'
+      'Someone asks me to mark off an expense'
+    when Notification::NEW_DEBT
+      'Someone assigns an expense to me'
     end
   end
 
