@@ -136,6 +136,7 @@ class User < ActiveRecord::Base
 
   def update_communication_preferences(prefs)
     communication_preference.update_attributes(prefs)
+    communication_preference.touch
   end
 
   def receive_communication?(type)

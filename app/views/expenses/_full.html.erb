@@ -31,8 +31,8 @@
 
 </div>
 
-
-<% if current_user.communication_preference.blank? && cookies[:closed_mailer_modal].blank? %>
+<% comm = current_user.communication_preference %>
+<% if comm.created_at == comm.updated_at && cookies[:closed_mailer_modal].blank? %>
   <div id="mailer-modal" class="modal">
     <a class="simplemodal-close" title="Close">&times;</a>
 
