@@ -30,7 +30,7 @@
 
       <%= f.label :amount %>
       <span class="help-text">Decimal optional</span>
-      <%= f.text_field :amount %>
+      <%= f.text_field :amount, data: { 'validate-numeric' => true } %>
 
       <%= f.label :title %>
       <span class="help-text">Describe the expense, ex: "Groceries"</span>

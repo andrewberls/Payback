@@ -16,3 +16,8 @@ $ ->
   # Remove the error class if we add a valid value
   $(document).on 'keyup', '.field-error', ->
     $(@).removeClass(errClass) if $(@).val()
+
+  # Perform basic type sanity checking
+  $(document).on 'blur', "[data-validate-numeric='true']", ->
+    val = $(@).val()
+    $(@).addClass(errClass) if isNaN parseInt(val)
