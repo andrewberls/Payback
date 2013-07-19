@@ -1,11 +1,15 @@
 class NotificationsController < ApplicationController
 
-  # TODO: this desperately needs to be an AJAX endpoint
   def create
-    if notification = Notification.create(params[:notification])
+    notif_params = params[:notification]
+    if notification = Notification.create(notif_params)
       notification.deliver_mail
     end
-    return redirect_to expenses_path
+    @exp_id = notif_params[:expense_id]
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def read

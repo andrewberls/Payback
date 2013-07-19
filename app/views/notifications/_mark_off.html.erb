@@ -1,8 +1,8 @@
-<%= form_for Notification.new, html: { class: 'form-invisible' } do |f| %>
+<%= form_for Notification.new, remote: true, html: { class: 'form-invisible' } do |f| %>
   <%= f.hidden_field :user_from_id, value: current_user.id %>
   <%= f.hidden_field :user_to_id,   value: expense.creditor.id %>
   <%= f.hidden_field :notif_type,   value: 'mark_off' %>
-  <%= f.hidden_field :expense_id,   value: expense.id %>
+  <%= f.hidden_field :expense_id,   value: expense.id, class: 'notification_expense_id' %>
 
   <%= button_tag type: :submit, title: "Request for #{expense.creditor.first_name} to mark this off", class: 'btn btn-blue no-text mark-off-notification' do %>
     <i class='icon-comment icon-white'></i>

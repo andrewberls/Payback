@@ -61,5 +61,17 @@
   &.badge-red { background-color: #D03130; }
 }
 
-.confirm-yes { color: #35aa47; }
-.confirm-no { color: #B94A48; }
+$green: #35aa47;
+$red:   #B94A48;
+
+.confirm-yes { color: $green; }
+.confirm-no  { color: $red; }
+
+.green-check {
+  color: $green;
+  display: inline-block;
+  font-size: 1.3em;
+  margin-bottom: -2px;
+
+  &:after { content: '\2713'; } // Escaped unicode checkmark
+}
