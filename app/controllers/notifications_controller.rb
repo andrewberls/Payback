@@ -1,8 +1,13 @@
 class NotificationsController < ApplicationController
 
   def create
-    Notification.create(params[:notification])
-    return redirect_to expenses_path
+    notif_params = params[:notification]
+    Notification.create(notif_params)
+    @exp_id = notif_params[:expense_id]
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def read

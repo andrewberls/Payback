@@ -1,0 +1,4 @@
+var $btn = $(".notification_expense_id[value=<%= @exp_id %>]").parent();
+$('.tipsy').remove()
+
+$btn.replaceWith("<span class='green-check'></span>");
