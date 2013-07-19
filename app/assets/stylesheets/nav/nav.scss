@@ -72,6 +72,11 @@ header {
     color: #bbb;
     float: right;
     margin: 10px 0 0;
+
+    .separator {
+      display: inline-block;
+      margin: 0 5px;
+    }
   }
 
   @include mobile {
