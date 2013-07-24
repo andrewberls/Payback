@@ -170,16 +170,8 @@
 }
 
 .group-btn-container {
-  float: right;
-
-  @include mobile {
-    float: none;
-    text-align: center;
-    margin-top: 25px;
-  }
+  text-align: center;
+  margin-top: 25px;
 }
 
-.group-back {
-  // 'Back to Groups' in Group#show
-  margin-bottom: 15px;
-}
+.group-back { margin-bottom: 15px; }
