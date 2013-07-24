@@ -80,6 +80,8 @@ header {
   }
 
   @include mobile {
+    padding-bottom: 10px;
+
     h1 { display: none; }
 
     nav {
