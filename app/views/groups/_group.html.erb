@@ -7,7 +7,13 @@
 
     <span class="group-gid">ID: <%= group.gid %></span>
 
-    <span class="group-member-count"><%= link_to pluralize(group.users.count, 'member'), "#" %></span>
+    <span class="group-member-count">
+      <%= link_to pluralize(group.users.count, 'member'), '#' %>
+      <% if group_owned %>
+        &mdash;
+        <%= link_to 'Invite people', '#', class: 'btn btn-blue btn-tiny show-invitations' %>
+      <% end %>
+    </span>
 
     <div class="group-member-names">
       <% group.users.each do |user| %>
@@ -21,13 +27,12 @@
 
     <div class="right">
       <% if group_owned %>
-        <%= link_to "Invite people", '#', class: 'btn btn-blue show-invitations' %>
-        <%= link_to "Edit Info", edit_group_path(group.gid), class: "btn" %>
+        <%= link_to 'Edit Info', edit_group_path(group.gid), class: 'btn' %>
       <% end %>
 
-      <%= link_to "Leave Group", leave_group_path(group.gid),
-        confirm: "Are you sure you want to leave? You can join again later, but all your expenses will be lost.",
-        class: "btn btn-red"
+      <%= link_to 'Leave', leave_group_path(group.gid),
+        confirm: 'Are you sure you want to leave this group? You can join again later, but all your expenses will be lost.',
+        class: 'btn btn-red'
       %>
     </div>
   </div><!-- .group-info -->
