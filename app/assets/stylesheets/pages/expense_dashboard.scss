@@ -1,9 +1,69 @@
 //-- EXPENSES DASHBOARD
 //------------------------------------
+//.condensed-header {
+//  @include bold(1.1em);
+//  margin-bottom: 25px;
+//}
+
+.stats-bar {
+  @include clearfix;
+  background-color: white;
+  border: 1px solid $med-gray;
+  margin-bottom: 30px;
+
+  div {
+    @include border-box;
+    float: left;
+    font-size: 1.2em;
+    padding: 0 15px;
+    $size: 55px;
+    height: $size;
+    line-height: $size;
+    width: 50%;
+
+    h3, p { display: inline-block; }
+
+    h3 {
+      font-size: 1.8em;
+      margin: 0px 4px 0 0;
+    }
+
+    p { vertical-align: top; }
+
+    &:first-child { border-right: 1px solid $med-gray; }
+
+    @media(max-width: 790px) {
+      height: auto;
+      line-height: 1.4;
+      padding: 5px 10px;
+      text-align: center;
+
+      h3, p { display: block; }
+    }
+  }
+}
+
 #dashboard-buttons {
   margin-bottom: 25px;
 
   .btn { margin-right: 10px; }
+
+  @media (max-width: 630px) {
+    margin-top: -5px;
+
+    .btn {
+      margin: 0;
+      padding: 15px 18px;
+
+      &:last-of-type { float: right; }
+    }
+  }
+}
+
+.dashboard-container {
+  h2 {
+    font-size: 1.7em;
+  }
 }
 
 .expenses-container {
@@ -122,7 +182,7 @@
 } // .expense
 
 .expense-blank {
-  font-size: 1em;
+  font-size: 1.1em;
 
   p { margin: 5px 0; }
 }
@@ -164,18 +224,4 @@
   &:hover { cursor: pointer; }
 
   @media (max-width: 1100px) { display: none; }
-}
-
-
-@media (max-width: 480px) {
-  #dashboard-buttons {
-    margin-top: -5px;
-
-    .btn {
-      margin: 0;
-      padding: 15px 18px;
-
-      &:last-of-type { float: right; }
-    }
-  }
 }

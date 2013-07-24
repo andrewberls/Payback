@@ -11,8 +11,4 @@
     </div>
   </div><!-- .group-container -->
 
-  <% if @debts.count > 1 %>
-    <p class="expense-total">You owe <%= number_to_currency(current_user.total_debt_owed) %>.</p>
-  <% end %>
-
 <% end %>

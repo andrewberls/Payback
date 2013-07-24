@@ -1,7 +1,7 @@
 <% @credit_groups.each do |group| %>
 
   <div class="group-container">
-    <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
+    <%= content_tag(:h2, group.title) unless current_user.groups.count == 1 %>
 
     <div class="expenses-container credits-container">
       <% @credits = group.active_credits_for(current_user) %>
@@ -10,11 +10,5 @@
       <% end %>
     </div>
   </div>
-
-  <% if @credits.count > 1 %>
-    <p class="expense-total">You are owed
-      <%= content_tag :span, number_to_currency(current_user.total_credit_owed), class: 'amount' %>.
-    </p>
-  <% end %>
 
 <% end %>
