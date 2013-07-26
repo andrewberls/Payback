@@ -5,11 +5,18 @@
 //  margin-bottom: 25px;
 //}
 
+.stats-container {
+  background-color: lighten($med-gray, 10);
+  border-bottom: 1px solid $med-gray;
+  padding: 20px 0;
+
+  @include mobile { padding: 10px 0; }
+}
+
 .stats-bar {
   @include clearfix;
   background-color: white;
   border: 1px solid $med-gray;
-  margin-bottom: 30px;
 
   div {
     @include border-box;

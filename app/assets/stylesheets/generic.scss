@@ -10,7 +10,13 @@ body {
   font-size: 13px;
 }
 
-.page-wrap > .container { margin: 25px auto 30px; }
+.main-container {
+  padding-top: 25px;
+
+  &.bordered { border-top: 1px solid $light-gray; }
+}
+
+.page-wrap > .container { margin: 0 auto 30px; }
 
 @include mobile {
   body .container { padding: 0 5px; }

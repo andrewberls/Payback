@@ -25,16 +25,27 @@
   <div class="page-wrap">
     <%= render (signed_in?) ? 'shared/header' : 'shared/static_header' %>
 
-    <div class="container">
-      <%= yield %>
+    <% on_dashboard = current_page?(expenses_path) %>
+    <% if on_dashboard %>
+      <div class="stats-container">
+        <div class="container">
+          <%= render 'expenses/dashboard/quick_stats' %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="main-container <%= on_dashboard ? 'bordered' : '' %>">
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
-  </div>
+  </div><!-- .page-wrap -->
 
   <footer>
     Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
   </footer>
 
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'application' %>
   <%= yield :javascript_includes %>
 
 </body>
