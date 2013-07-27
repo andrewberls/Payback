@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user]) &&
       @user.update_communication_preferences(params[:user][:communication_preferences])
       flash[:success] = "Profile successfully updated."
-      return redirect_to expenses_path
+      return redirect_to edit_user_path(@user)
     else
       flash.now[:error] = "Error - please check your fields and try again."
       return render :edit

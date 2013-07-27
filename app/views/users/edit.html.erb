@@ -1,11 +1,17 @@
 <% provide(:title, "Edit Profile") %>
 
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "users" %>
+<% end %>
+
 <div class="row">
   <div class="span-6 offset-5">
 
     <%= form_for @user, url: { action: 'update' } do |f| %>
 
       <h1 class="form-title">Edit Your Profile</h1>
+
+      <%= flash_success %>
 
       <%= render 'shared/instance_errors', instance: @user %>
 
