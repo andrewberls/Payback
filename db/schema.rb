@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
 
   create_table "communication_preferences", :force => true do |t|
     t.integer  "user_id"
-    t.string   "mark_off",   :default => "1"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.string   "new_debt",   :default => "1"
+    t.integer  "mark_off",   :default => 1
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "new_debt",   :default => 1
   end
 
   create_table "expenses", :force => true do |t|

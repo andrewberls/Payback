@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
   def receive_communication?(type)
     # Preferences are stored as integer strings rather than booleans
     # to play nicely with Rails checkboxes
-    !!communication_preference.send(type).to_i.nonzero?
+    !!communication_preference.send(type).nonzero?
   end
 
   def expire_reset_tokens
