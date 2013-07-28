@@ -53,3 +53,4 @@ $ ->
   $('#show-expense-faqs, #hide-expense-faqs').click ->
     toggleSlide($faq)
     return false
+

@@ -24,7 +24,10 @@ Payback::Application.routes.draw do
   match 'welcome' => 'users#welcome', as: 'welcome'
 
   resources :expenses do
-    get 'condensed', on: :collection
+    collection do
+      get 'condensed'
+      get 'tagged/:tag' => 'expenses#tagged', as: 'tagged'
+    end
   end
   match 'clear/:id' => 'expenses#clear', as: 'clear'
 

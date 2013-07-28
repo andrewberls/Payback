@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def owns?(group)
-    group.owner == self
+    group.owner_id == self.id
   end
 
   def first_name
@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
   end
 
   def receive_communication?(type)
-    # Preferences are stored as integer strings rather than booleans
+    # Preferences are stored as ints rather than booleans
     # to play nicely with Rails checkboxes
     !!communication_preference.send(type).nonzero?
   end

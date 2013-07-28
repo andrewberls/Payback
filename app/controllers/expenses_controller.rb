@@ -48,6 +48,12 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def tagged
+    @tag     = params[:tag]
+    @credits = current_user.tagged_credits(@tag)
+    @debts   = current_user.tagged_debts(@tag)
+  end
+
   def show
     # TODO: find the cause for this
     redirect_to expenses_path

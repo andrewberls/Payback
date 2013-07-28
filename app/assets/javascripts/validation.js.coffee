@@ -7,7 +7,9 @@ $ ->
 
     for field in $(@).find('input[type=text],input[type=email],input[type=password], textarea')
       $(field).removeClass(errClass)
-      if !$(field).val()
+      data = $(field).data('validate')
+      shouldValidate = if data? then data else true
+      if !$(field).val() && shouldValidate
         $(field).addClass(errClass)
         errors = true
 

@@ -1,7 +1,7 @@
 <% provide(:title, 'Add Expense') %>
 
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag "new_expense" %>
+  <%= javascript_include_tag 'expenses/new', 'expenses/tag_editor' %>
 <% end %>
 
 <div class="row">
@@ -18,7 +18,9 @@
 
 
       <div class="users-prompt">
-        <a href="#" class="btn btn-large btn-blue" id="users-group"><i class="icon-white icon-ok"></i>Group Expense</a>
+        <a href="#" class="btn btn-large btn-blue" id="users-group">
+          <i class="icon-white icon-ok"></i>Group Expense
+        </a>
         <a href="#" class="btn btn-large" id="users-select">Select Members &raquo;</a>
       </div>
 
@@ -35,6 +37,28 @@
       <%= f.label :title %>
       <span class="help-text">Describe the expense, ex: "Groceries"</span>
       <%= f.text_field :title, maxlength: 75 %>
+
+
+      <%= f.label :tags %>
+      <span class="help-text">Optional: Add tags to sort expenses later, up to 4</span>
+      <div class='core-tags-container'>
+        <p>Common:</p>
+        <% Tag::CORE_TYPES.each do |type| %>
+           <span class='core-tag btn' data-type="<%= type %>"><%= type %></span>
+        <% end %>
+      </div>
+
+      <div class="tag-editor">
+        <div style="overflow: auto">
+          <span class="tags">
+            <!-- <span class="tag">groceries</span> -->
+          </span>
+          <%= text_field_tag :tag_input, nil, placeholder: 'Enter your own tags',
+            'data-validate' => false %>
+        </div>
+      </div><!-- .tag-editor -->
+
+      <%= hidden_field_tag :tag_list %>
 
       <%= submit_tag "Payback",      class: "btn btn-red btn-large",  id: "expense-payback" %>
       <%= submit_tag "Split Evenly", class: "btn btn-blue btn-large", id: "expense-split" %>

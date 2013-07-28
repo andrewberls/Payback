@@ -1,0 +1,25 @@
+.tag-editor {
+  border: 1px solid $med-gray;
+  margin-bottom: 15px;
+  padding: 3px 5px 2px;
+  position: relative;
+
+  .tag {
+    @include bold(0.9em);
+    background-color: #F3F3F3;
+    border: 1px solid #DCDCDC;
+    color: $gray-text;
+    display: inline-block;
+    margin: 1px 4px 0 0;
+    padding: 5px 10px;
+  }
+
+  #tag_input {
+    border: none;
+    float: right;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+  }
+}

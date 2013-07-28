@@ -9,6 +9,7 @@ class Expense < ActiveRecord::Base
   belongs_to :creditor, class_name: "User"
   belongs_to :debtor,   class_name: "User"
 
+  has_and_belongs_to_many :tags
 
   validates :amount,
     presence: true,
@@ -16,12 +17,16 @@ class Expense < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 75 }
 
-
   def self.build(params)
     exp_params = params[:expense]
     Expense.new(exp_params) do |exp|
       exp.action = (params[:commit] == 'Payback') ? :payback : :split
       exp.amount = ExpressionParser.parse(exp_params[:amount])
+
+      tags = params[:tag_list].split(',')
+      if tags.present?
+        tags.each { |name| exp.tags << Tag.find_or_create_by_title(name) }
+      end
     end
   end
 
@@ -33,12 +38,12 @@ class Expense < ActiveRecord::Base
     update_attributes active: false
   end
 
+  # The cost for each user, calculated based on the action type
+  # Split includes current user, Payback excludes
   def cost_for(users)
-    # The cost for each user, calculated based on the action type
-    # Split includes current user, Payback excludes
     user_count    = (action == :split) ? users.count + 1 : users.count
     cost_per_user = amount / user_count
-    cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0) # Round to nearest $0.50
+    cost_per_user = "%.2f" % ((cost_per_user*2.0).round / 2.0).to_f # Round to nearest $0.50
 
     cost_per_user.to_f
   end
@@ -47,9 +52,14 @@ class Expense < ActiveRecord::Base
   # Creates a duplicated instance to assign to each user
   def assign_to(*users)
     users.flatten.each do |user|
-      expense = self.dup
+      expense      = self.dup
+      expense.tags = self.tags.dup
       user.add_debt(expense)
     end
+  end
+
+  def has_tag?(title)
+    tags.any? { |t| t.title == title }
   end
 
 end

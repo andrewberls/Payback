@@ -1,7 +1,5 @@
 <div class="dashboard-container">
 
-  <%#= render 'expenses/dashboard/quick_stats'%>
-
   <!--
   <div class="condensed-header">
     Too much?
@@ -12,7 +10,6 @@
   <%= render 'expenses/dashboard/buttons' %>
 
   <div class="row">
-
     <%= flash_success %>
 
     <% [:credits, :debts].each do |type| %>
@@ -26,11 +23,11 @@
         <% end %>
       </div>
     <% end %>
-
   </div>
 
 </div>
 
+<%# TODO: temporary mailer modal %>
 <% comm = current_user.communication_preference %>
 <% if comm.created_at == comm.updated_at && cookies[:closed_mailer_modal].blank? %>
   <div id="mailer-modal" class="modal">
@@ -52,7 +49,7 @@
       <%= link_to 'Edit my preferences', edit_user_path(current_user), class: 'btn btn-blue btn-huge' %>
     </div>
 
-    <a href="#" class="btn btn-large btn-cancel simplemodal-close" style="">
+    <a href="#" class="btn btn-large btn-cancel simplemodal-close">
       Maybe later
     </a>
   </div>

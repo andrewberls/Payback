@@ -1,0 +1,11 @@
+<div class="expense-tags">
+  <% tags = expense.tags %>
+  <% if tags.present? %>
+    <% tags.each do |tag| %>
+      <% title = tag.title %>
+      <%= link_to title, tagged_expenses_path(title), class: 'tag' %>
+    <% end %>
+  <% else %>
+    <a href='#' class=''>+ Add Tag</a>
+  <% end %>
+</div>

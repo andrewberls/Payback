@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+
+  <div class="row">
+    <%# Center the header if either column is blank, else left align it %>
+    <% header_class = (@credits.blank? || @debts.blank?) ? 'span-8 offset-4' : 'span-16' %>
+    <div class="<%= header_class %>">
+      <h1>Tagged with: <%= @tag %></h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <% if @credits.present? %>
+      <% credits_offset = @debts.present? ? '' : 'offset-4' %>
+      <div class="span-8 <%= credits_offset %>">
+        <h2>Owed to You</h2>
+        <div class="group-container">
+          <div class="expenses-container credits-container">
+            <% @credits.each do |expense| %>
+              <%= render 'credit', expense: expense %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @debts.present? %>
+      <% debts_offset = @credits.present? ? '' : 'offset-4' %>
+      <div class="span-8 <%= debts_offset %>">
+        <h2>You Owe</h2>
+        <div class="group-container">
+          <div class="expenses-container debts-container">
+            <% @debts.each do |expense| %>
+              <%= render 'debt', expense: expense %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+  </div>
+</div>

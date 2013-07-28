@@ -1,10 +1,14 @@
 //-- ADD EXPENSE
 //------------------------------------
+@import "expense_tags";
 .new-expense-form {
   margin-bottom: 5px;
   padding: 20px;
 
-  label:first-of-type { margin-top: 5px; }
+  label {
+    font-size: 1.1em;
+    &:first-of-type { margin-top: 5px; }
+  }
 }
 
 #expense-payback { margin-left: 10px; }
@@ -96,4 +100,20 @@
   }
 }
 
+// Suggested core tag buttons
+.core-tags-container {
+  margin: 5px 0 10px;
 
+  p {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.core-tag {
+  padding: 5px;
+  border-bottom: 1px solid #f3f3f3;
+
+  // Check icon
+  i { margin: -2px 5px 0 0; }
+}

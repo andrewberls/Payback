@@ -4,12 +4,14 @@
     <%= number_to_currency(expense.amount) %>
   </span>
 
-  <span class="expense-creditor"><%= link_to_unless_current expense.creditor.first_name, debts_user_path(expense.creditor) %></span>
+  <span class="expense-creditor">
+    <%= link_to_unless_current expense.creditor.first_name, debts_user_path(expense.creditor) %>
+  </span>
 
   <div class="info-stack">
     <span class="expense-title"><%= expense.title %></span>
-    <span class="expense-date"><%= render_date expense.created_at %></span>
-  </div>
+    <%= render 'expenses/tags', expense: expense %>
+  </div><!-- .info-stack -->
 
   <%= render 'expenses/stale_badge', expense: expense %>
 
@@ -18,4 +20,7 @@
       <%= render 'notifications/mark_off', expense: expense %>
     </div>
   <% end %>
+
+  <span class="expense-date"><%= render_date expense.created_at %></span>
+
 </div><!-- .expense -->

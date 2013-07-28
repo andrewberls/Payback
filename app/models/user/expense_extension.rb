@@ -41,6 +41,16 @@ module User::ExpenseExtension
     groups.reject { |group| group.active_debts_for(self).blank? }
   end
 
+  def tagged_credits(tag)
+    active_credits.order('id DESC').select { |e| e.has_tag?(tag) }
+  end
+
+  def tagged_debts(tag)
+    active_debts.order('id DESC').select { |e| e.has_tag?(tag) }
+  end
+
+  private
+
   def sum_amounts(expenses)
     expenses.reduce(0.0) { |total, e| total + e.amount }
   end
