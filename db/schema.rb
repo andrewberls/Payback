@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717080131) do
+ActiveRecord::Schema.define(:version => 20130727035214) do
 
   create_table "communication_preferences", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
     t.decimal  "amount",      :precision => 10, :scale => 2
     t.boolean  "active",                                     :default => true
     t.string   "action"
+  end
+
+  create_table "expenses_tags", :id => false, :force => true do |t|
+    t.integer "expense_id"
+    t.integer "tag_id"
   end
 
   create_table "groups", :force => true do |t|
@@ -81,6 +86,12 @@ ActiveRecord::Schema.define(:version => 20130717080131) do
   create_table "site_notices", :force => true do |t|
     t.string   "title"
     t.datetime "expires_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

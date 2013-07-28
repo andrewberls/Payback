@@ -8,6 +8,10 @@ seed_group = Group.create!(title: "221B Baker Street", password: "password", pas
   group.users << [jeff, david, nicole]
 end
 
+Tag::CORE_TYPES.each do |type|
+  Tag.create!(title: type)
+end
+
 # Nicole owes Admin 10 for movie
 Expense.new(title: "Movie ticket", amount: 10, active: true, action: :payback) do |exp|
   exp.group    = seed_group
@@ -19,6 +23,7 @@ end
 Expense.new(title: "Groceries", amount: 45, active: true, action: :payback) do |exp|
   exp.group    = seed_group
   exp.creditor = admin_user
+  exp.tags << Tag.find_by_title("Food")
   exp.assign_to jeff
 end
 
