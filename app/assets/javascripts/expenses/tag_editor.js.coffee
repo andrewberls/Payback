@@ -102,7 +102,10 @@ numSelectedTags = ->
 addTag = (name) ->
   if name != ''
     $('.tags').append """
-      <span class='tag'>#{name}</span>
+      <span class='tag'>
+        #{name}
+        <a href='#'>&times;</a>
+      </span>
     """
     $tagInput.val('')
     resizeInput()
@@ -125,7 +128,11 @@ normalizeTagList = ->
     $vals.map( (_, el) -> $(el).text() ).get()
 
   coreTags = extractValues $('.core-tag.selected')
-  userTags = extractValues $('.tag')
+
+  # Hack to remove 'x' buttons from user tag inputs
+  tags     = $('.tag').clone()
+  tags.find('a').remove()
+  userTags = extractValues(tags)
   $('#tag_list').val coreTags.concat(userTags).join(',')
 
   true # Explicitly keep event going
@@ -136,3 +143,9 @@ $ ->
   $tagInput.on 'blur',  unbindKeyHandlers
 
   $form.submit(normalizeTagList)
+
+  # Wire up tag delete buttons
+  $(document).on 'click', '.tag a', ->
+    $(@).parent().remove()
+    resizeInput()
+    return false
