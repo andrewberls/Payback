@@ -28,9 +28,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-  rescue
-    # Avoid hassle when resetting DB while logged in
-    return redirect_to logout_path if Rails.env.development?
   end
 
   def signed_in?

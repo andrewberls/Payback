@@ -1,3 +1,5 @@
+ActionMailer::Base.delivery_method = :test
+
 admin_user = User.create!(full_name: "Admin User",  email: "admin@admin.com",  password: "admin",    password_confirmation: "admin")
 jeff       = User.create!(full_name: "Jeff Schmoe", email: "jeff@gmail.com",   password: "password", password_confirmation: "password")
 david      = User.create!(full_name: "David Dawg",  email: "david@gmail.com",  password: "password", password_confirmation: "password")
