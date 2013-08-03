@@ -144,7 +144,9 @@
 
   .expense-title {
     font-size: 0.7em;
-    margin-bottom: 3px; // 5px
+    margin-bottom: 3px;
+
+    &.title-center { margin-top: 5px; }
   }
 
   .expense-tags {

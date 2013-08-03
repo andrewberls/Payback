@@ -1,9 +1,6 @@
-<%# TODO: Don't like the id embeds here  %>
-
 <% debtor = expense.debtor %>
 
 <div class="expense" data-id="<%= expense.id %>">
-
   <span class="expense-amount">
     <%= render 'expenses/edit_mark', expense: expense %>
     <%= link_to number_to_currency(expense.amount), edit_expense_path(expense) %>
@@ -14,7 +11,9 @@
   </span>
 
   <div class="info-stack">
-    <div class="expense-title"><%= expense.title %></div>
+    <div class="expense-title <%= 'title-center' if expense.tags.blank? %>">
+      <%= expense.title %>
+    </div>
     <%= render 'expenses/tags', expense: expense %>
   </div><!-- .info-stack -->
 
