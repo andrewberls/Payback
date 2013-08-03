@@ -4,9 +4,9 @@
   <div class="span-6 offset-5">
 
     <%= form_for @expense do |f| %>
-
       <p class="form-title-small">Editing:
-        <strong><%= @expense.title %></strong> to
+        <strong><%= @expense.title %></strong>
+        to
         <strong><%= @expense.debtor.first_name %></strong>
       </p>
 
@@ -18,7 +18,6 @@
 
       <%= link_to "Cancel", expenses_path, class: "btn" %>
       <%= submit_tag "Update", class: "btn btn-blue" %>
-
     <% end %>
 
   </div>
