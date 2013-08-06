@@ -13,7 +13,7 @@ class ExpensesController < ApplicationController
 
     if @expense.valid?
       group          = Group.find_by_gid(params[:group][:gid])
-      selected_users = User.users_from_keys(params[:users], group, current_user)
+      selected_users = safe_for_group(params[:users], group)
 
       if selected_users.blank?
         flash[:error] = "Unable to add expense. Invite more people to your group to start sharing!"
@@ -33,7 +33,6 @@ class ExpensesController < ApplicationController
       flash.now[:error] = "Error - check your fields and try again!"
       return render :new
     end
-
   end
 
 
@@ -117,6 +116,25 @@ class ExpensesController < ApplicationController
     @expense   = Expense.find(params[:id])
     authorized = current_user.active_credits.include?(@expense)
     reject_unauthorized(authorized)
+  end
+
+  # Filter selected input to users actually belonging to group
+  def safe_for_group(users, group)
+    group_users    = group.users
+    selected_users = []
+
+    if users
+      # Have any users been checked?
+      users.keys.each do |id|
+        user = User.find_by_id(id)
+        selected_users << user if group_users.include?(user)
+      end
+    else
+      # Otherwise just use the whole group
+      selected_users = group_users - [current_user]
+    end
+
+    selected_users
   end
 
 end

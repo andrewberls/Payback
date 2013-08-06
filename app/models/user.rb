@@ -32,24 +32,6 @@ class User < ActiveRecord::Base
 
   include User::ExpenseExtension
 
-  def self.users_from_keys(users, group, creditor)
-    group_users    = group.users
-    selected_users = []
-
-    if users
-      # Have any users been checked?
-      users.keys.each do |id|
-        user = User.find_by_id(id)
-        selected_users << user if group_users.include?(user)
-      end
-    else
-      # Otherwise just use the whole group
-      selected_users = group_users - [creditor]
-    end
-
-    selected_users
-  end
-
   def owns?(group)
     group.owner_id == self.id
   end
