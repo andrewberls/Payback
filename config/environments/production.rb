@@ -21,7 +21,7 @@ Payback::Application.configure do
   config.assets.digest = true
 
   # Use a different cache store in production
-  config.cache_store = :dalli_store
+  # config.cache_store = :dalli_store
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
