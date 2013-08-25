@@ -5,6 +5,7 @@ check_icon  = '<i class="icon-white icon-ok"></i>'
 # Recommended tag selection
 # ----------------------
 $('.core-tag').click ->
+  return if $(@).hasClass('btn-disabled')
   type        = $(@).data('type')
   wasSelected = $(@).hasClass('selected')
   $(@).toggleClass('btn-green').toggleClass('selected')
@@ -12,12 +13,12 @@ $('.core-tag').click ->
   if wasSelected
      # Unselecting - revert to plain btn + name
     $(@).html(type)
-    enableInput() if numSelectedTags() < tagLimit
+    enableInput() unless isOverLimit()
   else
     # Selecting - add check
     $(@).html(check_icon + type)
 
-  disableInput() if numSelectedTags() >= tagLimit
+  disableInput() if isOverLimit()
 
 
 
@@ -51,7 +52,7 @@ bindKeyHandlers = ->
     switch keyCode
       when keyBack then eraseLastTag()
       when keyEnter
-        addTag(name)
+        addTag(name) unless isOverLimit()
       when keyComma
         addTag name.slice(0, -1) # Slice off comma
         $(@).val('')
@@ -98,11 +99,15 @@ numSelectedTags = ->
   $('.tag').length + $('.core-tag.selected').length
 
 
+isOverLimit = ->
+  numSelectedTags() >= tagLimit
+
+
 # Insert a new tag into the editor
 addTag = (name) ->
   if name != ''
     $('.tags').append """
-      <span class='tag'>
+      <span class='tag' data-name='#{name}'>
         #{name}
         <a href='#'>&times;</a>
       </span>
@@ -111,28 +116,26 @@ addTag = (name) ->
     resizeInput()
 
 
-# Erases the last chosen tag (if present)
+# Erases the last chosen tag
 eraseLastTag = ->
-  $last = $('.tag').last()
-  if $last.length
-    $last.remove()
+  eraseTag $('.tag').last()
+
+
+# Erases a tag (if present)
+eraseTag = ($tag) ->
+  if $tag.length
+    $tag.remove()
     resizeInput()
-    if numSelectedTags() < tagLimit
-      enableInput()
+  if numSelectedTags() < tagLimit
+    enableInput()
 
 
 # Populate a hidden field with the names of the tags we've chosen
 # for parsing by the controller
 normalizeTagList = ->
-  extractValues = ($vals) ->
-    $vals.map( (_, el) -> $(el).text() ).get()
-
-  coreTags = extractValues $('.core-tag.selected')
-
-  # Hack to remove 'x' buttons from user tag inputs
-  tags     = $('.tag').clone()
-  tags.find('a').remove()
-  userTags = extractValues(tags)
+  $selected = $('.core-tag.selected')
+  coreTags  = $selected.map( (_, el) -> $(el).text() ).get()
+  userTags  = $('.tag').map( (_, el) -> $(el).data('name') ).get()
   $('#tag_list').val coreTags.concat(userTags).join(',')
 
   true # Explicitly keep event going
@@ -146,6 +149,5 @@ $ ->
 
   # Wire up tag delete buttons
   $(document).on 'click', '.tag a', ->
-    $(@).parent().remove()
-    resizeInput()
+    eraseTag $(@).parent()
     return false
