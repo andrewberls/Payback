@@ -8,6 +8,8 @@
   &:focus { outline: none; }
 }
 
+.input-full { @extend %input-full; }
+
 form {
   @include clearfix;
   @extend %whitebox;
