@@ -16,7 +16,7 @@ $('.core-tag').click ->
     enableInput() unless isOverLimit()
   else
     # Selecting - add check
-    $(@).html(check_icon + type) #unless isOverLimit()
+    $(@).html(check_icon + type)
 
   disableInput() if isOverLimit()
 
