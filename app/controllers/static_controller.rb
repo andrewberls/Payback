@@ -1,8 +1,5 @@
 class StaticController < ApplicationController
-
   layout :choose_layout
-
-  caches_page :start
 
   def start
     return redirect_to expenses_path if signed_in?
@@ -33,5 +30,4 @@ class StaticController < ApplicationController
   def choose_layout
     (action_name == 'start') ? 'static' : 'application'
   end
-
 end

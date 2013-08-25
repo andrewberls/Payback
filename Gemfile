@@ -16,8 +16,6 @@ gem 'jquery-rails'
 
 gem 'thin'
 
-gem 'dalli'
-
 gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 
 
