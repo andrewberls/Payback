@@ -588,13 +588,9 @@ input[type="submit"] {
   cursor: default;
 }
 .btn.btn-disabled:hover, .btn.btn-disabled:active {
-  color: #b8b8b8;
-  text-shadow: none;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .btn.btn-disabled2 {
   color: #b8b8b8;
