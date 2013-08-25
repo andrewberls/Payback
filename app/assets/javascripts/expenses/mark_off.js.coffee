@@ -14,32 +14,17 @@ confirm_btns = (exp_id) ->
     </p>
   """
 
-
 $ ->
   $doc      = $(document)
   $dropdown = $('.notifications-container')
-  $notif    = $('.notification')
-  $trigger  = $('.dropdown-trigger')
-  $badge    = $('header .badge')
 
-  $trigger.click ->
-    $dropdown.show 'fast', 'linear', ->
-      $badge.remove()
-      $doc.on 'click', ->
-        $dropdown.hide()
-        $notif.removeClass('notification-unread')
-        $doc.unbind('click')
-
-    $.post '/notifications/read'
-
-
-  $(document).on 'click', '.mark-off-btn', ->
+  $doc.on 'click', '.mark-off-btn', ->
     $expense  = $(@).parent().parent()
     exp_id    = $expense.data('id')
     $(@).parent().html confirm_btns(exp_id)
     return false
 
-  $(document).on 'click', '.confirm-yes', ->
+  $doc.on 'click', '.confirm-yes', ->
     $actions = $(@).parent().parent()
     exp_id   = $actions.parent().data('id')
     $expense = $("*[data-id='#{exp_id}']")
@@ -48,7 +33,8 @@ $ ->
       $expense.remove()
       unless $(".notification:not([class~='notification-completed'])").length
         $dropdown.hide()
+        $('.notifications-container').hide()
 
-  $(document).on 'click', '.confirm-no', ->
+  $doc.on 'click', '.confirm-no', ->
     $(@).parent().parent().html check_btn()
     return false

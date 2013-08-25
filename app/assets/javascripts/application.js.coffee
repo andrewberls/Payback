@@ -9,7 +9,8 @@
 
 #= require validation
 #= require word_slide
-#= require notifications
+#= require expenses/mark_off
+#= require expenses/notifications
 
 $ ->
 
