@@ -1,13 +1,14 @@
 <% creditor = expense.creditor %>
 
-<div class="expense">
+<div class="expense" data-id="<%= expense.id %>">
   <span class="expense-amount">
     <%= render 'expenses/edit_mark', expense: expense %>
     <%= number_to_currency(expense.amount) %>
   </span>
 
   <span class="expense-creditor">
-    <%= link_to_unless_current creditor.first_name, debts_user_path(creditor) %>
+    <%= link_to_unless_current creditor.first_name, debts_user_path(creditor),
+        class: 'expense-person' %>
   </span>
 
   <div class="info-stack">

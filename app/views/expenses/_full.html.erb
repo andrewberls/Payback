@@ -1,5 +1,8 @@
-<div class="dashboard-container">
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag 'expenses/filter' %>
+<% end %>
 
+<div class="dashboard-container">
   <!--
   <div class="condensed-header">
     Too much?
@@ -8,6 +11,13 @@
   -->
 
   <%= render 'expenses/dashboard/buttons' %>
+
+  <div class="row">
+    <div class="span-6">
+      <%= text_field_tag nil, nil, class: 'input-full expense-filter',
+        placeholder: 'Search for tags, titles, and people...' %>
+    </div>
+  </div>
 
   <div class="row">
     <%= flash_success %>
