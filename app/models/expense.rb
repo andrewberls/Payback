@@ -62,4 +62,10 @@ class Expense < ActiveRecord::Base
     tags.any? { |t| t.title == title }
   end
 
+  def inspect
+    active_str = active? ? 'active' : 'inactive'
+    "#<Expense id: #{id}, $#{amount} from #{creditor.first_name}
+      to #{debtor.first_name} (#{active_str})>".squish
+  end
+
 end
