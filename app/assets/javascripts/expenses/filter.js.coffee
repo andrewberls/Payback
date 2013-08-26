@@ -67,7 +67,7 @@ filterExpenses = (expenseMatches) ->
 
 $ ->
   expenseWords = parseSearchableWords()
-  $('.expense-filter').keyup ->
+  $('.expense-filter-container input').keyup ->
     input = $(@).val()
                 .split(' ')
                 .map (word) -> word.toLowerCase()

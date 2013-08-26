@@ -14,6 +14,7 @@
 }
 
 .stats-bar {
+  @include border-radius;
   @include clearfix;
   background-color: white;
   border: 1px solid $med-gray;
@@ -67,7 +68,38 @@
   }
 }
 
-.expense-filter { margin-bottom: 20px; }
+.expense-filter-container {
+  @include border-box;
+  @include border-radius;
+  @include clearfix;
+  background-color: white;
+  border: 1px solid $med-gray;
+  margin-bottom: 20px;
+  padding: 7px 7px 6px;
+
+  .icon-container {
+    @include clearfix;
+    float: left;
+    margin-right: 1%;
+    width: 5%;
+
+    @media(max-width: 1100px) { display: none }
+
+    img {
+      display: inline-block;
+      margin-top: 2px;
+    }
+  }
+
+  input {
+    border: none;
+    float: left;
+    margin-top: 1px;
+    width: 91%;
+
+    &:focus { outline: none; }
+  }
+}
 
 .dashboard-container {
   h2 {
@@ -138,7 +170,6 @@
   }
 
   .info-stack {
-    //outline: 1px solid red;
     display: inline-block;
     margin: 10px 0 0;
     padding-left: 5px;
@@ -157,7 +188,7 @@
     max-width: 275px;
 
     .tag {
-      @include border-radius;
+      @include border-radius(3px);
       display: inline-block;
       border: 1px solid $med-gray;
       color: $light-text;

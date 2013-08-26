@@ -18,7 +18,7 @@
           #{$property}: $value;
 }
 
-@mixin border-radius($rad: 3px) {
+@mixin border-radius($rad: 2px) {
   @include vendorize(border-radius, $rad);
 }
 

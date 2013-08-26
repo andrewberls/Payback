@@ -14,8 +14,14 @@
 
   <div class="row">
     <div class="span-6">
-      <%= text_field_tag nil, nil, class: 'input-full expense-filter',
-        placeholder: 'Search for tags, titles, and people...' %>
+
+      <div class="expense-filter-container">
+        <div class="icon-container">
+          <%= image_tag 'search-icon.png' %>
+        </div>
+
+        <%= text_field_tag nil, nil, placeholder: 'Search for tags, titles, and people...' %>
+      </div>
     </div>
   </div>
 

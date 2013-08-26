@@ -30,7 +30,7 @@ header {
     position: relative;
 
     & > a {
-      @include border-radius;
+      @include border-radius(3px);
       display: inline-block;
       float: left;
       font-weight: bold;

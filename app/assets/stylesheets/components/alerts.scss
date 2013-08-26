@@ -1,6 +1,6 @@
 .alert {
   @include border-box;
-  @include border-radius;
+  @include border-radius(3px);
   border: 1px solid white;
   font-size: 0.9em;
   margin: 5px 0 10px;
@@ -50,7 +50,7 @@
 }
 
 .badge {
-  @include border-radius;
+  @include border-radius(3px);
   display: inline-block;
   color: white;
   font-size: 0.9em;
