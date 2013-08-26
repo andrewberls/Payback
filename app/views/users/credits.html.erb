@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="span-8 offset-4">
-    <h1>Credits to <%= @user.full_name %></h1>
+    <h1><%= @user.full_name %> owes you for:</h1>
 
     <div class="expenses-container user-container">
       <% @credits.each do |expense| %>
