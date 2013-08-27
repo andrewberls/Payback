@@ -1,0 +1,99 @@
+//.container { outline: 1px solid red; }
+//.span-4 { outline: 1px solid green; }
+
+.stats-container {
+   @include clearfix;
+}
+
+.stats-loading {
+  color: lighten($gray-text, 10);
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.stats-row {
+  margin-bottom: 45px;
+}
+
+.stats-group-select {
+  margin-bottom: 30px;
+
+  h2 {
+    font-size: 2.6em;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  select {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 15px;
+    width: 100%;
+  }
+}
+
+.group-members {
+  h1 {
+    font-size: 2.4em;
+
+    span { color: $blue }
+  }
+
+  h2 {
+    font-size: 1.9em;
+    font-weight: normal;
+  }
+
+  ul {
+    margin-left: 30px;
+    list-style: disc;
+  }
+
+  li {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+}
+
+.group-exchanged {
+  @extend %whitebox;
+  text-align: center;
+
+  p {
+    color: lighten($gray-text, 15);
+    font-size: 1.9em;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 4em;
+    font-weight: normal;
+  }
+}
+
+
+//.user-loan-borrow,
+//.user-active-complete {
+  //min-height: 225px;
+//}
+
+.user-loan-borrow {
+  @extend %whitebox;
+
+}
+
+.user-active-complete {
+  @extend %whitebox;
+}
+
+
+
+.stats-line {
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-align: center;
+  span { color: $blue; }
+}
+
+//.user-credit-stats {}
+//.user-debt-stats {}

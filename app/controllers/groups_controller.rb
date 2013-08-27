@@ -44,6 +44,14 @@ class GroupsController < ApplicationController
     end
   end
 
+  def stats
+    if request.xhr?
+      group = Group.find_by_gid(params[:gid])
+      render partial: 'group_stats', locals: { group: group }
+    else
+
+    end
+  end
 
   def edit
     return redirect_to groups_path unless current_user == @group.owner

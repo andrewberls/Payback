@@ -1,0 +1,21 @@
+<% provide(:title, 'Stats') %>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "stats" %>
+<% end %>
+
+<div class="row stats-row stats-group-select">
+  <div class="span-4 offset-4">
+    <h2>Select a group:</h2>
+  </div>
+
+  <div class="span-4">
+    <%= select 'group', 'gid', current_user.groups.map { |g| [g.title, g.gid] },
+        include_blank: false %>
+  </div>
+</div>
+
+
+<div class="row stats-container"></div>
+
+

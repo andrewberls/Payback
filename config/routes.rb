@@ -11,6 +11,8 @@ Payback::Application.routes.draw do
     end
   end
 
+  get 'stats' => 'groups#stats', as: 'stats'
+
   match 'invitations/:token' => "groups#invitations", as: 'invitations'
 
   resources :users do

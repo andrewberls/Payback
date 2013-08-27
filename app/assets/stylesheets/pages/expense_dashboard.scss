@@ -5,7 +5,7 @@
 //  margin-bottom: 25px;
 //}
 
-.stats-container {
+.quick-stats-container {
   background-color: lighten($med-gray, 10);
   border-bottom: 1px solid $med-gray;
   padding: 20px 0;
@@ -13,7 +13,7 @@
   @include mobile { padding: 10px 0; }
 }
 
-.stats-bar {
+.quick-stats-bar {
   @include border-radius;
   @include clearfix;
   background-color: white;

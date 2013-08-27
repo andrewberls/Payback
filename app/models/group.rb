@@ -55,6 +55,10 @@ class Group < ActiveRecord::Base
     (debts + credits).uniq
   end
 
+  def total_exchanged
+    expenses.map(&:amount).sum.to_i
+  end
+
   def active_credits_for(user)
     credits.where(creditor_id: user, active: true).order('id DESC')
   end
