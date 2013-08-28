@@ -81,9 +81,10 @@ class Group < ActiveRecord::Base
     # This does nothing if the gid has been set manually
 
     unless self.gid.present?
-      # Combine auto id + timestamp for uniqueness
-      digest_string = self.id.to_s << Time.now.to_i.to_s
-      self.gid = Digest::MD5.hexdigest(digest_string)[0..5]
+      begin
+        digest_string = self.id.to_s << Time.now.to_i.to_s
+        self.gid      = Digest::MD5.hexdigest(digest_string)[0..5]
+      end while Group.where(gid: self.gid).exists?
     end
   end
 
