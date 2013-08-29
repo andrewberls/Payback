@@ -1,0 +1,5 @@
+language: ruby
+rvm:
+  - "2.0.0"
+before_script: rake db:test:prepare
+script: bundle exec rspec spec
