@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.0.0'
 
 gem "rails", "~> 3.2.13"
 
@@ -26,11 +26,20 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'letter_opener'
-  gem 'launchy', '2.1.2'
+  gem 'letter_opener' # Preview emails in browser instead of sending
+
+  gem 'launchy', '2.3.0' # Open browser to show rendering
+
   gem 'sqlite3'
-  gem 'test-unit', :require => "test/unit"
-  gem 'shoulda'
+
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem "rspec-rails", "~> 2.14.0"
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem "faker", "~> 1.2.0"
+end
+
+group :test do
+  gem "database_cleaner", "~> 1.0.1" # Clear data for each spec run
 end
