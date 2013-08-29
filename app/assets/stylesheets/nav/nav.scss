@@ -78,6 +78,19 @@ header {
     }
   }
 
+  #stats-tab {
+    // TODO: temporary 'new' notification, remove eventually
+    &:after {
+      content: 'New!';
+      color: lighten(green, 10);
+      display: inline-block;
+      font-size: 0.85em;
+      position: absolute;
+      right: -12px;
+      top: -3px;
+    }
+  }
+
   @include mobile {
     padding-bottom: 10px;
 
