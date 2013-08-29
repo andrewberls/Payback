@@ -26,3 +26,6 @@ bundle install
 rake db:setup
 rails server
 ```
+
+### Status
+[![Build Status](https://travis-ci.org/andrewberls/payback.png)](https://travis-ci.org/andrewberls/payback)
