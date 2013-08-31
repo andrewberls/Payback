@@ -33,7 +33,6 @@ Payback::Application.routes.draw do
 
   resources :expenses do
     collection do
-      get 'condensed'
       get 'tagged/:tag' => 'expenses#tagged', as: 'tagged'
     end
   end

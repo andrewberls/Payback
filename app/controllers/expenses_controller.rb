@@ -36,7 +36,7 @@ class ExpensesController < ApplicationController
   end
 
 
-  before_filter :find_dashboard_resources, only: [:index, :condensed]
+  before_filter :find_dashboard_resources, only: [:index]
 
   def index
     # Main dashboard
@@ -56,13 +56,6 @@ class ExpensesController < ApplicationController
   def show
     # TODO: find the cause for this
     redirect_to expenses_path
-  end
-
-  def condensed
-    # Dashboard - one listing per group user
-    respond_to do |format|
-      format.js
-    end
   end
 
   def edit

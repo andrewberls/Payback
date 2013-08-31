@@ -1,29 +1,20 @@
 module User::ExpenseExtension
 
-  def active_credits
-    credits.where(active: true)
+  def active_credits(attrs={})
+    credits.where({ active: true }.merge(attrs)).order('id DESC')
   end
 
-  def active_debts
-    debts.where(active: true)
-  end
-
-
-  def credits_to(user, attrs={})
-    credits.where({ debtor_id: user }.merge(attrs)).order('id DESC')
-  end
-
-  def debts_to(user, attrs={})
-    debts.where({ creditor_id: user }.merge(attrs)).order('id DESC')
+  def active_debts(attrs={})
+    debts.where({ active: true }.merge(attrs)).order('id DESC')
   end
 
 
   def active_credits_to(user)
-    credits_to(user, active: true)
+    active_credits(debtor_id: user)
   end
 
   def active_debts_to(user)
-    debts_to(user, active: true)
+    active_debts(creditor_id: user)
   end
 
 
@@ -39,12 +30,12 @@ module User::ExpenseExtension
 
   # Total you've loaned this user
   def total_credit_amt_to(user)
-    sum_amounts credits_to(user)
+    sum_amounts credits.where(debtor_id: user)
   end
 
   # Total you've borrowed from this user
   def total_debt_amt_to(user)
-    sum_amounts debts_to(user)
+    sum_amounts debts.where(creditor_id: user)
   end
 
   # How much this user currently owes you
@@ -69,12 +60,12 @@ module User::ExpenseExtension
 
   # Groups in which this user has outstanding credits
   def groups_with_credits
-    groups.reject { |group| group.active_credits_for(self).blank? }
+    groups.reject { |group| active_credits.where(group_id: group).blank? }
   end
 
   # Groups in which this user has outstanding debts
   def groups_with_debts
-    groups.reject { |group| group.active_debts_for(self).blank? }
+    groups.reject { |group| active_debts.where(group_id: group).blank? }
   end
 
 

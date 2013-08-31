@@ -29,21 +29,14 @@ class Group < ActiveRecord::Base
   end
 
   def add_user(user)
-    if users.include?(user)
-      return false
-    else
-      users << user
-      return true
-    end
+    return false if users.include?(user)
+    users << user
+    true
   end
 
   def remove_user(user)
     user.expenses(self).each do |e|
-      if user.id == e.creditor_id
-        e.creditor_id = nil
-      else
-        e.debtor_id = nil
-      end
+      (user.id == e.creditor_id) ? e.creditor_id = nil : e.debtor_id = nil
       e.deactivate
       e.save!
     end
@@ -63,31 +56,12 @@ class Group < ActiveRecord::Base
     expenses.map(&:amount).sum.to_i
   end
 
-  def active_credits_for(user)
-    credits.where(creditor_id: user, active: true).order('id DESC')
-  end
-
-  def active_debts_for(user)
-    debts.where(debtor_id: user, active: true).order('id DESC')
-  end
-
-  def active_credit_users_for(user)
-    # All users from a specific group with outstanding credits from a user
-    (users - [user]).reject { |u| user.active_credits_to(u).blank? }
-  end
-
-  def active_debt_users_for(user)
-    # All users from a specific group with outstanding credits to a user
-    (users - [user]).reject { |u| user.active_debts_to(u).blank? }
-  end
-
   private
 
+  # A unique external identifier used for the 'Join by ID' feature
+  # Note that the external GID is distinct from the internal ID (primary key only)
+  # This does nothing if the gid has been set manually
   def generate_gid
-    # A unique external identifier used for the 'Join by ID' feature
-    # Note that the external GID is distinct from the internal ID (primary key only)
-    # This does nothing if the gid has been set manually
-
     unless self.gid.present?
       begin
         digest_string = self.id.to_s << Time.now.to_i.to_s

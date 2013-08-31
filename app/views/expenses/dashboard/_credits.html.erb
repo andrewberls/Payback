@@ -4,7 +4,7 @@
     <%= content_tag(:h3, group.title) unless current_user.groups.count == 1 %>
 
     <div class="expenses-container credits-container">
-      <% group.active_credits_for(current_user).each do |expense| %>
+      <% current_user.active_credits(group_id: group).each do |expense| %>
         <%= render 'credit', expense: expense %>
       <% end %>
     </div>
