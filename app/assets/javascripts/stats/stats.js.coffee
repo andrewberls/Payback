@@ -43,29 +43,10 @@ loadStats = ->
 
 # Page is done loading, kick off chart rendering
 loadCharts = ->
-  initUserLoanBorrow()
-  initCreditSegments()
-  initDebtSegments()
-
-
-# TODO: de-dup this code
-
-# Initialize loaning/borrowing bar chart
-initUserLoanBorrow = ->
-  $.getJSON '/stats/type_proportions', gid: currentGid(),
-    (json) -> Payback.Charts.drawUserLoanBorrow(json.stats)
-
-
-# Initialize loaning pie chart
-initCreditSegments = ->
-  $.getJSON '/stats/segments', gid: currentGid(), type: 'credits',
-    (json) -> Payback.Charts.drawCreditSegments(json.stats)
-
-
-# Initialize loaning pie chart
-initDebtSegments = ->
-  $.getJSON '/stats/segments', gid: currentGid(), type: 'debts',
-    (json) -> Payback.Charts.drawDebtSegments(json.stats)
+  gid = currentGid()
+  Payback.Charts.drawUserLoanBorrow(gid)
+  Payback.Charts.drawCreditSegments(gid)
+  Payback.Charts.drawDebtSegments(gid)
 
 
 
