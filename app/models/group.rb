@@ -23,7 +23,7 @@ class Group < ActiveRecord::Base
   before_create :generate_gid
 
   def initialize_owner(user)
-    owner = user
+    self.owner = user
     users << user
     user.owned << self
   end
@@ -49,6 +49,10 @@ class Group < ActiveRecord::Base
     end
 
     users.delete user
+  end
+
+  def peers(user)
+    users - [user]
   end
 
   def expenses

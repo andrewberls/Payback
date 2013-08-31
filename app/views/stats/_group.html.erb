@@ -1,0 +1,64 @@
+<% if group.users.count <= 1 %>
+
+  <div class="row">
+    <div class="span-8 offset-4 stats-banner">
+        <p>No data to show. Invite more people to your group to start sharing!</p>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="row stats-row">
+    <div class="span-8 offset-4 group-members">
+      <h1>Group: <span><%= group.title %></span></h1>
+
+      <h2>Members</h2>
+      <ul>
+        <% owner = group.owner %>
+        <li><%= owner.full_name %> (creator)</li>
+
+        <% group.peers(owner).each do |user| %>
+          <li><%= user.full_name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="row stats-row">
+    <div class="span-6 offset-2">
+      <div class="chartbox user-loan-borrow">
+        <h3>Your Loaning vs Borrowing (All Time)</h3>
+      </div>
+    </div>
+
+    <div class="span-6 group-exchanged">
+      <p>Your group has exchanged:</p>
+      <h3><%= number_to_currency group.total_exchanged %>
+    </div>
+  </div>
+
+
+
+  <div class="row stats-row">
+    <div class="span-6 offset-2">
+      <div class="chartbox user-credit-segments">
+        <h3>Who You Loan Money To</h3>
+        <svg></svg>
+
+        <ul class="legend"></ul>
+      </div>
+    </div>
+
+    <div class="span-6">
+      <div class="chartbox user-debt-segments">
+        <h3>Who You Borrow Money From</h3>
+        <svg></svg>
+
+        <ul class="legend"></ul>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,11 +1,8 @@
-//.container { outline: 1px solid red; }
-//.span-4 { outline: 1px solid green; }
-
 .stats-container {
    @include clearfix;
 }
 
-.stats-loading {
+.stats-banner {
   color: lighten($gray-text, 10);
   font-size: 1.6em;
   text-align: center;
@@ -16,7 +13,7 @@
 }
 
 .stats-group-select {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   h2 {
     font-size: 2.6em;
@@ -33,9 +30,10 @@
 }
 
 .group-members {
+  text-align: center;
+
   h1 {
     font-size: 2.4em;
-
     span { color: $blue }
   }
 
@@ -44,14 +42,9 @@
     font-weight: normal;
   }
 
-  ul {
-    margin-left: 30px;
-    list-style: disc;
-  }
-
   li {
-    font-size: 1.2em;
-    margin-bottom: 5px;
+    font-size: 1.3em;
+    margin-bottom: 7px;
   }
 }
 
@@ -71,29 +64,75 @@
   }
 }
 
+.chartbox {
+  @extend %whitebox;
+  padding: 15px 20px 15px;
 
-//.user-loan-borrow,
-//.user-active-complete {
-  //min-height: 225px;
-//}
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  h3 {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}
 
 .user-loan-borrow {
-  @extend %whitebox;
+  .debt   { fill: #1f77b4; }
+  .credit { fill: #2ca02c; }
 
+  .label-amount,
+  .label-type {
+    font-size: 1.4em;
+    text-anchor: middle;
+  }
+
+  .label-amount { fill: white; }
+
+  .label-type {
+    fill: $gray-text;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
 }
 
-.user-active-complete {
-  @extend %whitebox;
+.user-credit-segments,
+.user-debt-segments {
+  svg { float: left }
+
+  .legend {
+    float: left;
+    margin-top: 10px;
+    margin-left: 25px;
+
+    li {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .swatch {
+      display: inline-block;
+      float: left;
+      margin-right: 5px;
+      width: 17px;
+      height: 17px;
+    }
+
+    .percent {
+      color: lighten($light-text, 10);
+      display: inline-block;
+      font-size: 0.9em;
+      margin-left: 5px;
+    }
+  }
 }
-
-
 
 .stats-line {
   font-size: 2em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-align: center;
+
   span { color: $blue; }
 }
-
-//.user-credit-stats {}
-//.user-debt-stats {}

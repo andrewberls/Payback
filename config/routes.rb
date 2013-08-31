@@ -11,7 +11,13 @@ Payback::Application.routes.draw do
     end
   end
 
-  get 'stats' => 'groups#stats', as: 'stats'
+  get 'stats' => 'stats#stats', as: 'stats'
+  resources :stats, only: [:index] do
+    collection do
+      get 'type_proportions' => 'stats#type_proportions'
+      get 'segments'         => 'stats#segments'
+    end
+  end
 
   match 'invitations/:token' => "groups#invitations", as: 'invitations'
 
