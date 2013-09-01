@@ -37,21 +37,21 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    @first_name ||= full_name.split(" ").first
+    @first_name ||= full_name.split(' ').first
   end
 
   def last_name
-    @last_name ||= full_name.split(" ").last
+    @last_name ||= full_name.split(' ').last
   end
 
+  # All expenses, not just active
   def expenses(group=nil)
-    # All expenses, not just active
     expenses = debts + credits
     return (group.present?) ? expenses.select { |e| e.group == group } : expenses
   end
 
+  # This could be smarter. Meh.
   def brand_new?
-    # This could be smarter. Meh.
     expenses.blank?
   end
 
@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   end
 
   def can_notify_on?(exp_id)
-    notifications_from.none? { |e| e.expense_id == exp_id }
+    notifications_from.none? { |n| n.expense_id == exp_id }
   end
 
   def recent_notifications
@@ -80,19 +80,19 @@ class User < ActiveRecord::Base
     communication_preference.touch
   end
 
+  # Preferences are stored as ints rather than booleans
+  # to play nicely with Rails checkboxes
   def receive_communication?(type)
-    # Preferences are stored as ints rather than booleans
-    # to play nicely with Rails checkboxes
     !!communication_preference.send(type).nonzero?
   end
 
+  # Expire all reset tokens for this user
   def expire_reset_tokens
-    # Expire all reset tokens for this user
     ResetToken.where(user_id: self.id).each(&:mark_used)
   end
 
+  # Expire any existing reset tokens and generate a new one
   def generate_reset_token
-    # Expire any existing reset tokens and generate a new one
     expire_reset_tokens
     ResetToken.create(user: self)
   end
