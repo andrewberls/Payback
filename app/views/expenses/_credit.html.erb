@@ -20,11 +20,7 @@
 
   <%= render 'expenses/stale_badge', expense: expense %>
 
-  <div class="expense-actions">
-    <a href="#" class="btn no-text btn-green mark-off-btn">
-      <i class='icon-ok icon-white'></i>
-    </a>
-  </div>
+  <%= content_tag :div, mark_off_btn, class: 'expense-actions' %>
 
   <div class="expense-date"><%= render_date expense.created_at %></div>
 
