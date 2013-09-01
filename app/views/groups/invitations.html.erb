@@ -4,10 +4,12 @@
 
 <div class="row">
 
-  <div class="span-10 offset-3 pretext-block">
-    <h1><%= use_login ? "Hi #{@user.full_name}." : "Welcome to Payback." %></h1>
-    <p>After you <%= use_login ? 'log in' : 'sign up' %>, you'll automatically be added to</p>
-    <p><%= @invitation.group.title %></p>
+  <div class="span-10 offset-3">
+    <div class="pretext-block">
+      <h1><%= use_login ? "Hi #{@user.full_name}." : "Welcome to Payback." %></h1>
+      <p>After you <%= use_login ? 'log in' : 'sign up' %>, you'll automatically be added to</p>
+      <p><%= @invitation.group.title %></p>
+    </div>
   </div>
 
   <div class="span-6 offset-5">

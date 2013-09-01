@@ -42,7 +42,10 @@
   </div><!-- .page-wrap -->
 
   <footer>
-    Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
+    <div class="container">
+      Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.
+      <%= link_to 'Contact Us!', contact_path, class: 'right' %>
+    </div>
   </footer>
 
   <%= javascript_include_tag 'application' %>
