@@ -751,3 +751,10 @@ input[type="submit"] {
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
   }
 
+.btn-mobile-block {
+  @include mobile {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+}

@@ -91,9 +91,9 @@ form {
 
 .form-suggestion {
   // "Already have an account?..."
+  @include bold(1.2em);
   color: $light-text;
   float: right;
-  @include bold(1.2em);
   margin-top: 10px;
 }
 
@@ -110,5 +110,7 @@ form {
   label.checkbox {
     display: inline-block;
     margin: 5px 0 0;
+
+    @include mobile { margin: 0 0 15px; }
   }
 }
