@@ -18,4 +18,8 @@ module ApplicationHelper
     time.strftime("%-d %b %Y")
   end
 
+  def money(amount, options = {})
+    number_to_currency(amount, options)
+  end
+
 end

@@ -3,12 +3,12 @@
     <div class="quick-stats-bar">
 
       <div>
-        <h3><%= number_to_currency(current_user.total_credit_owed) %></h3>
+        <h3><%= money(current_user.total_credit_owed) %></h3>
         <p>total owed to you</p>
       </div>
 
       <div>
-        <h3><%= number_to_currency(current_user.total_debt_owed) %></h3>
+        <h3><%= money(current_user.total_debt_owed) %></h3>
         <p>total you owe</p>
       </div>
     </div>

@@ -7,7 +7,7 @@ module ExpensesHelper
   end
 
   def expense_total_for(user)
-    "#{user.first_name} owes you #{number_to_currency(current_user.active_credit_amt_to(user))}"
+    "#{user.first_name} owes you #{money(current_user.active_credit_amt_to(user))}"
   end
 
   def blank_debts

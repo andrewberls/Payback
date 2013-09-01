@@ -12,7 +12,7 @@
 
     <% if @debts.count > 1 %>
     <p class="expense-total-large">
-      You owe <%= "#{@user.first_name} #{number_to_currency(current_user.active_debt_amt_to(@user))}" %>.
+      You owe <%= "#{@user.first_name} #{money(current_user.active_debt_amt_to(@user))}" %>.
     </p>
     <% end %>
 
