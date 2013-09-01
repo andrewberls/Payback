@@ -4,7 +4,7 @@
   for '<%= @expense.title %>' on <a href="http://www.payback.io">payback.io</a>.
 
   <% url = credits_user_url(@sender.id) %>
-  <p>You can see the expense and mark it off here: <%= utm_email_link_to url, url %></p>
+  <p>You can see the details and mark it off here: <%= utm_email_link_to url, url %></p>
 
   <p>If they haven't actually paid you back yet, you can go ahead and ignore this email,
   and maybe give <%= @sender.first_name %> a stern warning while you're at it.</p>
