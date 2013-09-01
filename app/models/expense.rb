@@ -68,15 +68,4 @@ class Expense < ActiveRecord::Base
       to #{debtor.first_name} (#{active_str})>".squish
   end
 
-  # Number of decimal days it took for this expense to be marked off
-  # Returns nil if active
-  def lifespan
-    return if active?
-    seconds = updated_at - created_at
-    minutes = seconds / 60
-    hours   = minutes / 60
-    days    = hours / 24
-    days
-  end
-
 end
