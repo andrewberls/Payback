@@ -29,6 +29,14 @@ Expense.new(title: "Groceries", amount: 45, active: true, action: :payback) do |
   exp.assign_to jeff
 end
 
+# David owes Admin 50 for chair
+Expense.new(title: "IKEA Chair", amount: 50, active: true, action: :payback) do |exp|
+  exp.group    = seed_group
+  exp.creditor = admin_user
+  exp.tags << Tag.find_by_title("Household")
+  exp.assign_to david
+end
+
 # Nicole owes Admin 65 for beanbag chair
 Expense.new(title: "Beanbag chair", amount: 65, active: true, action: :payback) do |exp|
   exp.group    = seed_group
@@ -40,6 +48,21 @@ end
 Expense.new(title: "Textbook", amount: 85, active: true, action: :payback) do |exp|
   exp.group    = seed_group
   exp.creditor = david
+  exp.assign_to admin_user
+end
+
+# Admin owes Nicole 30 for textbook
+Expense.new(title: "Shirt", amount: 30, active: true, action: :payback) do |exp|
+  exp.group    = seed_group
+  exp.creditor = nicole
+  exp.assign_to admin_user
+end
+
+# Admin owes Jeff 15 for Freebirds
+Expense.new(title: "Freebirds", amount: 15, active: true, action: :payback) do |exp|
+  exp.group    = seed_group
+  exp.creditor = jeff
+  exp.tags << Tag.find_by_title("Food")
   exp.assign_to admin_user
 end
 
