@@ -2,8 +2,6 @@ class Group < ActiveRecord::Base
 
   attr_accessible :title, :password, :password_confirmation, :gid
 
-  has_secure_password
-
   has_and_belongs_to_many :users
   belongs_to :owner, class_name: "User"
 
@@ -16,9 +14,6 @@ class Group < ActiveRecord::Base
   validates :title,
     presence: true,
     length: { maximum: 50 }
-
-  validates :password, presence: { on: :create },
-                       length: { minimum: 5 }, :if => :password_digest_changed?
 
   before_create :generate_gid
 

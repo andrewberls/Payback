@@ -5,15 +5,20 @@
 <% end %>
 
 <div class="row">
+  <div class="span-8 offset-4">
+    <div class="alert alert-success group-success">
+      <h3>Succesfully created <%= @group.title %>!</h3>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="span-6 offset-5 group-welcome">
 
-    <%= flash_success %>
+    <h2>Invite people to join</h2>
+    <p>People you invite will be sent a link they can use to join your group.</p>
 
-    <p>Your group ID is:</p>
-    <h1><%= @group.gid %></h1>
-    <p>Give this, along with the password you chose, to anyone you want to join your group and start sharing expenses!</p>
-
-    <%= render 'group_invitations', group: @group, header: "Or invite people by email:", visible: true %>
+    <%= render 'group_invitations', group: @group, header: "Enter emails:", visible: true %>
 
     <%= link_to "Go to dashboard", expenses_path, class: "btn btn-blue btn-full", style: 'margin-top: 20px' %>
 

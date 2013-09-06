@@ -2,18 +2,22 @@
 
 <div class="row">
 
-  <div class="span-7 offset-1 group-faq">
-    <h2>The Basics</h2>
-    <ul>
-      <li class="header-line">Groups are used to share expenses with a set of people.</li>
-      <li>When you create a group, it will be assigned a unique ID number. <strong>Give this along with the password you chose to anyone you want to be able to join!</strong></li>
-      <li>You can create and belong to as many groups as you like!</li>
-    </ul>
-  </div><!-- .group-faq -->
+  <div class="span-12 offset-2">
+    <div class="pretext-block">
+      <% if current_user.groups.blank? %>
+        <h1>Get started by creating your first group!</h1>
+      <% else %>
+        <h1>Create a new group</h1>
+      <% end %>
+      <p>Groups are used to share expenses with a set of people, such as a household.</p>
+      <p>After you create your group, you can invite people to join by email.</p>
+      <p>You can create and belong to as many groups as you like!</li>
+    </div>
+  </div>
 
-  <div class="span-7">
+  <div class="span-8 offset-4">
     <%= form_for @group, html: { class: 'form-validate' } do |f| %>
-      <h1 class="form-title">Create New Group</h1>
+      <h1 class="form-title">Create A Group</h1>
 
       <%= render 'shared/instance_errors', instance: @group %>
 
@@ -21,14 +25,7 @@
       <span class="help-text">Try your address!</span>
       <%= f.text_field :title, autofocus: true %>
 
-      <%= f.label :password %>
-      <span class="help-text">People will need this to join.</span>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= submit_tag "Create Group", class: "btn btn-blue" %>
+      <%= submit_tag "Create Group", class: "btn btn-blue btn-large" %>
 
     <% end %>
   </div>

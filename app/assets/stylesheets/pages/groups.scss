@@ -24,22 +24,25 @@
 
 //-- GROUP POST-CREATE WELCOME
 //------------------------------------
-.group-welcome {
-  // Landing page after group creation
+.group-success {
+  margin-bottom: 20px;
 
+  h3 {
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+}
+
+.group-welcome {
   @extend %whitebox;
   text-align: center;
-
-  h1 {
-    margin: 5px 0;
-
-    & + p { margin-bottom: 20px; }
-  }
 
   p {
     font-size: 1.1em;
     line-height: 1.4;
   }
+
+  h3 { font-size: 1.2em !important; }
 
   & > .btn {
     padding: 10px 0;
@@ -117,17 +120,11 @@
 
   &:last-of-type { border: none; }
 
-  .group-gid,
   .group-title,
   .group-member-count,
   .group-member-names,
   .group-owner {
     float: left;
-  }
-
-  .group-gid {
-    float: right;
-    font-size: 1.4em;
   }
 
   .group-title {

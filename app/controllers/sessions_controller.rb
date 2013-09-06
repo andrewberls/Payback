@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       login_user(user, permanent: params[:remember_me])
-      path = (user.groups.blank?) ? welcome_path : expenses_path
+      path = (user.groups.blank?) ? new_group_path : expenses_path
       return redirect_to_return_or_path(path)
     else
       flash.now[:error] = "Invalid email or password"

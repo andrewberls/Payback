@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login_user(@user)
-      return redirect_to welcome_path
+      return redirect_to new_group_path
     else
       flash.now[:error] = "Error - please check your fields and try again."
       return render :new
@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def welcome
-    # First time login - belong to no groups
-    return redirect_to expenses_path unless current_user.brand_new?
-  end
+  #def welcome
+    ## First time login - belong to no groups
+    #return redirect_to expenses_path unless current_user.brand_new?
+  #end
 
   def debts
     # Condensed debts to a specific user (can't be blank or current user)

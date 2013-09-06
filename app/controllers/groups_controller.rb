@@ -12,7 +12,6 @@ class GroupsController < ApplicationController
     @group.initialize_owner(current_user)
 
     if @group.save
-      flash[:success] = "Your group has been successfully created!"
       return redirect_to group_path(@group.gid)
     else
       flash.now[:error] = "Something went wrong - please check your fields and try again."
@@ -25,7 +24,7 @@ class GroupsController < ApplicationController
     @groups = current_user.groups
 
     respond_to do |format|
-      format.html { return redirect_to welcome_path if @groups.blank? }
+      format.html { return redirect_to new_group_path if @groups.blank? }
       format.json { return render json: @groups }
     end
   end

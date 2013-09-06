@@ -95,7 +95,7 @@ class ExpensesController < ApplicationController
   private
 
   def redirect_empty_groups
-    return redirect_to welcome_path if current_user.groups.blank?
+    return redirect_to new_group_path if current_user.groups.blank?
   end
 
   def find_dashboard_resources

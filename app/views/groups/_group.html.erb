@@ -5,8 +5,6 @@
   <div class="group-info">
     <span class="group-title"><%= group.title %></span>
 
-    <span class="group-gid">ID: <%= group.gid %></span>
-
     <span class="group-member-count">
       <%= link_to pluralize(group.users.count, 'member'), '#' %>
       <% if group_owned %>

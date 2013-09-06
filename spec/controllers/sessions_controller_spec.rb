@@ -33,7 +33,7 @@ describe SessionsController do
 
   it 'log in user if credentials are correct' do
     post :create, email: user.email, password: 'password'
-    response.should redirect_to welcome_path
+    response.should redirect_to new_group_path
   end
 
   it 'redirects signed in users' do

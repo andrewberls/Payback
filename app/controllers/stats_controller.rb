@@ -4,6 +4,8 @@ class StatsController < ApplicationController
   before_filter :set_group
 
   def stats
+    return redirect_to new_group_path if current_user.groups.blank?
+
     if request.xhr?
       render partial: 'group', locals: { group: @group }
     else
