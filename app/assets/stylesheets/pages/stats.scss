@@ -4,8 +4,11 @@
 
 .stats-banner {
   color: lighten($gray-text, 10);
+  clear: both;
   font-size: 1.6em;
   text-align: center;
+
+  @include mobile { margin-top: 20px; }
 }
 
 .stats-row {
@@ -21,6 +24,8 @@
     font-size: 2.6em;
     font-weight: normal;
     text-align: center;
+
+    @include mobile { font-size: 2.1em; }
   }
 
   select {
@@ -29,6 +34,8 @@
     margin-top: 15px;
     width: 100%;
   }
+
+  @include mobile { margin-bottom: 0; }
 }
 
 .group-members {
@@ -48,6 +55,8 @@
     font-size: 1.3em;
     margin-bottom: 7px;
   }
+
+  @include mobile { display: none; }
 }
 
 .group-exchanged {
@@ -82,6 +91,7 @@
 
   @include mobile {
     margin-bottom: 10px;
+    text-align: center;
   }
 }
 
@@ -106,7 +116,14 @@
 
 .user-credit-segments,
 .user-debt-segments {
-  svg { float: left }
+  svg {
+    float: left;
+
+    @include mobile {
+      float: none;
+      margin: 0 auto;
+    }
+  }
 
   .legend {
     float: left;
@@ -130,6 +147,12 @@
       color: lighten($light-text, 10);
       display: inline-block;
       margin-left: 5px;
+    }
+
+    @include mobile {
+      display: inline-block;
+      float: none;
+      margin-top: 15px;
     }
   }
 }

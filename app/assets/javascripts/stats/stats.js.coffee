@@ -3,7 +3,7 @@ failTimeout      = -1
 
 setLoadingText = ->
   $('.stats-container').html """
-    <div class="span-8 offset-4 stats-banner">
+    <div class="stats-banner">
         <p>We're crunching numbers - hang tight! </p>
     </div>
   """
