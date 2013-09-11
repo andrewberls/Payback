@@ -79,6 +79,8 @@ header {
   }
 
   #notification-tab {
+    display: inline-block;
+
     @include mobile { display: none; }
   }
 
