@@ -22,6 +22,8 @@
   // "What are these?"
   float: right;
   margin-top: 12px;
+
+  @include mobile { margin-top: 20px; }
 }
 
 #expense-faqs {

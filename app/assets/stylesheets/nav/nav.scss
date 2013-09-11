@@ -78,6 +78,10 @@ header {
     }
   }
 
+  #notification-tab {
+    @include mobile { display: none; }
+  }
+
   #stats-tab {
     // TODO: temporary 'new' notification, remove eventually
     &:after {
