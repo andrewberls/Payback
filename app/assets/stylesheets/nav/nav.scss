@@ -122,10 +122,34 @@ header {
 $footerHeight: 40px;
 
 footer {
+  @include clearfix;
   background-color: $dark-nav;
   color: $light-text;
   line-height: $footerHeight;
   text-align: center;
+
+  p { display: inline-block; }
+
+  @include mobile {
+    height: auto;
+    line-height: 1.4;
+    padding: 10px 0;
+
+    p {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
 }
+
+.footer-contact {
+  float: right;
+
+  @include mobile {
+    float: none;
+    text-align: center;
+  }
+}
+
 footer,
 .page-wrap:after { height: $footerHeight; }
