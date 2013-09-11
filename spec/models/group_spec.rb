@@ -15,21 +15,6 @@ describe Group do
       subject.title = 'a' * 51
       subject.should_not be_valid
     end
-
-    it 'is not valid when the password is not present' do
-      subject.password = ''
-      subject.should_not be_valid
-    end
-
-    it "is no valid when the password doesn't match confirmation" do
-      subject.password_confirmation = 'mismatch'
-      subject.should_not be_valid
-    end
-
-    it 'is not valid when the password is too short' do
-      subject.password = subject.password_confirmation = 'a' * 4
-      subject.should_not be_valid
-    end
   end
 
   context 'gid' do

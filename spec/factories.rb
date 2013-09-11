@@ -10,8 +10,6 @@ FactoryGirl.define do
 
   factory :group do
     title { Faker::Address.street_name }
-    password 'password'
-    password_confirmation 'password'
   end
 
   factory :expense do
