@@ -1,30 +1,23 @@
-.easy-way {
-  margin-bottom: 15px;
+#word-scroll {
+  display: inline-block;
+  margin-left: 5px;
+  height: 32px;
+  overflow: hidden;
+  position: absolute;
+  width: 140px;
+  vertical-align: top;
 
-  #word-scroll {
-    display: inline-block;
-    margin-left: 5px;
-    height: 32px;
-    overflow: hidden;
+  #word-scroll-inner {
     position: absolute;
-    width: 140px;
-    vertical-align: top;
-
-    #word-scroll-inner {
-      position: absolute;
-      top: 0; left: 0;
-    }
-
-    .word {
-      display: block;
-      margin-bottom: 5px;
-      height: 25px;
-    }
+    top: 0; left: 0;
   }
 
+  .word {
+    display: block;
+    margin-bottom: 5px;
+    height: 25px;
+  }
 }
-
-
 
 .landing-reasons,
 .landing-how {
@@ -38,6 +31,8 @@
     font-size: 1.2em;
     line-height: 1.5em;
   }
+
+  @include mobile { padding: 20px 0; }
 }
 
 
@@ -45,10 +40,9 @@
 .landing-main {
   background: url('/images/glasses.jpg') no-repeat;
   background-size: cover;
-
   padding: 100px 0 0;
 
-  h1,p {
+  h1, p {
     color: $light-gray;
     text-shadow: 1px 1px 1px #000;
   }
@@ -63,9 +57,11 @@
   p {
     font-size: 1.7em;
     line-height: 1.5;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 
-    @include mobile { margin-bottom: 15px; }
+    @include mobile { text-align: left; }
+
+    @media(min-width: 1100px) { margin-bottom: 50px; }
   }
 
   img {
@@ -80,8 +76,10 @@
     background: url('/images/glasses_blur.jpg') no-repeat;
     padding-top: 20px;
     text-align: center;
+  }
 
-    p { text-align: left; } // Hack to center the cta btn
+  @media(min-width: 480px) and (max-width: 1100px) {
+    .btn-cta { margin-bottom: 30px; }
   }
 }
 
@@ -124,6 +122,8 @@
     color: lighten($gray-text, 20);
     margin-bottom: 25px;
     text-align: left;
+
+    @include mobile { text-align: center; }
   }
 
   p { line-height: 1.5; }
@@ -148,10 +148,8 @@
     p {
       @include bold(1.5em);
       margin: 5px 0 10px;
-    }
 
-    @include mobile {
-      p { margin-top: -10px; }
+      @include mobile { margin-top: -10px; }
     }
   }
 

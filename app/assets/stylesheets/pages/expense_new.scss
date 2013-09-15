@@ -16,6 +16,8 @@
 .expense-back {
   // Left-floated back button
   margin-top: 10px;
+
+  @include mobile { padding: 10px 15px; }
 }
 
 #show-expense-faqs {

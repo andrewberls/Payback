@@ -23,6 +23,7 @@ header {
   ul {
     @include clearfix;
     display: inline-block;
+    float: left;
   }
 
   li {
@@ -97,6 +98,16 @@ header {
     }
   }
 
+  @media(max-width: 1100px) {
+    nav ul { float: none; }
+
+    .user-links {
+      float: none;
+      margin: 6px 0 5px;
+      text-align: center;
+    }
+  }
+
   @include mobile {
     padding-bottom: 10px;
 
@@ -116,9 +127,7 @@ header {
     #notification-tab { display: none; }
 
     .user-links {
-      display: block;
       margin: 10px auto 0;
-      width: 100%;
 
       a { padding: 0; }
     }
@@ -132,6 +141,7 @@ footer {
   background-color: $dark-nav;
   color: $light-text;
   line-height: $footerHeight;
+  margin-top: 15px;
   text-align: center;
 
   p { display: inline-block; }

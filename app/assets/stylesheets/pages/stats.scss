@@ -155,6 +155,8 @@
       margin-top: 15px;
     }
   }
+
+  @include mobile { padding-bottom: 5px; }
 }
 
 .stats-line {
