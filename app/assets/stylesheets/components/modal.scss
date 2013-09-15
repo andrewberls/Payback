@@ -54,7 +54,9 @@
 }
 
 #mailer-modal  {
-  h2 {
+  .modal-close-x { font-size: 1.5em; }
+
+ h2 {
     font-size: 1.8em;
     margin-bottom: 15px;
   }
@@ -71,5 +73,14 @@
     float: right;
     font-size: 12px;
     margin-top: -34px
+  }
+
+  @media(max-width: 790px) {
+    .btn-edit-pref { float: left; }
+
+    .btn-cancel {
+      float: right;
+      padding: 15px 25px;
+    }
   }
 }

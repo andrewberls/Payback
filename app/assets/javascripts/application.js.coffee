@@ -42,5 +42,5 @@ $ ->
   if modal.length
     modal.modal()
 
-  $(document).on 'click', '.simplemodal-close', ->
+  $(document).on 'click', '.btn-edit-pref, .btn-cancel', ->
     $.cookie('closed_mailer_modal', '1', { expires: 15 })

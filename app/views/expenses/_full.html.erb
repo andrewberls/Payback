@@ -38,10 +38,9 @@
 </div>
 
 <%# TODO: temporary mailer modal %>
-<% comm = current_user.communication_preference %>
-<% if comm.created_at == comm.updated_at && cookies[:closed_mailer_modal].blank? %>
+<% if cookies[:closed_mailer_modal].blank? %>
   <div id="mailer-modal" class="modal">
-    <a class="simplemodal-close" title="Close">&times;</a>
+    <a class="modal-close-x simplemodal-close" title="Close">&times;</a>
 
     <div style="margin-bottom: 35px">
       <h2>Introducing email notifications</h2>
@@ -56,7 +55,8 @@
     </div>
 
     <div style="text-align: center; height: 38px">
-      <%= link_to 'Edit my preferences', edit_user_path(current_user), class: 'btn btn-blue btn-huge' %>
+      <%= link_to 'Edit my preferences', edit_user_path(current_user),
+        class: 'btn btn-blue btn-huge btn-edit-pref' %>
     </div>
 
     <a href="#" class="btn btn-large btn-cancel simplemodal-close">
