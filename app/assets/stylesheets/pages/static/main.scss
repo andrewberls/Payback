@@ -48,7 +48,10 @@
 
   padding: 100px 0 0;
 
-  h1,p { color: $light-gray; }
+  h1,p {
+    color: $light-gray;
+    text-shadow: 1px 1px 1px #000;
+  }
 
   h1 {
     margin-top: 75px;
