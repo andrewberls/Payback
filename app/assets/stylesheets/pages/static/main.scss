@@ -64,13 +64,20 @@
     @media(min-width: 1100px) { margin-bottom: 50px; }
   }
 
-  img {
-    display: none;
-    width: 750px;
+  .comparison-container {
+    background: url('/assets/comparison-2.png') no-repeat;
+    background-size: contain;
+    height: 450px;
 
-    @media (min-width: 790px) { display: block; }
+    @media (min-width: 790px) and (max-width: 1100px) {
+      height: 321px;
+    }
+
+    @media(max-width: 790px) {
+      background: none;
+      height: 0;
+    }
   }
-
 
   @include mobile {
     background: url('/images/glasses_blur.jpg') no-repeat;
