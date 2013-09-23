@@ -7,20 +7,18 @@
 <div class="row">
   <div class="span-8 offset-4">
     <div class="alert alert-success group-success">
-      <h3>Succesfully created <%= @group.title %>!</h3>
+      <h3>Succesfully created "<%= @group.title %>"!</h3>
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="span-6 offset-5 group-welcome">
-
     <h2>Invite people to join</h2>
     <p>People you invite will be sent a link they can use to join your group.</p>
 
     <%= render 'group_invitations', group: @group, header: "Enter emails:", visible: true %>
 
-    <%= link_to "Go to dashboard", expenses_path, class: "btn btn-blue btn-full", style: 'margin-top: 20px' %>
-
+    <%= link_to "Go to dashboard", expenses_path, class: "btn btn-blue btn-full", style: 'margin-top: 25px' %>
   </div>
 </div>
