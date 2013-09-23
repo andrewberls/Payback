@@ -2,7 +2,12 @@
   <% if tags = expense.tags %>
     <% tags.each do |tag| %>
       <% title = tag.title %>
-      <%= link_to title, tagged_expenses_path(title), class: 'tag' %>
+      <% path = tagged_expenses_path(title) %>
+      <% if current_page?(path) %>
+        <%= content_tag :span, title, class: 'tag tag-current' %>
+      <% else %>
+        <%= link_to title, tagged_expenses_path(title), class: 'tag' %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

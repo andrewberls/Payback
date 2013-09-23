@@ -189,11 +189,18 @@
       color: $light-text;
       padding: 2px 4px;
 
-      &:hover {
-        border-color: $blue;
-        color: $blue;
-        text-decoration: none;
+      &.tag-current {
+        color: lighten($light-text, 30);
+        text-decoration: underline;
       }
+    }
+
+    // This rule is a bit of a hack since we can have
+    // non-hoverable spans with class of .tag
+    a.tag:hover {
+      border-color: $blue;
+      color: $blue;
+      text-decoration: none;
     }
   }
 
