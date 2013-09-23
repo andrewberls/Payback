@@ -46,7 +46,6 @@ Payback::Application.routes.draw do
   match 'login'  => 'sessions#new',     as: 'login'
   match 'logout' => 'sessions#destroy', as: 'logout'
 
-  match 'start'     => 'static#start',     as: 'start'
   match 'not_found' => 'static#not_found', as: 'not_found'
 
   get 'contact'  => 'static#contact', as: 'contact'
@@ -55,7 +54,7 @@ Payback::Application.routes.draw do
   match 'forgot_password'       => 'sessions#forgot_password', as: 'forgot_password'
   match 'reset_password/:token' => 'sessions#reset_password',  as: 'reset_password'
 
-  root :to => 'static#start'
+  root :to => 'static#main'
 
   # Route page not found to 404 page
   match '*a' => 'static#not_found'
