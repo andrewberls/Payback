@@ -34,12 +34,8 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def login_user(user, options={})
-    if options.delete(:permanent)
-      cookies.permanent[:auth_token] = user.auth_token
-    else
-      cookies[:auth_token] = user.auth_token
-    end
+  def login_user(user)
+    cookies[:auth_token] = user.auth_token
   end
 
   def reject_unauthorized(authorized=false, options={})

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
 
     if user && user.authenticate(params[:password])
-      login_user(user, permanent: params[:remember_me])
+      login_user(user)
       path = (user.groups.blank?) ? new_group_path : expenses_path
       return redirect_to_return_or_path(path)
     else
