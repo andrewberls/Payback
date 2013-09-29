@@ -23,7 +23,7 @@ class Invitation < ActiveRecord::Base
   private
 
   def send_invitation_email
-    InvitationsMailer.invite(self).deliver
+    InvitationsMailer.delay.invite(self.id)
   end
 
 end

@@ -32,7 +32,7 @@ class Notification < ActiveRecord::Base
     when Notification::MARKOFF
       recipient = expense.creditor
       if recipient.receive_communication?(Notification::MARKOFF)
-        NotificationsMailer.mark_off(self.expense).deliver
+        NotificationsMailer.delay.mark_off(self.expense.id)
       end
     end
   end

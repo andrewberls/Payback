@@ -13,7 +13,7 @@ class StaticController < ApplicationController
     @message = Message.new(params[:message])
 
     if @message.valid?
-      Notifier.new_message(@message).deliver
+      Notifier.delay.new_message(@message)
       flash[:success] = "Thanks! We'll get back to you as soon as possible."
     else
       flash[:error] = "Please check your fields and try again!"

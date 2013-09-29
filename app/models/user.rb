@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     expense.debtor = self
     debts << expense
     if receive_communication?(Notification::NEW_DEBT)
-      NotificationsMailer.new_debt(expense).deliver
+      NotificationsMailer.delay.new_debt(expense.id)
     end
   end
 

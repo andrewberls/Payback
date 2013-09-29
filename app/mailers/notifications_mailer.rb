@@ -1,7 +1,7 @@
 class NotificationsMailer < ApplicationMailer
 
-  def mark_off(expense)
-    @expense   = expense
+  def mark_off(expense_id)
+    @expense   = Expense.find(expense_id)
     @recipient = @expense.creditor
     @sender    = @expense.debtor
     @group     = @expense.group
@@ -10,8 +10,8 @@ class NotificationsMailer < ApplicationMailer
     mail to: @recipient.email, subject: @subject
   end
 
-  def new_debt(expense)
-    @expense   = expense
+  def new_debt(expense_id)
+    @expense   = Expense.find(expense_id)
     @recipient = @expense.debtor
     @sender    = @expense.creditor
     @group     = @expense.group

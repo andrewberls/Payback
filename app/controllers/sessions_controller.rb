@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
       end
 
       token = user.generate_reset_token
-      PasswordsMailer.reset(token).deliver
+      PasswordsMailer.delay.reset(token.id)
       flash[:success] = "A email has been sent to #{user.email} with instructions on resetting your password!"
       return redirect_to forgot_password_path
     end
