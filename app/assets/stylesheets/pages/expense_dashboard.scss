@@ -309,10 +309,12 @@
 }
 
 .expense-stale {
-  color: #D03130;
+  background: url('/images/stale.gif') no-repeat;
+  background-size: contain;
   float: right;
-  font-size: 0.7em;
-  padding: 2px 5px;
+  margin-top: 7px;
+  width: 18px;
+  height: 17px;
 
   &:hover { cursor: pointer; }
 
