@@ -90,9 +90,15 @@
     border: none;
     float: left;
     margin-top: 1px;
-    width: 91%;
+    width: 89%;
 
     &:focus { outline: none; }
+
+    @include mobile { width: 95%; }
+  }
+
+  .icon-remove {
+    margin-top: 3px;
   }
 }
 
