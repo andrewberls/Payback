@@ -65,8 +65,8 @@
   }
 
   .comparison-container {
-    background: url('/assets/comparison-2.png') no-repeat;
-    background-size: contain;
+    background: url('/assets/comparison.png') no-repeat;
+    background-size: cover;
     height: 450px;
 
     @media (min-width: 790px) and (max-width: 1100px) {
@@ -142,6 +142,7 @@
   }
 
   img {
+    @include border-radius;
     border: 1px solid $med-gray;
     max-width: 100%;
 

@@ -52,14 +52,28 @@ inputMatch = (bodyWords, inputWords) ->
   return numMatches == inputWords.length
 
 
+# Add link to clear input field
+addCloseLink = ->
+  $container = $('.expense-filter-container')
+  if $container.find('.icon-remove').length == 0
+    $('.expense-filter-container').append """
+      <i class="icon-remove"></i>
+    """
+
+# Remove clear link and show all expenses
+showAll = ->
+  $('.expense-filter-container .icon-remove').remove()
+  $('.expense').show()
+
+
 # Show/hide DOM elements based on pre-determined
 # match against input query
 #
 #   expenseMatches - hash of { id -> Boolean }
 #
 # Returns nothing
-filterExpenses = (expenseMatches) ->
-  for id, matches of expenseMatches
+filterExpenses = (input) ->
+  for id, matches of matchesFor(input)
     $exp = $("[data-id=#{id}]")
     if matches then $exp.show() else $exp.hide()
 
@@ -67,10 +81,20 @@ filterExpenses = (expenseMatches) ->
 
 $ ->
   expenseWords = parseSearchableWords()
-  $('.expense-filter-container input').keyup ->
+  $input = $('.expense-filter-container input')
+
+  $input.keyup ->
     input = $(@).val()
                 .split(' ')
                 .map (word) -> word.toLowerCase()
 
-    matches = matchesFor(input)
-    filterExpenses(matches)
+    if input[0] != ''
+      addCloseLink()
+      filterExpenses(input)
+    else
+      showAll()
+
+  $(document).on 'click', '.expense-filter-container .icon-remove', ->
+    $input.val('')
+    showAll()
+

@@ -35,8 +35,6 @@
     }
   }
 
-  .close-alert:hover { cursor: pointer; }
-
   li {
     margin-left: 10px;
     &:before { content: "-"; }
@@ -46,8 +44,9 @@
     font-weight: bold;
     text-decoration: underline;
   }
-
 }
+
+.icon-remove:hover { cursor: pointer; }
 
 .badge {
   @include border-radius(3px);

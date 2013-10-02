@@ -1,16 +1,9 @@
 // Dashboard
 // ----------------
-var $container = $(".credits-container"),
-    $total     = $('.expense-total');
+var $total = $('.quick-stats-credits').find('h3');
 
-$total.find('.amount').html("<%= money(@credit_owed) %>");
+$total.html("<%= money(@credit_owed) %>");
 
-// Hack here - event propagates to controller before DOM node is removed,
-// making the children include the just-deleted node
-if ($container.children().length === 1) {
-  $container.html("<%= j blank_credits %>");
-  $total.remove();
-}
 
 
 // User credits
