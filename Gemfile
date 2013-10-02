@@ -14,7 +14,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'jquery-rails'
 
-gem 'thin'
+gem 'unicorn'
 
 gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 
