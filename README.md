@@ -28,4 +28,4 @@ rails server
 ```
 
 ### Status
-[![Build Status](https://travis-ci.org/andrewberls/payback.png)](https://travis-ci.org/andrewberls/payback)
+[![Build Status](https://travis-ci.org/andrewberls/Payback.png)](https://travis-ci.org/andrewberls/payback)
