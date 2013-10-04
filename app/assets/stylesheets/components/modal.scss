@@ -39,48 +39,37 @@
     }
   }
 
-  // img {
-  //   float: left;
-  //   margin-right: 15px;
-
-  //   @include mobile {
-  //     display: block;
-  //     float: none;
-  //     margin: 0 auto 10px;
-  //   }
-  // }
-
   a:hover { text-decoration: underline; }
 }
 
-#mailer-modal  {
-  .modal-close-x { font-size: 1.5em; }
-
- h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-  }
-
-  p {
-    line-height: 1.5;
-    font-size: 1.2em;
-
-    & + p { margin-top: 15px; }
-  }
-
-  .btn-cancel {
-    color: $gray-text;
-    float: right;
-    font-size: 12px;
-    margin-top: -34px
-  }
-
-  @media(max-width: 790px) {
-    .btn-edit-pref { float: left; }
-
-    .btn-cancel {
-      float: right;
-      padding: 15px 25px;
-    }
-  }
-}
+// #mailer-modal  {
+//   .modal-close-x { font-size: 1.5em; }
+//
+//  h2 {
+//     font-size: 1.8em;
+//     margin-bottom: 15px;
+//   }
+//
+//   p {
+//     line-height: 1.5;
+//     font-size: 1.2em;
+//
+//     & + p { margin-top: 15px; }
+//   }
+//
+//   .btn-cancel {
+//     color: $gray-text;
+//     float: right;
+//     font-size: 12px;
+//     margin-top: -34px
+//   }
+//
+//   @media(max-width: 790px) {
+//     .btn-edit-pref { float: left; }
+//
+//     .btn-cancel {
+//       float: right;
+//       padding: 15px 25px;
+//     }
+//   }
+// }

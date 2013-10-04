@@ -36,31 +36,3 @@
   </div>
 
 </div>
-
-<%# TODO: temporary mailer modal %>
-<% if cookies[:closed_mailer_modal].blank? %>
-  <div id="mailer-modal" class="modal">
-    <a class="modal-close-x simplemodal-close" title="Close">&times;</a>
-
-    <div style="margin-bottom: 35px">
-      <h2>Introducing email notifications</h2>
-      <p>
-        We've added email notifications so that you can always be up to date with Payback.
-        We'll send you a short email whenever somebody asks you to mark off an expense, or assigns you a debt.
-      </p>
-
-      <p>
-        You can unsubscribe at any time by editing your preferences (click your name in the top right corner)
-      </p>
-    </div>
-
-    <div style="text-align: center; height: 38px">
-      <%= link_to 'Edit my preferences', edit_user_path(current_user),
-        class: 'btn btn-blue btn-huge btn-edit-pref' %>
-    </div>
-
-    <a href="#" class="btn btn-large btn-cancel simplemodal-close">
-      Maybe later
-    </a>
-  </div>
-<% end %>

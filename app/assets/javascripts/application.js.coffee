@@ -36,11 +36,3 @@ $ ->
     key    = $alert.data('key')
     $.cookie("closed-#{key}", '1', { expires: 15 })
     $alert.slideUp 400 , -> $alert.parent().parent().remove()
-
-  # Show mailer modal only on dashboard, hackety hack
-  modal = $("#mailer-modal")
-  if modal.length
-    modal.modal()
-
-  $(document).on 'click', '.btn-edit-pref, .btn-cancel', ->
-    $.cookie('closed_mailer_modal', '1', { expires: 15 })
