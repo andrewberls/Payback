@@ -7,8 +7,8 @@
 #= require jquery.simplemodal.1.4.4.min
 #= require laconic
 #= require d3.v3.min
+#= require validation.min
 #
-#= require validation
 #= require word_slide
 #= require expenses/mark_off
 #= require expenses/notifications
@@ -23,8 +23,11 @@ window.toggleSlide = ($selector, speed=350) ->
     $selector.slideUp(speed)
 
 
-$ ->
+# Enable field validation on blur
+ValidateJS.enableActiveChecking = true
 
+
+$ ->
   # Set up tooltips
   $('.expense-stale').tipsy()
   $('.expense-edited').tipsy()
