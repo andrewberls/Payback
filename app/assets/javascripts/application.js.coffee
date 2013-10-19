@@ -9,7 +9,7 @@
 #= require d3.v3.min
 #= require validation.min
 #
-#= require word_slide
+#= require static
 #= require expenses/mark_off
 #= require expenses/notifications
 

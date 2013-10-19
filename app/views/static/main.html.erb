@@ -2,25 +2,54 @@
 <section class="landing-main">
   <div class="container">
     <div class="row">
-
       <div class="span-6">
-        <h1>Welcome to Payback.</h1>
 
-        <p class="easy-way">
-          The easiest way to track spending and borrowing with your
-          <span id="word-scroll">
-            <span id="word-scroll-inner">
-              <span class="word">household.</span>
-              <span class="word">group.</span>
-              <span class="word">friends.</span>
-              <span class="word">family.</span>
-              <span class="word">roommates.</span>
-            </span>
-          </span><!-- #word-scroll -->
-        </p>
+        <div class="landing-carousel-container">
+          <div class="landing-carousel-inner">
 
-        <%= link_to raw("Get started, it's free &raquo;"), signup_path, class: "btn btn-green btn-cta" %>
-      </div>
+            <div class="landing-carousel-pane">
+              <h1>Welcome to Payback.</h1>
+
+              <p>
+                The easiest way to track spending and borrowing with your
+                <span id="word-scroll">
+                  <span id="word-scroll-inner">
+                    <span class="word">household.</span>
+                    <span class="word">group.</span>
+                    <span class="word">friends.</span>
+                    <span class="word">family.</span>
+                    <span class="word">roommates.</span>
+                  </span>
+                </span><!-- #word-scroll -->
+              </p>
+
+              <%= link_to raw("Get started, it's free &raquo;"), signup_path, class: "btn btn-green btn-cta" %>
+            </div><!-- .landing-carousel-pane -->
+
+
+            <div class="landing-carousel-pane">
+              <%= form_for User.new, html: { class: 'form-validate landing-signup-form' } do |f| %>
+
+                <h1 class="form-title">Sign Up</h1>
+
+                <%= render 'shared/instance_errors', instance: @user %>
+
+                <%= f.text_field :full_name, placeholder: 'Full Name'  %>
+
+                <%= f.email_field :email, placeholder: 'Email' %>
+                <%#<div id="hint"></div>%>
+
+                <%= f.password_field :password, placeholder: 'Password' %>
+
+                <%= submit_tag "Sign Up", class: "btn btn-huge btn-blue btn-mobile-block" %>
+
+              <% end %>
+            </div><!-- .landing-carousel-pane -->
+
+          </div><!-- .landing-carousel-container-inner -->
+        </div><!-- .landing-carousel-container -->
+
+      </div><!-- .span-6 -->
 
       <div class="span-10 comparison-container"></div>
     </div>

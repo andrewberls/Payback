@@ -1,4 +1,12 @@
 $ ->
+
+  # Signup carousel
+  $('.landing-main .btn-cta').click ->
+    paneWidth = $('.landing-carousel-pane').outerWidth()
+    $('.landing-carousel-inner').animate { 'left': "-#{paneWidth}px" }
+    return false
+
+  # Word scroll
   $window    = $('#word-scroll-inner')
   numWords   = $window.find('.word').size()
   wordHeight = 30
