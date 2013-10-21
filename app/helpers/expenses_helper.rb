@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module ExpensesHelper
 
   def blank_expense
@@ -26,7 +28,7 @@ module ExpensesHelper
   end
 
   def mark_off_btn
-    link_to raw("<i class='icon-ok icon-white'></i>"), '#', class: "btn no-text btn-green mark-off-btn"
+    link_to raw("<i class='icon-ok icon-white'></i>"), '#', class: "btn btn-green no-text mark-off-btn"
   end
 
 end

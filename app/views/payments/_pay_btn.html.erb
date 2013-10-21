@@ -1,0 +1,9 @@
+<%= form_for Payment.new, remote: true, html: { class: 'form-invisible payment-form' } do |f| %>
+  <%= f.hidden_field :expense_id,  value: expense.id %>
+  <%= f.hidden_field :creditor_id, value: expense.creditor.id %>
+  <%= f.hidden_field :debtor_id,   value: current_user.id %>
+  <%= f.hidden_field :title,  value: expense.title %>
+  <%= f.hidden_field :amount,  value: expense.amount %>
+
+  <%= raw square_cash_link(expense) %>
+<% end %>

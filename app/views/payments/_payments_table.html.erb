@@ -1,0 +1,47 @@
+<table class="payments-table">
+  <% if payments.blank? %>
+
+    <tbody>
+      <tr>
+        <td class="payment-empty">
+          <% if type == :sent %>
+            You haven't sent any payments! Use the
+            <a class="btn btn-purple no-text no-text-tiny" href="#">$</a>
+            button on the dashboard to send money.
+          <% else %>
+            You haven't received any payments yet!
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+
+  <% else %>
+
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th><%= type == :sent ? 'Sent To' : 'Received From' %></th>
+        <th>For</th>
+        <th>Date Sent</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% payments.each do |payment| %>
+        <tr>
+          <td><%= money payment.amount %></td>
+          <td>
+            <% if type == :sent %>
+              <%= payment.creditor.full_name %>
+            <% else %>
+              <%= payment.debtor.full_name %>
+            <% end %>
+          </td>
+          <td><%= payment.title %></td>
+          <td><%= render_date payment.created_at  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  <% end %>
+</table>

@@ -66,6 +66,19 @@ Expense.new(title: "Freebirds", amount: 15, active: true, action: :payback) do |
   exp.assign_to admin_user
 end
 
+
+# Admin has sent payment to Jeff
+# Expense.new fans out - can't assign to result of it
+dinner = Expense.find_by_title("Freebirds")
+Payment.create!(
+  title:       dinner.title,
+  amount:      dinner.amount,
+  creditor_id: jeff.id,
+  debtor_id:   admin.id,
+  expense_id:  dinner.id
+)
+
+
 # Jeff requests Admin mark off groceries
 groceries = Expense.find_by_title("Groceries")
 Notification.create!(user_from_id: jeff.id, user_to_id: admin_user.id, expense_id: groceries.id, notif_type: 'mark_off')

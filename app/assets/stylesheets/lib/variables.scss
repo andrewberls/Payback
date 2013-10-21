@@ -1,5 +1,7 @@
 $baseFontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$hipFontFamily: 'Open Sans', $baseFontFamily;
 
+// Grays
 $light-gray: #f9f9f9;
 $med-gray:   #ccc;
 $dark-gray:  #2c2c2c;
@@ -7,4 +9,7 @@ $dark-nav:   #262626;
 $gray-text:  #404040;
 $light-text: lighten($gray-text, 15);
 
-$blue: #119EE7;
+// Colors
+$blue:       #119EE7;
+$light-blue: lighten(#cceeff, 6);
+$purple:     #9C4274;

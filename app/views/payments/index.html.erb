@@ -1,0 +1,30 @@
+<% provide(:title, 'Payments') %>
+
+<div class="payments-container">
+  <div class="row">
+    <div class="span-12 offset-2">
+
+
+      <!-- TODO: tabbed nav -->
+      <h1>Payments</h1>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#sent" data-toggle="tab">Sent</a></li>
+        <li><a href="#received" data-toggle="tab">Received</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="sent">
+          <%= render 'payments/payments_table', payments: @payments_sent, type: :sent %>
+        </div>
+
+        <div class="tab-pane" id="received">
+          <%= render 'payments/payments_table', payments: @payments_received, type: :received %>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

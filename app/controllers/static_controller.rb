@@ -1,6 +1,4 @@
 class StaticController < ApplicationController
-  layout :choose_layout
-
   def main
     return redirect_to expenses_path if signed_in?
   end
@@ -23,11 +21,5 @@ class StaticController < ApplicationController
   end
 
   def not_found
-  end
-
-  private
-
-  def choose_layout
-    (action_name == 'main') ? 'static' : 'application'
   end
 end

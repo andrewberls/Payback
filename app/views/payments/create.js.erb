@@ -1,4 +1,4 @@
-var $btn = $(".notification_expense_id[value=<%= @exp_id %>]").parent();
+var $btn = $("#payment_expense_id[value=<%= @exp_id %>]").parent();
 $('.tipsy').remove() // Close any open tooltips
 
 $btn.replaceWith("<span class='green-check'></span>");

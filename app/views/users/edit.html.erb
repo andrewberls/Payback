@@ -29,7 +29,7 @@
         <p>Receive email when:</p>
 
         <%= f.fields_for :communication_preferences do |builder| %>
-          <% Notification::VALID_TYPES.each do |type| %>
+          <% Notification::COMM_TYPES.each do |type| %>
             <label class="checkbox">
               <% checked = @user.receive_communication?(type) %>
               <%= builder.check_box type, { checked: checked } %>

@@ -5,6 +5,7 @@
 #= require jquery.tipsy
 #= require jquery.cookie
 #= require jquery.simplemodal.1.4.4.min
+#= require bootstrap.tab
 #= require laconic
 #= require d3.v3.min
 #= require validation.min
@@ -12,6 +13,7 @@
 #= require static
 #= require expenses/mark_off
 #= require expenses/notifications
+#= require payments
 
 window.Payback = {}
 
@@ -29,9 +31,8 @@ ValidateJS.enableActiveChecking = true
 
 $ ->
   # Set up tooltips
-  $('.expense-stale').tipsy()
-  $('.expense-edited').tipsy()
-  $('.mark-off-notification').tipsy()
+  $('[data-tipsy]').tipsy()
+
 
   # Dashboard alerts
   $('.close-alert').click ->
@@ -39,3 +40,19 @@ $ ->
     key    = $alert.data('key')
     $.cookie("closed-#{key}", '1', { expires: 15 })
     $alert.slideUp 400 , -> $alert.parent().parent().remove()
+
+
+  # Mobile stacked nav
+  $userLinks = $('.user-links')
+  $navStack  = $('.nav-stack')
+
+  $('.nav-stack-toggle').click ->
+    wasToggled = $(@).hasClass('toggled')
+    $(@).toggleClass('toggled')
+    if wasToggled
+      $userLinks.hide()
+      $navStack.slideUp()
+    else
+      $userLinks.show()
+      $navStack.slideDown()
+    return false

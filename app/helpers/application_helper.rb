@@ -12,9 +12,14 @@ module ApplicationHelper
     end
   end
 
-  # Returns a string timestamp, ex: 7 Oct 2011
+  # Format a string timestamp, ex: 7 Oct 2011
   def render_date(time)
     time.strftime("%-d %b %Y")
+  end
+
+  # Format a string timestamp, ex: 10/7/11
+  def render_compact_date(time)
+    time.strftime("%-m/%e/%y")
   end
 
   def money(amount, options = {})

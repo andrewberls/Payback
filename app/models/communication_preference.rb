@@ -1,7 +1,7 @@
 class CommunicationPreference < ActiveRecord::Base
   attr_accessible :user
 
-  Notification::VALID_TYPES.each do |type|
+  Notification::COMM_TYPES.each do |type|
     attr_accessible type
   end
 

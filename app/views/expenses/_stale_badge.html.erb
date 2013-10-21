@@ -1,4 +1,4 @@
 <% threshold = 10.days %>
 <% if Time.now - expense.created_at > threshold %>
-  <span class="expense-stale" title="This expense is over <%= distance_of_time_in_words(threshold) %> old!"></span>
+  <span class="expense-stale" data-tipsy="true" title="This expense is over <%= distance_of_time_in_words(threshold) %> old!"></span>
 <% end  %>

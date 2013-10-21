@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_one :communication_preference
   accepts_nested_attributes_for :communication_preference
 
+  has_many :payments_sent,     class_name: 'Payment', foreign_key: 'debtor_id'
+  has_many :payments_received, class_name: 'Payment', foreign_key: 'creditor_id'
+
   validates :full_name, presence: true, length: { maximum: 50 }
 
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -67,8 +70,12 @@ class User < ActiveRecord::Base
     notifications_to.select(&:unread?)
   end
 
+  def notified_on?(exp_id)
+    notifications_from.any? { |n| n.expense_id == exp_id }
+  end
+
   def can_notify_on?(exp_id)
-    notifications_from.none? { |n| n.expense_id == exp_id }
+    !notified_on?(exp_id)
   end
 
   def recent_notifications
@@ -95,6 +102,10 @@ class User < ActiveRecord::Base
   def generate_reset_token
     expire_reset_tokens
     ResetToken.create(user: self)
+  end
+
+  def sent_payment_for?(expense)
+    Payment.where(expense_id: expense.id, debtor_id: self.id).exists?
   end
 
   private

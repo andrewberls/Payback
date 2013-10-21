@@ -1,3 +1,5 @@
+$nav-selected-color: lighten($dark-gray, 15);
+
 header {
   @include clearfix;
   background-color: $dark-nav;
@@ -31,6 +33,7 @@ header {
     position: relative;
 
     & > a {
+      @include border-box;
       @include border-radius(3px);
       display: inline-block;
       float: left;
@@ -41,7 +44,7 @@ header {
 
       &:hover,
       &.current {
-        background-color: lighten($dark-gray, 15);
+        background-color: $nav-selected-color;
         text-decoration: none;
       }
 
@@ -79,57 +82,63 @@ header {
     }
   }
 
-  #notification-tab {
-    display: inline-block;
+  .tab { display: inline-block; }
 
-    @include mobile { display: none; }
-  }
+  .nav-stack-toggle {
+    @include border-radius(3px);
+    float: right;
+    display: none;
+    line-height: 4px;
+    margin: 6px 4px 0 0;
+    padding: 5px 5px 4px 6px; // TODO: wat
+    width: 15px;
 
-  #stats-tab {
-    // TODO: temporary 'new' notification, remove eventually
-    &:after {
-      content: 'New!';
-      color: lighten(green, 10);
-      display: inline-block;
-      font-size: 0.85em;
-      position: absolute;
-      right: -12px;
-      top: -3px;
-    }
-  }
-
-  @media(max-width: 1100px) {
-    nav ul { float: none; }
-
-    .user-links {
-      float: none;
-      margin: 6px 0 5px;
+    span {
+      @include bold(1.3em);
+      color: white;
       text-align: center;
     }
+
+    &.toggled { background-color: $nav-selected-color; }
   }
 
   @include mobile {
-    padding-bottom: 10px;
-
-    h1 { display: none; }
-
-    nav {
-      padding-top: 4px;
-      text-align: center;
-
-      li { margin: 0 2px; }
-
-      a { padding: 8px 6px; }
+    .nav-stack-header-container {
+      @include clearfix;
+      margin: 5px 0;
     }
 
-    #group-tab { display: none; }
+    .nav-stack-toggle {
+      display: inline-block;
+      &:hover { text-decoration: none; }
+    }
 
-    #notification-tab { display: none; }
+    ul, .user-links { display: none; }
+
+    ul {
+      float: none;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .tab, li { display: block; }
+
+    .tab { margin-bottom: 3px; }
+
+    li > a {
+      float: none;
+      width: 100%;
+    }
+
+    .badge {
+      top: 6px;
+      right: 5px;
+    }
 
     .user-links {
-      margin: 10px auto 0;
-
-      a { padding: 0; }
+      float: none;
+      text-align: center;
+      margin-bottom: 10px;
     }
   }
 }
@@ -169,3 +178,49 @@ footer {
 
 footer,
 .page-wrap:after { height: $footerHeight; }
+
+
+
+.nav-tabs {
+  @include clearfix;
+  border-bottom: 1px solid $med-gray;
+
+  & > li {
+    float: left;
+    margin-bottom: -1px;
+
+    & > a {
+      @include bold(1.1em);
+      background-color: darken($light-gray, 15);
+      border-radius: 2px 2px 0 0;
+      border-bottom: 1px solid $med-gray;
+      color: $light-text;
+      display: inline-block;
+      margin-right: 5px;
+      padding: 10px 20px;
+
+      &:hover { background-color: darken($light-gray, 20); }
+    }
+
+    &.active > a {
+      background-color: $blue;
+      color: white;
+
+      &:hover,
+      &:focus {
+        background-color: $blue;
+        color: white;
+        cursor: default;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+.tab-content {
+  padding: 20px 0;
+
+  & > .tab-pane { display: none; }
+  & > .active   { display: block; }
+}

@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/ico" href="/favicon.gif" />
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -22,32 +23,43 @@
 </head>
 <body>
 
+
   <div class="page-wrap">
     <%= render (signed_in?) ? 'shared/header' : 'shared/static_header' %>
 
-    <% on_dashboard = current_page?(expenses_path) %>
-    <% if on_dashboard %>
-      <div class="quick-stats-container">
+    <% excluded_container_paths = [root_path, cash_path] %>
+    <% if excluded_container_paths.any? { |path| current_page?(path) } %>
+      <%= yield %>
+    <% else %>
+      <% on_dashboard = current_page?(expenses_path) %>
+      <% if on_dashboard %>
+        <div class="quick-stats-container">
+          <div class="container">
+            <%= render 'expenses/dashboard/quick_stats' %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="main-container <%= on_dashboard ? 'bordered' : '' %>">
         <div class="container">
-          <%= render 'expenses/dashboard/quick_stats' %>
+          <%= yield %>
         </div>
       </div>
     <% end %>
-
-    <div class="main-container <%= on_dashboard ? 'bordered' : '' %>">
-      <div class="container">
-        <%= yield %>
-      </div>
-    </div>
   </div><!-- .page-wrap -->
 
-  <footer>
-    <div class="container">
-      <p>Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.</p>
 
-      <%= link_to 'Contact Us!', contact_path, class: 'footer-contact' %>
-    </div>
-  </footer>
+  <% # TODO: better handling here %>
+  <% unless params[:action] == 'main' %>
+    <footer>
+      <div class="container">
+        <p>Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.</p>
+
+        <%= link_to 'Contact Us!', contact_path, class: 'footer-contact' %>
+      </div>
+    </footer>
+  <% end %>
+
 
   <%= javascript_include_tag 'application' %>
   <%= yield :javascript_includes %>

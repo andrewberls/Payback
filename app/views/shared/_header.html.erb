@@ -1,21 +1,35 @@
 <header>
   <div class="container">
-    <h1><%= link_to "Payback", expenses_path %></h1>
-    <nav>
-      <ul>
-        <li><%= link_to "Dashboard",   expenses_path,    id: 'dashboard-tab',   class: current_class(expenses_path) %></li>
-        <li><%= link_to "New Expense", new_expense_path, id: 'new-expense-tab', class: current_class(new_expense_path) %></li>
-        <li><%= link_to "Groups",      groups_path,      id: 'group-tab',       class: current_class(groups_path) %></li>
-        <li>
-          <%= link_to stats_path, id: 'stats-tab', class: current_class(stats_path) do %>
-            <i class="icon-white icon-signal"></i>
-            Stats
-          <% end %>
-        </li>
+    <div class="nav-stack-header-container">
+      <h1><%= link_to "Payback", expenses_path %></h1>
 
-        <div id="notification-tab">
+      <nav>
+        <a href="" class="nav-stack-toggle">
+          <span>&mdash;</span>
+          <span>&mdash;</span>
+          <span>&mdash;</span>
+        </a>
+    </div>
+
+      <ul class='nav-stack'>
+        <div class="tab"><li><%= link_to "Dashboard",   expenses_path,    id: 'dashboard-tab',   class: current_class(expenses_path) %></li></div>
+        <div class="tab"><li><%= link_to "New Expense", new_expense_path, id: 'new-expense-tab', class: current_class(new_expense_path) %></li></div>
+        <div class="tab"><li><%= link_to "Groups",      groups_path,      id: 'group-tab',       class: current_class(groups_path) %></li></div>
+        <div class="tab"><li><%= link_to "Payments",    payments_path,    id: 'payment-tab',     class: current_class(payments_path) %></li></div>
+
+        <div class="tab">
+          <li>
+            <%= link_to stats_path, class: current_class(stats_path) do %>
+              <i class="icon-white icon-signal"></i>
+              Stats
+            <% end %>
+          </li>
+        </div>
+
+        <div class="tab">
           <li><%= render 'notifications/notifications' %></li>
         </div>
+
       </ul>
 
       <div class="user-links">

@@ -42,6 +42,12 @@ Payback::Application.routes.draw do
     post 'read', on: :collection
   end
 
+  get 'cash' => 'payments#cash', as: 'cash'
+
+  resources :payments, only: [:index, :create] do
+    get 'payments' => 'payments#index', as: 'payments'
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   match 'login'  => 'sessions#new',     as: 'login'
   match 'logout' => 'sessions#destroy', as: 'logout'

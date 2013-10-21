@@ -221,9 +221,17 @@
     font-size: 14px;
     position: absolute;
     bottom: 10px; right: 10px;
-  }
 
-  .mark-off-notification { padding: 4px; }
+    form { float: left; }
+
+    .notification-form { margin-right: 10px; }
+
+    .cash-btn { padding: 5px; }
+
+    .payment-sent {
+      margin-top: 4px;
+    }
+  }
 
   // Mobile up to desktop
   @media (max-width: 1100px) {
