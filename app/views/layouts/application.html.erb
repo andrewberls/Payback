@@ -33,6 +33,20 @@
     <% else %>
       <% on_dashboard = current_page?(expenses_path) %>
       <% if on_dashboard %>
+
+        <!-- TODO: remove this eventually -->
+        <div class="cash-container dashboard-cash-announcement">
+          <div class="container">
+            <div class="row">
+              <div class="span-16">
+                <h2>Introducing Payback Cash.</h2>
+                <p>Pay your debts directly through Payback.</p>
+                <%= link_to 'Learn More', cash_path, class: 'btn btn-outline' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="quick-stats-container">
           <div class="container">
             <%= render 'expenses/dashboard/quick_stats' %>
