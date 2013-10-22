@@ -42,7 +42,7 @@ Payback::Application.routes.draw do
     post 'read', on: :collection
   end
 
-  get 'cash' => 'payments#cash', as: 'cash'
+  get 'cash' => 'static#cash', as: 'cash'
 
   resources :payments, only: [:index, :create] do
     get 'payments' => 'payments#index', as: 'payments'

@@ -3,6 +3,9 @@ class StaticController < ApplicationController
     return redirect_to expenses_path if signed_in?
   end
 
+  def cash
+  end
+
   def contact
     @message = Message.new
   end

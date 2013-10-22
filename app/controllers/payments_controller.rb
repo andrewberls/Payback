@@ -1,8 +1,6 @@
 class PaymentsController < ApplicationController
-  before_filter :must_be_logged_in, except: [:cash]
 
-  def cash
-  end
+  before_filter :must_be_logged_in, except: [:cash]
 
   def create
     payment_params = params[:payment]
