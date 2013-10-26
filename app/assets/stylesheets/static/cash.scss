@@ -1,4 +1,4 @@
-// TODO: remove this eventually
+// TODO: TEMPORARY: remove this eventually
 .dashboard-cash-announcement {
   background-color: $blue;
   color: white;
@@ -11,7 +11,7 @@
 
   p {
     font-size: 1.3em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 }
 
@@ -29,13 +29,13 @@
     font-size: 2.1em;
     margin-bottom: 30px;
     text-align: center;
+  }
 
-    & + p {
-      color: lighten($light-text, 5);
-      font-size: 1.5em;
-      margin-bottom: 60px;
-      text-align: center;
-    }
+  .cash-subheader {
+    color: lighten($light-text, 5);
+    font-size: 1.5em;
+    margin-bottom: 60px;
+    text-align: center;
   }
 
   img {
@@ -50,7 +50,7 @@
 .cash-main {
   background-color: $blue;
   color: white;
-  padding: 150px 0;
+  padding: 90px 0 0;
 
   h1 {
     font-size: 3.1em;
@@ -61,6 +61,12 @@
   p {
     font-size: 1.6em;
     margin-bottom: 60px;
+  }
+
+  img {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border: 1px solid $med-gray;
   }
 
   @include mobile {
@@ -78,6 +84,7 @@
 
 .cash-how {
   border-bottom: 1px solid $med-gray;
+  padding-bottom: 0;
 
   .cash-how-item {
     margin-bottom: 50px;
@@ -111,9 +118,36 @@
 
     @include mobile { text-align: center; }
   }
+
+  .email-picture-container {
+    margin-top: 30px;
+
+    img {
+      -webkit-box-shadow: 0px -1px 10px 0px #999;
+         -moz-box-shadow: 0px -1px 10px 0px #999;
+              box-shadow: 0px -1px 10px 0px #999;
+      margin-bottom: -1px;
+    }
+  }
 }
 
 
 .payments-tracking {
   background-color: $light-gray;
+  border-bottom: 1px solid $med-gray;
+}
+
+
+.powered-by {
+  .container {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .cash-subheader { margin-bottom: 0; }
 }

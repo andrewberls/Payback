@@ -8,12 +8,12 @@
         <div class="span-10" style="1px solid red;">
           <h1>Introducing Payback Cash.</h1>
           <p>Pay your debts directly through Payback.</p>
-          <%#<a class="btn btn-huge btn-outline" href="#">Get Started</a>%>
         </div>
 
-        <div class="span-6" style="outline: 1px solid red;">
-            test
+        <div class="span-6">
+          <%= image_tag 'debtcol.png' %>
         </div>
+
       </div>
     </div>
   </section>
@@ -22,27 +22,13 @@
   <section class="cash-section cash-how">
     <h2>Sending money as simple as sending an email.</h2>
 
-    <p>Payback integrates with Square Cash for hassle-free payments.</p>
+    <p class="cash-subheader">Payback integrates with Square Cash for hassle-free payments.</p>
 
     <div class="container">
 
       <div class="row cash-how-item">
         <div class="span-2 offset-3">
-         <img src="http://www.placehold.it/190/9c4274/ffffff" alt="" />
-        </div>
-
-        <div class="span-7 offset-1">
-          <h3>Payments in a single click</h3>
-
-          <p>
-            Square Cash uses email to transfer money to anyone in your group.
-          </p>
-        </div>
-      </div><!-- .cash-how-item -->
-
-      <div class="row cash-how-item">
-        <div class="span-2 offset-3">
-         <img src="http://www.placehold.it/190/2ba6cb/ffffff" alt="" />
+          <%= image_tag 'blue_envelope.png' %>
         </div>
 
         <div class="span-7 offset-1">
@@ -55,6 +41,29 @@
         </div>
       </div><!-- .cash-how-item -->
 
+      <div class="row cash-how-item">
+        <div class="span-2 offset-3">
+          <%= image_tag 'purple_money.png' %>
+        </div>
+
+        <div class="span-7 offset-1">
+          <h3>Payments in a single click</h3>
+
+          <p>
+            Square Cash uses email to transfer money to anyone in your group.
+          </p>
+        </div>
+      </div><!-- .cash-how-item -->
+
+    </div>
+
+
+    <div class="container email-picture-container">
+      <div class="row">
+        <div class="span-12 offset-2">
+          <%= image_tag 'mailto.png' %>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -65,10 +74,32 @@
     <div class="container">
       <div class="row">
         <div class="span-12 offset-2">
-          <%= image_tag 'payments-f9.png' %>
+          <%= image_tag 'payments-table.png', alt: 'Payments table' %>
         </div>
       </div>
     </div>
+  </section>
+
+
+  <section class="cash-section powered-by">
+    <h2>Powered by Square Cash.</h2>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="span-6 offset-5">
+          <a href="https://square.com/cash">
+            <%= image_tag 'square_logo.png', alt: 'Square logo' %>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="cash-subheader">
+      Payback doesn't store any of your financial information,
+      and never takes a cut of anything.
+    </p>
   </section>
 
 </div><!-- .cash-container -->
