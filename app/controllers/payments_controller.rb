@@ -4,9 +4,9 @@ class PaymentsController < ApplicationController
 
   def create
     payment_params = params[:payment]
-
     Payment.create!(payment_params)
-    @exp_id = payment_params[:expense_id]
+
+    @exp_id = payment_params[:expense_id] || nil
 
     respond_to do |format|
       format.js

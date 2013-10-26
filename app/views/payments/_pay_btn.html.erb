@@ -1,9 +1,53 @@
-<%= form_for Payment.new, remote: true, html: { class: 'form-invisible payment-form' } do |f| %>
-  <%= f.hidden_field :expense_id,  value: expense.id %>
-  <%= f.hidden_field :creditor_id, value: expense.creditor.id %>
-  <%= f.hidden_field :debtor_id,   value: current_user.id %>
-  <%= f.hidden_field :title,  value: expense.title %>
-  <%= f.hidden_field :amount,  value: expense.amount %>
+<%
+  # Accepts locals:
+  #   `expense` or hash `payment_opts` (when exp is nil - paying total)
+  #   payment expects keys :creditor_id, :title, :amount, :mailto
+  #
+  #   `btn_opts` for styling button
+  #     :class - string class name
+  #     :value - string text value
 
-  <%= raw square_cash_link(expense) %>
+  btn_opts ||= {}
+  payment  ||= {}
+  expense  ||= nil
+%>
+
+<%= form_for Payment.new, remote: true, html: { class: 'form-invisible payment-form' } do |f| %>
+  <%
+    debtor_id = current_user.id
+
+    if expense.present?
+      expense_id  = expense.id
+      creditor_id = expense.creditor.id
+      title       = expense.title
+      amount      = expense.amount
+      mailto      = expense.creditor.email
+    else
+      expense_id  = nil
+      creditor_id = payment[:creditor_id]
+      title       = payment[:title]
+      amount      = payment[:amount]
+      mailto      = payment[:mailto]
+    end
+
+    payment_opts = {
+      expense_id: expense_id,
+      creditor_id: creditor_id,
+      debtor_id: debtor_id,
+      title: title,
+      amount: amount,
+      mailto: mailto
+    }
+  %>
+
+  <%= f.hidden_field :creditor_id, value: creditor_id %>
+  <%= f.hidden_field :debtor_id,   value: debtor_id   %>
+  <%= f.hidden_field :title,       value: title       %>
+  <%= f.hidden_field :amount,      value: amount      %>
+
+  <% if expense_id %>
+    <%= f.hidden_field :expense_id,  value: expense_id %>
+  <% end %>
+
+  <%= raw square_cash_link(payment_opts, btn_opts) %>
 <% end %>

@@ -304,16 +304,29 @@
   text-align: right;
 }
 
-.expense-total-large {
-  @include bold(1.3em);
-  margin-bottom: 20px;
+.expense-total-user {
+  // "You owe David $20"
+  color: $light-text;
+  font-size: 1em;
+  margin-bottom: 15px;
   text-align: center;
 }
 
-.expense-total-small {
-  font-size: 1.1em;
-  margin: 10px 0 20px;
+.expense-total-net {
+  // "With the $10 David owes, you owe a net total of $10"
+  font-size: 1.2em;
+  margin: 10px 0 25px;
   text-align: center;
+}
+
+.pay-all-container {
+  margin-bottom: 30px;
+  text-align: center;
+
+  .pay-all-btn {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 .expense-stale {

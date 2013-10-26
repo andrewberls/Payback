@@ -25,6 +25,9 @@
       <%= render 'notifications/mark_off', expense: expense %>
     <% end %>
 
+    <%
+      # TODO: how to link total payments back to expenses so we can show sent envelopes?
+    %>
     <% if current_user.sent_payment_for?(expense) %>
       <i class="icon-envelope payment-sent" data-tipsy="true"
         original-title="You sent payment on <%= render_compact_date expense.created_at %>"></i>

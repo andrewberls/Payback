@@ -11,15 +11,38 @@
     </div>
 
     <% if @debts.count > 1 %>
-    <p class="expense-total-large">
+    <p class="expense-total-user">
       You owe <%= "#{@user.first_name} #{money(current_user.active_debt_amt_to(@user))}" %>.
     </p>
     <% end %>
 
     <% if @user.active_debts_to(current_user).present? %>
-      <p class="expense-total-small">
+      <p class="expense-total-net">
         <%= render 'expenses/net_total', :direction => :debt %>
       </p>
+    <% end %>
+
+    <% unless @user.net_in_debt_to?(current_user) %>
+      <% net = current_user.net_owed_to(@user) %>
+
+      <div class="pay-all-container">
+        <%
+          # TODO: how to detect once we've sent a total payment?
+        %>
+        <%=
+          render 'payments/pay_btn',
+            btn_opts: {
+              class: 'btn-huge pay-all-btn',
+              value: "Send #{@user.first_name} #{money(net)}"
+            },
+            payment: {
+              creditor_id: @user.id,
+              title: Payment::NET_TITLE,
+              amount: net,
+              mailto: @user.email
+            }
+        %>
+      </div>
     <% end %>
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>

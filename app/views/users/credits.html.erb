@@ -11,12 +11,11 @@
     </div>
 
     <% if @credits.count > 1 %>
-      <%= content_tag :p, expense_total_for(@user), class: 'expense-total-large' %>
-
+      <%= content_tag :p, expense_total_for(@user), class: 'expense-total-user' %>
     <% end %>
 
     <% if current_user.active_debts_to(@user).present?  %>
-      <p class="expense-total-small">
+      <p class="expense-total-net">
         <%= render 'expenses/net_total', :direction => :credit %>
       </p>
     <% end %>

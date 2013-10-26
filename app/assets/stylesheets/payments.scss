@@ -38,6 +38,11 @@
     }
   }
 
+  // .payment-net-title {
+  //   color: lighten($gray-text, 10);
+  //   font-style: italic;
+  // }
+
   $radius: 2px;
   tr:first-child td:first-child { border-top-left-radius: $radius; }
   tr:first-child td:last-child  { border-top-right-radius: $radius; }

@@ -1,13 +1,16 @@
+<% current_to_user = current_user.active_debt_amt_to(@user) %>
+<% user_to_current = @user.active_debt_amt_to(current_user) %>
+
 <% if direction == :debt %>
   With the <%= money(current_user.active_credit_amt_to(@user)) %> <%= @user.first_name %> owes you,
 <% else %>
   With the <%= money(current_user.active_debt_amt_to(@user)) %> you owe <%= @user.first_name %>,
 <% end %>
 
-<% if current_user.active_debt_amt_to(@user) > @user.active_debt_amt_to(current_user) %>
-  <% net = current_user.active_debt_amt_to(@user) - @user.active_debt_amt_to(current_user) %>
+<% if current_user.net_in_debt_to?(@user) %>
+  <% net = current_user.net_owed_to(@user) %>
   you owe <%= @user.first_name %> a net total of <strong><%= money(net) %></strong>.
 <% else %>
-  <% net = @user.active_debt_amt_to(current_user) - current_user.active_debt_amt_to(@user) %>
+  <% net = @user.net_owed_to(current_user) %>
   <%= @user.first_name %> owes you a net total of <strong><%= money(net) %></strong>.
 <% end %>

@@ -58,6 +58,18 @@ module User::ExpenseExtension
   end
 
 
+  # Net totals
+  def net_in_debt_to?(user)
+    active_debt_amt_to(user) > user.active_debt_amt_to(self)
+  end
+
+  # Will return negative num if user is in debt to self
+  # Unintended use case.
+  def net_owed_to(user)
+    active_debt_amt_to(user) - user.active_debt_amt_to(self)
+  end
+
+
   # Groups in which this user has outstanding credits
   def groups_with_credits
     groups.reject { |group| active_credits.where(group_id: group).blank? }
