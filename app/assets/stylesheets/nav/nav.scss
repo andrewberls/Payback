@@ -95,7 +95,7 @@ header {
 
     span {
       @include bold(1.3em);
-      color: white;
+      color: #fff;
       text-align: center;
     }
 
@@ -204,12 +204,12 @@ footer,
 
     &.active > a {
       background-color: $blue;
-      color: white;
+      color: #fff;
 
       &:hover,
       &:focus {
         background-color: $blue;
-        color: white;
+        color: #fff;
         cursor: default;
         text-decoration: none;
       }

@@ -6,8 +6,8 @@
 
   .tag {
     @include bold(0.9em);
-    background-color: #F3F3F3;
-    border: 1px solid #DCDCDC;
+    background-color: #f3f3f3;
+    border: 1px solid #dcdcdc;
     color: $gray-text;
     display: inline-block;
     margin: 1px 4px 0 0;
@@ -24,7 +24,7 @@
   }
 
   #tag_input {
-    border: none;
+    border: 0;
     float: right;
     margin: 0;
     padding-left: 0;

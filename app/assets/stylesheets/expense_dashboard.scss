@@ -11,24 +11,25 @@
 .quick-stats-bar {
   @include border-radius;
   @include clearfix;
-  background-color: white;
+  background-color: #fff;
   border: 1px solid $med-gray;
 
   div {
+    $size: 55px;
+
     @include border-box;
     float: left;
     font-size: 1.2em;
-    padding: 0 15px;
-    $size: 55px;
     height: $size;
     line-height: $size;
+    padding: 0 15px;
     width: 50%;
 
     h3, p { display: inline-block; }
 
     h3 {
       font-size: 1.8em;
-      margin: 0px 4px 0 0;
+      margin: 0 4px 0 0;
     }
 
     p { vertical-align: top; }
@@ -67,7 +68,7 @@
   @include border-box;
   @include border-radius;
   @include clearfix;
-  background-color: white;
+  background-color: #fff;
   border: 1px solid $med-gray;
   margin-bottom: 20px;
   padding: 7px 7px 6px;
@@ -87,7 +88,7 @@
   }
 
   input {
-    border: none;
+    border: 0;
     float: left;
     margin-top: 1px;
     width: 89%;
@@ -123,7 +124,7 @@
   padding: 0 10px 5px;
   position: relative;
 
-  &:first-of-type { border: none; }
+  &:first-of-type { border: 0; }
 
   .expense-amount,
   .expense-debtor,
@@ -190,9 +191,9 @@
 
     .tag {
       @include border-radius(3px);
-      display: inline-block;
       border: 1px solid $med-gray;
       color: $light-text;
+      display: inline-block;
       padding: 2px 4px;
 
       &.tag-current {
@@ -220,7 +221,8 @@
     // Button container
     font-size: 14px;
     position: absolute;
-    bottom: 10px; right: 10px;
+    bottom: 10px;
+    right: 10px;
 
     form { float: left; }
 
@@ -333,9 +335,9 @@
   background: url('/images/stale.gif') no-repeat;
   background-size: contain;
   float: right;
+  height: 17px;
   margin-top: 7px;
   width: 18px;
-  height: 17px;
 
   &:hover { cursor: pointer; }
 

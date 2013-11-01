@@ -3,8 +3,8 @@ html, body { height: 100%; }
 html { overflow-y: scroll; }
 
 body {
-  background-color: $light-gray;
   @extend %noise;
+  background-color: $light-gray;
   color: $gray-text;
   font-family: $baseFontFamily;
   font-size: 13px;
@@ -39,8 +39,8 @@ body {
 
 .quote:before,
 .quote:after {
-  content: "\"";
   color: darken($med-gray, 10);
+  content: "\"";
   font-weight: normal;
 }
 

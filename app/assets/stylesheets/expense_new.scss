@@ -86,9 +86,9 @@
 
     label,
     input {
+      display: inline-block;
       float: none;
       margin: 0 0 10px;
-      display: inline-block;
       vertical-align: middle;
 
       @media (min-width: 1100px) {
@@ -98,8 +98,8 @@
     }
 
     input {
-      margin-top: 2px;
       margin-right: 5px;
+      margin-top: 2px;
     }
   }
 }
@@ -115,8 +115,8 @@
 }
 
 .core-tag {
-  padding: 5px;
   border-bottom: 1px solid #f3f3f3;
+  padding: 5px;
 
   // Check icon
   i { margin: -2px 5px 0 0; }

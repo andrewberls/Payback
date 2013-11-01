@@ -2,7 +2,7 @@
 <a href="#" class="<%= link_class %>">Notifications</a>
 
 <% unread_count = current_user.unread_notifications.count %>
-<% if unread_count > 0 || true %>
+<% if unread_count > 0 %>
   <span class="badge badge-red dropdown-trigger"><%= unread_count %></span>
 <% end %>
 
