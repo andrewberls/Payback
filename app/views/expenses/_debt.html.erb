@@ -22,17 +22,18 @@
 
   <div class="expense-actions">
     <% if current_user.can_notify_on?(expense.id) %>
-      <%= render 'notifications/mark_off', expense: expense %>
+      <%= render 'notifications/mark_off_btn', expense: expense %>
     <% end %>
 
-    <%
-      # TODO: how to link total payments back to expenses so we can show sent envelopes?
-    %>
     <% if current_user.sent_payment_for?(expense) %>
       <i class="icon-envelope payment-sent" data-tipsy="true"
         original-title="You sent payment on <%= render_compact_date expense.created_at %>"></i>
     <% else %>
-      <%= render 'payments/pay_btn', expense: expense %>
+      <%=
+        render 'payments/pay_btn', expense: expense, btn_opts: {
+          class: 'no-text no-text-tiny'
+        }
+      %>
     <% end %>
   </div>
 

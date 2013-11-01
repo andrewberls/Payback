@@ -4,9 +4,12 @@ class PaymentsController < ApplicationController
 
   def create
     payment_params = params[:payment]
-    Payment.create!(payment_params)
 
-    @exp_id = payment_params[:expense_id] || nil
+    # TODO: dear god
+    @expense_ids = payment_params[:expense_ids].split(',')
+    Payment.create!(payment_params) do |payment|
+      @expense_ids.each { |id| payment.expenses << Expense.find(id) }
+    end
 
     respond_to do |format|
       format.js

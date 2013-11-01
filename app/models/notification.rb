@@ -8,9 +8,10 @@ class Notification < ActiveRecord::Base
     NEW_DEBT,
   ]
 
-  attr_accessible :user_from_id, :user_to_id, :expense_id, :notif_type, :read
+  attr_accessible :user_from_id, :user_to_id, :notif_type, :read
 
-  belongs_to :expense
+  has_and_belongs_to_many :expenses
+
   belongs_to :user_from, class_name: 'User'
   belongs_to :user_to,   class_name: 'User'
 

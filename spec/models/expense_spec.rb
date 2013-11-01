@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Expense do
-  let(:expense) { FactoryGirl.create(:expense_with_group, amount: 30.00) }
+  let(:expense) { Expense.make!(amount: 30.00) }
 
   context 'validations' do
     it "is not valid without a title" do
@@ -27,8 +27,8 @@ describe Expense do
   end
 
   context 'cost per user' do
-    let(:user1) { FactoryGirl.create(:user) }
-    let(:user2) { FactoryGirl.create(:user) }
+    let(:user1) { User.make! }
+    let(:user2) { User.make! }
     let(:users) { [user1, user2] }
 
     it 'report the cost per user for split' do

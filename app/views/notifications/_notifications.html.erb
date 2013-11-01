@@ -2,10 +2,12 @@
 <a href="#" class="<%= link_class %>">Notifications</a>
 
 <% unread_count = current_user.unread_notifications.count %>
-<% if unread_count > 0  %>
+<% if unread_count > 0 || true %>
   <span class="badge badge-red dropdown-trigger"><%= unread_count %></span>
 <% end %>
 
 <div class="notifications-container">
-  <%= render current_user.recent_notifications %>
+  <% current_user.recent_notifications.each do |notif| %>
+    <%= render "notifications/#{notif.notif_type}", notification: notif %>
+  <% end %>
 </div>

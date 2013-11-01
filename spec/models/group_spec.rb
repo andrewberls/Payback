@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Group do
-  let(:group) { FactoryGirl.create(:group) }
+  let(:group) { Group.make! }
 
   subject { group }
 
@@ -18,7 +18,7 @@ describe Group do
   end
 
   context 'gid' do
-    let(:group) { FactoryGirl.create(:group) }
+    let(:group) { Group.make! }
 
     subject { group }
 
@@ -32,7 +32,7 @@ describe Group do
   end
 
   it 'sets the owner' do
-   owner = FactoryGirl.create(:user)
+   owner = User.make!
 
    group.initialize_owner(owner)
    group.save!
@@ -43,8 +43,8 @@ describe Group do
   end
 
   context 'users' do
-    let(:group) { FactoryGirl.create(:group) }
-    let(:user)  { FactoryGirl.create(:user) }
+    let(:group) { Group.make! }
+    let(:user)  { User.make! }
 
     before { group.add_user(user) }
 
@@ -61,9 +61,9 @@ describe Group do
     end
 
     it 'deactivates users expenses' do
-      creditor = FactoryGirl.create(:user)
-      debtor   = FactoryGirl.create(:user)
-      expense  = FactoryGirl.create(:expense_with_group, creditor: creditor, debtor: debtor)
+      creditor = User.make!
+      debtor   = User.make!
+      expense  = Expense.make!(creditor: creditor, debtor: debtor)
       expense.group.remove_user(creditor)
 
       expense.reload.should_not be_active

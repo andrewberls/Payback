@@ -9,9 +9,11 @@ class Expense < ActiveRecord::Base
   belongs_to :creditor, class_name: "User"
   belongs_to :debtor,   class_name: "User"
 
+  has_and_belongs_to_many :notifications
+
   has_and_belongs_to_many :tags
 
-  has_many :payments
+  has_and_belongs_to_many :payments
 
   validates :amount,
     presence: true,
@@ -34,6 +36,10 @@ class Expense < ActiveRecord::Base
 
   def edited?
     created_at != updated_at
+  end
+
+  def inactive?
+    !active?
   end
 
   def deactivate

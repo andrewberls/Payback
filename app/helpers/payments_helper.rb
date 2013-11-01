@@ -28,7 +28,7 @@ module PaymentsHelper
     klass = btn_opts[:class] || ''
     href  = "mailto:#{mailto}?#{uri.query}"
     link_to text, href, target: '_blank', title: 'Pay with Square Cash',
-      class: "btn btn-purple no-text no-text-tiny cash-btn #{klass}"
+      class: "btn btn-purple cash-btn #{klass}"
   end
 
 end

@@ -37,3 +37,17 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+
+class ActiveRecord::Base
+  class << self
+
+    # Wrapper for FactoryGirl.create
+    def make!(*args, &block)
+      object = FactoryGirl.create(name.underscore, *args)
+      yield object if block_given?
+      object
+    end
+
+  end
+end

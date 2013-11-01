@@ -56,4 +56,20 @@ describe User do
       subject.auth_token.should be_present
     end
   end
+
+  context 'payments' do
+    let(:user) { User.make! }
+    let(:expense) { Expense.make!(debtor_id: user.id) }
+    let (:payment) { FactoryGirl.build(:payment, debtor_id: user.id) }
+
+    it 'detects when a payment is has not been sent' do
+      user.sent_payment_for?(expense).should == false
+    end
+
+    it 'detects when a payment is has been sent' do
+      payment.expenses << expense
+      payment.save!
+      user.sent_payment_for?(expense).should == true
+    end
+  end
 end

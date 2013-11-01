@@ -51,6 +51,13 @@ Expense.new(title: "Textbook", amount: 85, active: true, action: :payback) do |e
   exp.assign_to admin_user
 end
 
+# Admin owes David 50 for South Coast
+Expense.new(title: "South Coast", amount: 50, active: true, action: :payback) do |exp|
+  exp.group    = seed_group
+  exp.creditor = david
+  exp.assign_to admin_user
+end
+
 # Admin owes Nicole 30 for textbook
 Expense.new(title: "Shirt", amount: 30, active: true, action: :payback) do |exp|
   exp.group    = seed_group
@@ -66,7 +73,6 @@ Expense.new(title: "Freebirds", amount: 15, active: true, action: :payback) do |
   exp.assign_to admin_user
 end
 
-
 # Admin has sent payment to Jeff
 # Expense.new fans out - can't assign to result of it
 dinner = Expense.find_by_title("Freebirds")
@@ -74,15 +80,32 @@ Payment.create!(
   title:       dinner.title,
   amount:      dinner.amount,
   creditor_id: jeff.id,
-  debtor_id:   admin.id,
-  expense_id:  dinner.id
-)
+  debtor_id:   admin.id
+) do |p|
+  p.expenses << dinner
+end
+
+
+
+# Nicole has sent payment to Admin
+ticket = Expense.find_by_title("Movie ticket")
+Payment.create!(
+  title: ticket.title,
+  amount: ticket.amount,
+  creditor_id: ticket.creditor.id,
+  debtor_id: ticket.debtor.id
+) do |p|
+  p.expenses << ticket
+end
+
 
 
 # Jeff requests Admin mark off groceries
 groceries = Expense.find_by_title("Groceries")
-Notification.create!(user_from_id: jeff.id, user_to_id: admin_user.id, expense_id: groceries.id, notif_type: 'mark_off')
-
-admin_group = Group.create!(title: "Admin Only", gid: 'defabc') do |group|
-  group.initialize_owner(admin_user)
+Notification.create!(user_from_id: jeff.id, user_to_id: admin_user.id, notif_type: 'mark_off') do |n|
+  n.expenses << groceries
 end
+
+# admin_group = Group.create!(title: "Admin Only", gid: 'defabc') do |group|
+#   group.initialize_owner(admin_user)
+# end

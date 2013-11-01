@@ -21,7 +21,7 @@
   border-bottom: 1px solid $med-gray;
   padding: 10px 5px;
 
-  &:last-child { border: none; }
+  &:last-child { border: 0; }
 
   &.notification-unread { background-color: lighten($blue, 44); }
 
@@ -48,5 +48,13 @@
   .btn {
     margin-top: -3px;
     padding: 3px;
+  }
+
+  .payment-mark-all-btn {
+    @include border-box;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 10px 0 0;
+    padding: 7px 3px;
   }
 }

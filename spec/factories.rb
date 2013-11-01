@@ -17,10 +17,7 @@ FactoryGirl.define do
     title    { Faker::Commerce.product_name }
     creditor { FactoryGirl.create(:user) }
     debtor   { FactoryGirl.create(:user) }
-
-    factory :expense_with_group do
-      group { FactoryGirl.create(:group) }
-    end
+    group    { FactoryGirl.create(:group) }
 
     after(:create) do |expense|
       expense.group.add_user(expense.creditor)
@@ -28,9 +25,22 @@ FactoryGirl.define do
     end
   end
 
+  factory :payment do
+    creditor = FactoryGirl.create(:user)
+    debtor   = FactoryGirl.create(:user)
+    exps     = 2.times.map { FactoryGirl.create(:expense, creditor: creditor, debtor: debtor) }
+
+    amount   { exps.map(&:amount).reduce(:+).to_f }
+    title    { 'Test Payment' }
+    creditor { creditor }
+    debtor   { debtor }
+
+    expenses { exps }
+  end
+
   factory :invitation do
     sender { FactoryGirl.create(:user) }
-    group  { FactoryGirl.create(:group) }
+    group  { FactoryGirl.create(:user) }
     recipient_email { Faker::Internet.email }
     used false
   end

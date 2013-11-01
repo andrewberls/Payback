@@ -1,11 +1,18 @@
-<%= form_for Notification.new, remote: true, html: { class: 'form-invisible notification-form' } do |f| %>
-  <%= f.hidden_field :user_from_id, value: current_user.id %>
-  <%= f.hidden_field :user_to_id,   value: expense.creditor.id %>
-  <%= f.hidden_field :notif_type,   value: 'mark_off' %>
-  <%= f.hidden_field :expense_id,   value: expense.id, class: 'notification_expense_id' %>
+<%
+  # Notification for marking off a single expense
+%>
 
-  <%= button_tag type: :submit, title: "Request for #{expense.creditor.first_name} to mark this off", data: { tipsy: true },
-    class: 'btn btn-blue no-text no-text-tiny mark-off-notification' do %>
-    <i class='icon-comment icon-white'></i>
-  <% end %>
-<% end %>
+
+<%
+  expense     = notification.expenses.first
+  notif_class = expense.inactive? ? 'notification-completed' : notif_unread_class(notification)
+%>
+
+<div class="notification <%= notif_class %>" data-id="<%= expense.id %>">
+  <div class="notification-text">
+    <span class="user-from"><%= notification.user_from.first_name %></span>
+    requested that you mark off <%= expense.title %>
+  </div>
+
+  <%= content_tag :div, mark_off_btn, class: 'right' if expense.active? %>
+</div>

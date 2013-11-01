@@ -24,11 +24,9 @@
 
     <% unless @user.net_in_debt_to?(current_user) %>
       <% net = current_user.net_owed_to(@user) %>
+      <%# total = current_user.active_debt_amt_to(@user) %>
 
       <div class="pay-all-container">
-        <%
-          # TODO: how to detect once we've sent a total payment?
-        %>
         <%=
           render 'payments/pay_btn',
             btn_opts: {
@@ -37,6 +35,7 @@
             },
             payment: {
               creditor_id: @user.id,
+              expense_ids: current_user.active_debts_to(@user).pluck(:id),
               title: Payment::NET_TITLE,
               amount: net,
               mailto: @user.email

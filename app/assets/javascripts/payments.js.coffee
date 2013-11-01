@@ -7,6 +7,14 @@ $ ->
     $(@).parent().submit()
 
 
+  # Tabbed nav on /payments dashboard
   $('.nav-tabs a').click ->
     $(@).tab('show')
     return false
+
+
+  # Pay all button click confirmation
+  $('.pay-all-btn').click ->
+    $(@).replaceWith """
+      <span class="confirm-yes">You're done!</span>
+    """

@@ -104,8 +104,11 @@ class User < ActiveRecord::Base
     ResetToken.create(user: self)
   end
 
+  # TODO: this needs refactoring
   def sent_payment_for?(expense)
-    Payment.where(expense_id: expense.id, debtor_id: self.id).exists?
+    Payment.includes(:expenses).where(debtor_id: id).any? do |payment|
+      payment.expenses.where(id: expense.id).exists?
+    end
   end
 
   private
