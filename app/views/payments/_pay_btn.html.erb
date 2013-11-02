@@ -45,7 +45,7 @@
   <%= f.hidden_field :debtor_id,   value: debtor_id   %>
   <%= f.hidden_field :title,       value: title       %>
   <%= f.hidden_field :amount,      value: amount      %>
-  <%= f.hidden_field :expense_ids,  value: expense_ids.join(',') %>
+  <%= f.hidden_field :expense_ids, value: expense_ids.join(',') %>
 
   <%= raw square_cash_link(payment_opts, btn_opts) %>
 <% end %>

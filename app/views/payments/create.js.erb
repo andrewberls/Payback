@@ -1,6 +1,7 @@
-<% if @exp_id.present? %>
-  var $btn = $("#payment_expense_id[value=<%= @exp_id %>]").parent();
-  $('.tipsy').remove() // Close any open tooltips
+$('.tipsy').remove() // Close any open tooltips
 
-  $btn.replaceWith("<span class='green-check'></span>");
+<% @expense_ids.each do |exp_id| %>
+  $("#payment_expense_ids[value=<%= exp_id %>]")
+    .parent()
+    .replaceWith("<span class='green-check'></span>");
 <% end %>
