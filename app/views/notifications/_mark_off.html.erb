@@ -8,7 +8,7 @@
   notif_class = expense.inactive? ? 'notification-completed' : notif_unread_class(notification)
 %>
 
-<div class="notification <%= notif_class %>" data-id="<%= expense.id %>">
+<div class="notification <%= notif_class %>" data-expense-id="<%= expense.id %>">
   <div class="notification-text">
     <span class="user-from"><%= notification.user_from.first_name %></span>
     requested that you mark off <%= expense.title %>

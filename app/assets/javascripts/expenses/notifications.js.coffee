@@ -6,11 +6,11 @@ $ ->
   $badge    = $('header .badge')
 
   $trigger.click ->
-    $dropdown.show 'fast', 'linear', ->
-      $badge.remove()
-      $doc.on 'click', ->
-        $dropdown.hide()
-        $notif.removeClass('notification-unread')
-        $doc.unbind('click')
+    if $dropdown.is(':visible')
+      $dropdown.hide()
+      $notif.removeClass('notification-unread')
+    else
+      $dropdown.show 'fast', 'linear', ->
+        $badge.remove()
 
     $.post '/notifications/read'

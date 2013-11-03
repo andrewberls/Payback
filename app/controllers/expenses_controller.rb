@@ -77,10 +77,10 @@ class ExpensesController < ApplicationController
     @credit_owed = current_user.total_credit_owed
     @user = @expense.debtor
 
-    respond_to do |format|
-      format.html { return redirect_to params[:redirect] || expenses_path }
-      format.json { return render json: {} }
-      format.js
+    if request.xhr?
+      return render json: {}
+    else
+      return redirect_to params[:redirect] || expenses_path
     end
   end
 

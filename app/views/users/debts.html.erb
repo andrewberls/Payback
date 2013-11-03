@@ -23,8 +23,8 @@
     <% end %>
 
     <% unless @user.net_in_debt_to?(current_user) %>
+      <%# TODO: when paying off total, have to mark off all credits we have from user? %>
       <% net = current_user.net_owed_to(@user) %>
-      <%# total = current_user.active_debt_amt_to(@user) %>
 
       <div class="pay-all-container">
         <%=

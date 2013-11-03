@@ -1,20 +1,32 @@
 <%
   # TODO: how to get link back to payment record?
   expenses    = notification.expenses
+  exp_ids     = expenses.pluck(:id).join(',')
   total_amt   = expenses.pluck(:amount).reduce(:+).to_f
   exp_count   = expenses.count
   noun        = 'expense'.pluralize(exp_count)
   notif_class = notif_unread_class(notification)
 %>
 
-<div class="notification <%= notif_class %>" data-id="<%= nil %>">
+<div class="notification <%= notif_class %>" data-expense-ids="<%= exp_ids %>">
   <div class="notification-text">
     <span class="user-from"><%= notification.user_from.first_name %></span>
       sent payment of <%= money(total_amt) %> for
-      <%= "#{exp_count} #{noun}" %>
+      <%= link_to "#{exp_count} #{noun}", '#', class: 'payment-notification-toggle' %>
+
+      <ul class="payment-notification-expenses">
+        <% expenses.each do |exp| %>
+          <li>
+            <%= exp.title %> (<%= money(exp.amount) %>)
+          </li>
+        <% end %>
+      </ul>
   </div>
 
-  <a class="btn btn-green btn-block payment-mark-all-btn" href="#">
-    Mark off <%= "#{exp_count} #{noun}" %>
+  <%# Show btn unless we've already paid off expenses %>
+  <% unless expenses.none?(&:active?) %>
+    <a class="btn btn-green btn-block payment-mark-off-btn" href="#">
+      Mark off <%= "#{exp_count} #{noun}" %>
   </a>
+  <% end %>
 </div>

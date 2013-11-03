@@ -50,11 +50,32 @@
     padding: 3px;
   }
 
-  .payment-mark-all-btn {
+  .payment-mark-off-btn {
     @include border-box;
     font-size: 1em;
     font-weight: normal;
     margin: 10px 0 0;
     padding: 7px 3px;
+  }
+
+  .green-check { float: right; }
+}
+
+.payment-notification-expenses {
+  display: none;
+  margin-top: 5px;
+
+  li {
+    color: lighten($light-text, 10);
+    display: block;
+    font-size: 0.9em;
+    padding-left: 15px;
+
+    &:before {
+      color: $light-text;
+      content: '-';
+      display: inline-block;
+      margin-right: 3px;
+    }
   }
 }
