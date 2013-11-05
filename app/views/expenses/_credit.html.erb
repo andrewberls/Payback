@@ -1,6 +1,6 @@
 <% debtor = expense.debtor %>
 
-<div class="expense" data-id="<%= expense.id %>">
+<div class="expense" data-expense-id="<%= expense.id %>">
   <span class="expense-amount">
     <%= render 'expenses/edit_mark', expense: expense %>
     <%= link_to money(expense.amount), edit_expense_path(expense) %>

@@ -15,7 +15,11 @@ confirmBtns = (exp_id) ->
   """
 
 # Find an expense DOM element given its expense ID
-findExpenseById = (exp_id) -> $("*[data-id='#{exp_id}']")
+findExpenseById = (exp_id) -> $(".expense[data-expense-id='#{exp_id}']")
+
+
+markCompleted = ($notif) ->
+  $notif.removeClass('notification-unread').addClass('notification-completed')
 
 
 $ ->
@@ -30,16 +34,23 @@ $ ->
     return false
 
 
-  $doc.on 'click', '.confirm-yes', ->
+  $doc.on 'click', '.notification .confirm-yes', ->
     $btn     = $(@)
     $actions = $btn.parent().parent()
     $notif   = $actions.parent()
-    exp_id   = $notif.data('expense-id')
-    $expense = findExpenseById(exp_id)
+    $expense = findExpenseById($notif.data('expense-id'))
 
-    $notif.removeClass('notification-unread').addClass('notification-completed')
+    markCompleted($notif)
     $btn.remove()
     $actions.replaceWith("<span class='green-check'></span>")
+    $expense.slideUp -> $expense.remove()
+
+
+  $doc.on 'click', '.expense .confirm-yes', ->
+    $btn     = $(@)
+    $actions = $btn.parent().parent()
+    $expense = $actions.parent()
+    $btn.remove()
     $expense.slideUp -> $expense.remove()
 
 
@@ -48,12 +59,11 @@ $ ->
     return false
 
 
-
   # Mark off multiple expenses (payment)
   $doc.on 'click', '.payment-mark-off-btn', ->
     $btn   = $(@)
     $notif = $btn.parent()
-    $notif.removeClass('notification-unread').addClass('notification-completed')
+    markCompleted($notif)
     $btn.replaceWith("<span class='green-check'></span>")
 
     # TODO: will be coerced to Number instead of array if only 1
