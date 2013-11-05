@@ -1,7 +1,9 @@
 $('.tipsy').remove() // Close any open tooltips
 
 <% @expense_ids.each do |exp_id| %>
-  $("#payment_expense_ids[value=<%= exp_id %>]")
+  var $icon = $("<i class='icon-envelope payment-sent' data-tipsy='true' original-title='You sent payment on "+Payback.getTimestamp()+"'></i>");
+
+  $("#payment_expense_ids[value='<%= exp_id %>']")
     .parent()
-    .replaceWith("<span class='green-check'></span>");
+    .replaceWith($icon.tipsy());
 <% end %>

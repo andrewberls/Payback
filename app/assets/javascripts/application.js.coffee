@@ -18,6 +18,17 @@
 window.Payback = {}
 
 # Utils
+#
+# Return a string m/d/y timestamp, ex: 11/3/13
+Payback.getTimestamp = ->
+  d = new Date()
+  month = d.getMonth() + 1
+  day   = d.getDate()
+  year  = d.getFullYear().toString().slice(2)
+
+  "#{month}/#{day}/#{year}"
+
+
 window.toggleSlide = ($selector, speed=350) ->
   if $selector.is(':hidden')
     $selector.slideDown(speed)
