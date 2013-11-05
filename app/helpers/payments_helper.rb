@@ -1,5 +1,13 @@
 module PaymentsHelper
 
+  def cash_email_body(amount, title)
+    if title == Payment::NET_TITLE
+      "I'm sending you #{money(amount)} through Payback Cash."
+    else
+      "I'm sending you #{money(amount)} for #{title} through Payback Cash."
+    end
+  end
+
   # Construct a mailto link for Square Cash with fields properly formatted
   #
   #
@@ -21,7 +29,7 @@ module PaymentsHelper
     uri.query_values = {
       'Subject' => money(amount),
       'CC'      => 'cash@square.com',
-      'Body'    => title
+      'Body'    => cash_email_body(amount, title)
     }
 
     text  = btn_opts[:value] || '$'
