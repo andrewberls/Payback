@@ -22,6 +22,8 @@
       </p>
     <% end %>
 
+    <%# TODO: this is incredibly complicated / confusing. Disabling for MVP. %>
+    <!--
     <% unless @user.net_in_debt_to?(current_user) %>
       <%# TODO: when paying off total, have to mark off all credits we have from user? %>
       <% net = current_user.net_owed_to(@user) %>
@@ -43,6 +45,7 @@
         %>
       </div>
     <% end %>
+    -->
 
     <%= link_to "Back to Dashboard", expenses_path, class: "btn btn-large btn-shadow" %>
   </div>

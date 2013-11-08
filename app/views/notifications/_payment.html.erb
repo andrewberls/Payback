@@ -11,16 +11,18 @@
 <div class="notification <%= notif_class %>" data-expense-ids="<%= exp_ids %>">
   <div class="notification-text">
     <span class="user-from"><%= notification.user_from.first_name %></span>
-      sent payment of <%= money(total_amt) %> for
-      <%= link_to "#{exp_count} #{noun}", '#', class: 'payment-notification-toggle' %>
+    sent payment of <%= money(total_amt) %> for
+    <%# TODO: this needs to be changed for multipayments %>
+    <%= expenses.first.title %>
+    <%#= link_to "#{exp_count} #{noun}", '#', class: 'payment-notification-toggle' %>
 
-      <ul class="payment-notification-expenses">
-        <% expenses.each do |exp| %>
-          <li>
-            <%= exp.title %> (<%= money(exp.amount) %>)
-          </li>
-        <% end %>
-      </ul>
+    <ul class="payment-notification-expenses">
+      <% expenses.each do |exp| %>
+        <li>
+          <%= exp.title %> (<%= money(exp.amount) %>)
+        </li>
+      <% end %>
+    </ul>
   </div>
 
   <%# Show btn unless we've already paid off expenses %>

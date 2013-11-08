@@ -17,8 +17,8 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    @payments_sent     = current_user.payments_sent
-    @payments_received = current_user.payments_received
+    @payments_sent     = current_user.payments_sent.order('id DESC')
+    @payments_received = current_user.payments_received.order('id DESC')
   end
 
 end
