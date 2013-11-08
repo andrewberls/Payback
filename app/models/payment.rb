@@ -21,7 +21,7 @@ class Payment < ActiveRecord::Base
   def send_notification
     Notification.create! do |n|
       n.notif_type   = Notification::PAYMENT
-      n.expenses << self.expenses # TODO: not working
+      n.expenses << self.expenses
       n.user_from_id = self.debtor_id
       n.user_to_id   = self.creditor_id
     end
