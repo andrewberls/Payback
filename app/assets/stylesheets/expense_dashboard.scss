@@ -228,7 +228,11 @@
 
     .notification-form { margin-right: 10px; }
 
-    .cash-btn { padding: 5px; }
+    .cash-btn {
+      padding: 5px;
+
+      @media (max-width: 790px) { display: none; }
+    }
 
     .payment-sent {
       margin-top: 4px;
