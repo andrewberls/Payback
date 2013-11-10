@@ -6,8 +6,8 @@ expenseWords = {}
 # (tags, titles, person)
 # Returns hash of { id -> [words] }
 parseSearchableWords = ->
-  $('.expenses-container [data-id]').each (_, el) ->
-    key = $(@).data('id')
+  $('.expenses-container [data-expense-id]').each (_, el) ->
+    key = $(@).data('expense-id')
     expenseWords[key] ||= []
     title  = $.trim($(@).find('.expense-title').text()).split(' ')
     person = $(@).find('.expense-person').text()
@@ -74,7 +74,7 @@ showAll = ->
 # Returns nothing
 filterExpenses = (input) ->
   for id, matches of matchesFor(input)
-    $exp = $("[data-id=#{id}]")
+    $exp = $("[data-expense-id=#{id}]")
     if matches then $exp.show() else $exp.hide()
 
 
