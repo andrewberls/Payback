@@ -13,6 +13,17 @@
     font-size: 1.3em;
     margin-bottom: 30px;
   }
+
+  @include mobile { text-align: center; }
+}
+
+.cash-announcement-btn {
+  padding: 15px 35px;
+
+  &:hover {
+    background-image: none;
+    background-color: lighten($med-gray, 10);
+  }
 }
 
 
