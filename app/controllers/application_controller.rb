@@ -2,12 +2,14 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  skip_before_filter :verify_authenticity_token,
+    if: Proc.new { |c| c.request.format == 'application/json' }
+
   ACCESS_DENIED_PATH = '/expenses'
 
   helper_method :current_user, :signed_in?, :login_user
 
   def must_be_logged_in
-
     respond_to do |format|
       format.html {
         authorized = signed_in?
@@ -21,7 +23,6 @@ class ApplicationController < ActionController::Base
       }
       format.js {}
     end
-
   end
 
   private

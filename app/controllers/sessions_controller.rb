@@ -7,13 +7,15 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
 
+    authenticated = false
     if user && user.authenticate(params[:password])
+      authenticated = true
       login_user(user)
-      path = (user.groups.blank?) ? new_group_path : expenses_path
-      return redirect_to_return_or_path(path)
-    else
-      flash.now[:error] = "Invalid email or password"
-      return render :new
+    end
+
+    respond_to do |format|
+      format.html { handle_html_auth(authenticated) }
+      format.json { handle_json_auth(authenticated) }
     end
 
   end
@@ -93,6 +95,24 @@ class SessionsController < ApplicationController
   def redirect_bad_token
     flash[:error] = "Token is invalid."
     return redirect_to forgot_password_path
+  end
+
+  def handle_html_auth(authenticated)
+    if authenticated
+      path = (current_user.groups.blank?) ? new_group_path : expenses_path
+      return redirect_to_return_or_path(path)
+    else
+      flash.now[:error] = "Invalid email or password"
+      return render :new
+    end
+  end
+
+  def handle_json_auth(authenticated)
+    if authenticated
+      render json: { token: current_user.auth_token }
+    else
+      render text: 'Forbidden', status: '403'
+    end
   end
 
 end

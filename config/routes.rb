@@ -49,10 +49,11 @@ Payback::Application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
-  match 'login'  => 'sessions#new',     as: 'login'
+  get 'login'    => 'sessions#new',     as: 'login'
+  post 'login'   => 'sessions#create'
   match 'logout' => 'sessions#destroy', as: 'logout'
 
-  match 'not_found' => 'static#not_found', as: 'not_found'
+  get 'not_found' => 'static#not_found', as: 'not_found'
 
   get 'contact'  => 'static#contact', as: 'contact'
   post 'contact' => 'static#mail',    as: 'contact'
