@@ -224,3 +224,13 @@ footer,
   & > .tab-pane { display: none; }
   & > .active   { display: block; }
 }
+
+
+.nohide-links {
+  ul, li { display: inline-block; }
+
+  ul {
+    margin-top: 0;
+    width: auto;
+  }
+}
