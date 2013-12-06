@@ -80,7 +80,7 @@ Payment.create!(
   title:       dinner.title,
   amount:      dinner.amount,
   creditor_id: jeff.id,
-  debtor_id:   admin.id
+  debtor_id:   admin_user.id
 ) do |p|
   p.expenses << dinner
 end
