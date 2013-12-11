@@ -2,17 +2,9 @@
 .dashboard-cash-announcement {
   background-color: $blue;
   color: white;
-  padding: 30px 0;
+  padding: 20px 0;
 
-  h2 {
-    font-size: 2.1em;
-    margin-bottom: 15px;
-  }
-
-  p {
-    font-size: 1.3em;
-    margin-bottom: 30px;
-  }
+  p { font-size: 1.3em; }
 
   @include mobile { text-align: center; }
 }
