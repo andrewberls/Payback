@@ -6,12 +6,13 @@ expenseWords = {}
 # (tags, titles, person)
 # Returns hash of { id -> [words] }
 parseSearchableWords = ->
-  $('.expenses-container [data-expense-id]').each (_, el) ->
-    key = $(@).data('expense-id')
+  $('.expenses-container [data-expense-id]').each ->
+    $exp = $(@)
+    key  = $exp.data('expense-id')
     expenseWords[key] ||= []
-    title  = $.trim($(@).find('.expense-title').text()).split(' ')
-    person = $(@).find('.expense-person').text()
-    tags   = $(@).find('.tag').map( (_, el) -> $(el).text() ).get()
+    title  = $.trim($exp.find('.expense-title').text()).split(' ')
+    person = $exp.find('.expense-person').text()
+    tags   = $exp.find('.tag').map( (_, el) -> $(el).text() ).get()
     expenseWords[key] = expenseWords[key].concat(title, person, tags)
 
   for key, words of expenseWords
