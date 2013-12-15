@@ -1,5 +1,4 @@
 <%
-  # TODO: how to get link back to payment record?
   expenses    = notification.expenses
   exp_ids     = expenses.pluck(:id).join(',')
   total_amt   = expenses.pluck(:amount).reduce(:+).to_f

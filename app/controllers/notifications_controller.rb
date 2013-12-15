@@ -2,10 +2,14 @@ class NotificationsController < ApplicationController
 
   def create
     notif_params = params[:notification]
-    if notification = Notification.create(notif_params)
+    @exp_id = notif_params.delete(:expense_id)
+    notification = Notification.new(notif_params) do |n|
+      n.expenses << Expense.find(@exp_id)
+    end
+
+    if notification.save!
       notification.deliver_mail
     end
-    @exp_id = notif_params[:expense_id]
 
     respond_to do |format|
       format.js

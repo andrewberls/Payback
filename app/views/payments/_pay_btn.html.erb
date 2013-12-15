@@ -17,12 +17,13 @@
   <%
     debtor_id = current_user.id
 
-    if expense.present?
-      expense_ids  = [expense.id]
-      creditor_id = expense.creditor.id
+  if expense.present?
+      creditor    = expense.creditor
+      expense_ids = [expense.id]
+      creditor_id = creditor.id
       title       = expense.title
       amount      = expense.amount
-      mailto      = expense.creditor.email
+      mailto      = creditor.email
     else
       expense_ids = payment[:expense_ids]
       creditor_id = payment[:creditor_id]
