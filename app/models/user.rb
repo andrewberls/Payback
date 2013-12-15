@@ -82,7 +82,8 @@ class User < ActiveRecord::Base
   end
 
   def recent_notifications
-    notifications_to.order('id DESC').limit(5)
+    notifs = notifications_to.order('id DESC')
+    notifs.any?(&:unread?) ? notifs : notifs.limit(5)
   end
 
   def update_communication_preferences(prefs)
