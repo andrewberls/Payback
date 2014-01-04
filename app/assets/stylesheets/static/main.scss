@@ -187,10 +187,9 @@ $pane-height: 400px;
 .landing-how {
   h1 {
     color: lighten($gray-text, 20);
-    margin-bottom: 25px;
-    text-align: left;
-
-    @include mobile { text-align: center; }
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    text-align: center;
   }
 
   p { line-height: 1.5; }
