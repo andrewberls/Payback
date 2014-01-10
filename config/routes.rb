@@ -1,3 +1,5 @@
+require 'notes-cli/web'
+
 Payback::Application.routes.draw do
 
   resources :groups do
@@ -62,6 +64,10 @@ Payback::Application.routes.draw do
   match 'reset_password/:token' => 'sessions#reset_password',  as: 'reset_password'
 
   root :to => 'static#main'
+
+  # No reason putting this behind an auth gate, the project is
+  # open-source anyways
+  mount Notes::Web => '/notes'
 
   # Route page not found to 404 page
   match '*a' => 'static#not_found'
