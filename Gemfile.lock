@@ -5,12 +5,6 @@ GIT
     active_model_serializers (0.8.1)
       activemodel (>= 3.2)
 
-PATH
-  remote: /Users/andrew/code/notes-cli
-  specs:
-    notes-cli (2.0.0)
-      sinatra
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -101,6 +95,8 @@ GEM
     mime-types (1.24)
     multi_json (1.7.9)
     netrc (0.7.7)
+    notes-cli (2.0.0)
+      sinatra
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -204,7 +200,7 @@ DEPENDENCIES
   jquery-rails
   launchy (= 2.3.0)
   letter_opener
-  notes-cli!
+  notes-cli
   pg
   rails (~> 3.2.13)
   rspec-rails (~> 2.14.0)
