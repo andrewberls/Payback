@@ -27,54 +27,53 @@ Payback.Charts.drawUserLoanBorrow = (gid) ->
 
     # Create bars
     svg.selectAll('rect')
-       .data(data)
-       .enter()
-       .append('rect')
-       .attr({
-         x : (d, i) -> xScale(i)
-         y : (d, i) -> (h-22) - yScale(d.amt) # Leave room for bottom labels
-         width  : xScale.rangeBand()
-         height : (d) -> yScale(d.amt)
-         class  : (d) -> d.type
-       })
-       .append('title')
-       .text((d) -> d.type)
+      .data(data)
+      .enter()
+      .append('rect')
+      .attr({
+        x : (d, i) -> xScale(i)
+        y : (d, i) -> (h-22) - yScale(d.amt) # Leave room for bottom labels
+        width  : xScale.rangeBand()
+        height : (d) -> yScale(d.amt)
+        class  : (d) -> d.type
+      })
+      .append('title')
+      .text((d) -> d.type)
 
      # Create labels
-     svg.selectAll('text.label-amount')
-       .data(data)
-       .enter()
-       .append('text')
-       .text((d) -> "$#{d.amt}")
-       .attr({
-         x: (d, i) -> xScale(i) + xScale.rangeBand() / 2
-         y: (d, i) -> ((h) - yScale(d.amt)) #+ 25
-         class: 'label-amount'
-       })
+    svg.selectAll('text.label-amount')
+      .data(data)
+      .enter()
+      .append('text')
+      .text((d) -> "$#{d.amt}")
+      .attr({
+        x: (d, i) -> xScale(i) + xScale.rangeBand() / 2
+        y: (d, i) -> ((h) - yScale(d.amt)) #+ 25
+        class: 'label-amount'
+      })
 
-     labelFor = (type) ->
-       if type == 'debt' then "Borrowed" else "Loaned"
+    labelFor = (type) -> if type == 'debt' then "Borrowed" else "Loaned"
 
-     svg.selectAll('text.label-type')
-       .data(data)
-       .enter()
-       .append('text')
-       .text((d) -> labelFor(d.type))
-       .attr({
-         x: (d, i) -> xScale(i) + xScale.rangeBand() / 2
-         y: (d, i) -> h
-         class: 'label-type'
-       })
+    svg.selectAll('text.label-type')
+     .data(data)
+      .enter()
+      .append('text')
+      .text((d) -> labelFor(d.type))
+      .attr({
+        x: (d, i) -> xScale(i) + xScale.rangeBand() / 2
+        y: (d, i) -> h
+        class: 'label-type'
+      })
 
 
 # Draw pie chart of who you loan money to
 Payback.Charts.drawCreditSegments = (gid) ->
-    @drawSegments('.user-credit-segments', gid: gid, type: 'credits')
+  @drawSegments('.user-credit-segments', gid: gid, type: 'credits')
 
 
 # Draw pie chart of who you borrow money from
 Payback.Charts.drawDebtSegments = (gid) ->
-    @drawSegments('.user-debt-segments', gid: gid, type: 'debts')
+  @drawSegments('.user-debt-segments', gid: gid, type: 'debts')
 
 
 # Internal: Draw a pie chart mapping users to amount loaned/borrowed
@@ -98,7 +97,8 @@ Payback.Charts.drawSegments = (containerClass, opts) ->
     outerRadius   = w / 2
     innerRadius   = outerRadius - ringThickness
 
-    # Function that takes in dataset and returns dataset annotated with arc angles, etc
+    # Function that takes in dataset and returns dataset
+    # annotated with arc angles, etc
     pie = d3.layout.pie()
             .value((d) -> d.amt)
 
