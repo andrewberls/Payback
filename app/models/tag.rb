@@ -8,4 +8,12 @@ class Tag < ActiveRecord::Base
     Rent
     Household
   )
+
+  def to_s
+    "#<Tag id: #{id}, title: #{title}>"
+  end
+
+  def inspect
+    to_s
+  end
 end

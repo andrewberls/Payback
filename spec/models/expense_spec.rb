@@ -26,7 +26,29 @@ describe Expense do
     expense.should be_edited
   end
 
-  context 'cost per user' do
+  context '::build' do
+    let(:params) do
+      {
+        commit: "Payback",
+        expense: { title: "Test Expense", amount: "2+2" },
+        tag_list: "one"
+      }
+    end
+
+    let(:tag)     { Tag.make!(title: "one") }
+    let(:expense) { Expense.build(params) }
+
+    it 'computes the amount' do
+      expense.amount.should == 4
+    end
+
+    it 'computes the tags' do
+      Tag.should_receive(:find_or_create_by_title).with("one").and_return(tag)
+      expense.tags.should == [tag]
+    end
+  end
+
+  context '#cost_for' do
     let(:user1) { User.make! }
     let(:user2) { User.make! }
     let(:users) { [user1, user2] }
@@ -49,5 +71,15 @@ describe Expense do
       expense.amount = 8.20
       expense.cost_for([user1]).should == 8.00
     end
+  end
+
+  context '#has_tag?' do
+    let(:expense) { Expense.make! }
+    let(:one)     { Tag.make!(title: "one") }
+    let(:two)     { Tag.make!(title: "two") }
+
+    specify { expense.has_tag?("one") }
+    specify { expense.has_tag?("two") }
+    specify { !expense.has_tag?("fake") }
   end
 end

@@ -49,4 +49,8 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
     used false
   end
+
+  factory :tag do
+    title { Faker::Commerce.product_name }
+  end
 end
