@@ -18,7 +18,7 @@ gem 'unicorn'
 
 gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 
-gem 'sidekiq'
+gem "sidekiq", "~> 2.17.4"
 
 gem 'notes-cli'
 

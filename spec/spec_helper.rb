@@ -5,6 +5,10 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl'
 
+# Run Sidekiq with a test fake that pushes all jobs into a jobs array
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
