@@ -26,16 +26,16 @@ FactoryGirl.define do
   end
 
   factory :payment do
-    creditor = FactoryGirl.create(:user)
-    debtor   = FactoryGirl.create(:user)
-    exps     = 2.times.map { FactoryGirl.create(:expense, creditor: creditor, debtor: debtor) }
-
-    amount   { exps.map(&:amount).reduce(:+).to_f }
+    expenses do
+      2.times.map do
+        FactoryGirl.create(:expense, creditor: FactoryGirl.create(:user),
+                           debtor: FactoryGirl.create(:user))
+      end
+    end
     title    { 'Test Payment' }
-    creditor { creditor }
-    debtor   { debtor }
-
-    expenses { exps }
+    amount   { expenses.map(&:amount).reduce(:+).to_f }
+    creditor { expenses.first.creditor }
+    debtor   { expenses.first.debtor }
   end
 
   factory :invitation do
