@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-def log_in_user(user)
+def post_login(user)
   post :create, email: user.email, password: 'password'
 end
 
@@ -37,14 +37,14 @@ describe SessionsController do
   end
 
   it 'redirects signed in users' do
-    log_in_user(user)
+    post_login(user)
     user.auth_token.should == cookies[:auth_token]
     get :new
     response.should redirect_to expenses_path
   end
 
   context 'logout' do
-    before { log_in_user(user) }
+    before { post_login(user) }
 
     it 'logs out signed in users' do
       user.auth_token.should == cookies[:auth_token]
