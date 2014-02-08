@@ -62,9 +62,7 @@ class User < ActiveRecord::Base
     expense.debtor = self
     debts << expense
 
-    # TODO: the env is a massive hack to shut up Travis. Probably need MockRedis
-    # or similar?
-    if Rails.env != 'test' && receive_communication?(Notification::NEW_DEBT)
+    if receive_communication?(Notification::NEW_DEBT)
       NotificationsMailer.delay.new_debt(expense.id)
     end
   end

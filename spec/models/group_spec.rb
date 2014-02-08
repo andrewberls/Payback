@@ -3,31 +3,25 @@ require 'spec_helper'
 describe Group do
   let(:group) { Group.make! }
 
-  subject { group }
-
   context 'validations' do
     it 'is not valid without a title' do
-      subject.title = ''
-      subject.should_not be_valid
+      group.title = ''
+      group.should_not be_valid
     end
 
     it 'is not valid when the title is too long' do
-      subject.title = 'a' * 51
-      subject.should_not be_valid
+      group.title = 'a' * 51
+      group.should_not be_valid
     end
   end
 
   context 'gid' do
-    let(:group) { Group.make! }
-
-    subject { group }
-
     it 'be generated before save' do
-      subject.gid.should be_present
+      group.gid.should be_present
     end
 
     it "be six characters long" do
-      subject.gid.length.should == 6
+      group.gid.length.should == 6
     end
   end
 
@@ -43,7 +37,6 @@ describe Group do
   end
 
   context 'users' do
-    let(:group) { Group.make! }
     let(:user)  { User.make! }
 
     before { group.add_user(user) }
@@ -67,6 +60,23 @@ describe Group do
       expense.group.remove_user(creditor)
 
       expense.reload.should_not be_active
+    end
+
+    it 'computes peers' do
+      user2 = User.make!
+      group.add_user(user2)
+      group.peers(user).should == [user2]
+    end
+  end
+
+  context '#total_exchanged' do
+    let(:creditor) { User.make! }
+    let(:debtor)   { User.make! }
+    let!(:exp1)    { Expense.make!(group: group, creditor: creditor, debtor: debtor, amount: 2) }
+    let!(:exp2)    { Expense.make!(group: group, creditor: creditor, debtor: debtor, amount: 3) }
+
+    it 'computes the total' do
+      group.total_exchanged.should == 5
     end
   end
 

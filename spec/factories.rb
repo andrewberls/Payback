@@ -53,4 +53,16 @@ FactoryGirl.define do
   factory :tag do
     title { Faker::Commerce.product_name }
   end
+
+  factory :notification do
+    user_from  { FactoryGirl.create(:user) }
+    user_to    { FactoryGirl.create(:user) }
+    read       { false }
+    notif_type { Notification::MARKOFF }
+
+    after(:create) do |notif|
+      notif.expenses << FactoryGirl.create(:expense,
+                                           creditor: notif.user_from, debtor: notif.user_to)
+    end
+  end
 end
