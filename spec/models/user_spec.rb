@@ -90,15 +90,11 @@ describe User do
     end
 
     it 'computes expenses without a group' do
-      expenses = user.expenses
-      expenses.length.should == 3
-      [exp1, exp2, exp3].each { |e| expenses.should include e }
+      user.expenses.should match_array [exp1, exp2, exp3]
     end
 
     it 'computes expenses given a group' do
-      expenses = user.expenses(group1)
-      expenses.length.should == 2
-      [exp1, exp2].each { |e| expenses.should include e }
+      user.expenses(group1).should match_array [exp1, exp2]
     end
   end
 
@@ -111,10 +107,10 @@ describe User do
   end
 
   context 'notifications' do
-    let!(:notif) { Notification.make!(user_to: user) }
     let!(:exp) { Expense.make!(creditor: user) }
 
     context '#unread_notifications' do
+      let!(:notif) { Notification.make!(user_to: user) }
       specify { user.unread_notifications.should == [notif] }
     end
 
@@ -144,12 +140,13 @@ describe User do
 
       it 'limits the number of read notifications shown' do
         [n1,n2,n3,n4,n5,n6].each { |n| n.update_attributes!(read: true) }
-        user.recent_notifications == [n5,n4,n3,n2,n1]
+        user.recent_notifications.length.should == 5
+        user.recent_notifications.should match_array [n2,n3,n4,n5,n6]
       end
 
       it 'returns all notifications if any are unread' do
-        notifs = user.recent_notifications
-        [n1,n2,n3,n4,n5,n6].each { |n| notifs.should include n }
+        user.recent_notifications.length.should == 6
+        user.recent_notifications.should match_array [n1,n2,n3,n4,n5,n6]
       end
     end
   end

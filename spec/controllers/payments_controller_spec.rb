@@ -21,15 +21,12 @@ describe PaymentsController do
 
   it 'creates a payment for a single expense' do
     expect { post :create, params }.to change { Payment.count }.by(1)
-    Payment.last.expenses.should == [exp1]
+    Payment.last.expenses.should match_array [exp1]
   end
 
   it 'creates a payment for multiple expenses' do
     params[:payment][:expense_ids] = [exp1.id, exp2.id].join(',')
     expect { post :create, params }.to change { Payment.count }.by(1)
-
-    expenses = Payment.last.expenses
-    expenses.length.should == 2
-    [exp1,exp2].each { |e| expenses.should include e }
+    Payment.last.expenses.should match_array [exp1, exp2]
   end
 end
