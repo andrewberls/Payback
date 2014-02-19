@@ -40,3 +40,4 @@ log/*.log
 tmp/
 .sass-cache/
 dump.rdb
+coverage/
