@@ -15,9 +15,7 @@ $ ->
 
   # Pay all button click confirmation on user debt page
   $('.pay-all-btn').click ->
-    $(@).replaceWith """
-      <span class="confirm-yes">You're done!</span>
-        """
+    $(@).replaceWith """<span class="confirm-yes">You're done!</span>"""
 
   # Expense titles on payment notification
   $('.payment-notification-toggle').click ->

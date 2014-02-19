@@ -19,7 +19,7 @@ window.Payback = {}
 
 # Utils
 #
-# Return a string m/d/y timestamp, ex: 11/3/13
+# Return a string m/d/y timestamp, ex: '11/3/13'
 Payback.getTimestamp = ->
   d = new Date()
   month = d.getMonth() + 1

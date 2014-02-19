@@ -20,11 +20,11 @@ $ ->
     return false
 
   inv_num = 1
-  $form   = $(".group-invitations form")
+  $form   = $('.group-invitations form')
   $submit = $form.find('.invite-btns')
   $(emailField(inv_num)).insertBefore($submit)
 
-  $(".add-invitation").click ->
+  $('.add-invitation').click ->
     # Slide down new invitations
     $field = $( emailField(++inv_num) ).hide()
     $field.insertBefore($submit).slideDown()
