@@ -62,7 +62,8 @@ FactoryGirl.define do
 
     after(:create) do |notif|
       notif.expenses << FactoryGirl.create(:expense,
-                                           creditor: notif.user_from, debtor: notif.user_to)
+                                           creditor: notif.user_from,
+                                           debtor: notif.user_to)
     end
   end
 end
