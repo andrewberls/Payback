@@ -29,3 +29,4 @@ rails server
 
 ### Status
 [![Build Status](https://travis-ci.org/andrewberls/Payback.png)](https://travis-ci.org/andrewberls/payback)
+[![Coverage Status](https://coveralls.io/repos/andrewberls/Payback/badge.png?branch=master)](https://coveralls.io/r/andrewberls/Payback?branch=master)
