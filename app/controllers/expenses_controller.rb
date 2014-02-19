@@ -85,9 +85,9 @@ class ExpensesController < ApplicationController
   end
 
   def clear
-    # Mark all expenses to a user completed
-    user     = User.find(params[:id])
-    expenses = current_user.active_credits_to(user)
+    # Mark all credits to a user completed
+    debtor   = User.find(params[:id])
+    expenses = current_user.active_credits_to(debtor)
     expenses.map(&:deactivate)
     return redirect_to expenses_path
   end
