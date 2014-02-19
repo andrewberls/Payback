@@ -6,7 +6,7 @@ describe User do
   let(:group2) { Group.make! }
   subject { user }
 
-  context 'validations' do
+  describe 'validations' do
     it { should be_valid }
 
     it 'is not valid without a full name' do
@@ -58,7 +58,8 @@ describe User do
     end
   end
 
-  context 'payments' do
+
+  describe 'payments' do
     let(:expense)  { Expense.make!(debtor_id: user.id) }
     let (:payment) { FactoryGirl.build(:payment, debtor_id: user.id) }
 
@@ -106,7 +107,8 @@ describe User do
     end
   end
 
-  context 'notifications' do
+
+  describe 'notifications' do
     let!(:exp) { Expense.make!(creditor: user) }
 
     context '#unread_notifications' do

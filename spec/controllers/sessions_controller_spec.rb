@@ -59,4 +59,13 @@ describe SessionsController do
       response.should redirect_to root_url
     end
   end
+
+  context 'forgot_password' do
+    pending
+  end
+
+  context 'reset_password' do
+    pending
+  end
+
 end

@@ -73,6 +73,10 @@ describe Expense do
     end
   end
 
+  context '#assign_to' do
+    pending
+  end
+
   context '#has_tag?' do
     let(:expense) { Expense.make! }
     let(:one)     { Tag.make!(title: "one") }
