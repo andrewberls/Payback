@@ -92,7 +92,7 @@ module User::ExpenseExtension
   private
 
   def sum_amounts(expenses)
-    expenses.map(&:amount).reduce(0, :+)
+    expenses.map(&:amount).reduce(0, :+).to_f
   end
 
 end

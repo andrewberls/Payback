@@ -43,6 +43,10 @@ def logout!
   cookies.delete(:auth_token)
 end
 
+def response_json
+  JSON.parse(response.body)
+end
+
 class ActiveRecord::Base
   class << self
 
