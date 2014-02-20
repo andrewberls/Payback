@@ -74,7 +74,30 @@ describe Expense do
   end
 
   context '#assign_to' do
-    pending
+    let(:creditor) { User.make! }
+    let(:debtor1)  { User.make! }
+    let(:debtor2)  { User.make! }
+    let(:group)    { Group.make! }
+    let(:expense)  { FactoryGirl.build(:expense, creditor: creditor) }
+
+    before do
+      group.initialize_owner(creditor)
+      [debtor1, debtor2].each { |user| group.add_user(user) }
+    end
+
+    it 'assigns multiple expenses' do
+      expect { expense.assign_to(debtor1, debtor2) }.to change { Expense.count }.by(2)
+
+      # TODO: probably want expense matcher here
+      creditor.credits.count.should == 2
+      creditor.credits.first.title.should == expense.title
+
+      debtor1.debts.count.should == 1
+      debtor1.debts.first.title.should == expense.title
+
+      debtor2.debts.count.should == 1
+      debtor2.debts.first.title.should == expense.title
+    end
   end
 
   context '#has_tag?' do
