@@ -29,17 +29,12 @@ class SessionsController < ApplicationController
     # Send email with generated reset token
 
     if request.post?
-      user   = User.find_by_email(params[:email])
-      blank  = user.blank?
-      unauth = signed_in? && params[:email] != current_user.email
+      email  = params[:email]
+      user   = User.find_by_email(email)
+      unauth = signed_in? && email != current_user.email
 
-      if blank || unauth
-        flash.now[:error] =
-        if blank
-          "We couldn't find an account with that email!"
-        elsif unauth
-          "Invalid email."
-        end
+      if user.blank? || unauth
+        flash.now[:error] = "Invalid email."
         return render :forgot_password
       end
 
