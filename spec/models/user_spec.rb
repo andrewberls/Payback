@@ -107,6 +107,27 @@ describe User do
     end
   end
 
+  context '#add_debt' do
+    let(:creditor) { User.make! }
+    let(:debtor)   { User.make! }
+    let(:expense) { Expense.make!(creditor: creditor, group: group1) }
+
+    before do
+      group1.add_user(creditor)
+      group1.add_user(debtor)
+    end
+
+    it 'marks self as the debtor' do
+      debtor.add_debt(expense)
+      expense.debtor.should == debtor
+    end
+
+    it 'saves the debt' do
+      debtor.add_debt(expense)
+      debtor.debts.should include expense
+      creditor.credits.should include expense
+    end
+  end
 
   describe 'notifications' do
     let!(:exp) { Expense.make!(creditor: user) }
@@ -149,6 +170,46 @@ describe User do
       it 'returns all notifications if any are unread' do
         user.recent_notifications.length.should == 6
         user.recent_notifications.should match_array [n1,n2,n3,n4,n5,n6]
+      end
+    end
+  end
+
+
+  context 'communication_preferences' do
+    let(:comm) { CommunicationPreference.make!(user: user) }
+
+    context '#receive_communication?' do
+      specify { user.receive_communication?('mark_off').should be_true }
+
+      specify do
+        user.update_communication_preferences(mark_off: 0)
+        user.receive_communication?('mark_off').should be_false
+      end
+    end
+  end
+
+  context 'reset tokens' do
+    let(:token1) { ResetToken.make!(user: user) }
+
+    context '#expire_reset_tokens' do
+      it 'expires all active tokens' do
+        token1.should_not be_used
+        user.expire_reset_tokens
+        token1.reload.should be_used
+      end
+    end
+
+    context 'generate_reset_token' do
+      it 'expires currently active tokens first' do
+        token1.should_not be_used
+        user.generate_reset_token
+        token1.reload.should be_used
+      end
+
+      it 'generates a new token' do
+        user.generate_reset_token
+        ResetToken.last.token.should_not == token1.token
+        ResetToken.last.user.should == user
       end
     end
   end

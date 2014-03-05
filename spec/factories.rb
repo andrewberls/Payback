@@ -66,4 +66,10 @@ FactoryGirl.define do
                                            debtor: notif.user_to)
     end
   end
+
+  factory :communication_preference do
+    user { FactoryGirl.create(:user) }
+    mark_off true
+    new_debt true
+  end
 end
