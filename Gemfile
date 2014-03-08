@@ -20,8 +20,7 @@ gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 
 gem "sidekiq", "~> 2.17.4"
 
-#gem 'notes-cli'
-gem 'notes-cli', git: 'git://github.com/andrewberls/notes-cli.git', branch: 'ignore-vendor'
+gem 'notes-cli'
 
 group :assets do
   gem 'sass-rails'
