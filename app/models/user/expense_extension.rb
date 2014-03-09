@@ -40,12 +40,12 @@ module User::ExpenseExtension
 
   # How much this user currently owes you
   def active_credit_amt_to(user)
-    sum_amounts active_credits_to(user.id)
+    sum_amounts active_credits_to(user)
   end
 
   # How much you currently owe this user
   def active_debt_amt_to(user)
-    sum_amounts active_debts_to(user.id)
+    sum_amounts active_debts_to(user)
   end
 
 
