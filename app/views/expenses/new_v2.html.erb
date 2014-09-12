@@ -1,0 +1,119 @@
+<% provide(:title, 'Add Expense') %>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag 'expenses/new', 'expenses/tag_editor' %>
+<% end %>
+
+
+<div class="row">
+  <div class="expense-people-container">
+    <a class="person-btn selected" href="#">Andrew</a>
+    <a class="person-btn selected" href="#">Jared</a>
+    <a class="person-btn" href="#">Pete</a>
+    <a class="person-btn" href="#">Alex</a>
+    <a class="person-btn" href="#">Luc</a>
+    <a class="person-btn selected" href="#">Tristan</a>
+  </div><!-- .expense-people-container -->
+</div>
+
+
+<div class="row">
+  <div class="span16">
+    <div class="expense-fields-container">
+
+      <h3>Owe me</h3>
+
+      <div class="expense-amount-container">
+        <div class="dollar-container">$</div>
+        <input type="number" />
+      </div>
+
+      <h3>for</h3>
+
+      <div class="expense-title-container">
+        <input type="text" />
+      </div>
+
+      <a class="expense-save-btn" href="#">Save</a>
+
+    </div><!-- .expense-fields-container -->
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+
+
+<div class="row">
+  <div class="span-8 offset-4">
+
+    <%= form_for @expense, html: { class: "new-expense-form form-validate" } do |f| %>
+      <h1 class="form-title">Add New Expense</h1>
+
+      <%= render 'shared/instance_errors', instance: @expense %>
+
+      <p>Select a group:</p>
+      <%= select("group", "gid", current_user.groups.map { |g| [g.title, g.gid] },
+          { include_blank: false }, id: "group-select") %>
+
+
+      <div class="users-prompt">
+        <a href="#" class="btn btn-large btn-blue" id="users-group">
+          <i class="icon-white icon-ok"></i>Group Expense
+        </a>
+        <a href="#" class="btn btn-large" id="users-select">Select Members &raquo;</a>
+      </div>
+
+      <div id="users-container">
+        <h5>Select Members</h5>
+        <div class="user-column"></div>
+      </div>
+
+
+      <%= f.label :amount %>
+      <span class="help-text">Decimal optional</span>
+      <%= f.text_field :amount, data: { 'validate-type' => 'number' } %>
+
+      <%= f.label :title %>
+      <span class="help-text">Describe the expense, ex: "Groceries"</span>
+      <%= f.text_field :title, maxlength: 75 %>
+
+
+      <%= f.label :tags %>
+      <%= render 'expenses/tag_editor' %>
+
+      <%= submit_tag "Payback",      class: "btn btn-red btn-large",  id: "expense-payback" %>
+      <%= submit_tag "Split Evenly", class: "btn btn-blue btn-large", id: "expense-split" %>
+
+      <a href="#" id="show-expense-faqs"><i class="icon-question-sign"></i> What are these?</a>
+    <% end %>
+
+
+    <div id="expense-faqs">
+      <h3>Split vs Payback</h3>
+      <p><strong>Split Evenly</strong> will split the cost among the members selected, including yourself.</p>
+      <p><strong>Payback</strong> will have the selected members pay you back in full.</p>
+      <a id="hide-expense-faqs" class="btn">Got it!</a>
+    </div>
+
+    <%= link_to raw("&laquo; Back to Expenses "), expenses_path, class: "btn btn-shadow expense-back" %>
+
+  </div>
+</div>
+
+
+<% end %>

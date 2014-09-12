@@ -36,6 +36,7 @@ Payback::Application.routes.draw do
   resources :expenses do
     collection do
       get 'tagged/:tag' => 'expenses#tagged', as: 'tagged'
+      get 'new_v2' => 'expenses#new_v2' # TODO
     end
   end
   match 'clear/:id' => 'expenses#clear', as: 'clear'

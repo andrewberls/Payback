@@ -8,6 +8,11 @@ class ExpensesController < ApplicationController
     @expense = Expense.new
   end
 
+  # TODO
+  def new_v2
+    @expense = Expense.new
+  end
+
   def create
     @expense = Expense.build(params)
 
