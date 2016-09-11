@@ -6,6 +6,14 @@ class ExpensesController < ApplicationController
 
   def new
     @expense = Expense.new
+    @selected_group =
+      begin
+        if (credit = current_user.credits.last).present?
+          credit.group
+        else
+          nil
+        end
+      end
   end
 
   def create

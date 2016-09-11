@@ -13,8 +13,9 @@
       <%= render 'shared/instance_errors', instance: @expense %>
 
       <p>Select a group:</p>
+      <% selected = @selected_group.present? ? @selected_group.gid : nil %>
       <%= select("group", "gid", current_user.groups.map { |g| [g.title, g.gid] },
-          { include_blank: false }, id: "group-select") %>
+          { selected: selected, include_blank: false }, id: "group-select") %>
 
 
       <div class="users-prompt">
