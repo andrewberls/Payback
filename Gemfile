@@ -22,6 +22,8 @@ gem "sidekiq", "~> 2.17.4"
 
 gem 'notes-cli'
 
+gem 'test-unit'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
