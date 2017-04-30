@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.5'
 
-gem "rails", "~> 3.2.13"
+gem "rails", "3.2.22.5"
 
 gem 'pg'
 
@@ -16,7 +16,7 @@ gem 'jquery-rails'
 
 gem 'unicorn'
 
-gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
+gem 'active_model_serializers', '~> 0.9.3'
 
 gem "sidekiq", "~> 2.17.4"
 
@@ -43,8 +43,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'guard-rspec', '~> 4.2.5'
-  gem "rspec-rails", "~> 2.14.1"
+  gem "rspec-rails", "~> 3.5"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "faker", "~> 1.2.0"
   gem "database_cleaner", "~> 1.2.0" # Clear data for each spec run

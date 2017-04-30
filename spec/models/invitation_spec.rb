@@ -14,9 +14,9 @@ describe Invitation do
     inv.token.should be_present
   end
 
-  it "sends an email with the correct content" do
-    pending
-  end
+  # it "sends an email with the correct content" do
+  #   pending
+  # end
 
   it 'is valid if not used' do
     inv.should_not be_invalid

@@ -179,11 +179,11 @@ describe User do
     let(:comm) { CommunicationPreference.make!(user: user) }
 
     context '#receive_communication?' do
-      specify { user.receive_communication?('mark_off').should be_true }
+      specify { user.receive_communication?('mark_off').should eql(true) }
 
       specify do
         user.update_communication_preferences(mark_off: 0)
-        user.receive_communication?('mark_off').should be_false
+        user.receive_communication?('mark_off').should eql(false)
       end
     end
   end

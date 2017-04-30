@@ -18,6 +18,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActionMailer::Base.delivery_method = :test
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
