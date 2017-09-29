@@ -22,7 +22,7 @@ describe ExpensesController do
           user2.id => 'on',
         },
         'tag_list' => 'household,utilities',
-        'commit' => 'Payback'
+        'commit' => Expense::PAYBACK_COPY
       }
     end
 

@@ -1,9 +1,10 @@
-//-- ADD EXPENSE
-//------------------------------------
 @import "expense_tags";
+
 .new-expense-form {
   margin-bottom: 5px;
   padding: 20px;
+
+  .section-label { margin-bottom: 5px; }
 
   label {
     font-size: 1.1em;
@@ -14,67 +15,18 @@
 #expense-payback { margin-left: 10px; }
 
 .expense-back {
-  // Left-floated back button
   margin-top: 10px;
-
   @include mobile { padding: 10px 15px; }
 }
 
-#show-expense-faqs {
-  // "What are these?"
-  float: right;
-  margin-top: 12px;
-
-  @include mobile { margin-top: 20px; }
-}
-
-#expense-faqs {
-  @extend %whitebox;
-  @include clearfix;
-  display: none;
-  margin-bottom: 0;
-  padding: 10px;
-
-  h3, p { margin-bottom: 5px; }
-
-  #hide-expense-faqs {
-    // Button
-    float: right;
-    margin-top: 5px;
-  }
-}
-
-
 #group-select {
-  // Group select menu
-  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
-.users-prompt {
-  // Button container
-  @include clearfix;
-  margin: 15px 0 10px;
-
-  [class^="icon-"] { margin: -2px 4px 0 -5px }
-
-  .btn:last-of-type { float: right; }
-
-  @media (min-width: 1100px) {
-    .btn {
-      // Form is a bit wide here, make the buttons more visible
-      padding: 12px 20px;
-    }
-  }
-}
-
 #users-container {
-  // Contains the individual columns
   @include clearfix;
-  display: none;
   margin-bottom: 10px;
-
-  h5 { margin-bottom: 10px; }
 
   .user-column {
     float: left;
@@ -82,8 +34,6 @@
   }
 
   .userbox {
-    // Generic container for checkboxes/labels
-
     label,
     input {
       display: inline-block;
@@ -91,10 +41,7 @@
       margin: 0 0 10px;
       vertical-align: middle;
 
-      @media (min-width: 1100px) {
-        // Don't need extra touch space for wide screens
-        margin: 0;
-      }
+      @media (min-width: 1100px) { margin: 0; }
     }
 
     input {
@@ -104,7 +51,6 @@
   }
 }
 
-// Suggested core tag buttons
 .core-tags-container {
   margin: 5px 0 10px;
 
@@ -118,6 +64,5 @@
   border-bottom: 1px solid #f3f3f3;
   padding: 5px;
 
-  // Check icon
   i { margin: -2px 5px 0 0; }
 }

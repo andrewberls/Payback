@@ -21,10 +21,13 @@ class Expense < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 75 }
 
+  PAYBACK_COPY = 'Pay me back full amount'.freeze
+  SPLIT_COPY = 'Split cost, including me'.freeze
+
   def self.build(params)
     exp_params = params[:expense]
     Expense.new(exp_params) do |exp|
-      exp.action = (params[:commit] == 'Payback') ? :payback : :split
+      exp.action = (params[:commit] == PAYBACK_COPY) ? :payback : :split
       exp.amount = ExpressionParser.parse(exp_params[:amount])
 
       tags = params[:tag_list].split(',')

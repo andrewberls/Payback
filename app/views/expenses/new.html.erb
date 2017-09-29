@@ -12,24 +12,15 @@
 
       <%= render 'shared/instance_errors', instance: @expense %>
 
-      <p>Select a group:</p>
+      <p class="section-label">Select a group:</p>
       <% selected = @selected_group.present? ? @selected_group.gid : nil %>
       <%= select("group", "gid", current_user.groups.map { |g| [g.title, g.gid] },
           { selected: selected, include_blank: false }, id: "group-select") %>
 
-
-      <div class="users-prompt">
-        <a href="#" class="btn btn-large btn-blue" id="users-group">
-          <i class="icon-white icon-ok"></i>Group Expense
-        </a>
-        <a href="#" class="btn btn-large" id="users-select">Select Members &raquo;</a>
-      </div>
-
       <div id="users-container">
-        <h5>Select Members</h5>
+        <p class="section-label">Select members:</p>
         <div class="user-column"></div>
       </div>
-
 
       <%= f.label :amount %>
       <span class="help-text">Decimal optional</span>
@@ -39,23 +30,12 @@
       <span class="help-text">Describe the expense, ex: "Groceries"</span>
       <%= f.text_field :title, maxlength: 75 %>
 
-
       <%= f.label :tags %>
       <%= render 'expenses/tag_editor' %>
 
-      <%= submit_tag "Payback",      class: "btn btn-red btn-large",  id: "expense-payback" %>
-      <%= submit_tag "Split Evenly", class: "btn btn-blue btn-large", id: "expense-split" %>
-
-      <a href="#" id="show-expense-faqs"><i class="icon-question-sign"></i> What are these?</a>
+      <%= submit_tag Expense::PAYBACK_COPY, class: "btn btn-green btn-large",  id: "expense-payback" %>
+      <%= submit_tag Expense::SPLIT_COPY, class: "btn btn-blue btn-large", id: "expense-split" %>
     <% end %>
-
-
-    <div id="expense-faqs">
-      <h3>Split vs Payback</h3>
-      <p><strong>Split Evenly</strong> will split the cost among the members selected, including yourself.</p>
-      <p><strong>Payback</strong> will have the selected members pay you back in full.</p>
-      <a id="hide-expense-faqs" class="btn">Got it!</a>
-    </div>
 
     <%= link_to raw("&laquo; Back to Expenses "), expenses_path, class: "btn btn-shadow expense-back" %>
 
