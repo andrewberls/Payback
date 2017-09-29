@@ -33,23 +33,23 @@
     <% else %>
       <% on_dashboard = current_page?(expenses_path) %>
       <% if on_dashboard %>
+        <div class="quick-stats-container">
+          <div class="container">
+            <%= render 'expenses/dashboard/quick_stats' %>
+          </div>
+        </div>
+      <% end %>
 
-        <!-- TODO: TEMPORARY: remove this eventually -->
+      <% if current_page?(payments_path) %>
         <div class="cash-container dashboard-cash-announcement">
           <div class="container">
             <div class="row">
               <div class="span-16">
-                <p>You can pay back money you owe directly through Payback.
-                  <%= link_to raw('Learn More &raquo;'), cash_path, style: 'color: #f9f9f9; text-decoration: underline;' %>
+                <p>
+                  <%= link_to raw('Learn more about paying back money you owe directly through Payback &raquo;'), cash_path, style: 'color: #f9f9f9; text-decoration: underline;' %>
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="quick-stats-container">
-          <div class="container">
-            <%= render 'expenses/dashboard/quick_stats' %>
           </div>
         </div>
       <% end %>
