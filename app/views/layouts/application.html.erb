@@ -69,7 +69,9 @@
       <div class="container">
         <p>Payback is brought to you with love by <a href="http://www.andrewberls.com">Andrew Berls</a>.</p>
 
-        <%= link_to 'Contact Us!', contact_path, class: 'footer-contact' %>
+        <% if signed_in? %>
+          <%= link_to 'Contact Us!', contact_path, class: 'footer-contact' %>
+        <% end %>
       </div>
     </footer>
   <% end %>

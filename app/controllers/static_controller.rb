@@ -1,4 +1,6 @@
 class StaticController < ApplicationController
+  before_filter :must_be_logged_in, only: [:contact]
+
   def main
     return redirect_to expenses_path if signed_in?
   end
