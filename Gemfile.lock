@@ -32,6 +32,9 @@ GEM
       multi_json (~> 1.0)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    annotate (2.7.2)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 13.0)
     arel (3.0.3)
     bcrypt-ruby (3.0.1)
     better_errors (2.1.1)
@@ -224,6 +227,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.9.3)
+  annotate
   bcrypt-ruby (~> 3.0.0)
   better_errors
   binding_of_caller

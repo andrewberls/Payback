@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: reset_tokens
+#
+#  id         :integer          not null, primary key
+#  token      :string(255)
+#  user_id    :integer
+#  expires_at :datetime
+#  used       :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'spec_helper'
 
 describe ResetToken do

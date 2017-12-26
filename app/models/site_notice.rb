@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: site_notices
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  expires_at :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'tokenable'
 
 class SiteNotice < ActiveRecord::Base
