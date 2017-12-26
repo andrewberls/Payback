@@ -30,9 +30,6 @@
       <span class="help-text">Describe the expense, ex: "Groceries"</span>
       <%= f.text_field :title, maxlength: 75 %>
 
-      <%= f.label :tags %>
-      <%= render 'expenses/tag_editor' %>
-
       <%= submit_tag Expense::PAYBACK_COPY, class: "btn btn-green btn-large",  id: "expense-payback" %>
       <%= submit_tag Expense::SPLIT_COPY, class: "btn btn-blue btn-large", id: "expense-split" %>
     <% end %>
