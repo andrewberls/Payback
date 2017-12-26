@@ -76,7 +76,7 @@ class Expense < ActiveRecord::Base
   def to_s
     active_str = active? ? 'active' : 'inactive'
     "#<Expense id: #{id}, $#{amount} from #{creditor.first_name}
-      to #{debtor.first_name} (#{active_str})>".squish
+      to #{debtor.first_name} (#{active_str}) for '#{title}'>".squish
   end
 
   def inspect
