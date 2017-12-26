@@ -14,8 +14,6 @@
 #  action      :string(255)
 #
 
-require 'expression_parser'
-
 class Expense < ActiveRecord::Base
 
   attr_accessible :title, :amount, :action, :active
@@ -40,11 +38,15 @@ class Expense < ActiveRecord::Base
   PAYBACK_COPY = 'Pay me back full amount'.freeze
   SPLIT_COPY = 'Split cost, including me'.freeze
 
+  def self.evaluate_amount(raw_amount_str)
+    Dentaku::Calculator.new.evaluate(raw_amount_str.chomp.strip).to_f
+  end
+
   def self.build(params)
     exp_params = params[:expense]
     Expense.new(exp_params) do |exp|
       exp.action = (params[:commit] == PAYBACK_COPY) ? :payback : :split
-      exp.amount = ExpressionParser.parse(exp_params[:amount])
+      exp.amount = evaluate_amount(exp_params[:amount])
 
       tags = params[:tag_list].split(',')
       if tags.present?

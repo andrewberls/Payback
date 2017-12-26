@@ -24,6 +24,8 @@ gem 'notes-cli'
 
 gem 'test-unit'
 
+gem 'dentaku', '~> 3.0'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'

@@ -42,7 +42,19 @@ describe Expense do
     expense.should be_edited
   end
 
-  context '::build' do
+  context '.evaluate_amount' do
+    it do
+      expect(described_class.evaluate_amount('5')).to eql(5.0)
+      expect(described_class.evaluate_amount('500')).to eql(500.0)
+      expect(described_class.evaluate_amount('5.0')).to eql(5.0)
+      expect(described_class.evaluate_amount('5.25')).to eql(5.25)
+      expect(described_class.evaluate_amount('5.0 + 2.31')).to eql(7.31)
+      expect(described_class.evaluate_amount('5.0+2.31')).to eql(7.31)
+      expect(described_class.evaluate_amount('5 + (2*10) - 2')).to eql(23.0)
+    end
+  end
+
+  context '.build' do
     let(:params) do
       {
         commit: "Payback",
